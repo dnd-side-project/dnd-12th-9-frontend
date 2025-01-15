@@ -1,12 +1,10 @@
 {
-  "name": "@repo/ui",
+  "name": "@repo/api",
   "version": "0.0.0",
   "type": "module",
   "private": true,
   "exports": {
-    "./components": "./components/index.ts",
-    "./hooks": "./hooks/index.ts",
-    "./styles": "./styles/globals.css"
+    "./api": "./src/index.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -15,23 +13,19 @@
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
-    "@repo/tailwind-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@turbo/gen": "^1.12.4",
     "@types/node": "^20.11.24",
     "@types/react": "18.3.0",
     "@types/react-dom": "18.3.1",
-    "autoprefixer": "^10.4.20",
-    "framer-motion": "^11.18.0",
-    "postcss": "^8.5.1",
-    "prettier-plugin-tailwindcss": "^0.6.9",
-    "react-hook-form": "^7.54.2",
-    "tailwindcss": "^3.4.17",
     "typescript": "5.5.4"
   },
   "dependencies": {
-    "dayjs": "^1.11.13",
+    "@tanstack/react-query": "^5.64.1",
+    "@tanstack/react-query-devtools": "^5.64.1",
+    "ky": "^1.7.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "zod": "^3.24.1"
   }
 }
