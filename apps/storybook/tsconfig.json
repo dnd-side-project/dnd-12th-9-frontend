@@ -1,0 +1,10 @@
+{
+  "extends": "@repo/typescript-config/react-library.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@repo/ui/*": ["../../packages/ui/src/components/*"]
+    }
+  },
+  "include": ["stories/**/*.tsx", "stories/**/*.ts", ".storybook/**/*"]
+}
