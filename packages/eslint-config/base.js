@@ -6,12 +6,17 @@ import react from 'eslint-plugin-react';
 import storybookPlugin from 'eslint-plugin-storybook';
 import tanstackQueryPlugin from '@tanstack/eslint-plugin-query';
 
+const ignores = ['**/.next/**', '**/build/**', '**/coverage/**', '**/dist/**'];
+
 /**
  * A shared ESLint configuration for the repository.
  *
  * @type {import("eslint").Linter.Config}
  * */
 export default tseslint.configs(
+  {
+    ...ignores,
+  },
   js.configs.recommended,
   importPlugin.flatConfigs.recommended,
   tseslint.configs.recommended,
@@ -73,8 +78,12 @@ export default tseslint.configs(
   {
     files: ['**/*.{ts,tsx}'],
     extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
-  },
-  {
-    ignores: ['dist/**'],
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        project: true,
+        parser: tseslint.parser,
+      },
+    },
   }
 );

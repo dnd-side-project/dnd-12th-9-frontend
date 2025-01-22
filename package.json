@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
+    "lefthook": "^1.10.10",
     "prettier": "^3.2.5",
     "turbo": "^2.3.3",
     "typescript": "5.5.4"
