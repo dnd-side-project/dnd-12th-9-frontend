@@ -6,9 +6,9 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
+    'plugin:turbo/recommended',
     'plugin:@tanstack/eslint-plugin-query/recommended',
     'prettier',
-    'turbo',
   ],
   env: {
     browser: true,

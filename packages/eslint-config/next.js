@@ -6,11 +6,11 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
+    'plugin:turbo/recommended',
     'plugin:storybook/recommended',
     'prettier',
     'next',
     'next/core-web-vitals',
-    'turbo',
   ],
   env: {
     node: true,

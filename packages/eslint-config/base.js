@@ -68,7 +68,7 @@ module.exports = {
     'no-duplicate-imports': 'error',
     'no-unused-vars': 'off',
 
-    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-unused-vars': 'warn',
 
     'react/jsx-tag-spacing': 1,
     'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
