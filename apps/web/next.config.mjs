@@ -6,7 +6,11 @@ const nextConfig = {
     externalDir: true,
   },
   webpack(config) {
-    config.resolve.alias['@repo/ui'] = path.resolve(__dirname, '../../packages/ui');
+    const __dirname = path.resolve();
+    config.resolve.alias['@repo/ui/components'] = path.resolve(
+      __dirname,
+      '../../packages/ui/src/components'
+    );
     return config;
   },
 };
