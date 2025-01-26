@@ -14,9 +14,6 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.6.0
         version: 19.6.0
-      '@commitlint/types':
-        specifier: ^19.5.0
-        version: 19.5.0
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:packages/eslint-config
