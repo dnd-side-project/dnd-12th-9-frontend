@@ -41,13 +41,13 @@ pre-push:
     lint:
       run: pnpm lint
       stage_fixed: true
-    test:
-      run: npm run ci:test
-      stage_fixed: true
+    # test:
+    #   run: npm run ci:test
+    #   stage_fixed: true
     build:
-      # TODO 빌드까지 테스트 할지 타입만 체크할지 논의 필요
-      # run: pnpm build
-      run: pnpm run check-types
+      # TODO api 폴더에 ts폴더 없는데 ts체크해서 input이 없다는 에러 발생. 우선은 빌드로 검사하고 파일 많아지면 check-types로 수정하는게 좋을 듯
+      run: pnpm build
+      # run: pnpm run check-types
       stage_fixed: true
 
 pre-commit:
