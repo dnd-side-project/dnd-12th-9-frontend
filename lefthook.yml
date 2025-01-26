@@ -25,30 +25,30 @@ commit-msg:
 pre-push:
   parallel: false
   commands:
-  # TODO 지정한 브랜치에 직접 push 금지 검사 (깃허브 기본 기능으로 대체 가능할 듯)
-  # branch-protection:
-  #   run: |
-  #     branch=$(git rev-parse --abbrev-ref HEAD)
-  #     protected_branches=("main" "dev")
+    # TODO 지정한 브랜치에 직접 push 금지 검사 (깃허브 기본 기능으로 대체 가능할 듯)
+    # branch-protection:
+    #   run: |
+    #     branch=$(git rev-parse --abbrev-ref HEAD)
+    #     protected_branches=("main" "dev")
 
-  #     for protected in "${protected_branches[@]}"; do
-  #       if [[ "$branch" == "$protected" ]]; then
-  #         echo "❌ Direct push to '$branch' branch is not allowed."
-  #         echo "   Please create a pull request instead."
-  #         exit 1
-  #       fi
-  #     done
-  lint:
-    run: pnpm lint
-    stage_fixed: true
-  test:
-    run: npm run ci:test
-    stage_fixed: true
-  build:
-    # TODO 빌드까지 테스트 할지 타입만 체크할지 논의 필요
-    # run: pnpm build
-    run: pnpm run check-types
-    stage_fixed: true
+    #     for protected in "${protected_branches[@]}"; do
+    #       if [[ "$branch" == "$protected" ]]; then
+    #         echo "❌ Direct push to '$branch' branch is not allowed."
+    #         echo "   Please create a pull request instead."
+    #         exit 1
+    #       fi
+    #     done
+    lint:
+      run: pnpm lint
+      stage_fixed: true
+    test:
+      run: npm run ci:test
+      stage_fixed: true
+    build:
+      # TODO 빌드까지 테스트 할지 타입만 체크할지 논의 필요
+      # run: pnpm build
+      run: pnpm run check-types
+      stage_fixed: true
 
 pre-commit:
   commands:
