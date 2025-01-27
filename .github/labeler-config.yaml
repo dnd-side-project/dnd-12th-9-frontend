@@ -1,0 +1,36 @@
+filters:
+  - label: feat
+    regexs:
+      - /feat|FEAT/
+    events: [issues, pull_request]
+    targets: [title]
+  - label: bug
+    regexs:
+      - /bug|BUG/
+    events: [issues]
+    targets: [title]
+  - label: docs
+    regexs:
+      - /docs|DOCS/
+    events: [issues, pull_request]
+    targets: [title]
+  - label: chore
+    regexs:
+      - /chore|CHORE/
+    events: [issues, pull_request]
+    targets: [title]
+  - label: set
+    regexs:
+      - /set|SET/
+    events: [issues, pull_request]
+    targets: [title]
+  - label: fix
+    regexs:
+      - /BUGFIX/
+    events: [pull_request]
+    targets: [title]
+  - label: refactor
+    regexs:
+      - /refactor|REFACTOR/
+    events: [issues, pull_request]
+    targets: [title]
