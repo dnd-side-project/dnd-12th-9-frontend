@@ -38,13 +38,14 @@ jobs:
 
       - name: Install Dependencies
         if: steps.cache-node.outputs.cache-hit != 'true'
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: deploy with chromatic
         id: chromatic
         uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          workingDir: apps/storybook
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: storybook deploy alert webhook
