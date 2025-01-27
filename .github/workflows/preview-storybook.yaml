@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - '**.stories.tsx'
+      - '**.stories.ts'
+      - '**.mdx'
     types: [opened, reopened, synchronize]
     branches: ['main']
   workflow_dispatch:
@@ -37,7 +39,7 @@ jobs:
 
       - name: Install Dependencies
         if: steps.cache-node.outputs.cache-hit != 'true'
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: deploy chromatic
         id: chromatic

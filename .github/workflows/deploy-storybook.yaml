@@ -5,6 +5,8 @@ on:
       - closed
     paths:
       - '**.stories.tsx'
+      - '**.stories.ts'
+      - '**.mdx'
 
 jobs:
   deploy-storybook:
@@ -36,7 +38,7 @@ jobs:
 
       - name: Install Dependencies
         if: steps.cache-node.outputs.cache-hit != 'true'
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: deploy with chromatic
         id: chromatic
