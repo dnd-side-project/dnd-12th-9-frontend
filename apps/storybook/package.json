@@ -3,21 +3,22 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build",
+    "preview-storybook": "serve storybook-static",
+    "clean": "rm -rf .turbo node_modules"
   },
   "dependencies": {
+    "@repo/ui": "workspace:*",
     "@storybook/addon-a11y": "^8.4.7",
     "@storybook/react": "^8.4.7",
-    "dlx": "^0.2.1",
-    "init": "^0.1.2",
     "storybook": "^8.4.7"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.3",
     "@repo/eslint-config": "workspace:*",
+    "@repo/tailwind-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@repo/ui": "workspace:*",
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/addon-interactions": "^8.4.7",
     "@storybook/addon-onboarding": "^8.4.7",
@@ -25,8 +26,12 @@
     "@storybook/nextjs": "^8.4.7",
     "@storybook/test": "^8.4.7",
     "@types/node": "^20.11.24",
-    "@types/react": "18.3.0",
-    "@types/react-dom": "18.3.1",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "serve": "^14.2.4",
+    "tailwindcss": "^3.4.17",
     "chromatic": "^11.25.1",
     "typescript": "5.5.4"
   }

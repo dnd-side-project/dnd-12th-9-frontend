@@ -1,80 +1,79 @@
-import js from '@eslint/js';
-import importPlugin from 'eslint-plugin-import';
-import turboPlugin from 'eslint-plugin-turbo';
-import tseslint from 'typescript-eslint';
-import react from 'eslint-plugin-react';
-import storybookPlugin from 'eslint-plugin-storybook';
-import tanstackQueryPlugin from '@tanstack/eslint-plugin-query';
+const { resolve } = require('node:path');
 
-/**
- * A shared ESLint configuration for the repository.
- *
- * @type {import("eslint").Linter.Config}
- * */
-export default tseslint.configs(
-  js.configs.recommended,
-  importPlugin.flatConfigs.recommended,
-  tseslint.configs.recommended,
-  react.configs.flat.recommended,
-  react.configs.flat['jsx-runtime'],
-  {
-    plugins: {
-      turbo: turboPlugin,
-      storybook: storybookPlugin,
-      tanstackQuery: tanstackQueryPlugin,
-      import: importPlugin,
+const project = resolve(process.cwd(), 'tsconfig.json');
+
+/** @type {import("eslint").Linter.Config} */
+module.exports = {
+  plugins: ['@typescript-eslint', 'import', 'react-refresh'],
+  globals: {
+    React: true,
+    JSX: true,
+  },
+  settings: {
+    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
+    'import/resolver': {
+      typescript: {
+        project,
+      },
     },
-
-    rules: {
-      'turbo/no-undeclared-env-vars': 'warn',
-
-      'import/no-unresolved': 'off',
-      '@typescript-eslint/no-unused-vars': 'warn',
-      'unused-imports/no-unused-imports': 'error',
-
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-      'react/destructuring-assignment': ['warn', 'always', { destructureInSignature: 'always' }],
-      'react/jsx-curly-brace-presence': [
-        'warn',
-        { props: 'never', children: 'never', propElementValues: 'always' },
-      ],
-      'react/jsx-tag-spacing': 1,
-
-      'import/order': [
-        'error',
-        {
-          groups: ['builtin', 'external', 'internal', 'sibling'],
-          pathGroups: [
-            {
-              pattern: 'react',
-              group: 'external',
-              position: 'before',
-            },
-            {
-              pattern: '@/**',
-              group: 'internal',
-            },
-            {
-              pattern: './*',
-              group: 'sibling',
-            },
-          ],
-          distinctGroup: false,
-          pathGroupsExcludedImportTypes: ['builtin'],
-          alphabetize: {
-            order: 'asc',
-            caseInsensitive: true,
+  },
+  rules: {
+    'import/order': [
+      'error',
+      {
+        groups: ['external', 'builtin', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
+        pathGroups: [
+          {
+            pattern: 'next/**',
+            group: 'external',
+            position: 'before',
           },
-          'newlines-between': 'always',
+          {
+            pattern: 'react',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: '@repo/**',
+            group: 'internal',
+          },
+          {
+            pattern: '@/**',
+            group: 'internal',
+          },
+          {
+            pattern: './*',
+            group: 'sibling',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['react', 'react-dom', 'next'],
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
         },
-      ],
-    },
+        'newlines-between': 'always',
+      },
+    ],
+    'import/no-cycle': [
+      'error',
+      {
+        maxDepth: Infinity,
+        ignoreExternal: true,
+      },
+    ],
+    'import/no-unresolved': 'off',
+
+    'no-undef': 'off',
+    'no-redeclare': 'off',
+    'no-duplicate-imports': 'error',
+    'no-unused-vars': 'off',
+
+    '@typescript-eslint/no-unused-vars': 'warn',
+
+    'react/jsx-tag-spacing': 1,
+    'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
+    'react/destructuring-assignment': ['warn', 'always', { destructureInSignature: 'always' }],
+    'react/no-unknown-property': ['error', { ignore: ['css'] }],
   },
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
-  },
-  {
-    ignores: ['dist/**'],
-  }
-);
+  overrides: [{ files: ['*.js?(x)', '*.ts?(x)'] }],
+};

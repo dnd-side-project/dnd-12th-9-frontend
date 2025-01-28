@@ -12,6 +12,7 @@
     "moduleResolution": "Bundler",
     "noEmit": true,
     "emitDeclarationOnly": false,
+    "allowImportingTsExtensions": true,
     "noUncheckedIndexedAccess": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
