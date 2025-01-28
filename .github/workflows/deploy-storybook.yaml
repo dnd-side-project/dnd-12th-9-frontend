@@ -7,6 +7,9 @@ on:
       - '**.stories.tsx'
       - '**.stories.ts'
       - '**.mdx'
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   deploy-storybook:
@@ -18,27 +21,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      - name: pnpm-setup-node
+        uses: ./.github/actions/pnpm-setup-node
 
-      - name: install pnpm
-        run: npm i -g pnpm
-
-      - name: Cache node modules
-        id: cache-node
-        uses: actions/cache@v3
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install Dependencies
-        if: steps.cache-node.outputs.cache-hit != 'true'
-        run: pnpm install --no-frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: deploy with chromatic
         id: chromatic
