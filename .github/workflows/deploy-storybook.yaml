@@ -46,6 +46,7 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: apps/storybook
+          buildScriptName: build
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: storybook deploy alert webhook
