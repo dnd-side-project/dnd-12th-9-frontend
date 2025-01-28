@@ -1,13 +1,11 @@
 {
   "name": "@repo/api",
   "version": "0.0.0",
-  "type": "module",
   "private": true,
   "exports": {
     "./api": "./src/index.ts"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"
   },
@@ -16,16 +14,16 @@
     "@repo/typescript-config": "workspace:*",
     "@turbo/gen": "^1.12.4",
     "@types/node": "^20.11.24",
-    "@types/react": "18.3.0",
-    "@types/react-dom": "18.3.1",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "typescript": "5.5.4"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.64.1",
     "@tanstack/react-query-devtools": "^5.64.1",
     "ky": "^1.7.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "zod": "^3.24.1"
   }
 }

@@ -1,7 +1,7 @@
-export interface ButtonProps {
+export type ButtonProps = {
   children: string;
   appName?: string;
-}
+};
 
 export function Button({ children, appName = 'HI' }: ButtonProps) {
   return (
