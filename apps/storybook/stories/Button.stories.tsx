@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
   args: {
-    children: '버튼',
+    children: '버튼123',
   },
   render: (args) => <Button {...args} />,
 };

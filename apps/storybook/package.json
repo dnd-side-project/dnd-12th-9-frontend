@@ -32,6 +32,7 @@
     "postcss": "^8.5.1",
     "serve": "^14.2.4",
     "tailwindcss": "^3.4.17",
+    "chromatic": "^11.25.1",
     "typescript": "5.5.4"
   }
 }

@@ -1,0 +1,56 @@
+name: Deploy Storybook
+on:
+  pull_request:
+    types:
+      - closed
+    paths:
+      - '**.stories.tsx'
+      - '**.stories.ts'
+      - '**.mdx'
+
+jobs:
+  deploy-storybook:
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: install pnpm
+        run: npm i -g pnpm
+
+      - name: Cache node modules
+        id: cache-node
+        uses: actions/cache@v3
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Dependencies
+        if: steps.cache-node.outputs.cache-hit != 'true'
+        run: pnpm install --no-frozen-lockfile
+
+      - name: deploy with chromatic
+        id: chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          workingDir: apps/storybook
+          buildScriptName: build
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: storybook deploy alert webhook
+        uses: tsickert/discord-webhook@v5.3.0
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          content: '" ${{ github.event.pull_request.title}} " 의 변경 사항이 Storybook에 배포되었어요! 👉🏻 ${{ steps.chromatic.outputs.storybookUrl }}'
