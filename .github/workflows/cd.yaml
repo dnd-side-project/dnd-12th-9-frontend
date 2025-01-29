@@ -20,7 +20,8 @@ jobs:
         with:
           cache: 'pnpm'
           cache-dependency-path: 'pnpm-lock.yaml'
-          node-version-file: '.nvmrc'
+          node-version: 22
+          # node-version-file: '.nvmrc'
 
       - name: Vercel CLI 설치
         run: pnpm install --global vercel@latest
