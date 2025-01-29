@@ -13,7 +13,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - uses: pnpm/action-setup@v4
+
       - uses: actions/setup-node@v4
         with:
           cache: 'pnpm'
@@ -30,8 +32,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+          cache-dependency-path: 'pnpm-lock.yaml'
+          node-version-file: '.nvmrc'
+
       - name: Vercel CLI 설치
-        run: npm install --global vercel@latest
+        run: pnpm install --global vercel@latest
 
       - name: Vercel 환경 변수 가져오기
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
