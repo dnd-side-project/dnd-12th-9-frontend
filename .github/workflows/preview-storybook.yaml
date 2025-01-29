@@ -2,10 +2,10 @@ name: Preview Storybook
 
 on:
   pull_request:
-    paths:
-      - '**.stories.tsx'
-      - '**.stories.ts'
-      - '**.mdx'
+    # paths:
+    #   - '**.stories.tsx'
+    #   - '**.stories.ts'
+    #   - '**.mdx'
     types: [opened, reopened, synchronize]
     branches: ['main']
   workflow_dispatch:
