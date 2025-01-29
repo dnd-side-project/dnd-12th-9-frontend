@@ -20,7 +20,11 @@ jobs:
         with:
           cache: 'pnpm'
           cache-dependency-path: 'pnpm-lock.yaml'
+          node-version: 22
           # node-version-file: '.nvmrc'
+
+      - name: 의존성 추가
+        run: pnpm install
 
       - run: pnpm run ${{ matrix.command }}
 
