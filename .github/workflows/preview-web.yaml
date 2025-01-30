@@ -2,7 +2,6 @@ name: Preview Web
 
 on:
   pull_request:
-    branches: ['main', feat/**, refactor/**, fix/**, chore/**]
 
 jobs:
   ci:
@@ -14,14 +13,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          cache: 'pnpm'
-          cache-dependency-path: 'pnpm-lock.yaml'
-          node-version: 22
-          # node-version-file: '.nvmrc'
+      - name: pnpm-setup-node
+        uses: ./.github/actions/pnpm-setup-node
 
       - name: 의존성 추가
         run: pnpm install
@@ -36,14 +29,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          cache: 'pnpm'
-          cache-dependency-path: 'pnpm-lock.yaml'
-          node-version: 22
-          # node-version-file: '.nvmrc'
+      - name: pnpm-setup-node
+        uses: ./.github/actions/pnpm-setup-node
 
       - name: Vercel CLI 설치
         run: pnpm install --global vercel@latest
