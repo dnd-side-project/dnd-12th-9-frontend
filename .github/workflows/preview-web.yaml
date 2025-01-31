@@ -1,0 +1,63 @@
+name: Preview Web
+
+on:
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        command: ['build']
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: pnpm-setup-node
+        uses: ./.github/actions/pnpm-setup-node
+
+      - name: 의존성 추가
+        run: pnpm install
+
+      - run: pnpm run ${{ matrix.command }}
+
+  vercel-preview:
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: pnpm-setup-node
+        uses: ./.github/actions/pnpm-setup-node
+
+      - name: Vercel CLI 설치
+        run: pnpm install --global vercel@latest
+
+      - name: Vercel 환경 변수 가져오기
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Project Artifacts 빌드하기
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Vercel에 Project Artifacts 배포하기
+        id: deploy
+        run: |
+          vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > vercel-output.txt
+          echo "preview_url=$(cat vercel-output.txt)" >> $GITHUB_OUTPUT
+
+      - name: 현재 시간 가져오기
+        uses: josStorer/get-current-time@v2
+        id: current-time
+        with:
+          format: YYYYMMDD-HH
+          utcOffset: '+09:00'
+
+      - name: PR 코멘트로 Preview URL 남기기
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          comment_tag: ${{github.event.number}}-vercel
+          message: |
+            🎮 웹 Preview 보러가기: ${{ steps.deploy.outputs.preview_url }}
+            ⏰ 배포 일시: ${{ steps.current-time.outputs.readableTime }}
