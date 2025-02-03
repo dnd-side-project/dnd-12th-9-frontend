@@ -1,5 +1,3 @@
-import { ComponentPropsWithoutRef } from 'react';
-
 import { cva } from 'class-variance-authority';
 
 import { cn } from '../../lib/core';
@@ -45,9 +43,10 @@ type Props = {
   type: Typography;
   /**
    * The weight of the text
+   * @default 'regular'
    */
   weight?: 'regular' | 'medium' | 'semibold' | 'bold';
-} & ComponentPropsWithoutRef<'p'>;
+} & React.HTMLAttributes<HTMLParagraphElement>;
 
 export function Text({ type, weight = 'regular', className, ...props }: Props) {
   return <p className={cn(variantClasses({ type, weight }), className)} {...props} />;
