@@ -15,7 +15,7 @@ type Props = {
    */
   isOpen: boolean;
   /**
-   * optional, can be used to handle modal closing or other actions.
+   *  A function that is called when the user clicks outside the modal.
    */
   onClickOutside: VoidFunction;
   /**
