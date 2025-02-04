@@ -10,10 +10,7 @@ export const IconButton = ({
   ...restProps
 }: PropsWithChildren<IconButtonProps>) => {
   return (
-    <button
-      className={cn('flex h-full flex-shrink-0 items-center justify-center px-4 py-3', className)}
-      {...restProps}
-    >
+    <button className={cn('flex items-center justify-center', className)} {...restProps}>
       {children}
     </button>
   );
