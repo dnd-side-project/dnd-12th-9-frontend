@@ -26,7 +26,7 @@ type Props = {
    *  @default 'wait'
    */
   mode?: 'wait' | 'sync' | 'popLayout';
-} & PropsWithChildren;
+};
 
 export function Portal({ isOpen, mode = 'wait', children }: PropsWithChildren<Props>) {
   return (
