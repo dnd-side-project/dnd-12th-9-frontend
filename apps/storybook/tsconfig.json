@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@repo/ui/*": ["../../packages/ui/src/components/*"],
+      "@repo/ui/hooks/*": ["../../packages/ui/src/hooks/*"],
       "@/lib/*": ["../../packages/ui/src/lib/*"]
     }
   },
