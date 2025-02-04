@@ -1,9 +1,22 @@
-import { PropsWithChildren } from 'react';
+import { ComponentProps, PropsWithChildren } from 'react';
+
+import { cva } from 'class-variance-authority';
 
 import { cn } from '../../lib/core';
-import { type IconButtonProps, IconButton } from '../IconButton';
+import { Center } from '../Center';
 
-export type HeaderLeftElementProps = IconButtonProps;
+const headerElementClasses = cva('absolute top-0 h-full flex-shrink-0 px-4', {
+  variants: {
+    direction: {
+      left: 'left-0',
+      right: 'right-0',
+    },
+  },
+});
+
+type HeaderElementProps = ComponentProps<'button'>;
+
+type HeaderLeftElementProps = HeaderElementProps;
 
 export const HeaderLeftElement = ({
   children,
@@ -11,13 +24,17 @@ export const HeaderLeftElement = ({
   ...restProps
 }: PropsWithChildren<HeaderLeftElementProps>) => {
   return (
-    <IconButton className={cn('absolute left-0 top-0', className)} {...restProps}>
+    <Center
+      as="button"
+      className={cn(headerElementClasses({ direction: 'left' }), className)}
+      {...restProps}
+    >
       {children}
-    </IconButton>
+    </Center>
   );
 };
 
-export type HeaderRightElementProps = IconButtonProps;
+export type HeaderRightElementProps = HeaderElementProps;
 
 export const HeaderRightElement = ({
   children,
@@ -25,8 +42,12 @@ export const HeaderRightElement = ({
   ...restProps
 }: PropsWithChildren<HeaderRightElementProps>) => {
   return (
-    <IconButton className={cn('absolute right-0 top-0', className)} {...restProps}>
+    <Center
+      as="button"
+      className={cn(headerElementClasses({ direction: 'right' }), className)}
+      {...restProps}
+    >
       {children}
-    </IconButton>
+    </Center>
   );
 };
