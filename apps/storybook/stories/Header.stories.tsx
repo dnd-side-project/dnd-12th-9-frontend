@@ -18,6 +18,14 @@ export const Basic: Story = {
   render: (args) => <Header {...args} />,
 };
 
+export const BasicWithBottom: Story = {
+  args: {
+    children: '타이틀',
+    borderBottom: true,
+  },
+  render: (args) => <Header {...args} />,
+};
+
 export const hasLeftElement: Story = {
   args: {
     children: '타이틀',
