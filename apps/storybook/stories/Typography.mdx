@@ -1,0 +1,30 @@
+import { Meta, Typeset } from '@storybook/blocks';
+
+<Meta title="Foundations/Typography" />
+
+export const SampleText = 'Sbooky';
+
+# Typo scale
+
+**Font:** Pretendard
+
+<Typeset fontSizes={['22px']} fontWeight="600" sampleText={`Heading 1 - ${SampleText}`} />
+<Typeset fontSizes={['20px']} fontWeight="600" sampleText={`Heading 2- ${SampleText}`} />
+<Typeset fontSizes={['18px']} fontWeight="600" sampleText={`Heading 3 - ${SampleText}`} />
+
+---
+
+<Typeset fontSizes={['16px']} fontWeight="600" sampleText={`Title1 (Semibold) - ${SampleText}`} />
+<Typeset fontSizes={['16px']} fontWeight="500" sampleText={`Title1 (Medium) - ${SampleText}`} />
+<Typeset fontSizes={['14px']} fontWeight="600" sampleText={`Title2 (Semibold) - ${SampleText}`} />
+<Typeset fontSizes={['14px']} fontWeight="500" sampleText={`Title2 (Medium) - ${SampleText}`} />
+
+---
+
+<Typeset fontSizes={['16px']} fontWeight="500" sampleText={`Body1 - ${SampleText}`} />
+<Typeset fontSizes={['14px']} fontWeight="500" sampleText={`Body2 (medium) - ${SampleText}`} />
+<Typeset fontSizes={['14px']} fontWeight="400" sampleText={`Body2 (Regular) - ${SampleText}`} />
+
+---
+
+<Typeset fontSizes={['12px']} fontWeight="400" sampleText={`caption - ${SampleText}`} />
