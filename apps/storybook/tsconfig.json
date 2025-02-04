@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@repo/ui/*": ["../../packages/ui/src/components/*"]
+      "@repo/ui/*": ["../../packages/ui/src/components/*"],
+      "@/lib/*": ["../../packages/ui/src/lib/*"]
     }
   },
   "include": ["stories/**/*.tsx", "stories/**/*.ts", ".storybook/**/*"]
