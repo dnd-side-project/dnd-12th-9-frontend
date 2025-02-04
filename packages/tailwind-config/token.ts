@@ -49,6 +49,10 @@ const scaleColors = {
     800: '#0978C7',
     900: '#0D57A4',
   },
+  green: {
+    300: '#55DADE',
+    600: '#0BB9C2',
+  },
 };
 
 export const colors = {
