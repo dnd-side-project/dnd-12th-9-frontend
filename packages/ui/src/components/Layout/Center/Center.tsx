@@ -1,6 +1,6 @@
 import { type JSX, type ElementType, PropsWithChildren } from 'react';
 
-import { cn } from '../../lib/core';
+import { cn } from '../../../lib/core';
 import { type BoxProps, Box } from '../Box';
 
 export const Center: <C extends ElementType = 'div'>(
