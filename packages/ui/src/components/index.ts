@@ -4,3 +4,4 @@ export { Portal } from './Portal';
 export { Modal } from './Modal';
 export * from './IconButton';
 export * from './Header';
+export * from './Icon';
