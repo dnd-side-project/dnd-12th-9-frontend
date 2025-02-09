@@ -1,6 +1,6 @@
 import { JSX, PropsWithChildren, type ElementType } from 'react';
 
-import type { PolymorphicComponentProps } from '../../polymorphics';
+import type { PolymorphicComponentProps } from '../../../polymorphics';
 
 export type BoxProps<C extends ElementType> = PolymorphicComponentProps<C>;
 
