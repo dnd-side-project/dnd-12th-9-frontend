@@ -57,7 +57,7 @@ export function TextField({
           value={value}
           placeholder={placeholder}
           maxLength={maxLength}
-          className="h-11 w-[272px] rounded-lg pl-3 pr-10 text-gray-900 outline-none outline outline-1 outline-gray-200 transition-colors placeholder:text-gray-300"
+          className="h-11 w-[272px] rounded-lg py-[9px] pl-3 pr-10 text-gray-900 outline-none outline outline-1 outline-gray-200 transition-colors placeholder:text-gray-300"
           onBlur={handleBlur}
           {...props}
         />
