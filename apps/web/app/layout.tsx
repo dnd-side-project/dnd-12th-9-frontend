@@ -16,8 +16,9 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${pretendard.variable}`}>
       <body className={pretendard.className}>
-        {children}
-        <div className="text-blue-800">아아아</div>
+        <div className="flex h-dvh justify-center">
+          <div className="mx-4 w-full max-w-[375px]">{children}</div>
+        </div>
       </body>
     </html>
   );
