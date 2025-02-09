@@ -11,6 +11,11 @@ const nextConfig = {
       __dirname,
       '../../packages/ui/src/components'
     );
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
     return config;
   },
 };
