@@ -15,11 +15,6 @@ type Props = {
    */
   onClickReset: () => void;
   /**
-   * Placeholder text to display in the input field component.
-   * @default ''
-   */
-  placeholder?: string;
-  /**
    * Error message to display when validation fails.
    * @default ''
    */
@@ -39,7 +34,6 @@ type Props = {
 export function TextField({
   value,
   onClickReset,
-  placeholder = '',
   errorMessage = '',
   minLength = 1,
   maxLength = 10,
@@ -55,19 +49,18 @@ export function TextField({
       <Center className="relative">
         <input
           value={value}
-          placeholder={placeholder}
           maxLength={maxLength}
           className="h-11 w-[272px] rounded-lg py-[9px] pl-3 pr-10 text-gray-900 outline-none outline outline-1 outline-gray-200 transition-colors placeholder:text-gray-300"
           onBlur={handleBlur}
           {...props}
         />
         {value && (
-          <div
+          <button
             className="absolute right-3 top-1/2 -translate-y-1/2 transform cursor-pointer"
             onClick={onClickReset}
           >
             <Icon type="remove" size={20} />
-          </div>
+          </button>
         )}
       </Center>
       <div className="relative min-h-[20px] w-[272px]">
