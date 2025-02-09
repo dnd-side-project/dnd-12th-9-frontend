@@ -1,4 +1,4 @@
-import { iconMap, IconType } from './assets';
+import { iconMap, IconType, IconColor, ColorType } from './assets';
 
 export type Props = {
   /**
@@ -9,12 +9,14 @@ export type Props = {
    * size of the icon.
    */
   size?: number;
-  // TODO : COLOR 추가
-  // color: IconColor;
+  /**
+   * color of the icon.
+   */
+  color?: ColorType;
 } & Omit<React.SVGProps<SVGSVGElement>, 'color'>;
 
-export function Icon({ type, size = 24, ...props }: Props) {
+export function Icon({ type, size = 24, color = 'gray', ...props }: Props) {
   const IconComponent = iconMap[type];
 
-  return <IconComponent width={size} height={size} {...props} />;
+  return <IconComponent width={size} height={size} color={IconColor[color]} {...props} />;
 }

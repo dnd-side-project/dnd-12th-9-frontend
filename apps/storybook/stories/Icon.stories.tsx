@@ -24,6 +24,7 @@ type Story = StoryObj<typeof Icon>;
 export const Basic: Story = {
   args: {
     size: 24,
+    color: 'gray',
   },
   argTypes: {
     type: {
@@ -37,13 +38,19 @@ export const Basic: Story = {
         step: 1,
       },
     },
+    color: {
+      control: {
+        type: 'select',
+        options: ['gray', 'primary', 'red', 'blue', 'green', 'white', 'black'],
+      },
+    },
   },
 
   render: (args) => (
     <div className="flex flex-row flex-wrap gap-2">
       {IconList.map((icon) => (
         <div key={icon} className="flex-shrink-0">
-          <Icon type={icon} size={args.size} />
+          <Icon type={icon} size={args.size} color={args.color} />
         </div>
       ))}
     </div>

@@ -6,4 +6,5 @@ export * from './IconButton';
 export * from './Header';
 export * from './Layout';
 export * from './Icon';
+export * from './TextField';
 export * from './Drawer';

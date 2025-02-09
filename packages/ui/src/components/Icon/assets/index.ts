@@ -1,3 +1,5 @@
+import colors from '@repo/tailwind-config';
+
 import { Back } from './back';
 import { Bag } from './bag';
 import { Book } from './book';
@@ -57,6 +59,14 @@ export const iconMap = {
   logo: Logo,
 };
 
-// TODO : COLOR 추가
 export type IconType = keyof typeof iconMap;
+export const IconColor = {
+  gray: colors.theme.colors.gray[300],
+  primary: colors.theme.colors.primary[300],
+  red: colors.theme.colors.red[500],
+  blue: colors.theme.colors.blue[300],
+  green: colors.theme.colors.green[300],
+  black: colors.theme.colors.black,
+} as const;
+export type ColorType = keyof typeof IconColor;
 export const IconList = Object.keys(iconMap) as IconType[];
