@@ -15,6 +15,11 @@ type Props = {
    */
   onClickReset: () => void;
   /**
+   * Function to call when the input field loses focus
+   * @default () => {}
+   */
+  onBlur?: () => void;
+  /**
    * Error message to display when validation fails.
    * @default ''
    */
@@ -34,6 +39,7 @@ type Props = {
 export function TextField({
   value,
   onClickReset,
+  onBlur = () => {},
   errorMessage = '',
   minLength = 1,
   maxLength = 10,
@@ -51,7 +57,10 @@ export function TextField({
           value={value}
           maxLength={maxLength}
           className="h-11 w-[272px] rounded-lg py-[9px] pl-3 pr-10 text-gray-900 outline-none outline outline-1 outline-gray-200 transition-colors placeholder:text-gray-300"
-          onBlur={handleBlur}
+          onBlur={(event) => {
+            handleBlur();
+            onBlur?.(event);
+          }}
           {...props}
         />
         {value && (
