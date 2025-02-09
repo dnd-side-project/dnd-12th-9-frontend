@@ -14,15 +14,14 @@ type Story = StoryObj<typeof meta>;
 export const Basic: Story = {
   args: {
     value: '',
-    placeholder: 'placeholder',
     onClickReset: () => {},
+    onBlur: () => {},
     errorMessage: '최소 한 자 이상 입력해주세요.',
+    minLength: 1,
+    maxLength: 10,
   },
   argTypes: {
     value: {
-      control: { type: 'text' },
-    },
-    placeholder: {
       control: { type: 'text' },
     },
     onClickReset: {
@@ -37,9 +36,11 @@ export const Basic: Story = {
     return (
       <TextField
         value={value}
-        placeholder="책 제목을 입력해주세요."
-        onChange={(e) => setValue(e.target.value)}
         onClickReset={() => setValue('')}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder="책 제목을 입력해주세요."
+        minLength={args.minLength}
+        maxLength={args.maxLength}
       />
     );
   },
