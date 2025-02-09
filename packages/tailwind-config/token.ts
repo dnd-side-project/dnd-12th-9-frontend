@@ -3,6 +3,7 @@ const scaleColors = {
   white: '#FFF',
   gray: {
     50: '#F7F8FA',
+    70: '#F4F5F8',
     100: '#EFF0F2',
     200: '#E4E5E7',
     300: '#D3D4D6',
