@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Icon } from '@repo/ui/Icon';
-import { IconList, IconType } from '@repo/ui/Icon/assets';
+import { IconColor, IconList, IconType } from '@repo/ui/Icon/assets';
 
 const meta = {
   title: 'components/icon',
@@ -24,7 +24,7 @@ type Story = StoryObj<typeof Icon>;
 export const Basic: Story = {
   args: {
     size: 24,
-    color: 'gray',
+    color: 'gray-300',
   },
   argTypes: {
     type: {
@@ -41,7 +41,7 @@ export const Basic: Story = {
     color: {
       control: {
         type: 'select',
-        options: ['gray', 'primary', 'red', 'blue', 'green', 'white', 'black'],
+        options: IconColor,
       },
     },
   },
