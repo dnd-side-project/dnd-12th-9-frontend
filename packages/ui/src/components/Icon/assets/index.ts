@@ -61,7 +61,8 @@ export const iconMap = {
 
 export type IconType = keyof typeof iconMap;
 export const IconColor = {
-  gray: colors.theme.colors.gray[300],
+  'gray-300': colors.theme.colors.gray[300],
+  'gray-700': colors.theme.colors.gray[700],
   primary: colors.theme.colors.primary[300],
   red: colors.theme.colors.red[500],
   blue: colors.theme.colors.blue[300],
