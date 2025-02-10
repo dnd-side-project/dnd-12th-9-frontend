@@ -2,8 +2,7 @@ import type { ComponentProps, PropsWithChildren, ReactNode } from 'react';
 
 import { cva } from 'class-variance-authority';
 
-import { cn } from '@/lib/core';
-
+import { cn } from '../../lib/core';
 import { Icon } from '../Icon';
 import { IconType } from '../Icon/assets';
 import { HStack } from '../Layout';
