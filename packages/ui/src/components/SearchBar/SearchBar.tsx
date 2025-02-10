@@ -35,7 +35,7 @@ export function SearchBar({ value, onClick, onClickReset, ...props }: Props) {
       />
       {value.length > 0 && (
         <button
-          className="absolute right-10 top-1/2 -translate-y-1/2 transform cursor-pointer"
+          className="absolute right-10 top-1/2 -translate-y-1/2 transform cursor-pointer outline-none"
           onClick={onClickReset}
         >
           <Icon type="remove" size={20} />
@@ -43,7 +43,7 @@ export function SearchBar({ value, onClick, onClickReset, ...props }: Props) {
       )}
       <button
         type="button"
-        className="absolute right-2 top-1/2 -translate-y-1/2 transform cursor-pointer"
+        className="absolute right-2 top-1/2 -translate-y-1/2 transform cursor-pointer outline-none"
         onClick={() => onClick(value)}
       >
         <Icon type="search" size={28} color="gray-700" />
