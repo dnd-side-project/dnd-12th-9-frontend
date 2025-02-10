@@ -67,6 +67,8 @@ export const IconColor = {
   blue: colors.theme.colors.blue[300],
   green: colors.theme.colors.green[300],
   black: colors.theme.colors.black,
+  gray500: colors.theme.colors.gray[500],
+  gray600: colors.theme.colors.gray[600],
 } as const;
 export type ColorType = keyof typeof IconColor;
 export const IconList = Object.keys(iconMap) as IconType[];
