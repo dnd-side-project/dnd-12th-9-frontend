@@ -15,7 +15,7 @@ export type Props = {
   color?: ColorType;
 } & Omit<React.SVGProps<SVGSVGElement>, 'color'>;
 
-export function Icon({ type, size = 24, color = 'gray', ...props }: Props) {
+export function Icon({ type, size = 24, color = 'gray-300', ...props }: Props) {
   const IconComponent = iconMap[type];
 
   return <IconComponent width={size} height={size} color={IconColor[color]} {...props} />;
