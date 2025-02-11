@@ -24,7 +24,7 @@ type Story = StoryObj<typeof Icon>;
 export const Basic: Story = {
   args: {
     size: 24,
-    color: 'gray-300',
+    color: 'gray300',
   },
   argTypes: {
     type: {
