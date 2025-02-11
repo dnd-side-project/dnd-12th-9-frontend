@@ -12,7 +12,7 @@ import { Typography } from '../Text/Text';
 import { OrgIcon } from './assets/OrbIcon';
 
 export type ButtonSize = 'sm' | 'md' | 'lg';
-export type ButtonVariant = 'primary50' | 'black' | 'gray100' | 'orange' | 'gray200';
+export type ButtonVariant = 'primary50' | 'black' | 'gray100' | 'primary500' | 'gray200';
 
 export type ButtonProps = {
   iconType?: IconType;
@@ -31,10 +31,10 @@ const buttonVariantMap = cva('relative flex justify-center items-center rounded-
     variant: {
       primary50:
         'bg-primary-50 text-primary-600 hover:bg-primary-100 disabled:bg-gray-400 disabled:text-gray-500',
-      black: '-gray-800 text-white hover:bg-black disabled:bg-gray-600 disabled:text-gray-400',
+      black: 'bg-gray-800 text-white hover:bg-black disabled:bg-gray-600 disabled:text-gray-400',
       gray100:
         'bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:bg-gray-400 disabled:text-gray-500',
-      orange:
+      primary500:
         'bg-primary-500 text-primary-50 hover:bg-primary-700 disabled:bg-gray-600 disabled:text-gray-400',
       gray200:
         'bg-gray-200 text-gray-600 hover:bg-gray-700 disabled:bg-gray-400 disabled:text-gray-500',
@@ -67,7 +67,7 @@ export function Button({
   iconType,
   right,
   size = 'md',
-  variant = 'orange',
+  variant = 'primary500',
   className,
   disabled,
   ...restProps
