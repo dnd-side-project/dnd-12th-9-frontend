@@ -1,6 +1,7 @@
 import { ComponentProps, PropsWithChildren, ReactNode } from 'react';
 
 import { cn } from '../../lib/core';
+import { Text } from '../Text';
 
 export type HeaderProps = {
   left?: ReactNode;
@@ -19,14 +20,14 @@ export const Header = ({
   return (
     <div
       className={cn(
-        'relative flex h-12 items-center justify-center',
+        'relative flex h-12 items-center justify-center text-gray-800',
         borderBottom && 'border-b border-gray-100',
         className
       )}
       {...restProps}
     >
       {left}
-      {children}
+      <Text type="Heading3">{children}</Text>
       {right}
     </div>
   );

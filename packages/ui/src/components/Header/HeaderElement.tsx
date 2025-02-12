@@ -5,7 +5,7 @@ import { cva } from 'class-variance-authority';
 import { cn } from '../../lib/core';
 import { Center } from '../Layout/Center';
 
-const headerElementClasses = cva('absolute top-0 h-full flex-shrink-0 px-4', {
+const headerElementClasses = cva('absolute top-0 h-full flex-shrink-0 px-4 text-gray-800', {
   variants: {
     direction: {
       left: 'left-0',
