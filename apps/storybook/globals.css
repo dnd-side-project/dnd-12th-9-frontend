@@ -6,4 +6,7 @@
   * {
     font-family: 'Pretendard Variable', Pretendard, sans-serif;
   }
+  button {
+    all: unset;
+  }
 }
