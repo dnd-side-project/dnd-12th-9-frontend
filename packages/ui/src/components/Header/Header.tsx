@@ -1,6 +1,7 @@
 import { ComponentProps, PropsWithChildren, ReactNode } from 'react';
 
 import { cn } from '../../lib/core';
+import { Text } from '../Text';
 
 export type HeaderProps = {
   left?: ReactNode;
@@ -19,15 +20,16 @@ export const Header = ({
   return (
     <div
       className={cn(
-        'relative flex h-12 items-center justify-center',
-        // TODO 컬러 팔레트 적용이후 수정 필요
+        'relative flex h-12 items-center justify-center text-gray-800',
         borderBottom && 'border-b border-gray-100',
         className
       )}
       {...restProps}
     >
       {left}
-      {children}
+      <Text type="Heading3" weight="semibold">
+        {children}
+      </Text>
       {right}
     </div>
   );

@@ -8,3 +8,4 @@ export * from './JustifyEnd';
 export * from './Spacing';
 export * from './Stack';
 export * from './VStack';
+export * from './PageLayout';

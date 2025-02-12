@@ -7,6 +7,8 @@
     "dev": "turbo dev",
     "dev:storybook": "turbo dev --filter @repo/storybook",
     "dev:web": "turbo dev --filter web",
+    "build:storybook": "turbo build --filter @repo/storybook",
+    "build:web": "turbo build --filter web",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo check-types"
