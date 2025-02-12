@@ -9,3 +9,4 @@ export * from './Icon';
 export * from './TextField';
 export * from './Drawer';
 export * from './SearchBar';
+export * from './Header';

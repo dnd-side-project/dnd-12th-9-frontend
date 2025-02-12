@@ -20,7 +20,6 @@ export const Header = ({
     <div
       className={cn(
         'relative flex h-12 items-center justify-center',
-        // TODO 컬러 팔레트 적용이후 수정 필요
         borderBottom && 'border-b border-gray-100',
         className
       )}

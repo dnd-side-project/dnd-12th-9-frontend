@@ -16,7 +16,7 @@ const headerElementClasses = cva('absolute top-0 h-full flex-shrink-0 px-4', {
 
 type HeaderElementProps = ComponentProps<'button'>;
 
-type HeaderLeftElementProps = HeaderElementProps;
+export type HeaderLeftElementProps = HeaderElementProps;
 
 export const HeaderLeftElement = ({
   children,
