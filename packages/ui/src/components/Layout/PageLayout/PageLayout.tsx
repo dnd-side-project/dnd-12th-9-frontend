@@ -1,7 +1,6 @@
 import { ComponentProps, PropsWithChildren, ReactNode } from 'react';
 
-import { cn } from '@/lib/core';
-
+import { cn } from '../../../lib/core';
 import { Stack } from '../Stack';
 
 export type LayoutProps = {
