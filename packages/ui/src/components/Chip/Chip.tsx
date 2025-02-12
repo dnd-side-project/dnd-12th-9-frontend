@@ -25,7 +25,7 @@ type Props = {
   children: React.ReactNode;
 } & ComponentProps<'button'>;
 
-export const ChipVariants = cva(`flex items-center rounded-lg`, {
+export const ChipVariants = cva(`flex items-center rounded-lg appearance-none`, {
   variants: {
     variant: {
       rounded:
