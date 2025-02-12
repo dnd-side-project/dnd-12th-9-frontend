@@ -27,7 +27,9 @@ export const Header = ({
       {...restProps}
     >
       {left}
-      <Text type="Heading3">{children}</Text>
+      <Text type="Heading3" weight="semibold">
+        {children}
+      </Text>
       {right}
     </div>
   );
