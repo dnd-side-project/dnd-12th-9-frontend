@@ -35,14 +35,6 @@ export const MissionCardList = () => {
           </Button>
         }
       />
-      <MissionCard
-        title="좋아요 모으기"
-        action={
-          <Button variant="primary50" size="sm" className="font-medium" disabled>
-            책장가기
-          </Button>
-        }
-      />
     </Stack>
   );
 };
