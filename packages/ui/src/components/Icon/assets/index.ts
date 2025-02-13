@@ -18,8 +18,10 @@ import { Kebab } from './kebab';
 import { Link } from './link';
 import { Logo } from './logo';
 import { Menu } from './menu';
+import { MissionCard } from './missionCard';
 import { Next } from './next';
 import { Note } from './note';
+import { Orb } from './orb';
 import { Plus } from './plus';
 import { Remove } from './remove';
 import { Search } from './search';
@@ -57,6 +59,8 @@ export const iconMap = {
 
   cryGhost: CryGhost,
   logo: Logo,
+  missionCard: MissionCard,
+  orb: Orb,
 };
 
 export type IconType = keyof typeof iconMap;
@@ -70,6 +74,7 @@ export const IconColor = {
   black: colors.theme.colors.black,
   gray500: colors.theme.colors.gray[500],
   gray600: colors.theme.colors.gray[600],
+  gray800: colors.theme.colors.gray[800],
 } as const;
 export type ColorType = keyof typeof IconColor;
 export const IconList = Object.keys(iconMap) as IconType[];
