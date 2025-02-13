@@ -10,3 +10,4 @@ export * from './TextField';
 export * from './Drawer';
 export * from './SearchBar';
 export * from './Header';
+export * from './Chip';

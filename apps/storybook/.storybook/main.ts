@@ -21,6 +21,7 @@ const config: StorybookConfig = {
     name: getAbsolutePath('@storybook/nextjs'),
     options: {},
   },
+  staticDirs: ['../../../public'],
   docs: {
     autodocs: 'tag',
   },
