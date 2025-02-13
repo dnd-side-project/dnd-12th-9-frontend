@@ -2,7 +2,7 @@ import { ComponentProps } from 'react';
 
 import { cva } from 'class-variance-authority';
 
-import { cn } from '@/lib/core';
+import { cn } from '../../lib/core';
 
 type Props = {
   /**
