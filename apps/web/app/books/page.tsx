@@ -1,36 +1,51 @@
+'use client';
+
 import Image from 'next/image';
+
+import { useState } from 'react';
 
 import { Button } from '@repo/ui/components/Button';
 import { Chip } from '@repo/ui/components/Chip';
 import { Header } from '@repo/ui/components/Header';
-import { CenterStack, HStack, PageLayout, Stack } from '@repo/ui/components/Layout';
+import { CenterStack, HStack, PageLayout, Spacing, Stack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 
-import EMPTY_STATE from '/assets/EMPTY_STATE.png';
-
+import EMPTY_STATE from '../../../../public/assets/EMPTY_STATE.png';
 import { BackButton } from '../_components/BackButton';
 
+type ReadStatus = 'ALL' | 'WANT_TO_READ' | 'READING' | 'COMPLETED';
+
+const READ_STATUS_LIST = [
+  { value: 'ALL', text: '전체' },
+  { value: 'WANT_TO_READ', text: '읽기 전' },
+  { value: 'READING', text: '읽는 중' },
+  { value: 'COMPLETED', text: '완독' },
+] as const;
+
 const BookListPage = () => {
+  const [readStatus, setReadStatus] = useState<ReadStatus>('ALL');
+
+  const onClick = (value: ReadStatus) => () => {
+    setReadStatus(value);
+  };
+
   return (
     <PageLayout header={<Header left={<BackButton />}>책장</Header>}>
       <BookListHeader />
-      <Stack className="grow px-4">
-        <HStack className="gap-1">
-          <Chip variant="rounded" active>
-            전체
-          </Chip>
-          <Chip variant="rounded" active={false}>
-            읽기 전
-          </Chip>
-          <Chip variant="rounded" active={false}>
-            읽는 중
-          </Chip>
-          <Chip variant="rounded" active={false}>
-            완독
-          </Chip>
+      <Stack className="px-4">
+        <HStack className="gap-1.5">
+          {READ_STATUS_LIST.map(({ value, text }) => (
+            <Chip
+              variant="rounded"
+              active={readStatus === value}
+              key={value}
+              onClick={onClick(value)}
+            >
+              {text}
+            </Chip>
+          ))}
         </HStack>
-        {/* TODO fallback 레이아웃 수정 필요 */}
-        {/* <Spacing className="h-20" /> */}
+        <Spacing className="h-20" />
         <CenterStack className="grow">
           <Image src={EMPTY_STATE} alt="비어있는 책장" width={120} height={120} />
           <Text className="text-gray-900" weight="semibold" type="Title1">
