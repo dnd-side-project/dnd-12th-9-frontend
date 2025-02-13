@@ -25,16 +25,15 @@ type Props = {
   children: React.ReactNode;
 } & ComponentProps<'button'>;
 
-export const ChipVariants = cva(`flex items-center rounded-lg appearance-none`, {
+export const ChipVariants = cva(`flex items-center rounded-lg appearance-none select-none`, {
   variants: {
     variant: {
-      rounded:
-        'px-4 py-[6px] rounded-full text-gray-600 outline outline-gray-100 font-medium text-sm',
+      rounded: 'px-4 py-[6px] rounded-full text-gray-600 ring-1 ring-gray-100 font-medium text-sm',
       keyword: 'px-5 py-[10px] text-gray-700 font-medium text-sm',
       graphic: 'px-[14.5px] py-[15px] text-gray-900 font-medium text-base',
     },
     active: {
-      true: 'bg-primary-50 text-primary-600 outline outline-primary-500',
+      true: 'bg-primary-50 text-primary-600 ring-1 ring-primary-500 ',
       false: 'bg-gray-50',
     },
   },
