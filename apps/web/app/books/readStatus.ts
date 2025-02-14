@@ -1,4 +1,5 @@
-export type ReadStatus = 'ALL' | 'WANT_TO_READ' | 'READING' | 'COMPLETED';
+export type ReadStatus = 'WANT_TO_READ' | 'READING' | 'COMPLETED';
+export type ReadStatusTag = ReadStatus | 'ALL';
 
 export const READ_STATUS_LIST = [
   { value: 'ALL', text: '전체' },
@@ -6,6 +7,6 @@ export const READ_STATUS_LIST = [
   { value: 'READING', text: '읽는 중' },
   { value: 'COMPLETED', text: '완독' },
 ] satisfies {
-  value: ReadStatus;
+  value: ReadStatusTag;
   text: string;
 }[];
