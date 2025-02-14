@@ -46,7 +46,7 @@ export function SearchBar({ value, onClick, onClickReset, ...props }: Props) {
         className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer outline-none"
         onClick={() => onClick(value)}
       >
-        <Icon type="search" size={28} color="gray-700" />
+        <Icon type="search" size={28} color="gray700" />
       </button>
     </Flex>
   );
