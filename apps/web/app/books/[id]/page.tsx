@@ -1,6 +1,5 @@
 import Image from 'next/image';
 
-import { Button } from '@repo/ui/components/Button';
 import { Header } from '@repo/ui/components/Header';
 import {
   Box,
@@ -14,7 +13,9 @@ import {
 import { Text } from '@repo/ui/components/Text';
 import { BackButton } from 'app/_components/BackButton';
 
+import { DialogTrigger } from './_components/DialogTrigger';
 import { TrashButton } from './_components/TrashButton';
+import { STATUS_TEXT } from './status';
 
 type BookDetailPageProps = {
   params: Promise<{ id: string }>;
@@ -68,14 +69,12 @@ const BookDetailPage = async ({ params }: BookDetailPageProps) => {
         <Stack className="bg-white px-4 py-3">
           <JustifyBetween className="items-center">
             <HStack className="gap-3">
-              <div className="size-[52px] bg-gray-200" />
+              <Image src={STATUS_TEXT['prev'].image} alt="독서 상태" width={52} height={52} />
               <Text type="Title1" weight="semibold">
-                읽기 전이에요{' '}
+                {STATUS_TEXT['prev'].text}
               </Text>
             </HStack>
-            <Button size="sm" variant="primary50">
-              변경하기{' '}
-            </Button>
+            <DialogTrigger />
           </JustifyBetween>
         </Stack>
       </Stack>
