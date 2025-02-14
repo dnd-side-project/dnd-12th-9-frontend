@@ -2,8 +2,7 @@ import { ComponentProps } from 'react';
 
 import { motion } from 'framer-motion';
 
-import { FADE_IN_ANIMATION } from '@/lib/motions';
-
+import { FADE_IN_ANIMATION } from '../../lib/motions';
 import { Portal } from '../Portal';
 
 import { Content } from './ModalContent';
