@@ -11,7 +11,7 @@ export const PageLayout = ({ header, children, className }: PropsWithChildren<La
   return (
     <Stack className="h-full">
       {header}
-      <Stack className={cn('grow overflow-scroll', className)}>{children}</Stack>
+      <div className={cn('grow overflow-scroll', className)}>{children}</div>
     </Stack>
   );
 };
