@@ -11,15 +11,7 @@ import { BackButton } from '../_components/BackButton';
 
 import { CardList } from './_components/CardList';
 import { MOCK_BOOK_LIST } from './_fixture/book';
-
-type ReadStatus = 'ALL' | 'WANT_TO_READ' | 'READING' | 'COMPLETED';
-
-const READ_STATUS_LIST = [
-  { value: 'ALL', text: '전체' },
-  { value: 'WANT_TO_READ', text: '읽기 전' },
-  { value: 'READING', text: '읽는 중' },
-  { value: 'COMPLETED', text: '완독' },
-] as const;
+import { type ReadStatus, READ_STATUS_LIST } from './readStatus';
 
 const BookListPage = () => {
   const [readStatus, setReadStatus] = useState<ReadStatus>('ALL');
@@ -46,7 +38,7 @@ const BookListPage = () => {
             </Chip>
           ))}
         </HStack>
-        <CardList cardList={MOCK_BOOK_LIST} />
+        <CardList cardList={[]} />
       </Stack>
     </PageLayout>
   );
