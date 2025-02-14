@@ -4,7 +4,9 @@
     "preserveSymlinks": true,
     "baseUrl": ".",
     "paths": {
-      "@repo/ui/components/*": ["../../packages/ui/src/components/*"]
+      "@repo/ui/components/*": ["../../packages/ui/src/components/*"],
+      "@repo/ui/hooks/*": ["../../packages/ui/src/hooks/*"],
+      "@public/*": ["../../public/assets/*"]
     },
     "plugins": [
       {
