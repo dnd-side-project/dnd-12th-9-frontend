@@ -4,7 +4,7 @@ import { Button } from '@repo/ui/components/Button';
 import { Center, CenterStack, Spacing, VStack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 
-import { AddBookCard } from './AddCard';
+import { AddBookCard } from './AddBookCard';
 import { Card } from './Card';
 
 type CardListProps = {
