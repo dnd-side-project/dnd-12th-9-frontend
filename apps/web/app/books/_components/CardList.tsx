@@ -1,6 +1,5 @@
-import Image from 'next/image';
-
 import { Button } from '@repo/ui/components/Button';
+import { Icon } from '@repo/ui/components/Icon';
 import { Center, CenterStack, Spacing, VStack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 
@@ -33,12 +32,12 @@ export const CardList = ({ cardList }: CardListProps) => {
   );
 };
 
-export const Fallback = () => {
+const Fallback = () => {
   return (
     <>
       <Spacing className="h-20" />
       <CenterStack className="grow">
-        <Image src="/assets/EMPTY_STATE.png" alt="비어있는 책장" width={120} height={120} />
+        <Icon type="cryGhost" width={120} height={120} color="gray500" />
         <Spacing className="h-4" />
         <Text className="text-gray-900" weight="semibold" type="Title1">
           책장이 비어 있어요...
