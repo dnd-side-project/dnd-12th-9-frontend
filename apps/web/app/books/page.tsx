@@ -11,12 +11,12 @@ import { BackButton } from '../_components/BackButton';
 
 import { CardList } from './_components/CardList';
 import { MOCK_BOOK_LIST } from './_fixture/book';
-import { type ReadStatus, READ_STATUS_LIST } from './readStatus';
+import { type ReadStatusTag, READ_STATUS_LIST } from './readStatus';
 
 const BookListPage = () => {
-  const [readStatus, setReadStatus] = useState<ReadStatus>('ALL');
+  const [readStatus, setReadStatus] = useState<ReadStatusTag>('ALL');
 
-  const onClick = (value: ReadStatus) => () => {
+  const onClick = (value: ReadStatusTag) => () => {
     setReadStatus(value);
   };
 
