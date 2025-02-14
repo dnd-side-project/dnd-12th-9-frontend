@@ -1,24 +1,16 @@
 'use client';
 
-import Image from 'next/image';
-
 import { useState } from 'react';
 
-import { Button } from '@repo/ui/components/Button';
 import { Chip } from '@repo/ui/components/Chip';
 import { Header } from '@repo/ui/components/Header';
-import {
-  Center,
-  CenterStack,
-  HStack,
-  PageLayout,
-  Spacing,
-  Stack,
-} from '@repo/ui/components/Layout';
+import { HStack, PageLayout, Stack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 
-import EMPTY_STATE from '../../../../public/assets/EMPTY_STATE.png';
 import { BackButton } from '../_components/BackButton';
+
+import { CardList } from './_components/CardList';
+import { MOCK_BOOK_LIST } from './_fixture/book';
 
 type ReadStatus = 'ALL' | 'WANT_TO_READ' | 'READING' | 'COMPLETED';
 
@@ -36,6 +28,8 @@ const BookListPage = () => {
     setReadStatus(value);
   };
 
+  //TODO readStatus를 바탕으로 데이터 조회
+
   return (
     <PageLayout header={<Header left={<BackButton />}>책장</Header>}>
       <BookListHeader />
@@ -52,24 +46,7 @@ const BookListPage = () => {
             </Chip>
           ))}
         </HStack>
-        <Spacing className="h-20" />
-        <CenterStack className="grow">
-          <Image src={EMPTY_STATE} alt="비어있는 책장" width={120} height={120} />
-          <Spacing className="h-4" />
-          <Text className="text-gray-900" weight="semibold" type="Title1">
-            책장이 비어 있어요...
-          </Text>
-          <Spacing className="h-2" />
-          <Text className="text-gray-500" weight="medium" type="Body2">
-            책을 검색하고 내 책장에 추가해보세요.
-          </Text>
-          <Spacing className="h-5" />
-          <Center className="py-1">
-            <Button variant="primary50" size="sm">
-              등록하기
-            </Button>
-          </Center>
-        </CenterStack>
+        <CardList cardList={MOCK_BOOK_LIST} />
       </Stack>
     </PageLayout>
   );
