@@ -32,7 +32,7 @@ const BookListPage = () => {
 
   return (
     <PageLayout header={<Header left={<BackButton />}>책장</Header>}>
-      <BookListHeader />
+      <BookListHeader count={MOCK_BOOK_LIST.length} />
       <Stack className="px-4">
         <HStack className="gap-1.5">
           {READ_STATUS_LIST.map(({ value, text }) => (
@@ -52,11 +52,11 @@ const BookListPage = () => {
   );
 };
 
-const BookListHeader = () => {
+const BookListHeader = ({ count }: { count: number }) => {
   return (
     <div className="gap-2 px-4 py-8">
       <Text type="Heading1" weight="semibold">
-        {`책장에 총 0권의 책이${'\n'} 담겨있어요`}
+        {`책장에 총 ${count}권의 책이${'\n'} 담겨있어요`}
       </Text>
     </div>
   );
