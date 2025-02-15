@@ -16,7 +16,7 @@ const StorePage = () => {
         </Header>
       }
     >
-      <JustifyBetween className="mx-4 mb-[10px] mt-4 flex-1 flex-col">
+      <JustifyBetween className="mx-4 mb-4 mt-4 flex-1 flex-col">
         <ItemBox />
         <Flex className="flex-col gap-3">
           <StoreCard count={0} tryAvailable={0} />
