@@ -1,5 +1,6 @@
 'use client';
 
+import { PageLayout } from '@repo/ui/components/Layout';
 import { useFunnel } from 'app/hooks/useFunnel';
 
 import { Motion } from './_components/Motion';
@@ -11,7 +12,7 @@ const OnBoardingPage = () => {
   const { Funnel, setStep } = useFunnel(FUNNEL_STEPS);
 
   return (
-    <>
+    <PageLayout className="h-dvh">
       <Funnel>
         {Object.keys(TUTORIAL_CONFIG).map((step, index, steps) => (
           <Funnel.Step key={step} name={step}>
@@ -27,7 +28,7 @@ const OnBoardingPage = () => {
           </Funnel.Step>
         ))}
       </Funnel>
-    </>
+    </PageLayout>
   );
 };
 
