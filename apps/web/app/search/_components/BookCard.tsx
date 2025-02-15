@@ -1,10 +1,10 @@
 import Image from 'next/image';
 
 import { Button } from '@repo/ui/components/Button';
-import { Flex } from '@repo/ui/components/Layout';
+import { Flex, Spacing } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 
-import { Book } from '../types/book';
+import { Book } from '../_types/book';
 
 export type BookWithModal = Book & { openModal: () => void };
 export const BookCard = ({ title, authors, publishedAt, thumbnail, openModal }: BookWithModal) => {
@@ -16,6 +16,7 @@ export const BookCard = ({ title, authors, publishedAt, thumbnail, openModal }: 
           <Text type="Title2" className="text-gray-900">
             {title}
           </Text>
+          <Spacing className="h-1" />
           <Flex className="text-gray-600">
             <Text type="Body2">{authors}</Text>
             <Text type="Body2">・</Text>
