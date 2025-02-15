@@ -14,13 +14,13 @@ export const Tutorial = ({ onStepChange, config }: StepProps) => {
       <Image
         src={imageUrl}
         alt="튜토리얼"
-        width={440}
-        height={771}
-        className="max-h-full w-full object-contain"
+        width={500}
+        height={1000}
+        className="max-h-full w-full object-contain sm:object-cover"
       />
       <Button
         size="lg"
-        className="absolute bottom-5 mx-4 w-full max-w-[380px]"
+        className="absolute bottom-5 mx-4 w-full max-w-[380px] sm:max-w-[360px]"
         onClick={onStepChange}
       >
         {config.buttonText}
