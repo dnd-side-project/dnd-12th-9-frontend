@@ -1,18 +1,30 @@
+import Image from 'next/image';
+
 import { Button } from '@repo/ui/components/Button';
-import { JustifyEnd } from '@repo/ui/components/Layout';
+import { Flex } from '@repo/ui/components/Layout';
 
 import { StepProps } from '../_types/step';
 
 export const Tutorial = ({ onStepChange, config }: StepProps) => {
   const imageUrl = `/onboarding/${config.imageNumber}.png`;
+
+  console.log('object', imageUrl);
   return (
-    <JustifyEnd
-      className="h-dvh flex-col items-center bg-[image:var(--image-url)] bg-contain bg-center bg-no-repeat"
-      style={{ '--image-url': `url(${imageUrl})` }}
-    >
-      <Button size="lg" className="mb-4 w-full max-w-[380px]" onClick={onStepChange}>
+    <Flex className="h-dvh flex-col items-center">
+      <Image
+        src={imageUrl}
+        alt="튜토리얼"
+        width={440}
+        height={771}
+        className="max-h-full w-full object-contain"
+      />
+      <Button
+        size="lg"
+        className="absolute bottom-5 mx-4 w-full max-w-[380px]"
+        onClick={onStepChange}
+      >
         {config.buttonText}
       </Button>
-    </JustifyEnd>
+    </Flex>
   );
 };
