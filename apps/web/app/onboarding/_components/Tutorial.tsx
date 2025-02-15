@@ -8,19 +8,15 @@ import { StepProps } from '../_types/step';
 export const Tutorial = ({ onStepChange, config }: StepProps) => {
   const imageUrl = `/onboarding/${config.imageNumber}.png`;
 
-  console.log('object', imageUrl);
   return (
-    <Flex className="h-dvh flex-col items-center">
-      <Image
-        src={imageUrl}
-        alt="튜토리얼"
-        width={500}
-        height={1000}
-        className="max-h-full w-full object-contain sm:object-cover"
-      />
+    <Flex className="relative h-dvh w-full flex-col items-center justify-between overflow-hidden">
+      <Flex className="relative h-full w-full flex-1">
+        <Image src={imageUrl} alt="튜토리얼" fill priority className="object-contain" />
+      </Flex>
+
       <Button
         size="lg"
-        className="absolute bottom-5 mx-4 w-full max-w-[380px] sm:max-w-[360px]"
+        className="absolute bottom-4 mx-4 w-full max-w-[380px]"
         onClick={onStepChange}
       >
         {config.buttonText}
