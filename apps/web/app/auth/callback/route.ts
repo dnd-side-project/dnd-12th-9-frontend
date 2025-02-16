@@ -2,25 +2,36 @@ import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
-  const cookieList = await cookies();
-  const refreshToken = cookieList.get('refreshToken');
-
-  console.log('all cookies', cookieList.getAll());
-  console.log(refreshToken);
-  console.log('refreshToken', refreshToken?.value);
-
   try {
-    cookieList.set('refreshToken', refreshToken?.value ?? '');
+    const cookieList = await cookies();
+
+    const searchParams = request.nextUrl.searchParams;
+    const refreshToken = searchParams.get('refreshToken');
+
+    if (!refreshToken) {
+      return NextResponse.redirect(new URL('/login?error=auth_failed', request.url));
+    }
+
+    cookieList.set('refreshToken', refreshToken);
     const response = await fetch('https://api.sbooky.net/dev/api/auth/reissue', {
+      method: 'POST',
       credentials: 'include',
       headers: {
-        Cookie: `refreshToken=${refreshToken?.value}`, // 쿠키를 직접 헤더에 설정
+        Cookie: `refreshToken=${refreshToken}`,
       },
     });
 
     const data = await response.json();
+    const memberId = data?.data?.memberId;
 
-    console.log('data: ', data);
+    const accessToken = response.headers.get('Authorization')?.replace('Bearer ', '');
+
+    if (!accessToken || !memberId) {
+      return NextResponse.redirect(new URL('/login?error=auth_failed', request.url));
+    }
+
+    cookieList.set('accessToken', accessToken);
+    cookieList.set('memberId', memberId);
 
     return NextResponse.redirect(new URL('/', request.url));
   } catch (error) {
@@ -28,22 +39,3 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(new URL('/login?error=auth_failed', request.url));
   }
 }
-
-// export async function POST(request: NextRequest) {
-//   try {
-//     const response = await fetch('https://api.sbooky.net/dev/api/auth/reissue', {
-//       credentials: 'include', // 쿠키 포함
-//     });
-
-//     console.log('response: ', response);
-
-//     const data = await response.json();
-
-//     console.log('data: ', data);
-//     // 3. 받아온 데이터 처리 후 리다이렉트
-//     return NextResponse.redirect(new URL('/', request.url));
-//   } catch (error) {
-//     console.warn(error);
-//     return NextResponse.redirect(new URL('/login?error=auth_failed', request.url));
-//   }
-// }
