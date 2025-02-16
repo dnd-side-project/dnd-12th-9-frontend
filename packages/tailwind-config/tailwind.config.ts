@@ -7,6 +7,9 @@ const config: Omit<Config, 'content'> = {
     colors: {
       ...vars.colors,
     },
+    screens: {
+      md: '440px',
+    },
     extend: {},
   },
   plugins: [],
