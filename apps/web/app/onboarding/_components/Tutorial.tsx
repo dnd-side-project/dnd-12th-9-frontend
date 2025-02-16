@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import { Button } from '@repo/ui/components/Button';
-import { Box, Flex } from '@repo/ui/components/Layout';
+import { Flex } from '@repo/ui/components/Layout';
 
 import { StepProps } from '../_types/step';
 
@@ -10,20 +10,22 @@ export const Tutorial = ({ onStepChange, config }: StepProps) => {
 
   return (
     <Flex className="h-dvh w-full flex-col items-center justify-between overflow-hidden">
-      <Box
-        className="absolute inset-0 z-0 h-full w-full bg-opacity-10 bg-center bg-no-repeat md:bg-contain"
+      <Image
+        fill
+        priority
+        src={imageUrl}
+        alt="튜토리얼 배경 이미지"
+        className="absolute inset-0 z-0 object-cover md:hidden"
         style={{
-          backgroundImage: `url(${imageUrl})`,
-          backgroundPosition: '50% 50%',
-          filter: 'blur(4px) brightness(0.98)',
+          filter: 'blur(1px) brightness(0.98)',
         }}
       />
       <Flex className="relative h-full w-full flex-1">
         <Image
-          src={imageUrl}
-          alt="튜토리얼"
           fill
           priority
+          src={imageUrl}
+          alt="튜토리얼"
           className="object-contain"
           sizes="(max-width: 440px) 100vw, 440px"
         />
