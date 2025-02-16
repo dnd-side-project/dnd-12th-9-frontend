@@ -9,13 +9,13 @@ export const Tutorial = ({ onStepChange, config }: StepProps) => {
   const imageUrl = `/onboarding/${config.imageNumber}.png`;
 
   return (
-    <Flex className="relative h-dvh max-w-full flex-col items-center justify-between overflow-hidden">
+    <Flex className="h-dvh w-full flex-col items-center justify-between overflow-hidden">
       <Box
-        className="absolute inset-0 z-0 w-full bg-opacity-70 bg-contain bg-center bg-no-repeat"
+        className="absolute inset-0 z-0 h-full w-full bg-opacity-10 bg-center bg-no-repeat md:bg-contain"
         style={{
           backgroundImage: `url(${imageUrl})`,
           backgroundPosition: '50% 50%',
-          filter: 'blur(4px) brightness(0.95)',
+          filter: 'blur(4px) brightness(0.98)',
         }}
       />
       <Flex className="relative h-full w-full flex-1">
@@ -24,7 +24,7 @@ export const Tutorial = ({ onStepChange, config }: StepProps) => {
           alt="튜토리얼"
           fill
           priority
-          className="object-contain md:object-contain"
+          className="object-contain"
           sizes="(max-width: 440px) 100vw, 440px"
         />
       </Flex>
