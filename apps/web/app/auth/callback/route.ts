@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
-import { authRepository } from 'app/api/auth';
+import { authRepository } from 'app/_api/auth';
 
 export async function GET(request: NextRequest) {
   try {
