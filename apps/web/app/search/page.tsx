@@ -12,7 +12,7 @@ import { BookCard } from './_components/BookCard';
 import { BookStatusModal } from './_components/BookStatusModal';
 import { SearchFallback } from './_components/SearchFallback';
 import { MOCK_BOOK_LIST } from './_fixture/search';
-import { Book } from './types/book';
+import { Book } from './_types/book';
 
 const SearchPage = () => {
   const [search, setSearch] = useState<string>('');

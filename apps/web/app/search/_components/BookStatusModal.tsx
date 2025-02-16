@@ -9,7 +9,7 @@ import { Modal } from '@repo/ui/components/Modal';
 import { Text } from '@repo/ui/components/Text';
 
 import { READING_STATUS, STATUS_DATA } from '../_constants/status';
-import { Book } from '../types/book';
+import { Book } from '../_types/book';
 
 type ModalProps = {
   isOpen: boolean;
