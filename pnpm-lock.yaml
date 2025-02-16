@@ -191,49 +191,6 @@ importers:
         specifier: 5.5.4
         version: 5.5.4
 
-  packages/api:
-    dependencies:
-      '@tanstack/react-query':
-        specifier: ^5.64.1
-        version: 5.64.1(react@19.0.0)
-      '@tanstack/react-query-devtools':
-        specifier: ^5.64.1
-        version: 5.64.1(@tanstack/react-query@5.64.1(react@19.0.0))(react@19.0.0)
-      ky:
-        specifier: ^1.7.4
-        version: 1.7.4
-      react:
-        specifier: 'catalog:'
-        version: 19.0.0
-      react-dom:
-        specifier: 'catalog:'
-        version: 19.0.0(react@19.0.0)
-      zod:
-        specifier: ^3.24.1
-        version: 3.24.1
-    devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      '@turbo/gen':
-        specifier: ^1.12.4
-        version: 1.13.4(@types/node@20.17.6)(typescript@5.5.4)
-      '@types/node':
-        specifier: ^20.11.24
-        version: 20.17.6
-      '@types/react':
-        specifier: 'catalog:'
-        version: 19.0.8
-      '@types/react-dom':
-        specifier: 'catalog:'
-        version: 19.0.3(@types/react@19.0.8)
-      typescript:
-        specifier: 5.5.4
-        version: 5.5.4
-
   packages/eslint-config:
     devDependencies:
       '@eslint/eslintrc':
