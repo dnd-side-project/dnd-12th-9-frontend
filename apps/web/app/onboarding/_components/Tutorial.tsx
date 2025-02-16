@@ -41,7 +41,7 @@ export const Tutorial = ({ onStepChange, config }: StepProps) => {
 
       <Button
         size="lg"
-        className="absolute bottom-4 h-11 w-[90%] md:h-[52px] md:w-[380px]"
+        className="absolute bottom-4 h-11 w-[80%] md:h-[52px] md:w-[380px]"
         onClick={onStepChange}
       >
         {config.buttonText}
