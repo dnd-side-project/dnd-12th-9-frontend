@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 
 import { useState } from 'react';
@@ -8,8 +10,7 @@ import { CenterStack, Flex, JustifyBetween, VStack } from '@repo/ui/components/L
 import { Modal } from '@repo/ui/components/Modal';
 import { Text } from '@repo/ui/components/Text';
 import { READING_STATUS, STATUS_DATA } from 'app/_constants/status';
-
-import { Book } from '../_types/book';
+import { entries } from 'app/_util/entries';
 
 type ModalProps = {
   isOpen: boolean;
@@ -17,11 +18,17 @@ type ModalProps = {
 };
 
 type BookStatusModalProps = ModalProps & {
-  bookData: Book;
+  title: string;
+  initialReadState?: READING_STATUS;
 };
 
-export const BookStatusModal = ({ isOpen, closeModal, bookData }: BookStatusModalProps) => {
-  const [activeStatus, setActiveStatus] = useState<READING_STATUS | null>(null);
+export const BookStatusModal = ({
+  isOpen,
+  closeModal,
+  title,
+  initialReadState = 'WANT_TO_READ',
+}: BookStatusModalProps) => {
+  const [activeStatus, setActiveStatus] = useState<READING_STATUS>(initialReadState);
 
   return (
     <Modal isOpen={isOpen} onClickOutside={() => {}}>
@@ -30,15 +37,15 @@ export const BookStatusModal = ({ isOpen, closeModal, bookData }: BookStatusModa
           책을 어느정도 읽으셨나요?
         </Text>
         <Text type="Body1" className="mb-4 text-gray-600">
-          {bookData.title}
+          {title}
         </Text>
         <Flex className="gap-4">
-          {Object.entries(STATUS_DATA).map(([status, data]) => (
+          {entries(STATUS_DATA).map(([status, data]) => (
             <Chip
               variant="graphic"
               key={status}
-              active={activeStatus === status}
-              onClick={() => setActiveStatus(status as READING_STATUS)}
+              active={activeStatus === data.readStatus}
+              onClick={() => setActiveStatus(data.readStatus)}
             >
               <VStack className="gap-2">
                 <Image src={data.image} alt="야옹" width={56} height={56} />

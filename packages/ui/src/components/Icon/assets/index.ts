@@ -28,6 +28,7 @@ import { Search } from './search';
 import { Setting } from './setting';
 import { Share } from './share';
 import { Shop } from './shop';
+import { SquarePen } from './squarePen';
 import { Undo } from './undo';
 
 export const iconMap = {
@@ -61,6 +62,7 @@ export const iconMap = {
   logo: Logo,
   missionCard: MissionCard,
   orb: Orb,
+  squarePen: SquarePen,
 };
 
 export type IconType = keyof typeof iconMap;
