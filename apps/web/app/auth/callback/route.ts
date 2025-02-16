@@ -1,6 +1,8 @@
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
+import { authRepository } from 'app/api/auth';
+
 export async function GET(request: NextRequest) {
   try {
     const cookieList = await cookies();
@@ -13,16 +15,12 @@ export async function GET(request: NextRequest) {
     }
 
     cookieList.set('refreshToken', refreshToken);
-    const response = await fetch('https://api.sbooky.net/dev/api/auth/reissue', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        Cookie: `refreshToken=${refreshToken}`,
-      },
-    });
+    //TODO 닉네임 여부에 따라 onboarding으로 갈지 홈페이지로 갈지 로직 구현 필요
+    const response = await authRepository.reissue(refreshToken);
 
-    const data = await response.json();
-    const memberId = data?.data?.memberId;
+    const {
+      data: { memberId },
+    } = await response.json();
 
     const accessToken = response.headers.get('Authorization')?.replace('Bearer ', '');
 
