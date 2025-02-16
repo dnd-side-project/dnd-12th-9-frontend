@@ -9,10 +9,8 @@ import { Chip } from '@repo/ui/components/Chip';
 import { CenterStack, Flex, JustifyBetween, VStack } from '@repo/ui/components/Layout';
 import { Modal } from '@repo/ui/components/Modal';
 import { Text } from '@repo/ui/components/Text';
+import { READING_STATUS, STATUS_DATA } from 'app/_constants/status';
 import { entries } from 'app/_util/entries';
-import { ReadStatus } from 'app/books/readStatus';
-
-import { STATUS_DATA } from '../status';
 
 type ModalProps = {
   isOpen: boolean;
@@ -21,7 +19,7 @@ type ModalProps = {
 
 type BookStatusModalProps = ModalProps & {
   title: string;
-  initialReadState?: ReadStatus;
+  initialReadState?: READING_STATUS;
 };
 
 export const BookStatusModal = ({
@@ -30,7 +28,7 @@ export const BookStatusModal = ({
   title,
   initialReadState = 'WANT_TO_READ',
 }: BookStatusModalProps) => {
-  const [activeStatus, setActiveStatus] = useState<ReadStatus>(initialReadState);
+  const [activeStatus, setActiveStatus] = useState<READING_STATUS>(initialReadState);
 
   return (
     <Modal isOpen={isOpen} onClickOutside={() => {}}>

@@ -7,8 +7,8 @@ import { Chip } from '@repo/ui/components/Chip';
 import { CenterStack, Flex, JustifyBetween, VStack } from '@repo/ui/components/Layout';
 import { Modal } from '@repo/ui/components/Modal';
 import { Text } from '@repo/ui/components/Text';
+import { READING_STATUS, STATUS_DATA } from 'app/_constants/status';
 
-import { READING_STATUS, STATUS_DATA } from '../_constants/status';
 import { Book } from '../types/book';
 
 type ModalProps = {

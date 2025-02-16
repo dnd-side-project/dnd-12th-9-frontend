@@ -20,7 +20,7 @@ export const STATUS_DATA = {
   },
 } as const;
 
-export const STATUS_TEXT = {
+export const MY_READING_STATUS_TEXT = {
   prev: {
     image: BLACKY_PREV,
     text: '읽기 전이에요',
@@ -39,3 +39,15 @@ export const STATUS_TEXT = {
 } as const;
 
 export type READING_STATUS = 'WANT_TO_READ' | 'READING' | 'COMPLETED';
+
+export type ReadStatusTag = READING_STATUS | 'ALL';
+
+export const READ_STATUS_LIST = [
+  { value: 'ALL', text: '전체' },
+  { value: 'WANT_TO_READ', text: '읽기 전' },
+  { value: 'READING', text: '읽는 중' },
+  { value: 'COMPLETED', text: '완독' },
+] satisfies {
+  value: ReadStatusTag;
+  text: string;
+}[];

@@ -6,12 +6,12 @@ import { Chip } from '@repo/ui/components/Chip';
 import { Header } from '@repo/ui/components/Header';
 import { HStack, PageLayout, Stack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
+import { type ReadStatusTag, READ_STATUS_LIST } from 'app/_constants/status';
 
 import { BackButton } from '../_components/BackButton';
 
 import { CardList } from './_components/CardList';
 import { MOCK_BOOK_LIST } from './_fixture/book';
-import { type ReadStatusTag, READ_STATUS_LIST } from './readStatus';
 
 const BookListPage = () => {
   const [readStatus, setReadStatus] = useState<ReadStatusTag>('ALL');
