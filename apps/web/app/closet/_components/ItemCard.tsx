@@ -11,10 +11,10 @@ type ItemCardProps = {
 export const ItemCard = ({ name, code }: ItemCardProps) => {
   return (
     <Stack className="gap-2">
-      <Box className="py-2.5">
+      <Box className="rounded-xl bg-gray-100 py-2.5">
         <Image width={100} height={100} src={getImageUrl(code)} alt={name} />
       </Box>
-      <Text weight="semibold" type="Title2" className="text-center text-gray-700">
+      <Text weight="semibold" type="Title2" className="break-keep px-2.5 text-center text-gray-700">
         {name}
       </Text>
     </Stack>
@@ -22,4 +22,4 @@ export const ItemCard = ({ name, code }: ItemCardProps) => {
 };
 
 //TODO code로 프론트 이미지 url 추출
-const getImageUrl = (code: string) => code;
+const getImageUrl = (code: string) => `/${code.toUpperCase()}.png`;

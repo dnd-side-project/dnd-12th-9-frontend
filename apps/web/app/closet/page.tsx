@@ -1,10 +1,14 @@
 import Image from 'next/image';
 
+import { Button } from '@repo/ui/components/Button';
 import { Header } from '@repo/ui/components/Header';
 import { Icon } from '@repo/ui/components/Icon';
 import { IconButton } from '@repo/ui/components/IconButton';
 import { Box, PageLayout, Stack } from '@repo/ui/components/Layout';
 import { BackButton } from 'app/_components/BackButton';
+
+import { ItemCard } from './_components/ItemCard';
+import { GHOST_LIST } from './_fixture/item';
 
 const ClosetPage = () => {
   return (
@@ -28,10 +32,16 @@ const ClosetPage = () => {
       <Box className="flex h-[45%] justify-center pt-5">
         <Box className="relative size-[200] border border-white" />
       </Box>
-      <Stack className="relative grow bg-white p-4">
+      <Stack className="relative grow overflow-scroll bg-white p-4 pt-8">
         <IconButton className="absolute -top-[60px] right-4 rounded-full bg-white p-2.5">
           <Icon type="undo" color="gray800" />
         </IconButton>
+        <Box className="gapx-4 grid grid-cols-3 gap-x-4 gap-y-4">
+          {GHOST_LIST.map((ghost) => (
+            <ItemCard key={ghost.name} {...ghost} />
+          ))}
+        </Box>
+        <Button size="lg">저장하기</Button>
       </Stack>
     </PageLayout>
   );
