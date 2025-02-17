@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 
 import { PageLayout } from '@repo/ui/components/Layout';
-import { useFunnel } from 'app/hooks/useFunnel';
+import { useFunnel } from 'app/_hooks/useFunnel';
 
 import { Motion } from './_components/Motion';
 import { Tutorial } from './_components/Tutorial';
