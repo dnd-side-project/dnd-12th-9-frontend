@@ -1,4 +1,4 @@
-type Code =
+export type Code =
   | 'mummy_ghost'
   | 'basic_ghost'
   | 'cat_ghost'
@@ -10,6 +10,11 @@ type Code =
   | 'cheese_cat_ghost'
   | 'siamese_cat_ghost'
   | 'baekdo_cat_ghost';
+
+export type Ghost = {
+  name: string;
+  code: Code;
+};
 
 export const GHOST_LIST = [
   {
@@ -56,7 +61,4 @@ export const GHOST_LIST = [
     name: '백도 고양이 유령',
     code: 'baekdo_cat_ghost',
   },
-] as const satisfies {
-  name: string;
-  code: Code;
-}[];
+] as const satisfies Ghost[];

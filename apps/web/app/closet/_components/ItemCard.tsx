@@ -1,17 +1,26 @@
 import Image from 'next/image';
 
+import { ComponentProps } from 'react';
+
 import { Box, Stack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
+
+import { getImageUrl } from '../_util/image';
 
 type ItemCardProps = {
   name: string;
   code: string;
-};
+  active?: boolean;
+} & ComponentProps<'div'>;
 
-export const ItemCard = ({ name, code }: ItemCardProps) => {
+export const ItemCard = ({ name, code, active = false, ...props }: ItemCardProps) => {
   return (
-    <Stack className="gap-2">
-      <Box className="rounded-xl bg-gray-100 py-2.5">
+    <Stack className="gap-2" {...props}>
+      <Box
+        className={`rounded-xl bg-gray-100 py-2.5 ${
+          active ? 'outline-primary-500 outline outline-[2]' : ''
+        }`}
+      >
         <Image width={100} height={100} src={getImageUrl(code)} alt={name} />
       </Box>
       <Text weight="semibold" type="Title2" className="break-keep px-2.5 text-center text-gray-700">
@@ -20,6 +29,3 @@ export const ItemCard = ({ name, code }: ItemCardProps) => {
     </Stack>
   );
 };
-
-//TODO code로 프론트 이미지 url 추출
-const getImageUrl = (code: string) => `/${code.toUpperCase()}.png`;
