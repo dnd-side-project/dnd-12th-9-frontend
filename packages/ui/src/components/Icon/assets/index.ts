@@ -14,6 +14,7 @@ import { Exclamation } from './exclamation';
 import { Heart } from './heart';
 import { Home } from './home';
 import { Info } from './info';
+import { Kakao } from './kakao';
 import { Kebab } from './kebab';
 import { Link } from './link';
 import { Logo } from './logo';
@@ -45,6 +46,7 @@ export const iconMap = {
   heart: Heart,
   home: Home,
   info: Info,
+  kakao: Kakao,
   kebab: Kebab,
   link: Link,
   menu: Menu,
