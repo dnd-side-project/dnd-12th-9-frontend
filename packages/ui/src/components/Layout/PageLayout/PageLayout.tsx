@@ -5,11 +5,17 @@ import { Stack } from '../Stack';
 
 export type LayoutProps = {
   header?: ReactNode;
+  containerClassName?: string;
 } & ComponentProps<'div'>;
 
-export const PageLayout = ({ header, children, className }: PropsWithChildren<LayoutProps>) => {
+export const PageLayout = ({
+  header,
+  children,
+  className,
+  containerClassName,
+}: PropsWithChildren<LayoutProps>) => {
   return (
-    <Stack className="h-full">
+    <Stack className={cn('h-full', containerClassName)}>
       {header}
       <div className={cn('grow overflow-scroll', className)}>{children}</div>
     </Stack>
