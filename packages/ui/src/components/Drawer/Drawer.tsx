@@ -24,7 +24,7 @@ export function Drawer({ isOpen, onClose, children }: Props) {
       />
       <div
         onClick={onClose}
-        className="fixed right-0 top-0 h-full overflow-hidden md:right-[calc((100vw-375px)/2)]"
+        className="fixed right-0 top-0 h-full overflow-hidden md:right-[calc((100vw-440px)/2)]"
       >
         <motion.div
           className="h-full w-[242px] bg-white shadow-lg"
