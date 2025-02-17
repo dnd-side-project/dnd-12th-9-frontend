@@ -2,8 +2,7 @@ import { PropsWithChildren } from 'react';
 
 import { motion } from 'framer-motion';
 
-import { FADE_IN_ANIMATION, SLIDE_IN_ANIMATION } from '@/lib/motions';
-
+import { FADE_IN_ANIMATION, SLIDE_IN_ANIMATION } from '../../lib/motions';
 import { Portal } from '../Portal';
 
 type Props = {
