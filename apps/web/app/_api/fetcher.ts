@@ -7,7 +7,7 @@ const defaultOption: Options = {
   timeout: 30_000,
 };
 
-const API_ENDPOINT = 'https://api.sbooky.net/dev/api';
+const API_ENDPOINT = process.env.API_ENDPOINT;
 
 export const instance = ky.create({
   prefixUrl: API_ENDPOINT,
