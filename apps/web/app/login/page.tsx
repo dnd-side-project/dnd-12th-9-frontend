@@ -10,7 +10,7 @@ import { LoginLogo } from './assets/LoginLogo';
 export default function LoginPage() {
   return (
     <PageLayout>
-      <Stack className="h-full px-4 py-[50]">
+      <Stack className="h-full px-4 py-[50px]">
         <CenterStack className="grow">
           <LoginCharacter />
           <CenterStack className="gap-2">
