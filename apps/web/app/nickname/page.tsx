@@ -6,7 +6,7 @@ import { Button } from '@repo/ui/components/Button';
 import { Header } from '@repo/ui/components/Header';
 import { Box, JustifyBetween, PageLayout, Stack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
-import { NicknameTextField } from '@repo/ui/components/TextField';
+import { TextField } from '@repo/ui/components/TextField';
 
 const INITIAL_NICKNAME = '';
 
@@ -30,7 +30,7 @@ const NicknamePage = () => {
       <Stack className="grow">
         <NicknameHeader />
         <JustifyBetween className="grow flex-col items-center px-4 pb-4">
-          <NicknameTextField
+          <TextField
             value={nickname}
             onChange={onChange}
             onClickReset={onReset}
