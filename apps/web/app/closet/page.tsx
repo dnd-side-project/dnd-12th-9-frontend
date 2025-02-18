@@ -10,15 +10,24 @@ import { Icon } from '@repo/ui/components/Icon';
 import { IconButton } from '@repo/ui/components/IconButton';
 import { Box, PageLayout, Stack } from '@repo/ui/components/Layout';
 import { BackButton } from 'app/_components/BackButton';
+import { keys } from 'app/_util/keys';
 
 import { ItemCard } from './_components/ItemCard';
-import { Ghost, GHOST_LIST } from './_fixture/item';
+import { Ghost, GHOST_MAP } from './_fixture/item';
 import { getImageUrl } from './_util/image';
 
+const initialGhost = GHOST_MAP['basic_ghost'];
+
 const ClosetPage = () => {
-  const [currentGhost, setCurrentGhost] = useState<Ghost>(GHOST_LIST[0]);
+  const [currentGhost, setCurrentGhost] = useState<Ghost>(initialGhost);
 
   const updateCurrentGhost = (ghost: Ghost) => () => setCurrentGhost(ghost);
+  const resetGhost = () => setCurrentGhost(initialGhost);
+
+  const disabled = currentGhost.code === initialGhost.code;
+
+  //TODO 저장 버튼 클릭시 API 연동 필요
+  const onClickSavebutton = () => {};
 
   return (
     <PageLayout
@@ -38,30 +47,40 @@ const ClosetPage = () => {
         className="absolute inset-0 z-0 h-full object-fill"
         sizes="(max-width: 440px) 100vw, 440px"
       />
-      <Box className="flex h-[45%] shrink-0 items-center justify-center">
+      <Box className="relative flex h-[45%] shrink-0 items-center justify-center">
         <Image
-          src={getImageUrl(GHOST_LIST[0].code)}
+          src={getImageUrl(currentGhost.code)}
           width={200}
           height={200}
-          alt={GHOST_LIST[0].name}
+          alt={currentGhost.name}
           className="relative -top-2 h-[200px]"
         />
-      </Box>
-      <Stack className="border-box relative w-full grow overflow-y-scroll bg-white p-4 pt-8">
-        <IconButton className="absolute -top-[60px] right-4 rounded-full bg-white p-2.5">
+        <IconButton
+          className="absolute bottom-4 right-4 z-30 rounded-full bg-white p-2.5"
+          onClick={resetGhost}
+        >
           <Icon type="undo" color="gray800" />
         </IconButton>
-        <Box className="gapx-4 grid grid-cols-3 gap-x-4 gap-y-4">
-          {GHOST_LIST.map((ghost) => (
+      </Box>
+      <Stack className="border-box relative w-full grow gap-4 overflow-y-scroll bg-white p-4 pt-8">
+        <Box className="grid grid-cols-3 gap-x-4 gap-y-4">
+          {keys(GHOST_MAP).map((key) => (
             <ItemCard
-              key={ghost.name}
-              {...ghost}
-              onClick={updateCurrentGhost(ghost)}
-              active={ghost.name === currentGhost.name}
+              key={key}
+              {...GHOST_MAP[key]}
+              onClick={updateCurrentGhost(GHOST_MAP[key])}
+              active={GHOST_MAP[key].name === currentGhost.name}
             />
           ))}
         </Box>
-        <Button size="lg">저장하기</Button>
+        <Button
+          size="lg"
+          className="w-full px-[140px] py-3.5"
+          disabled={disabled}
+          onClick={onClickSavebutton}
+        >
+          저장하기
+        </Button>
       </Stack>
     </PageLayout>
   );

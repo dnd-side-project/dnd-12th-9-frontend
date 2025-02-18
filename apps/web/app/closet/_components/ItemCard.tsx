@@ -15,9 +15,9 @@ type ItemCardProps = {
 
 export const ItemCard = ({ name, code, active = false, ...props }: ItemCardProps) => {
   return (
-    <Stack className="gap-2" {...props}>
+    <Stack className="cursor-pointer gap-2" {...props}>
       <Box
-        className={`rounded-xl bg-gray-100 py-2.5 ${
+        className={`flex items-center justify-center rounded-xl bg-gray-100 py-2.5 ${
           active ? 'outline-primary-500 outline outline-[2]' : ''
         }`}
       >
