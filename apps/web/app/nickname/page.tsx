@@ -1,5 +1,7 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import { ChangeEventHandler, useCallback, useState } from 'react';
 
 import { Button } from '@repo/ui/components/Button';
@@ -11,6 +13,14 @@ import { TextField } from '@repo/ui/components/TextField';
 const INITIAL_NICKNAME = '';
 
 const NicknamePage = () => {
+  const router = useRouter();
+
+  const onClickSaveButton = () => {
+    //TODO 닉네임 저장 api 연동
+
+    router.push('/onboarding');
+  };
+
   const [nickname, setNickname] = useState(INITIAL_NICKNAME);
 
   const onChange: ChangeEventHandler<HTMLInputElement> = ({ target: { value } }) => {
@@ -37,7 +47,7 @@ const NicknamePage = () => {
             placeholder="닉네임을 입력해주세요"
             ref={ref}
           />
-          <Button size="lg" className="w-full" disabled={disabled}>
+          <Button size="lg" className="w-full" disabled={disabled} onClick={onClickSaveButton}>
             저장하기
           </Button>
         </JustifyBetween>
