@@ -9,11 +9,11 @@ const ReviewPage = () => {
   return (
     <PageLayout
       header={
-        <Header left={<BackButton />} className="bg-gray-100">
+        <Header left={<BackButton />} className="bg-gray-70">
           평가
         </Header>
       }
-      className="bg-gray-100"
+      className="bg-gray-70"
     >
       <Stack>
         <ReviewHeader />

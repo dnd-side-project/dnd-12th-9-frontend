@@ -42,7 +42,7 @@ export const ReviewContent = () => {
         <Stack className="gap-8">
           {entries(KEYWORD_MAP).map(([type, keywordList]) => (
             <Stack className="gap-4" key={type}>
-              <Text type="Title2" weight="medium">
+              <Text type="Title2" weight="medium" className="text-gray-900">
                 {getTitleByKeywordType(type)}
               </Text>
               <HStack className="flex-wrap gap-3">
