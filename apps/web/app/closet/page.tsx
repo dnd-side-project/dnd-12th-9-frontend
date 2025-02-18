@@ -35,16 +35,16 @@ const ClosetPage = () => {
         priority
         src="/closet/BG_ClOSET.png"
         alt="꾸미기 배경"
-        className="absolute inset-0 z-0 h-full object-cover"
+        className="absolute inset-0 z-0 h-full object-fill"
         sizes="(max-width: 440px) 100vw, 440px"
       />
-      <Box className="flex h-[45%] shrink-0 justify-center pt-5">
+      <Box className="flex h-[45%] shrink-0 items-center justify-center">
         <Image
           src={getImageUrl(GHOST_LIST[0].code)}
           width={200}
           height={200}
           alt={GHOST_LIST[0].name}
-          className="relative h-[200px] grow-0"
+          className="relative -top-2 h-[200px]"
         />
       </Box>
       <Stack className="border-box relative w-full grow overflow-y-scroll bg-white p-4 pt-8">
