@@ -5,6 +5,7 @@ export const authRepository = {
     instance.post<{
       data: {
         memberId: string;
+        nickname: string;
       };
     }>('auth/reissue', {
       headers: {
