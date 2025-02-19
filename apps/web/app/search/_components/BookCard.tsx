@@ -7,7 +7,7 @@ import { Text } from '@repo/ui/components/Text';
 import { Book } from '../_types/book';
 
 export type BookWithModal = Book & { openModal: () => void };
-export const BookCard = ({ title, authors, publishedAt, thumbnail, openModal }: BookWithModal) => {
+export const BookCard = ({ title, author, publishedAt, thumbnail, openModal }: BookWithModal) => {
   return (
     <Flex className="my-2 w-full flex-row items-center justify-between">
       <Flex className="flex-row items-center gap-4">
@@ -18,7 +18,7 @@ export const BookCard = ({ title, authors, publishedAt, thumbnail, openModal }: 
           </Text>
           <Spacing className="h-1" />
           <Flex className="text-gray-600">
-            <Text type="Body2">{authors}</Text>
+            <Text type="Body2">{author}</Text>
             <Text type="Body2">・</Text>
             <Text type="Body2">{publishedAt}</Text>
           </Flex>

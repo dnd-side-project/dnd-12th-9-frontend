@@ -20,7 +20,11 @@ type BookStatusModalProps = ModalProps & {
   bookData: Book;
 };
 
-export const BookStatusModal = ({ isOpen, closeModal, bookData }: BookStatusModalProps) => {
+export const BookStatusModalWithState = ({
+  isOpen,
+  closeModal,
+  bookData,
+}: BookStatusModalProps) => {
   const [activeStatus, setActiveStatus] = useState<READING_STATUS | null>(null);
 
   return (

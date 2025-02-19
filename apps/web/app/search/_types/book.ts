@@ -1,6 +1,6 @@
 export type Book = {
   title: string;
-  authors: string;
+  author: string;
   publishedAt: string;
   thumbnail: string;
 };
