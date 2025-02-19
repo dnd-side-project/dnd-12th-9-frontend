@@ -16,11 +16,11 @@ export async function GET(request: NextRequest) {
     }
 
     cookieList.set(COOKIE_ID.REFRESH_TOKEN, refreshToken);
-    //TODO 닉네임 여부에 따라 닉네임 설정 페이지로 갈지 홈페이지로 갈지 로직 구현 필요
+
     const response = await authRepository.reissue(refreshToken);
 
     const {
-      data: { memberId },
+      data: { memberId, nickname },
     } = await response.json();
 
     const accessToken = response.headers.get('Authorization')?.replace('Bearer ', '');
@@ -32,7 +32,11 @@ export async function GET(request: NextRequest) {
     cookieList.set('accessToken', accessToken);
     cookieList.set('memberId', memberId);
 
-    return NextResponse.redirect(new URL('/', request.url));
+    if (nickname) {
+      return NextResponse.redirect(new URL('/home', request.url));
+    }
+
+    return NextResponse.redirect(new URL('/nickname', request.url));
   } catch (error) {
     console.warn(error);
     return NextResponse.redirect(new URL('/login?error=auth_failed', request.url));

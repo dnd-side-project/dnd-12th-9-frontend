@@ -9,15 +9,17 @@ import { Header } from '@repo/ui/components/Header';
 import { Box, JustifyBetween, PageLayout, Stack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 import { TextField } from '@repo/ui/components/TextField';
+import { useNickname } from 'app/_api/mutations/useNickname';
 
 const INITIAL_NICKNAME = '';
 
 const NicknamePage = () => {
   const router = useRouter();
 
-  const onClickSaveButton = () => {
-    //TODO 닉네임 저장 api 연동
+  const { mutate, isPending } = useNickname();
 
+  const onClickSaveButton = () => {
+    mutate({ nickname });
     router.push('/onboarding');
   };
 
@@ -29,7 +31,7 @@ const NicknamePage = () => {
 
   const onReset = () => setNickname(INITIAL_NICKNAME);
 
-  const disabled = nickname.length === 0;
+  const disabled = nickname.length === 0 || isPending;
 
   const ref = useCallback((node: HTMLInputElement | null) => {
     node?.focus();
