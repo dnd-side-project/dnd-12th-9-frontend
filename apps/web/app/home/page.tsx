@@ -34,9 +34,9 @@ const HomePage = () => {
             {' '}
           </Header>
         }
-        className="flex w-full flex-col bg-[url('/HOME.png')] bg-cover bg-center"
+        className="flex h-dvh w-full flex-col bg-[url('/HOME.png')] bg-cover bg-center"
       >
-        <JustifyBetween className="mb-4 h-dvh flex-col px-4">
+        <JustifyBetween className="mb-4 h-full flex-col px-4">
           <HStack className="w-full justify-start gap-2 px-4">
             {Object.keys(TOP_BAR).map((type) => (
               <TopBarButton key={type} type={type as keyof typeof TOP_BAR} />
