@@ -2,6 +2,7 @@ import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { authRepository } from 'app/_api/auth';
+import { COOKIE_ID } from 'app/_constants/cookie';
 
 export async function GET(request: NextRequest) {
   try {
@@ -14,8 +15,8 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(new URL('/login?error=auth_failed', request.url));
     }
 
-    cookieList.set('refreshToken', refreshToken);
-    //TODO 닉네임 여부에 따라 onboarding으로 갈지 홈페이지로 갈지 로직 구현 필요
+    cookieList.set(COOKIE_ID.REFRESH_TOKEN, refreshToken);
+    //TODO 닉네임 여부에 따라 닉네임 설정 페이지로 갈지 홈페이지로 갈지 로직 구현 필요
     const response = await authRepository.reissue(refreshToken);
 
     const {

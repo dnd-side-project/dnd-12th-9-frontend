@@ -51,12 +51,12 @@ export function TextField({
   });
 
   return (
-    <Flex className="flex-col items-start">
+    <Flex className="w-full flex-col">
       <Center className="relative">
         <input
           value={value}
           maxLength={maxLength}
-          className="h-11 w-[272px] rounded-lg py-[9px] pl-3 pr-10 text-gray-900 outline-none outline outline-1 outline-gray-200 transition-colors placeholder:text-gray-300"
+          className="h-11 w-full rounded-lg py-[9px] pl-3 pr-10 text-gray-900 outline-none outline outline-1 outline-gray-200 transition-colors placeholder:text-gray-300"
           onBlur={(event) => {
             handleBlur();
             onBlur?.(event);
@@ -72,20 +72,20 @@ export function TextField({
           </button>
         )}
       </Center>
-      <div className="relative min-h-[20px] w-[272px]">
+      <div className="flex min-h-[20px] w-full items-center justify-between">
         {hasError && (
           <Text type="caption" className="mt-1 text-red-500">
             {errorMessage || `최소 ${minLength}자 이상 입력해주세요.`}
           </Text>
         )}
-        <span className="absolute right-0">
+        <div className="ml-auto">
           <Text type="caption" className="black">
             {value.length}
           </Text>
           <Text type="caption" className="text-gray-400">
             /{maxLength}
           </Text>
-        </span>
+        </div>
       </div>
     </Flex>
   );

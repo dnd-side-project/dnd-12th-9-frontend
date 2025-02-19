@@ -1,6 +1,6 @@
 import ky, { type Options, type ResponsePromise } from 'ky';
-
 import { getAccessToken } from './acessToken';
+import { removeUserInfoFromCookies } from './_accessToken';
 
 const defaultOption: Options = {
   retry: 0,
@@ -27,10 +27,11 @@ export const instance = ky.create({
     afterResponse: [
       //TODO 자동 로그인 기능 추가
       async (_request, _options, response) => {
-        // FIXME 인증 오류 발생시 로그인 페이지로 리다이렉트하는 코드, 개발 편의성을 위해 주석처리
-        // if (!response.ok && response.status === 401) {
-        //   redirect('/login');
-        // }
+        if (!response.ok && response.status === 401) {
+          await removeUserInfoFromCookies();
+          // next/navigation에서 제공하는 redirect는 서버 전용이라 window.location.href를 이용해서 구현
+          window.location.href = '/login';
+        }
         return response;
       },
     ],
