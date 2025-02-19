@@ -53,4 +53,6 @@ export const fetcher = {
     parseResponse<T>(instance.put(pathname, options)),
   delete: <T>(pathname: string, options?: Options) =>
     parseResponse<T>(instance.delete(pathname, options)),
+  patch: <T>(pathname: string, options?: Options) =>
+    parseResponse<T>(instance.patch(pathname, options)),
 };
