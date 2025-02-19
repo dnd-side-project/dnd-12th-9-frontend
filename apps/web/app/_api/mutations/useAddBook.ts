@@ -13,7 +13,6 @@ export const useAddBook = () => {
   return useMutation<Response, Error, NewBook>({
     mutationFn: (data: NewBook) => addBook(data),
     onSuccess: () => {
-      console.log('useAddBook');
       queryClient.invalidateQueries(book.search(''));
     },
     // TODO : 책 등록에 실패했을 경우 에러 처리
