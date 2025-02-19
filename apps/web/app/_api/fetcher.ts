@@ -1,13 +1,13 @@
-import { cookies } from 'next/headers';
-
 import ky, { type Options, type ResponsePromise } from 'ky';
+
+import { getAccessToken } from './acessToken';
 
 const defaultOption: Options = {
   retry: 0,
   timeout: 30_000,
 };
 
-const API_ENDPOINT = process.env.API_ENDPOINT;
+const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 export const instance = ky.create({
   prefixUrl: API_ENDPOINT,
@@ -17,8 +17,7 @@ export const instance = ky.create({
   hooks: {
     beforeRequest: [
       async (request) => {
-        const cookieStore = await cookies();
-        const accessToken = cookieStore.get('accessToken');
+        const accessToken = await getAccessToken();
 
         if (accessToken) {
           request.headers.set('Authorization', `Bearer ${accessToken.value}`);
