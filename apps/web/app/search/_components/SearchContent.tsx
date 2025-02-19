@@ -12,7 +12,7 @@ import { BookList } from './BookList';
 const OBSERVER_OPTIONS = {
   root: null,
   rootMargin: '0px',
-  threshold: 0.5,
+  threshold: 0.1,
 };
 
 export const SearchContent = () => {
@@ -22,6 +22,7 @@ export const SearchContent = () => {
   const { data, hasNextPage, isFetchingNextPage, fetchNextPage, refetch } = useSearchBook(search);
 
   const books = data?.pages.flatMap((page) => page.data.books) ?? [];
+
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
@@ -60,7 +61,10 @@ export const SearchContent = () => {
       </Box>
       <Box className="mt-6 flex-1 overflow-y-auto">
         {search && <BookList data={books} />}
-        <Spacing ref={observerTarget} className="h-5" />
+        <Spacing
+          ref={observerTarget}
+          className="flex h-20 items-center justify-center bg-gray-100/10"
+        />
       </Box>
     </Flex>
   );

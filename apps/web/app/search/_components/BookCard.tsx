@@ -7,10 +7,17 @@ import { Book } from 'app/_api/types/book';
 
 export type BookWithModal = Book & { openModal: () => void };
 export const BookCard = ({ title, author, publishedAt, thumbnail, openModal }: BookWithModal) => {
+  const IMAGE = '/BASIC_GHOST.png';
   return (
     <Flex className="my-2 w-full flex-row items-center justify-between">
       <Flex className="flex-row items-center gap-4">
-        {thumbnail && <Image src={thumbnail} alt="도서 검색 결과" width={72} height={110} />}
+        <Image
+          src={thumbnail || IMAGE}
+          alt="도서 검색 결과"
+          width={72}
+          height={110}
+          className="h-[110px] w-[72px] object-contain"
+        />
         <Flex className="flex-col">
           <Text type="Title2" className="text-gray-900">
             {title}
