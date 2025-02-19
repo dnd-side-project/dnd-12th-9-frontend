@@ -10,7 +10,11 @@ const config: Omit<Config, 'content'> = {
     screens: {
       md: '440px',
     },
-    extend: {},
+    extend: {
+      dropShadow: {
+        brand: '0px 4px 5px 0px rgba(0, 0, 0, 0.05)',
+      },
+    },
   },
   plugins: [],
 };

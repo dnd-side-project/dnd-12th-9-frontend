@@ -23,7 +23,14 @@ const BookListPage = () => {
   //TODO readStatus를 바탕으로 데이터 조회
 
   return (
-    <PageLayout header={<Header left={<BackButton />}>책장</Header>}>
+    <PageLayout
+      header={
+        <Header left={<BackButton />} className="bg-white" borderBottom>
+          책장
+        </Header>
+      }
+      className="bg-white"
+    >
       <BookListHeader count={MOCK_BOOK_LIST.length} />
       <Stack className="px-4">
         <HStack className="gap-1.5">
