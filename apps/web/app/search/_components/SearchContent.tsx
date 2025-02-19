@@ -19,9 +19,7 @@ export const SearchContent = () => {
   const observerTarget = useRef<HTMLDivElement>(null);
   const [search, setSearch] = useState<string>('');
 
-  const { data, hasNextPage, isFetchingNextPage, fetchNextPage, refetch } = useSearchBook(search, {
-    enabled: false,
-  });
+  const { data, hasNextPage, isFetchingNextPage, fetchNextPage, refetch } = useSearchBook(search);
 
   const books = data?.pages.flatMap((page) => page.data.books) ?? [];
   const handleObserver = useCallback(

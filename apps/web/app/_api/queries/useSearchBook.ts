@@ -2,11 +2,10 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { book } from '../queryKey';
 
-const useSearchBook = (bookName: string, options: object) => {
+const useSearchBook = (bookName: string) => {
   return useInfiniteQuery({
     ...book.search(bookName),
-    enabled: !!bookName,
-    ...options,
+    enabled: !!bookName && bookName.length > 1,
   });
 };
 export default useSearchBook;
