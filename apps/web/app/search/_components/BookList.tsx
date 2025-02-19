@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
-import { Box } from '@repo/ui/components/Layout';
+import { Box, CenterStack } from '@repo/ui/components/Layout';
 import { useModal } from '@repo/ui/hooks/useModal';
 import { Book } from 'app/_api/types/book';
+import Loading from 'app/_components/Loading';
 import { BookStatusModal } from 'app/books/[id]/_components/BookStatusModal';
 
 import { BookCard } from './BookCard';
@@ -10,8 +11,9 @@ import { SearchFallback } from './SearchFallback';
 
 type BookListProps = {
   data: Book[];
+  isLoading: boolean;
 };
-export const BookList = ({ data }: BookListProps) => {
+export const BookList = ({ data, isLoading }: BookListProps) => {
   const [selectedBook, setSelectedBook] = useState<Book>({} as Book);
   const { isOpen, openModal, closeModal } = useModal();
   const isEmptyBooks = data.length === 0;
@@ -20,6 +22,14 @@ export const BookList = ({ data }: BookListProps) => {
     setSelectedBook(book);
     openModal();
   };
+
+  if (isLoading) {
+    return (
+      <CenterStack className="h-dvh">
+        <Loading />
+      </CenterStack>
+    );
+  }
 
   return (
     <Box className="mx-4 pb-6">
