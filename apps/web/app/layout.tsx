@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="ko" className={`${pretendard.variable}`}>
       <body className={pretendard.className}>
         <ClientQueryProvider>
-          <div className="flex h-dvh justify-center">
+          <div className="drop-shadow-brand flex h-dvh justify-center bg-gray-100 md:drop-shadow-none">
             <div className="w-full max-w-[440px]">{children}</div>
           </div>
         </ClientQueryProvider>
