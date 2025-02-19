@@ -2,8 +2,6 @@
 
 import Image from 'next/image';
 
-import { useState } from 'react';
-
 import { useSuspenseQueries } from '@tanstack/react-query';
 
 import { Button } from '@repo/ui/components/Button';
@@ -15,12 +13,11 @@ import { useUpdateEquippedItem } from 'app/_api/mutations/useUpdateEquippedItem'
 import { itemQueryOptions } from 'app/_api/queries/item';
 import { BackButton } from 'app/_components/BackButton';
 
-import { Ghost, GHOST_MAP } from '../_fixture/item';
+import { GHOST_MAP, BASIC_GHOST } from '../_constants/item';
+import { useGhost } from '../_hooks/useGhost';
 import { getImageUrl } from '../_util/image';
 
 import { ItemCard } from './ItemCard';
-
-const BASIC_GHOST = GHOST_MAP['basic_ghost'] satisfies Ghost;
 
 type ClosetSectionProps = {
   memberId: string;
@@ -44,16 +41,11 @@ export const ClosetSection = ({ memberId }: ClosetSectionProps) => {
 
   const initialGhost = GHOST_MAP[equippedItem.CHARACTER[0] ?? BASIC_GHOST.code];
 
-  const [currentGhost, setCurrentGhost] = useState<Ghost>(
-    GHOST_MAP[equippedItem.CHARACTER[0] ?? BASIC_GHOST.code]
-  );
-
-  const updateCurrentGhost = (ghost: Ghost) => () => setCurrentGhost(ghost);
-  const resetGhost = () => setCurrentGhost(initialGhost);
+  const { currentGhost, updateCurrentGhost, resetGhost, isInitialGhost } = useGhost(initialGhost);
 
   const { mutate, isPending } = useUpdateEquippedItem();
 
-  const disabled = currentGhost.code === initialGhost.code || isPending;
+  const disabled = isInitialGhost || isPending;
 
   const onClickSavebutton = () => {
     mutate({
