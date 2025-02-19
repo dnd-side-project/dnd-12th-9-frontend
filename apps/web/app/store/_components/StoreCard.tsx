@@ -2,13 +2,12 @@ import { OrgIcon } from '@repo/ui/components/Button/assets/OrbIcon';
 import { Flex, JustifyBetween } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 
-// TODO: 추후 타입명 변경
 type StoreCardProps = {
-  count: number;
-  tryAvailable: number;
+  drawCount: number;
+  drawPoint: number;
 };
 
-export const StoreCard = ({ count, tryAvailable }: StoreCardProps) => {
+export const StoreCard = ({ drawCount, drawPoint }: StoreCardProps) => {
   return (
     <JustifyBetween className="rounded-lg bg-white p-4">
       <Flex className="items-center gap-1">
@@ -17,7 +16,7 @@ export const StoreCard = ({ count, tryAvailable }: StoreCardProps) => {
         </Text>
         <OrgIcon />
         <Text type="Title2" weight="medium" className="text-black">
-          {count}
+          {drawCount}
         </Text>
       </Flex>
       <Flex className="gap-1">
@@ -25,7 +24,7 @@ export const StoreCard = ({ count, tryAvailable }: StoreCardProps) => {
           뽑기 가능 횟수
         </Text>
         <Text type="Body2" className="text-green-600">
-          {tryAvailable}회
+          {drawPoint}회
         </Text>
       </Flex>
     </JustifyBetween>

@@ -1,3 +1,4 @@
+import useMemberPoint from './useMemberPoint';
 import useSearchBook from './useSearchBook';
 
-export { useSearchBook };
+export { useMemberPoint, useSearchBook };

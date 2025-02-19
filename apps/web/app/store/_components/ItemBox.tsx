@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { Box, JustifyBetween } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 
+import { ALL_GHOSTS } from '../constants/ghost';
 import { SLIDER_ANIMATION } from '../constants/motions';
 
 export const ItemBox = () => {
@@ -22,10 +23,10 @@ export const ItemBox = () => {
           transition={SLIDER_ANIMATION.transition}
           className="relative flex items-center gap-5"
         >
-          {Array.from({ length: 3 }).map((_, index) => (
+          {[...ALL_GHOSTS, ...ALL_GHOSTS].map((ghost, index) => (
             <Image
               key={index}
-              src="/BASIC_GHOST.png"
+              src={`/Ghost/${ghost}.png`}
               alt="BASIC_GHOST"
               width={60}
               height={60}
