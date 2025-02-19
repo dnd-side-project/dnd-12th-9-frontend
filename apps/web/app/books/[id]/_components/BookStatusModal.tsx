@@ -31,11 +31,13 @@ export const BookStatusModal = ({
   initialReadState = 'WANT_TO_READ',
 }: BookStatusModalProps) => {
   const [activeStatus, setActiveStatus] = useState<READING_STATUS>(initialReadState);
-
   const mutation = useAddBook();
+
   const handleSave = () => {
     mutation.mutate({
-      ...data,
+      title: data.title,
+      author: data.author,
+      publishedAt: data.publishedAt,
       readStatus: activeStatus,
     });
     closeModal();

@@ -2,9 +2,8 @@ import { useState } from 'react';
 
 import { Box } from '@repo/ui/components/Layout';
 import { useModal } from '@repo/ui/hooks/useModal';
+import { Book } from 'app/_api/types/book';
 import { BookStatusModal } from 'app/books/[id]/_components/BookStatusModal';
-
-import { Book } from '../_types/book';
 
 import { BookCard } from './BookCard';
 import { SearchFallback } from './SearchFallback';

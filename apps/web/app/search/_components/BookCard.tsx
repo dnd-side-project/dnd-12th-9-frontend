@@ -3,15 +3,14 @@ import Image from 'next/image';
 import { Button } from '@repo/ui/components/Button';
 import { Flex, Spacing } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
-
-import { Book } from '../_types/book';
+import { Book } from 'app/_api/types/book';
 
 export type BookWithModal = Book & { openModal: () => void };
 export const BookCard = ({ title, author, publishedAt, thumbnail, openModal }: BookWithModal) => {
   return (
     <Flex className="my-2 w-full flex-row items-center justify-between">
       <Flex className="flex-row items-center gap-4">
-        <Image src={thumbnail} alt="도서 검색 결과" width={72} height={110} />
+        {thumbnail && <Image src={thumbnail} alt="도서 검색 결과" width={72} height={110} />}
         <Flex className="flex-col">
           <Text type="Title2" className="text-gray-900">
             {title}
