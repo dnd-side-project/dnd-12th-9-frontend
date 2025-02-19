@@ -11,6 +11,13 @@ import { MOCK_TAG } from '../_fixture/hashTag';
 import { DialogTrigger } from './DialogTrigger';
 
 export const ReadingCard = () => {
+  const bookData = {
+    title: '인간실격',
+    author: '오늘의 작가',
+    publishedAt: '2025.01.14',
+    thumbnail: '/images/cover.jpg',
+  };
+
   return (
     <Stack className="gap-5 rounded-lg bg-white px-5 py-4">
       <JustifyBetween className="items-center">
@@ -30,7 +37,7 @@ export const ReadingCard = () => {
             </Text>
           </Stack>
         </HStack>
-        <DialogTrigger />
+        <DialogTrigger data={bookData} />
       </JustifyBetween>
       <Box className="h-[1px] bg-gray-100" />
       <Stack className="gap-4">

@@ -1,7 +1,7 @@
 {
   "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
-    "preserveSymlinks": true,
+    "preserveSymlinks": false,
     "baseUrl": ".",
     "paths": {
       "@repo/ui/components/*": ["../../packages/ui/src/components/*"],

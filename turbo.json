@@ -6,7 +6,7 @@
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**"],
-      "env": ["API_ENDPOINT"]
+      "env": ["NEXT_PUBLIC_API_ENDPOINT"]
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -17,7 +17,7 @@
     "dev": {
       "cache": false,
       "persistent": true,
-      "env": ["API_ENDPOINT"]
+      "env": ["NEXT_PUBLIC_API_ENDPOINT"]
     }
   },
   "globalDependencies": [".env"]

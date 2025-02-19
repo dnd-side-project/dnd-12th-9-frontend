@@ -5,8 +5,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'picsum.photos',
+        protocol: 'http',
+        hostname: 't1.daumcdn.net',
       },
     ],
   },
