@@ -1,10 +1,9 @@
-import { Button, ButtonElement } from '@repo/ui/components/Button';
 import { Header } from '@repo/ui/components/Header';
-import { Flex, JustifyBetween, PageLayout } from '@repo/ui/components/Layout';
+import { JustifyBetween, PageLayout } from '@repo/ui/components/Layout';
 import { BackButton } from 'app/_components/BackButton';
 
 import { ItemBox } from './_components/ItemBox';
-import { StoreCard } from './_components/StoreCard';
+import { ItemInfo } from './_components/ItemInfo';
 
 const StorePage = () => {
   return (
@@ -18,18 +17,7 @@ const StorePage = () => {
     >
       <JustifyBetween className="mx-4 mb-4 mt-4 flex-1 flex-col">
         <ItemBox />
-        <Flex className="flex-col gap-3">
-          <StoreCard count={0} tryAvailable={0} />
-          <Button
-            size="lg"
-            variant="gray200"
-            className="w-full"
-            right={<ButtonElement count={100} />}
-            disabled
-          >
-            아이템 뽑기
-          </Button>
-        </Flex>
+        <ItemInfo />
       </JustifyBetween>
     </PageLayout>
   );
