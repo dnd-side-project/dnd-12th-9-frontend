@@ -16,7 +16,7 @@ import { StoreCard } from './StoreCard';
 
 export const ItemInfo = () => {
   const router = useRouter();
-  const { data: data } = useMemberPoint();
+  const { data } = useMemberPoint();
   const [itemData, setItemData] = useState<Item>({
     name: '',
     code: '',
