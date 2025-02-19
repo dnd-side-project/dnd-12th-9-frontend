@@ -13,7 +13,7 @@ export type NewBook = {
 };
 
 export type SearchBookResponse = {
-  resultType: string;
+  resultType: 'SUCCESS' | 'ERROR';
   data: {
     books: Book[];
   };

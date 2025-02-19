@@ -12,6 +12,7 @@ const SearchPage = () => {
           검색
         </Header>
       }
+      className="overflow-y-hidden"
     >
       <SearchContent />
     </PageLayout>
