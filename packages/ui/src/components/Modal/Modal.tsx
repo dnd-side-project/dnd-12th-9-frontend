@@ -2,6 +2,7 @@ import { ComponentProps } from 'react';
 
 import { motion } from 'framer-motion';
 
+import { cn } from '../../lib/core';
 import { FADE_IN_ANIMATION } from '../../lib/motions';
 import { Portal } from '../Portal';
 
@@ -26,9 +27,26 @@ type Props = {
    * The content to be displayed inside the modal.
    */
   children: React.ReactNode;
+  /**
+   * The class name for the modal
+   * @default ''
+   * */
+  className?: string;
+  /**
+   * The class name for the content
+   * @default ''
+   * */
+  contentClassName?: string;
 } & ComponentProps<'div'>;
 
-export function Modal({ isOpen, onClickOutside, graphic = false, children }: Props) {
+export function Modal({
+  isOpen,
+  onClickOutside,
+  graphic = false,
+  className = '',
+  contentClassName = '',
+  children,
+}: Props) {
   const onClickOutsideDefault = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target instanceof HTMLElement && e.target === e.currentTarget && onClickOutside) {
       onClickOutside();
@@ -43,9 +61,14 @@ export function Modal({ isOpen, onClickOutside, graphic = false, children }: Pro
         initial="initial"
         animate="animate"
         exit="exit"
-        className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50"
+        className={cn(
+          'fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50',
+          className
+        )}
       >
-        <Content graphic={graphic}>{children}</Content>
+        <Content graphic={graphic} contentClassName={contentClassName}>
+          {children}
+        </Content>
       </motion.div>
     </Portal>
   );
