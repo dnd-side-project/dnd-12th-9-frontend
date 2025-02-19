@@ -1,5 +1,7 @@
 import localFont from 'next/font/local';
+
 import './globals.css';
+import { ClientQueryProvider } from './_api/ClientQueryProvider';
 
 const pretendard = localFont({
   src: '../public/font/PretendardVariable.woff2',
@@ -16,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${pretendard.variable}`}>
       <body className={pretendard.className}>
-        <div className="flex h-dvh justify-center">
-          <div className="w-full max-w-[440px]">{children}</div>
-        </div>
+        <ClientQueryProvider>
+          <div className="flex h-dvh justify-center">
+            <div className="w-full max-w-[440px]">{children}</div>
+          </div>
+        </ClientQueryProvider>
       </body>
     </html>
   );
