@@ -22,7 +22,7 @@ export default function LoginPage() {
         </CenterStack>
         <CenterStack className="gap-3">
           <Link
-            href={`${process.env.API_ENDPOINT}/login/kakao`}
+            href={`${process.env.NEXT_PUBLIC_API_ENDPOINT}/login/kakao`}
             className="flex w-full items-center justify-center gap-1 rounded-lg bg-[#ffcc00] py-3"
           >
             <KakaoLogo />
