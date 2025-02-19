@@ -1,42 +1,57 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { Box } from '@repo/ui/components/Layout';
+import { Box, Flex, Spacing } from '@repo/ui/components/Layout';
 import { SearchBar } from '@repo/ui/components/SearchBar';
-import { useModal } from '@repo/ui/hooks/useModal';
-import { BookStatusModal } from 'app/books/[id]/_components/BookStatusModal';
 
 import useSearchBook from '../../_api/queries/useSearchBook';
-import { Book } from '../_types/book';
 
-import { BookCard } from './BookCard';
-import { SearchFallback } from './SearchFallback';
+import { BookList } from './BookList';
+
+const OBSERVER_OPTIONS = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.5,
+};
 
 export const SearchContent = () => {
+  const observerTarget = useRef<HTMLDivElement>(null);
   const [search, setSearch] = useState<string>('');
-  const [selectedBook, setSelectedBook] = useState<Book>({} as Book);
-  const { isOpen, openModal, closeModal } = useModal();
-  const { data, refetch } = useSearchBook(search, {
+
+  const { data, hasNextPage, isFetchingNextPage, fetchNextPage, refetch } = useSearchBook(search, {
     enabled: false,
   });
 
   const books = data?.pages.flatMap((page) => page.data.books) ?? [];
-  const isEmptyBooks = books.length === 0;
+  const handleObserver = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
+          fetchNextPage();
+        }
+      });
+    },
+    [fetchNextPage, hasNextPage, isFetchingNextPage]
+  );
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleObserver, OBSERVER_OPTIONS);
+
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
+    }
+    return () => observer.disconnect();
+  }, [handleObserver]);
 
   const handleSearch = () => {
     if (!search.trim()) return;
     refetch();
   };
 
-  const handleOpenModal = (book: Book) => {
-    setSelectedBook(book);
-    openModal();
-  };
-
   return (
-    <Box className="mx-4">
-      <Box className="mt-[15px]">
+    <Flex className="h-dvh flex-col">
+      <Box className="mx-4 mt-[15px]">
         <SearchBar
           value={search}
           placeholder="검색어를 입력하세요"
@@ -45,25 +60,10 @@ export const SearchContent = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </Box>
-      <Box className="mt-6">
-        {isEmptyBooks ? (
-          <SearchFallback />
-        ) : (
-          <>
-            {books.map((book, index) => (
-              <BookCard
-                key={`${book.title} - ${index}`}
-                title={book.title}
-                author={book.author}
-                publishedAt={book.publishedAt}
-                thumbnail={book.thumbnail}
-                openModal={() => handleOpenModal(book)}
-              />
-            ))}
-          </>
-        )}
+      <Box className="mt-6 flex-1 overflow-y-auto">
+        {search && <BookList data={books} />}
+        <Spacing ref={observerTarget} className="h-5" />
       </Box>
-      <BookStatusModal isOpen={isOpen} closeModal={closeModal} title={selectedBook.title} />
-    </Box>
+    </Flex>
   );
 };
