@@ -1,4 +1,4 @@
-import { cn } from '@/lib/core';
+import { cn } from '../../lib/core';
 
 type ContentProps = {
   /**
