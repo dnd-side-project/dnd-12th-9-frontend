@@ -11,6 +11,7 @@ import { Header } from '@repo/ui/components/Header';
 import { Icon } from '@repo/ui/components/Icon';
 import { IconButton } from '@repo/ui/components/IconButton';
 import { Box, PageLayout, Stack } from '@repo/ui/components/Layout';
+import { useUpdateEquippedItem } from 'app/_api/mutations/useUpdateEquippedItem';
 import { itemQueryOptions } from 'app/_api/queries/item';
 import { BackButton } from 'app/_components/BackButton';
 
@@ -19,7 +20,7 @@ import { getImageUrl } from '../_util/image';
 
 import { ItemCard } from './ItemCard';
 
-const initialGhost = GHOST_MAP['basic_ghost'] satisfies Ghost;
+const BASIC_GHOST = GHOST_MAP['basic_ghost'] satisfies Ghost;
 
 type ClosetSectionProps = {
   memberId: string;
@@ -41,17 +42,25 @@ export const ClosetSection = ({ memberId }: ClosetSectionProps) => {
     queries: [itemQueryOptions.list(memberId), itemQueryOptions.equipped(memberId)],
   });
 
+  const initialGhost = GHOST_MAP[equippedItem.CHARACTER[0] ?? BASIC_GHOST.code];
+
   const [currentGhost, setCurrentGhost] = useState<Ghost>(
-    GHOST_MAP[equippedItem.CHARACTER[0] ?? initialGhost.code]
+    GHOST_MAP[equippedItem.CHARACTER[0] ?? BASIC_GHOST.code]
   );
 
   const updateCurrentGhost = (ghost: Ghost) => () => setCurrentGhost(ghost);
   const resetGhost = () => setCurrentGhost(initialGhost);
 
-  const disabled = currentGhost.code === initialGhost.code;
+  const { mutate, isPending } = useUpdateEquippedItem();
 
-  //TODO 저장 버튼 클릭시 API 연동 필요
-  const onClickSavebutton = () => {};
+  const disabled = currentGhost.code === initialGhost.code || isPending;
+
+  const onClickSavebutton = () => {
+    mutate({
+      equippedItemCode: initialGhost.code,
+      toEquipItemCode: currentGhost.code,
+    });
+  };
 
   return (
     <PageLayout

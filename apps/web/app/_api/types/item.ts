@@ -13,3 +13,8 @@ export type GetEquippedItemResponse = ResponseFormat<{
     [key in 'CHARACTER']: Code[];
   };
 }>;
+
+export type UpdateEquippedItemAPIRequest = {
+  equippedItemCode: string;
+  toEquipItemCode: string;
+};
