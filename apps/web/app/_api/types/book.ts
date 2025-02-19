@@ -2,7 +2,14 @@ export type Book = {
   title: string;
   author: string;
   publishedAt: string;
-  thumbnail: string;
+  thumbnail?: string;
+};
+
+export type NewBook = {
+  title: string;
+  author: string;
+  publishedAt: string;
+  readStatus: 'WANT_TO_READ' | 'READING' | 'COMPLETED';
 };
 
 export type SearchBookResponse = {
