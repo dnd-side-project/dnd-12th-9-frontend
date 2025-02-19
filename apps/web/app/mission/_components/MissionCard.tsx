@@ -1,5 +1,7 @@
 'use client';
 
+import { ReactNode } from 'react';
+
 import { Icon } from '@repo/ui/components/Icon';
 import { Center, HStack, JustifyBetween, Stack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
@@ -7,16 +9,15 @@ import { Text } from '@repo/ui/components/Text';
 type MissionCardProps = {
   title: string;
   orbCount?: number;
-  action?: React.ReactNode;
+  action?: ReactNode;
+  missionIcon: ReactNode;
 };
 
-export const MissionCard = ({ title, orbCount, action }: MissionCardProps) => {
+export const MissionCard = ({ title, orbCount, action, missionIcon }: MissionCardProps) => {
   return (
     <JustifyBetween className="items-center gap-3 rounded-lg bg-white p-4">
       <HStack className="gap-3">
-        <Center className="h-[50px] w-[50px] rounded-full bg-gray-50">
-          <Icon type="missionCard" />
-        </Center>
+        <Center className="h-[50px] w-[50px] rounded-full bg-gray-50">{missionIcon}</Center>
         <Stack className="gap-1">
           <Text type="Title1" weight="medium" className="text-gray-800">
             {title}

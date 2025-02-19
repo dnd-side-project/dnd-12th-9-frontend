@@ -20,6 +20,7 @@ import { Link } from './link';
 import { Logo } from './logo';
 import { Menu } from './menu';
 import { MissionCard } from './missionCard';
+import { MissionShare } from './missionShare';
 import { Next } from './next';
 import { Note } from './note';
 import { Orb } from './orb';
@@ -65,6 +66,7 @@ export const iconMap = {
   missionCard: MissionCard,
   orb: Orb,
   squarePen: SquarePen,
+  missionShare: MissionShare,
 };
 
 export type IconType = keyof typeof iconMap;
