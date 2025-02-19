@@ -18,8 +18,9 @@ const OBSERVER_OPTIONS = {
 export const SearchContent = () => {
   const observerTarget = useRef<HTMLDivElement>(null);
   const [search, setSearch] = useState<string>('');
+  const [query, setQuery] = useState<string>('');
 
-  const { data, hasNextPage, isFetchingNextPage, isLoading, fetchNextPage } = useSearchBook(search);
+  const { data, hasNextPage, isFetchingNextPage, isLoading, fetchNextPage } = useSearchBook(query);
 
   const books = data?.pages.flatMap((page) => page.data.books) ?? [];
 
@@ -43,19 +44,23 @@ export const SearchContent = () => {
     return () => observer.disconnect();
   }, [handleObserver]);
 
+  const handleSearch = () => {
+    setQuery(search);
+  };
+
   return (
     <Flex className="h-dvh flex-col">
       <Box className="mx-4 mt-[15px]">
         <SearchBar
           value={search}
           placeholder="검색어를 입력하세요"
-          onClick={() => {}}
+          onClick={() => handleSearch()}
           onClickReset={() => setSearch('')}
           onChange={(e) => setSearch(e.target.value)}
         />
       </Box>
       <Box className="mt-6 flex-1 overflow-y-auto">
-        <BookList data={books} isLoading={isLoading} />
+        {query && <BookList data={books} isLoading={isLoading} />}
         <Box ref={observerTarget} className="h-14" />
       </Box>
     </Flex>
