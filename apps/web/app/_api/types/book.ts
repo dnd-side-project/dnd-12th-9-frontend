@@ -16,12 +16,12 @@ export type SearchBookResponse = {
   resultType: 'SUCCESS' | 'ERROR';
   data: {
     books: Book[];
-  };
-  pageInfo: {
-    inEnd: boolean;
-    pageableCount: number;
-    totalCount: number;
-    page: number;
+    pageInfo: {
+      isEnd: boolean;
+      pageableCount: number;
+      totalCount: number;
+      page: number;
+    };
   };
   error: {
     code: string;
