@@ -5,14 +5,19 @@ import { motion } from 'framer-motion';
 
 import { GHOST_ANIMATION } from '../_constants/motions';
 
-export const Ghost = () => {
+type HomeGhostProps = {
+  ghost: string;
+};
+export const Ghost = ({ ghost }: HomeGhostProps) => {
+  const ghostImage = `/Ghost/${ghost.toUpperCase()}.png`;
+
   return (
     <motion.div
       initial={GHOST_ANIMATION.initial}
       animate={GHOST_ANIMATION.animate}
       transition={GHOST_ANIMATION.transition}
     >
-      <Image priority src="/Ghost/BASIC_GHOST.png" alt="ghost" width={200} height={200} />
+      <Image priority src={ghostImage} alt={ghostImage} width={200} height={200} />
     </motion.div>
   );
 };
