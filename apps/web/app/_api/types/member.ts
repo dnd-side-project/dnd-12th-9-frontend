@@ -1,4 +1,5 @@
 import { Error, ResultType } from './common';
+import { ResponseFormat } from './response';
 
 export type Point = {
   point: number;
@@ -11,3 +12,7 @@ export type MemberPoint = {
   data: Point;
   error: Error;
 };
+
+export type GetMemberCompletedBookAPIResponse = ResponseFormat<{
+  completedBookCount: number;
+}>;
