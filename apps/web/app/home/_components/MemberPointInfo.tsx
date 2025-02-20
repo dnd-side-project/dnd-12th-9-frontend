@@ -8,6 +8,7 @@ import { OrgIcon } from '@repo/ui/components/Button/assets/OrbIcon';
 import { Icon } from '@repo/ui/components/Icon';
 import { Box, Flex, HStack, JustifyBetween, Spacing } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
+import { bookQueryOptions } from 'app/_api/queries/book';
 import { memberQueryOptions } from 'app/_api/queries/member';
 
 type MemberPointInfoProps = {
@@ -19,7 +20,7 @@ export const MemberPointInfo = ({ memberId }: MemberPointInfoProps) => {
 
   // TODO : useSuspenseQueries 변경
   const { data } = useQuery(memberQueryOptions.point());
-  const { data: bookData } = useQuery(memberQueryOptions.completed(memberId));
+  const { data: bookData } = useQuery(bookQueryOptions.completed(memberId));
 
   return (
     <Flex className="flex-col gap-3">
