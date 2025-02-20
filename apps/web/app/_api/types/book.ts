@@ -1,5 +1,7 @@
 import { READING_STATUS } from 'app/_constants/status';
 
+import { Error, ResultType } from './common';
+
 export type Book = {
   title: string;
   author: string;
@@ -15,7 +17,7 @@ export type NewBook = {
 };
 
 export type SearchBookResponse = {
-  resultType: 'SUCCESS' | 'ERROR';
+  resultType: ResultType;
   data: {
     books: Book[];
     pageInfo: {
@@ -25,11 +27,7 @@ export type SearchBookResponse = {
       page: number;
     };
   };
-  error: {
-    code: string;
-    message: string;
-    data: object;
-  };
+  error: Error;
 };
 
 export type MemberBook = Book & {

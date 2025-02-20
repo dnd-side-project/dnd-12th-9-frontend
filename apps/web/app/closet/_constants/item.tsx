@@ -1,20 +1,4 @@
-export type Code =
-  | 'mummy_ghost'
-  | 'basic_ghost'
-  | 'cat_ghost'
-  | 'wizard_ghost'
-  | 'detective_ghost'
-  | 'littleprince_ghost'
-  | 'frankenstein_ghost'
-  | 'redhood_ghost'
-  | 'cheese_cat_ghost'
-  | 'siamese_cat_ghost'
-  | 'baekdo_cat_ghost';
-
-export type Ghost = {
-  name: string;
-  code: Code;
-};
+import { Code, Ghost } from 'app/_api/types/item';
 
 export const GHOST_MAP = {
   mummy_ghost: {
@@ -61,4 +45,6 @@ export const GHOST_MAP = {
     name: '백도 고양이 유령',
     code: 'baekdo_cat_ghost',
   },
-} satisfies Record<Code, { name: string; code: Code }>;
+} satisfies Record<Code, Ghost>;
+
+export const BASIC_GHOST = GHOST_MAP['basic_ghost'] satisfies Ghost;

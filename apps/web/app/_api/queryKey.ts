@@ -1,6 +1,8 @@
 'use client';
+
 import { fetcher } from './fetcher';
 import { SearchBookResponse } from './types/book';
+import { MemberPoint } from './types/member';
 
 export const book = {
   search: (bookName: string) => ({
@@ -11,5 +13,12 @@ export const book = {
       return lastPage.data.pageInfo?.isEnd === false ? lastPage.data.pageInfo?.page + 1 : undefined;
     },
     initialPageParam: 1,
+  }),
+};
+
+export const member = {
+  point: () => ({
+    queryKey: ['memberPoint'],
+    queryFn: () => fetcher.get<MemberPoint>('members/point'),
   }),
 };
