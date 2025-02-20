@@ -1,11 +1,26 @@
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+
 import { Header } from '@repo/ui/components/Header';
 import { PageLayout, Stack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
+import { evaluaionQueryOptions } from 'app/_api/queries/evaluation';
 import { BackButton } from 'app/_components/BackButton';
 
 import { ReviewContent } from './_components/ReviewContent';
 
-const ReviewPage = () => {
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+const queryClient = new QueryClient();
+
+const ReviewPage = async ({ params }: Props) => {
+  const param = await params;
+
+  //TODO 추후 getQueryClient util 함수로 교체
+
+  await queryClient.prefetchQuery(evaluaionQueryOptions.list(param.id));
+
   return (
     <PageLayout
       header={
@@ -17,7 +32,9 @@ const ReviewPage = () => {
     >
       <Stack>
         <ReviewHeader />
-        <ReviewContent />
+        <HydrationBoundary state={dehydrate(queryClient)}>
+          <ReviewContent />
+        </HydrationBoundary>
       </Stack>
     </PageLayout>
   );
