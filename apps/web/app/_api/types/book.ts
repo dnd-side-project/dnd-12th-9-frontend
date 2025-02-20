@@ -32,7 +32,7 @@ export type SearchBookResponse = {
 };
 
 export type MemberBook = Book & {
-  id: number;
+  id: string;
   readStatus: READING_STATUS;
   publishedAt?: string;
   createdAt?: Date; // 문자열로 할지 date로 해야할 지 모르겠음
@@ -53,3 +53,11 @@ export type GetBookDetailAPIRequest = {
 };
 
 export type GetBookDetailAPIResponse = ResponseFormat<MemberBook>;
+
+export type UpdateBookAPIRequest = {
+  bookId: string;
+  title: string;
+  author: string;
+  publishedAt: string;
+  readStatus: READING_STATUS;
+};
