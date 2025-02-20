@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { Button } from '@repo/ui/components/Button';
 import { Icon } from '@repo/ui/components/Icon';
 import { Center, CenterStack, Spacing, VStack } from '@repo/ui/components/Layout';
@@ -20,14 +22,17 @@ export const CardList = ({ bookList }: CardListProps) => {
     <VStack>
       <Spacing className="h-4" />
       <div className="grid w-full grid-cols-3 place-content-between gap-x-3 gap-y-5">
-        <AddBookCard />
+        <Link href="/search">
+          <AddBookCard />
+        </Link>
         {bookList.map(({ id, thumbnail, author, title }) => (
-          <Card
-            key={id}
-            title={title}
-            description={author}
-            imageURL={thumbnail ?? '/Ghost/BASIC_GHOST.png'}
-          />
+          <Link key={id} href={`/books/${id}`}>
+            <Card
+              title={title}
+              description={author}
+              imageURL={thumbnail ?? '/Ghost/BASIC_GHOST.png'}
+            />
+          </Link>
         ))}
       </div>
     </VStack>
@@ -50,9 +55,11 @@ const Fallback = () => {
         </Text>
         <Spacing className="h-5" />
         <Center className="py-1">
-          <Button variant="primary50" size="sm">
-            등록하기
-          </Button>
+          <Link href="/search">
+            <Button variant="primary50" size="sm">
+              등록하기
+            </Button>
+          </Link>
         </Center>
       </CenterStack>
     </>
