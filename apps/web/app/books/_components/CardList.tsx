@@ -2,20 +2,17 @@ import { Button } from '@repo/ui/components/Button';
 import { Icon } from '@repo/ui/components/Icon';
 import { Center, CenterStack, Spacing, VStack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
+import { MemberBook } from 'app/_api/types/book';
 
 import { AddBookCard } from './AddBookCard';
 import { Card } from './Card';
 
 type CardListProps = {
-  cardList: {
-    imageURL: string;
-    title: string;
-    description: string;
-  }[];
+  bookList: MemberBook[];
 };
 
-export const CardList = ({ cardList }: CardListProps) => {
-  const isEmptyCardList = cardList.length === 0;
+export const CardList = ({ bookList }: CardListProps) => {
+  const isEmptyCardList = bookList.length === 0;
 
   return isEmptyCardList ? (
     <Fallback />
@@ -24,8 +21,13 @@ export const CardList = ({ cardList }: CardListProps) => {
       <Spacing className="h-4" />
       <div className="grid w-full grid-cols-3 place-content-between gap-x-3 gap-y-5">
         <AddBookCard />
-        {cardList.map((card, index) => (
-          <Card key={index} {...card} />
+        {bookList.map(({ id, thumbnail, author, title }) => (
+          <Card
+            key={id}
+            title={title}
+            description={author}
+            imageURL={thumbnail ?? '/Ghost/BASIC_GHOST.png'}
+          />
         ))}
       </div>
     </VStack>

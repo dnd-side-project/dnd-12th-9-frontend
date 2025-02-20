@@ -1,35 +1,38 @@
-import { Header } from '@repo/ui/components/Header';
-import { PageLayout } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-import { BackButton } from '../_components/BackButton';
+import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
+
+import { bookQueryOptions } from 'app/_api/queries/book';
+import { COOKIE_ID } from 'app/_constants/cookie';
+import { ReadStatusTag } from 'app/_constants/status';
+import { getQueryClient } from 'app/_util/queryClient';
 
 import { BookSection } from './_components/BookList';
-import { MOCK_BOOK_LIST } from './_fixture/book';
+import { getFilterBySearchParams } from './_utils/getFilterBySearchParams';
 
-const BookListPage = () => {
-  return (
-    <PageLayout
-      header={
-        <Header left={<BackButton />} className="bg-white" borderBottom>
-          책장
-        </Header>
-      }
-      className="bg-white"
-    >
-      <BookListHeader count={MOCK_BOOK_LIST.length} />
-      <BookSection />
-    </PageLayout>
-  );
+type Props = {
+  searchParams: Promise<{ [key: string]: ReadStatusTag | undefined }>;
 };
 
-const BookListHeader = ({ count }: { count: number }) => {
+const BookListPage = async ({ searchParams }: Props) => {
+  const cookieStore = await cookies();
+  const memberId = cookieStore.get(COOKIE_ID.MEMBER_ID)?.value;
+
+  const filter = (await searchParams).filter;
+
+  if (!memberId) {
+    redirect('/login');
+  }
+
+  const queryClient = getQueryClient();
+
+  await queryClient.prefetchQuery(bookQueryOptions.list(memberId, getFilterBySearchParams(filter)));
+
   return (
-    <div className="gap-2 px-4 py-8">
-      <Text type="Heading1" weight="semibold">
-        {`책장에 총 ${count}권의 책이${'\n'} 담겨있어요`}
-      </Text>
-    </div>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <BookSection memberId={memberId} filter={filter ?? 'ALL'} />
+    </HydrationBoundary>
   );
 };
 

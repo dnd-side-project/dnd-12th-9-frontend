@@ -1,37 +1,66 @@
 'use client';
 
-import { useState } from 'react';
+import Link from 'next/link';
+
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { Chip } from '@repo/ui/components/Chip';
-import { Stack, HStack } from '@repo/ui/components/Layout';
+import { Header } from '@repo/ui/components/Header';
+import { Stack, HStack, PageLayout } from '@repo/ui/components/Layout';
+import { Text } from '@repo/ui/components/Text';
+import { bookQueryOptions } from 'app/_api/queries/book';
+import { BackButton } from 'app/_components/BackButton';
 import { READ_STATUS_LIST, ReadStatusTag } from 'app/_constants/status';
+
+import { getFilterBySearchParams } from '../_utils/getFilterBySearchParams';
 
 import { CardList } from './CardList';
 
-export const BookSection = () => {
-  //TODO readStatus를 바탕으로 데이터 조회
+type Props = {
+  memberId: string;
+  filter: ReadStatusTag;
+};
 
-  const [readStatus, setReadStatus] = useState<ReadStatusTag>('ALL');
-
-  const onClick = (value: ReadStatusTag) => () => {
-    setReadStatus(value);
-  };
+export const BookSection = ({ memberId, filter }: Props) => {
+  const {
+    data: {
+      data: { bookList },
+    },
+  } = useSuspenseQuery(bookQueryOptions.list(memberId, getFilterBySearchParams(filter)));
 
   return (
-    <Stack className="px-4">
-      <HStack className="gap-1.5">
-        {READ_STATUS_LIST.map(({ value, text }) => (
-          <Chip
-            variant="rounded"
-            active={readStatus === value}
-            key={value}
-            onClick={onClick(value)}
-          >
-            {text}
-          </Chip>
-        ))}
-      </HStack>
-      <CardList cardList={[]} />
-    </Stack>
+    <PageLayout
+      header={
+        <Header left={<BackButton />} className="bg-white" borderBottom>
+          책장
+        </Header>
+      }
+      className="bg-white"
+    >
+      <BookListHeader count={bookList.length} />
+
+      <Stack className="px-4">
+        <HStack className="gap-1.5">
+          {READ_STATUS_LIST.map(({ value, text }) => (
+            <Link key={value} href={`?filter=${value}`}>
+              <Chip variant="rounded" active={filter === value}>
+                {text}
+              </Chip>
+            </Link>
+          ))}
+        </HStack>
+        <CardList bookList={bookList} />
+      </Stack>
+    </PageLayout>
+  );
+};
+
+const BookListHeader = ({ count }: { count: number }) => {
+  return (
+    <div className="gap-2 px-4 py-8">
+      <Text type="Heading1" weight="semibold">
+        {`책장에 총 ${count}권의 책이${'\n'} 담겨있어요`}
+      </Text>
+    </div>
   );
 };
