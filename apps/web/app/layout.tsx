@@ -1,6 +1,8 @@
 import localFont from 'next/font/local';
 
 import './globals.css';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 import { ClientQueryProvider } from './_api/ClientQueryProvider';
 
 const pretendard = localFont({
@@ -23,6 +25,7 @@ export default function RootLayout({
             <div className="w-full max-w-[440px]">{children}</div>
           </div>
         </ClientQueryProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
