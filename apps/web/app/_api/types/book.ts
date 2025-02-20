@@ -1,6 +1,7 @@
 import { READING_STATUS } from 'app/_constants/status';
 
 import { Error, ResultType } from './common';
+import { ResponseFormat } from './response';
 
 export type Book = {
   title: string;
@@ -31,6 +32,7 @@ export type SearchBookResponse = {
 };
 
 export type MemberBook = Book & {
+  id: number;
   readStatus: READING_STATUS;
   publishedAt?: '2025-02-20';
   createdAt?: '2025-02-20T03:32:50.750Z';
@@ -42,30 +44,12 @@ export type GetBookListAPIRequest = {
   readStatus?: READING_STATUS;
 };
 
-export type GetBookListAPIResponse = {
-  resultType: 'SUCCESS';
-  data: {
-    bookList: MemberBook[];
-  };
-  error: {
-    code: 'string';
-    message: 'string';
-    data: {};
-  };
-};
+export type GetBookListAPIResponse = ResponseFormat<{
+  bookList: MemberBook[];
+}>;
 
 export type GetBookDetailAPIRequest = {
   bookId: string;
 };
 
-export type GetBookDetailAPIResponse = {
-  resultType: 'SUCCESS';
-  data: {
-    bookList: MemberBook;
-  };
-  error: {
-    code: 'string';
-    message: 'string';
-    data: {};
-  };
-};
+export type GetBookDetailAPIResponse = ResponseFormat<MemberBook>;
