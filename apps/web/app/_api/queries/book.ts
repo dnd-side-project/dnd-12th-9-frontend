@@ -32,7 +32,7 @@ export const bookQueryOptions = {
 const getBookListAPI = ({ memberId, readStatus }: GetBookListAPIRequest) => {
   const searchParams = readStatus ? { readStatus } : undefined;
 
-  fetcher.get<GetBookListAPIResponse>(`books/members/${memberId}`, {
+  return fetcher.get<GetBookListAPIResponse>(`books/members/${memberId}`, {
     searchParams,
   });
 };
