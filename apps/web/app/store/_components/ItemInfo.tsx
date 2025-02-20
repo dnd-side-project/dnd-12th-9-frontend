@@ -4,11 +4,13 @@ import { useRouter } from 'next/navigation';
 
 import { useState } from 'react';
 
+import { useQuery } from '@tanstack/react-query';
+
 import { Button, ButtonElement } from '@repo/ui/components/Button';
 import { Flex } from '@repo/ui/components/Layout';
 import { useModal } from '@repo/ui/hooks/useModal';
 import { useItemDraw } from 'app/_api/mutations/useItemDraw';
-import { useMemberPoint } from 'app/_api/queries';
+import { memberQueryOptions } from 'app/_api/queries/member';
 import { Item, ItemDrawResponse } from 'app/_api/types/draw';
 import { ItemModal } from 'app/_components/ItemModal';
 
@@ -16,7 +18,7 @@ import { StoreCard } from './StoreCard';
 
 export const ItemInfo = () => {
   const router = useRouter();
-  const { data } = useMemberPoint();
+  const { data } = useQuery(memberQueryOptions.point());
   const [itemData, setItemData] = useState<Item>({
     name: '',
     code: '',
