@@ -26,7 +26,16 @@ export const ItemModal = ({ itemData, isOpen, onFetch, onClose, onNavigate }: It
         <Text type="Heading1" weight="semibold" className="text-white">
           뽑기 완료!
         </Text>
-        <Image src={ghostImage} alt={ghostImage} width={200} height={200} />
+        <CenterStack className="relative">
+          <Image src="/EFFECT_ORANGE.png" alt="효과" width={500} height={500} className="z-0" />
+          <Image
+            src={ghostImage}
+            alt={ghostImage}
+            width={200}
+            height={200}
+            className="absolute z-10"
+          />
+        </CenterStack>
         <CenterStack className="gap-1">
           <Text type="Heading3" weight="semibold" className="text-white">
             {itemData.name}
