@@ -13,6 +13,6 @@ export type MemberPoint = {
   error: Error;
 };
 
-export type GetMemberCompletedBookAPIResponse = ResponseFormat<{
+export type GetMemberCompletedBookCountAPIResponse = ResponseFormat<{
   completedBookCount: number;
 }>;

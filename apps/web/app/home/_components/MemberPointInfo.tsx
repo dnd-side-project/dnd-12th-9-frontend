@@ -20,7 +20,7 @@ export const MemberPointInfo = ({ memberId }: MemberPointInfoProps) => {
 
   // TODO : useSuspenseQueries 변경
   const { data } = useQuery(memberQueryOptions.point());
-  const { data: bookData } = useQuery(bookQueryOptions.completed(memberId));
+  const { data: bookData } = useQuery(bookQueryOptions.count(memberId));
 
   return (
     <Flex className="flex-col gap-3">
