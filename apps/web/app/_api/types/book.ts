@@ -34,9 +34,9 @@ export type SearchBookResponse = {
 export type MemberBook = Book & {
   id: number;
   readStatus: READING_STATUS;
-  publishedAt?: '2025-02-20';
-  createdAt?: '2025-02-20T03:32:50.750Z';
-  completedAt?: '2025-02-20';
+  publishedAt?: string;
+  createdAt?: Date; // 문자열로 할지 date로 해야할 지 모르겠음
+  completedAt?: string;
 };
 
 export type GetBookListAPIRequest = {
