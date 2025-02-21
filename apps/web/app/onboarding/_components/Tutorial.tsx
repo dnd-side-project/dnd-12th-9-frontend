@@ -22,6 +22,7 @@ export const Tutorial = ({ onStepChange, config }: StepProps) => {
         src={backgroundUrl}
         alt="튜토리얼 배경"
         placeholder="blur"
+        blurDataURL={backgroundUrl}
         className="absolute inset-0 z-0 h-full object-cover md:hidden"
         style={{
           filter: 'blur(1px) ',
@@ -32,6 +33,7 @@ export const Tutorial = ({ onStepChange, config }: StepProps) => {
           fill
           priority
           src={imageUrl}
+          blurDataURL={imageUrl}
           alt="튜토리얼"
           placeholder="blur"
           className="object-contain"
