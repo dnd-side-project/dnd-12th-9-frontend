@@ -21,7 +21,7 @@ const BookDetailPage = async ({ params }: BookDetailPageProps) => {
 
   const queryClient = getQueryClient();
 
-  await queryClient.prefetchQuery(bookQueryOptions.detail(param.id));
+  await queryClient.fetchQuery(bookQueryOptions.detail(param.id));
 
   return (
     <PageLayout

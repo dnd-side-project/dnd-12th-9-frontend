@@ -1,6 +1,6 @@
 'use client';
 
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { Spacing, Stack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
@@ -10,19 +10,21 @@ import { BookInfo } from './BookInfo';
 import { ReadingCard } from './ReadingCard';
 
 export const DetailSection = ({ id }: { id: string }) => {
-  const {
-    data: { data },
-  } = useSuspenseQuery(bookQueryOptions.detail(id));
+  const { data, isPending, isError } = useQuery(bookQueryOptions.detail(id));
+
+  if (isPending || isError) {
+    return <></>;
+  }
 
   return (
     <Stack className="p-4">
-      <BookInfo {...data} />
+      <BookInfo {...data.data} />
       <Spacing className="h-8" />
       <Text weight="semibold" type="Heading1">
         내 독서
       </Text>
       <Spacing className="h-3" />
-      <ReadingCard {...data} />
+      <ReadingCard {...data.data} />
     </Stack>
   );
 };

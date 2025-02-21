@@ -27,7 +27,7 @@ const BookListPage = async ({ searchParams }: Props) => {
 
   const queryClient = getQueryClient();
 
-  await queryClient.prefetchQuery(bookQueryOptions.list(memberId, getFilterBySearchParams(filter)));
+  await queryClient.fetchQuery(bookQueryOptions.list(memberId, getFilterBySearchParams(filter)));
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
