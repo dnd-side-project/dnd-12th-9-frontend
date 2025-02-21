@@ -32,7 +32,9 @@ export const ClosetSection = ({ memberId }: ClosetSectionProps) => {
     },
     {
       data: {
-        data: { items: equippedItem },
+        data: {
+          findEquippedItemsResponse: { items: equippedItem },
+        },
       },
     },
   ] = useSuspenseQueries({

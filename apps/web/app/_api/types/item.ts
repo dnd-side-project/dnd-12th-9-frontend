@@ -11,7 +11,14 @@ export type Code =
   | 'redhood_ghost'
   | 'cheese_cat_ghost'
   | 'siamese_cat_ghost'
-  | 'baekdo_cat_ghost';
+  | 'baekdo_cat_ghost'
+  | 'devil_ghost'
+  | 'angel_ghost'
+  | 'baby_ghost'
+  | 'dev_ghost'
+  | 'hero_ghost'
+  | 'lady_ghost'
+  | 'samurai_ghost';
 
 export type Ghost = {
   name: string;
@@ -25,9 +32,12 @@ export type GetItemListAPIResponse = ResponseFormat<{
 }>;
 
 export type GetEquippedItemResponse = ResponseFormat<{
-  items: {
-    [key in 'CHARACTER']: Code[];
+  findEquippedItemsResponse: {
+    items: {
+      [key in 'CHARACTER']: Code[];
+    };
   };
+  nickName: string;
 }>;
 
 export type UpdateEquippedItemAPIRequest = {

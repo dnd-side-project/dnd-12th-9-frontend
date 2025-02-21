@@ -15,7 +15,7 @@ export const itemQueryOptions = {
       queryKey: [...itemQueryKeys.lists(), memberId],
       queryFn: getItemListAPI,
     }),
-  equipped: (memberId: string) =>
+  equipped: (memberId?: string) =>
     queryOptions({
       queryKey: [...itemQueryKeys.equippeds(), memberId],
       queryFn: getEquippedItemAPI,

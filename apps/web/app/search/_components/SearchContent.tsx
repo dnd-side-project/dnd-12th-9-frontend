@@ -2,10 +2,11 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { useInfiniteQuery } from '@tanstack/react-query';
+
 import { Box, Flex } from '@repo/ui/components/Layout';
 import { SearchBar } from '@repo/ui/components/SearchBar';
-
-import useSearchBook from '../../_api/queries/useSearchBook';
+import { bookQueryOptions } from 'app/_api/queries/book';
 
 import { BookList } from './BookList';
 
@@ -20,7 +21,9 @@ export const SearchContent = () => {
   const [search, setSearch] = useState<string>('');
   const [query, setQuery] = useState<string>('');
 
-  const { data, hasNextPage, isFetchingNextPage, isLoading, fetchNextPage } = useSearchBook(query);
+  const { data, hasNextPage, isFetchingNextPage, isLoading, fetchNextPage } = useInfiniteQuery(
+    bookQueryOptions.search(query)
+  );
 
   const books = data?.pages.flatMap((page) => page.data.books) ?? [];
 
@@ -42,10 +45,10 @@ export const SearchContent = () => {
       observer.observe(observerTarget.current);
     }
     return () => observer.disconnect();
-  }, [handleObserver]);
+  }, [handleObserver, query]);
 
-  const handleSearch = () => {
-    setQuery(search);
+  const handleSearch = (value?: string) => {
+    setQuery(value ?? search);
   };
 
   return (

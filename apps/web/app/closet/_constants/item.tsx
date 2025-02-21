@@ -45,6 +45,34 @@ export const GHOST_MAP = {
     name: '백도 고양이 유령',
     code: 'baekdo_cat_ghost',
   },
+  devil_ghost: {
+    name: '악마 유령',
+    code: 'devil_ghost',
+  },
+  angel_ghost: {
+    name: '천사 유령',
+    code: 'angel_ghost',
+  },
+  baby_ghost: {
+    name: '아기 유령',
+    code: 'baby_ghost',
+  },
+  dev_ghost: {
+    name: '개발자 유령',
+    code: 'dev_ghost',
+  },
+  hero_ghost: {
+    name: '영웅 유령',
+    code: 'hero_ghost',
+  },
+  lady_ghost: {
+    name: '여자 유령',
+    code: 'lady_ghost',
+  },
+  samurai_ghost: {
+    name: '사무라이 유령',
+    code: 'samurai_ghost',
+  },
 } satisfies Record<Code, Ghost>;
 
 export const BASIC_GHOST = GHOST_MAP['basic_ghost'] satisfies Ghost;

@@ -1,61 +1,35 @@
-'use client';
-import { useState } from 'react';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-import { Button } from '@repo/ui/components/Button';
-import { Header } from '@repo/ui/components/Header';
-import { Icon } from '@repo/ui/components/Icon';
-import { CenterStack, Flex, HStack, JustifyBetween, PageLayout } from '@repo/ui/components/Layout';
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
-import { Bubble } from './_components/Bubble';
-import { Ghost } from './_components/Ghost';
-import { HomeDrawer } from './_components/HomeDrawer';
-import { Summary } from './_components/Summary';
-import { TopBarButton } from './_components/TopBarButton';
-import { TOP_BAR } from './_constants/topbar';
+import { bookQueryOptions } from 'app/_api/queries/book';
+import { itemQueryOptions } from 'app/_api/queries/item';
+import { memberQueryOptions } from 'app/_api/queries/member';
+import { COOKIE_ID } from 'app/_constants/cookie';
 
-const HomePage = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+import { Home } from './_components/Home';
+
+const HomePage = async () => {
+  const queryClient = new QueryClient();
+
+  const cookieStore = await cookies();
+  const memberId = cookieStore.get(COOKIE_ID.MEMBER_ID)?.value;
+
+  if (!memberId) {
+    redirect('/login');
+  }
+
+  await Promise.all([
+    queryClient.prefetchQuery(bookQueryOptions.count(memberId)),
+    queryClient.prefetchQuery(memberQueryOptions.point()),
+    queryClient.prefetchQuery(itemQueryOptions.equipped()),
+  ]);
+
   return (
-    <>
-      <PageLayout
-        header={
-          <Header
-            left={<Icon type="logo" size={80} />}
-            right={
-              <Icon
-                type="menu"
-                color="gray800"
-                onClick={() => setIsOpen(!isOpen)}
-                className="cursor-pointer"
-              />
-            }
-            className="inline-flex w-full justify-between bg-[#E8E2D1] px-4"
-          >
-            {' '}
-          </Header>
-        }
-        className="flex h-dvh w-full flex-col bg-[url('/HOME.png')] bg-cover bg-center"
-      >
-        <JustifyBetween className="mb-4 h-full flex-col px-4">
-          <HStack className="w-full justify-start gap-2 px-4">
-            {Object.keys(TOP_BAR).map((type) => (
-              <TopBarButton key={type} type={type as keyof typeof TOP_BAR} />
-            ))}
-          </HStack>
-          <CenterStack>
-            <Bubble nickName="김민수" like={10} />
-            <Ghost />
-          </CenterStack>
-          <Flex className="flex-col gap-3">
-            <Summary orbCount={0} tryAvailable={0} totalBookCount={0} />
-            <Button size="lg" variant="primary500" className="w-full">
-              책 추가하기
-            </Button>
-          </Flex>
-        </JustifyBetween>
-      </PageLayout>
-      <HomeDrawer isOpen={isOpen} onClose={() => setIsOpen(false)} />
-    </>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Home memberId={memberId} />
+    </HydrationBoundary>
   );
 };
 
