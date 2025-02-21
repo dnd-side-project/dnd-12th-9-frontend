@@ -7,8 +7,8 @@ import { Modal } from '@repo/ui/components/Modal';
 import { Text } from '@repo/ui/components/Text';
 
 type RewardModalProps = {
-  type: 'single' | 'double';
-  message: string;
+  type?: 'single' | 'double';
+  message?: string;
   isOpen: boolean;
   onClose: () => void;
   onNavigate?: () => void;

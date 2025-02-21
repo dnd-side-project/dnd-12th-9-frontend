@@ -11,9 +11,11 @@ import { Button } from '@repo/ui/components/Button';
 import { Chip } from '@repo/ui/components/Chip';
 import { HStack, Stack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
+import { useModal } from '@repo/ui/hooks/useModal';
 import { useUpdateEvaluation } from 'app/_api/mutations/useUpdateEvaluation';
 import { evaluaionQueryOptions } from 'app/_api/queries/evaluation';
 import { Evaluation } from 'app/_api/types/evaluation';
+import { RewardModal } from 'app/_components/RewardModal';
 import { entries } from 'app/_util/entries';
 
 import { getImageURLByKeyword, getTitleByKeywordType } from '../_util/keyword';
@@ -64,18 +66,27 @@ export const ReviewContent = ({ id }: { id: string }) => {
 
   const { mutate } = useUpdateEvaluation();
 
+  const isInitialReview = initialKeywordList.length === 0;
+
+  const { isOpen, openModal } = useModal();
+
   const onClickSaveButton = () => {
     mutate({
       bookId: id,
       keywordIds: selectedKeywordIdList,
     });
-    router.push(`/books/${id}`);
+    if (isInitialReview) {
+      openModal();
+    } else {
+      router.push(`/books/${id}`);
+    }
   };
 
   const areInitialKeywordListAndSelectedKeywordIdListArrayEqual = areArraysEqual(
     initialKeywordList,
     selectedKeywordIdList
   );
+
   const disabled =
     selectedKeywordIdList.length === 0 || areInitialKeywordListAndSelectedKeywordIdListArrayEqual;
 
@@ -120,6 +131,7 @@ export const ReviewContent = ({ id }: { id: string }) => {
           완료하기
         </Button>
       </HStack>
+      <RewardModal type="single" isOpen={isOpen} onClose={() => router.push(`/books/${id}`)} />
     </Stack>
   );
 };
