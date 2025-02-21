@@ -69,7 +69,7 @@ export const ClosetSection = ({ memberId }: ClosetSectionProps) => {
       <Image
         fill
         priority
-        src="/closet/BG_CLOSET.png"
+        src="/closet/BG_CLOSET.webp"
         alt="꾸미기 배경"
         className="absolute inset-0 z-0 h-full object-fill"
         sizes="(max-width: 440px) 100vw, 440px"
