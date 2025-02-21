@@ -35,7 +35,9 @@ export const KeywordSection = ({ id }: Props) => {
               <Text type="Title1" weight="semibold" className="text-gray-600">
                 내 평가
               </Text>
-              <Icon type="squarePen" />
+              <button onClick={goReviewPage}>
+                <Icon type="squarePen" />
+              </button>
             </HStack>
             <HStack className="flex-wrap gap-x-3 gap-y-2.5">
               {keywordList?.map(({ icon, keyword, evaluationId }) => (

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import { useState } from 'react';
 
@@ -10,6 +11,7 @@ import { Button } from '@repo/ui/components/Button';
 import { Chip } from '@repo/ui/components/Chip';
 import { HStack, Stack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
+import { useUpdateEvaluation } from 'app/_api/mutations/useUpdateEvaluation';
 import { evaluaionQueryOptions } from 'app/_api/queries/evaluation';
 import { Evaluation } from 'app/_api/types/evaluation';
 import { entries } from 'app/_util/entries';
@@ -17,6 +19,8 @@ import { entries } from 'app/_util/entries';
 import { getImageURLByKeyword, getTitleByKeywordType } from '../_util/keyword';
 
 export const ReviewContent = ({ id }: { id: string }) => {
+  const router = useRouter();
+
   const {
     data: { data },
   } = useSuspenseQuery(evaluaionQueryOptions.list(id));
@@ -58,6 +62,18 @@ export const ReviewContent = ({ id }: { id: string }) => {
 
   const resetSelectedKeywordIdList = () => setSelectedKeywordIdList([]);
 
+  const { mutate } = useUpdateEvaluation();
+
+  const onClickSaveButton = () => {
+    mutate({
+      bookId: id,
+      keywordIds: selectedKeywordIdList,
+    });
+    router.push(`/books/${id}`);
+  };
+
+  //TODO 이전 상태와 같거나 선택 아예 안했을때 비활성화
+
   return (
     <Stack className="gap-5 px-4 pb-4">
       <Stack className="rounded-2xl bg-white p-5">
@@ -94,7 +110,7 @@ export const ReviewContent = ({ id }: { id: string }) => {
         >
           초기화
         </Button>
-        <Button variant="black" className="grow">
+        <Button variant="black" className="grow" onClick={onClickSaveButton}>
           완료하기
         </Button>
       </HStack>

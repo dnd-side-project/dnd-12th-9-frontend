@@ -16,5 +16,5 @@ export type GetBookEvaluationListAPIResponse = ResponseFormat<Evaluation[]>;
 
 export type UpdateBookEvaluationRequest = {
   bookId: string;
-  keywordIds: string[];
+  keywordIds: number[];
 };
