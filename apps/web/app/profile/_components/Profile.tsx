@@ -67,7 +67,12 @@ export const Profile = ({ memberId }: ProfileProps) => {
       });
 
       if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        window.open(dataUrl, '_blank');
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = 'GHOST_PROFILE_CARD.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
         return;
       }
 
