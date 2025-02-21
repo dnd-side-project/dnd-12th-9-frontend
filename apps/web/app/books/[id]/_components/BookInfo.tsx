@@ -6,18 +6,18 @@ import { Book } from 'app/_api/types/book';
 
 type Props = Book;
 
-export const BookInfo = ({ title, thumbnail, author, publishedAt }: Props) => {
+export const BookInfo = ({ title, thumbnailUrl, author, publishedAt }: Props) => {
   return (
     <Box className="relative overflow-hidden rounded-lg">
       <Image
-        src={thumbnail ?? '/Ghost/BASIC_GHOST.png'}
+        src={thumbnailUrl ?? '/Ghost/BASIC_GHOST.png'}
         fill
         alt="배경"
         className="rounded-lg object-center"
       />
       <CenterStack className="aspect-square gap-4 bg-black/50 backdrop-blur-xl">
         <Image
-          src={thumbnail ?? '/Ghost/BASIC_GHOST.png'}
+          src={thumbnailUrl ?? '/Ghost/BASIC_GHOST.png'}
           alt="도서"
           width={140}
           height={206}

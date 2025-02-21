@@ -6,13 +6,19 @@ import { Text } from '@repo/ui/components/Text';
 import { Book } from 'app/_api/types/book';
 
 export type BookWithModal = Book & { openModal: () => void };
-export const BookCard = ({ title, author, publishedAt, thumbnail, openModal }: BookWithModal) => {
+export const BookCard = ({
+  title,
+  author,
+  publishedAt,
+  thumbnailUrl,
+  openModal,
+}: BookWithModal) => {
   const IMAGE = '/BASIC_GHOST.png';
   return (
     <Flex className="my-2 w-full flex-row items-center justify-between">
       <Flex className="flex-row items-center gap-4">
         <Image
-          src={thumbnail || IMAGE}
+          src={thumbnailUrl || IMAGE}
           alt="도서 검색 결과"
           width={72}
           height={110}
