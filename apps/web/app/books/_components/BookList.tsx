@@ -24,7 +24,7 @@ type Props = {
 export const BookSection = ({ memberId, filter }: Props) => {
   const {
     data: {
-      data: { bookList },
+      data: { bookList, totalBookCount },
     },
   } = useSuspenseQuery(bookQueryOptions.list(memberId, getFilterBySearchParams(filter)));
 
@@ -37,7 +37,7 @@ export const BookSection = ({ memberId, filter }: Props) => {
       }
       className="bg-white"
     >
-      <BookListHeader count={bookList.length} />
+      <BookListHeader count={totalBookCount} />
 
       <Stack className="px-4">
         <HStack className="gap-1.5">

@@ -36,7 +36,7 @@ export type MemberBook = Book & {
   id: string;
   readStatus: READING_STATUS;
   publishedAt?: string;
-  createdAt?: Date; // 문자열로 할지 date로 해야할 지 모르겠음
+  createdAt?: Date;
   completedAt?: string;
 };
 
@@ -46,6 +46,7 @@ export type GetBookListAPIRequest = {
 };
 
 export type GetBookListAPIResponse = ResponseFormat<{
+  totalBookCount: number;
   bookList: MemberBook[];
 }>;
 
