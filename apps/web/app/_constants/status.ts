@@ -1,6 +1,6 @@
-import BLACKY_DONE from '@public/BLACKY_DONE.png';
-import BLACKY_ING from '@public/BLACKY_ING.png';
-import BLACKY_PREV from '@public/BLACKY_PREV.png';
+import BLACKY_DONE from '@public/BLACKY_DONE.webp';
+import BLACKY_ING from '@public/BLACKY_ING.webp';
+import BLACKY_PREV from '@public/BLACKY_PREV.webp';
 
 export const STATUS_DATA = {
   prev: {
