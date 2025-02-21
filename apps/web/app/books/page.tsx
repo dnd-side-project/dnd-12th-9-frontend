@@ -1,63 +1,38 @@
-'use client';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-import { useState } from 'react';
+import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
 
-import { Chip } from '@repo/ui/components/Chip';
-import { Header } from '@repo/ui/components/Header';
-import { HStack, PageLayout, Stack } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
-import { type ReadStatusTag, READ_STATUS_LIST } from 'app/_constants/status';
+import { bookQueryOptions } from 'app/_api/queries/book';
+import { COOKIE_ID } from 'app/_constants/cookie';
+import { ReadStatusTag } from 'app/_constants/status';
+import { getQueryClient } from 'app/_util/queryClient';
 
-import { BackButton } from '../_components/BackButton';
+import { BookSection } from './_components/BookList';
+import { getFilterBySearchParams } from './_utils/getFilterBySearchParams';
 
-import { CardList } from './_components/CardList';
-import { MOCK_BOOK_LIST } from './_fixture/book';
-
-const BookListPage = () => {
-  const [readStatus, setReadStatus] = useState<ReadStatusTag>('ALL');
-
-  const onClick = (value: ReadStatusTag) => () => {
-    setReadStatus(value);
-  };
-
-  //TODO readStatus를 바탕으로 데이터 조회
-
-  return (
-    <PageLayout
-      header={
-        <Header left={<BackButton />} className="bg-white" borderBottom>
-          책장
-        </Header>
-      }
-      className="bg-white"
-    >
-      <BookListHeader count={MOCK_BOOK_LIST.length} />
-      <Stack className="px-4">
-        <HStack className="gap-1.5">
-          {READ_STATUS_LIST.map(({ value, text }) => (
-            <Chip
-              variant="rounded"
-              active={readStatus === value}
-              key={value}
-              onClick={onClick(value)}
-            >
-              {text}
-            </Chip>
-          ))}
-        </HStack>
-        <CardList cardList={[]} />
-      </Stack>
-    </PageLayout>
-  );
+type Props = {
+  searchParams: Promise<{ [key: string]: ReadStatusTag | undefined }>;
 };
 
-const BookListHeader = ({ count }: { count: number }) => {
+const BookListPage = async ({ searchParams }: Props) => {
+  const cookieStore = await cookies();
+  const memberId = cookieStore.get(COOKIE_ID.MEMBER_ID)?.value;
+
+  const filter = (await searchParams).filter;
+
+  if (!memberId) {
+    redirect('/login');
+  }
+
+  const queryClient = getQueryClient();
+
+  await queryClient.prefetchQuery(bookQueryOptions.list(memberId, getFilterBySearchParams(filter)));
+
   return (
-    <div className="gap-2 px-4 py-8">
-      <Text type="Heading1" weight="semibold">
-        {`책장에 총 ${count}권의 책이${'\n'} 담겨있어요`}
-      </Text>
-    </div>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <BookSection memberId={memberId} filter={filter ?? 'ALL'} />
+    </HydrationBoundary>
   );
 };
 

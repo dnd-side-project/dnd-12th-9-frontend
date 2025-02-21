@@ -2,8 +2,10 @@ import { useState } from 'react';
 
 import { Box, CenterStack } from '@repo/ui/components/Layout';
 import { useModal } from '@repo/ui/hooks/useModal';
+import { useAddBook } from 'app/_api/mutations/useAddBook';
 import { Book } from 'app/_api/types/book';
 import Loading from 'app/_components/Loading';
+import { READING_STATUS } from 'app/_constants/status';
 import { BookStatusModal } from 'app/books/[id]/_components/BookStatusModal';
 
 import { BookCard } from './BookCard';
@@ -17,6 +19,16 @@ export const BookList = ({ data, isLoading }: BookListProps) => {
   const [selectedBook, setSelectedBook] = useState<Book>({} as Book);
   const { isOpen, openModal, closeModal } = useModal();
   const isEmptyBooks = data.length === 0;
+
+  const { mutate } = useAddBook();
+
+  const onConfirm = (readStatus: READING_STATUS) =>
+    mutate({
+      title: selectedBook.title,
+      author: selectedBook.author,
+      publishedAt: selectedBook.publishedAt,
+      readStatus,
+    });
 
   const handleOpenModal = (book: Book) => {
     setSelectedBook(book);
@@ -49,7 +61,12 @@ export const BookList = ({ data, isLoading }: BookListProps) => {
           ))}
         </>
       )}
-      <BookStatusModal isOpen={isOpen} closeModal={closeModal} data={selectedBook} />
+      <BookStatusModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        data={selectedBook}
+        onConfirm={onConfirm}
+      />
     </Box>
   );
 };

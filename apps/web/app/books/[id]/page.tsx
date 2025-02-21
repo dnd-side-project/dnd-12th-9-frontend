@@ -1,10 +1,12 @@
-import { Header } from '@repo/ui/components/Header';
-import { PageLayout, Spacing, Stack } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
-import { BackButton } from 'app/_components/BackButton';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 
-import { BookInfo } from './_components/BookInfo';
-import { ReadingCard } from './_components/ReadingCard';
+import { Header } from '@repo/ui/components/Header';
+import { PageLayout } from '@repo/ui/components/Layout';
+import { bookQueryOptions } from 'app/_api/queries/book';
+import { BackButton } from 'app/_components/BackButton';
+import { getQueryClient } from 'app/_util/queryClient';
+
+import { DetailSection } from './_components/DetailSection';
 import { TrashButton } from './_components/TrashButton';
 
 type BookDetailPageProps = {
@@ -15,7 +17,11 @@ const BookDetailPage = async ({ params }: BookDetailPageProps) => {
   const param = await params;
 
   //TODO params를 이용해서 데이터 조회 eslint 룰 때문에 임시로 작성
-  console.log(param);
+  console.log(param.id);
+
+  const queryClient = getQueryClient();
+
+  await queryClient.prefetchQuery(bookQueryOptions.detail(param.id));
 
   return (
     <PageLayout
@@ -26,15 +32,9 @@ const BookDetailPage = async ({ params }: BookDetailPageProps) => {
       }
       className="bg-gray-70"
     >
-      <Stack className="p-4">
-        <BookInfo />
-        <Spacing className="h-8" />
-        <Text weight="semibold" type="Heading1">
-          내 독서
-        </Text>
-        <Spacing className="h-3" />
-        <ReadingCard />
-      </Stack>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <DetailSection id={param.id} />
+      </HydrationBoundary>
     </PageLayout>
   );
 };
