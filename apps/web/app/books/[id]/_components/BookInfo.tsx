@@ -2,11 +2,11 @@ import Image from 'next/image';
 
 import { Box, CenterStack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
-import { Book } from 'app/_api/types/book';
+import { MemberBook } from 'app/_api/types/book';
 
-type Props = Book;
+type Props = MemberBook;
 
-export const BookInfo = ({ title, thumbnail: thumbnailUrl, author, publishedAt }: Props) => {
+export const BookInfo = ({ title, thumbnailUrl, author, publishedAt }: Props) => {
   return (
     <Box className="relative overflow-hidden rounded-lg">
       <Image
