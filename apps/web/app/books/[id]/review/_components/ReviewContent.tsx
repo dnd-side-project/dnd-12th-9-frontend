@@ -60,7 +60,7 @@ export const ReviewContent = ({ id }: { id: string }) => {
     setSelectedKeywordIdList((prev) => [...prev, keywordId]);
   };
 
-  const resetSelectedKeywordIdList = () => setSelectedKeywordIdList([]);
+  const resetSelectedKeywordIdList = () => setSelectedKeywordIdList(initialKeywordList);
 
   const { mutate } = useUpdateEvaluation();
 
@@ -72,7 +72,12 @@ export const ReviewContent = ({ id }: { id: string }) => {
     router.push(`/books/${id}`);
   };
 
-  //TODO 이전 상태와 같거나 선택 아예 안했을때 비활성화
+  const areInitialKeywordListAndSelectedKeywordIdListArrayEqual = areArraysEqual(
+    initialKeywordList,
+    selectedKeywordIdList
+  );
+  const disabled =
+    selectedKeywordIdList.length === 0 || areInitialKeywordListAndSelectedKeywordIdListArrayEqual;
 
   return (
     <Stack className="gap-5 px-4 pb-4">
@@ -107,13 +112,24 @@ export const ReviewContent = ({ id }: { id: string }) => {
           variant="gray200"
           className="grow"
           onClick={resetSelectedKeywordIdList}
+          disabled={areInitialKeywordListAndSelectedKeywordIdListArrayEqual}
         >
           초기화
         </Button>
-        <Button variant="black" className="grow" onClick={onClickSaveButton}>
+        <Button variant="black" className="grow" onClick={onClickSaveButton} disabled={disabled}>
           완료하기
         </Button>
       </HStack>
     </Stack>
   );
+};
+
+const areArraysEqual = (array1: number[], array2: number[]): boolean => {
+  if (array1.length !== array2.length) {
+    return false;
+  }
+
+  const combinedSet = new Set([...array1, ...array2]);
+
+  return combinedSet.size === array1.length;
 };
