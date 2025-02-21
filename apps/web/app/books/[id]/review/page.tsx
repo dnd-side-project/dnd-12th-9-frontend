@@ -19,7 +19,7 @@ const ReviewPage = async ({ params }: Props) => {
 
   //TODO 추후 getQueryClient util 함수로 교체
 
-  await queryClient.prefetchQuery(evaluaionQueryOptions.list(param.id));
+  await queryClient.fetchQuery(evaluaionQueryOptions.list(param.id));
 
   return (
     <PageLayout
@@ -33,7 +33,7 @@ const ReviewPage = async ({ params }: Props) => {
       <Stack>
         <ReviewHeader />
         <HydrationBoundary state={dehydrate(queryClient)}>
-          <ReviewContent />
+          <ReviewContent id={param.id} />
         </HydrationBoundary>
       </Stack>
     </PageLayout>

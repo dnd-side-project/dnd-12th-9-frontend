@@ -4,7 +4,7 @@ export type GetBookEvaluationListAPIRequest = {
   bookId: string;
 };
 
-type Evaluation = {
+export type Evaluation = {
   evaluationId: number;
   type: string;
   keyword: string;
