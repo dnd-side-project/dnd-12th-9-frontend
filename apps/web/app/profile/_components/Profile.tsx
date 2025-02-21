@@ -1,16 +1,18 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import { useRef, useState } from 'react';
 
 import { useQueries } from '@tanstack/react-query';
 import { saveAs } from 'file-saver';
 import { toPng } from 'html-to-image';
 
-import { Header } from '@repo/ui/components/Header';
+import { Header, HeaderLeftElement } from '@repo/ui/components/Header';
+import { Icon } from '@repo/ui/components/Icon';
 import { JustifyBetween, PageLayout } from '@repo/ui/components/Layout';
 import { bookQueryOptions } from 'app/_api/queries/book';
 import { itemQueryOptions } from 'app/_api/queries/item';
-import { BackButton } from 'app/_components/BackButton';
 import { BASIC_GHOST, GHOST_MAP } from 'app/closet/_constants/item';
 
 import { BottomButton } from './BottomButton';
@@ -21,6 +23,7 @@ type ProfileProps = {
 };
 
 export const Profile = ({ memberId }: ProfileProps) => {
+  const router = useRouter();
   // TODO: 추후 주석 삭제
   console.log('memberId', memberId);
 
@@ -84,11 +87,21 @@ export const Profile = ({ memberId }: ProfileProps) => {
     }
   };
 
+  const goBack = () => {
+    router.push('/home');
+  };
   return (
     <PageLayout
       className="flex h-dvh w-full flex-col bg-white"
       header={
-        <Header left={<BackButton />} className="bg-white">
+        <Header
+          left={
+            <HeaderLeftElement onClick={goBack}>
+              <Icon type="back" color="gray800" />
+            </HeaderLeftElement>
+          }
+          className="bg-white"
+        >
           자랑하기
         </Header>
       }

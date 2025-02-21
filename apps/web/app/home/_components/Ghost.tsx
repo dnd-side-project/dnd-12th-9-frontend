@@ -9,7 +9,7 @@ type HomeGhostProps = {
   ghost: string;
 };
 export const Ghost = ({ ghost }: HomeGhostProps) => {
-  const ghostImage = `/Ghost/${ghost.toUpperCase()}.png`;
+  const ghostImage = `/Ghost/${ghost.toUpperCase()}.webp`;
 
   return (
     <motion.div
