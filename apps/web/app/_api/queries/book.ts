@@ -66,4 +66,4 @@ const getBookSearchAPI = (bookName: string, pageParam: number) =>
   fetcher.get<SearchBookResponse>(`books?query=${bookName}&page=${pageParam}`);
 
 const getMemberCompletedBookAPI = (memberId: string) =>
-  fetcher.get<GetMemberCompletedBookCountAPIResponse>(`completed-books/members/${memberId}/count`);
+  fetcher.get<GetMemberCompletedBookCountAPIResponse>(`books/members/${memberId}/completed/count`);

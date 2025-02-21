@@ -12,8 +12,8 @@ export const Tutorial = ({ onStepChange, config }: StepProps) => {
     group.includes(config.imageNumber)
   );
 
-  const imageUrl = `/onboarding/${config.imageNumber}.png`;
-  const backgroundUrl = `/onboarding/${matchedBackground}.png`;
+  const imageUrl = `/Onboarding/${config.imageNumber}.webp`;
+  const backgroundUrl = `/Onboarding/${matchedBackground}.webp`;
   return (
     <Flex className="relative h-dvh w-full flex-col items-center justify-between overflow-hidden">
       <Image

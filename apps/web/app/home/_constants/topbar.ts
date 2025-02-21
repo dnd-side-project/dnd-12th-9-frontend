@@ -1,21 +1,21 @@
 export const TOP_BAR = {
   MISSION: {
-    icon: '/TopBar/MISSION.png',
+    icon: '/TopBar/MISSION.webp',
     title: '미션하기',
     router: '/mission',
   },
   CLOSET: {
-    icon: '/TopBar/CLOSET.png',
+    icon: '/TopBar/CLOSET.webp',
     title: '꾸미기',
     router: '/closet',
   },
   STORE: {
-    icon: '/TopBar/STORE.png',
+    icon: '/TopBar/STORE.webp',
     title: '스토어',
     router: '/store',
   },
   share: {
-    icon: '/TopBar/SHARE.png',
+    icon: '/TopBar/SHARE.webp',
     title: '자랑하기',
     router: '/share',
   },

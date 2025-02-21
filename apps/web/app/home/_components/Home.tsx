@@ -47,7 +47,7 @@ export const Home = ({ memberId }: HomeProps) => {
             {' '}
           </Header>
         }
-        className="flex h-dvh w-full flex-col bg-[url('/HOME.png')] bg-cover bg-center"
+        className="flex h-dvh w-full flex-col bg-[url('/HOME.webp')] bg-cover bg-center"
       >
         <JustifyBetween className="mb-4 h-full flex-col px-4">
           <HStack className="w-full justify-start gap-2 px-4">
