@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import BLACKY_DONE from '@public/BLACKY_DONE.png';
+import BLACKY_DONE from '@public/BLACKY_DONE.webp';
 
 import { Button } from '@repo/ui/components/Button';
 import { Icon } from '@repo/ui/components/Icon';
