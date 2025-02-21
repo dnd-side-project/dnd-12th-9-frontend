@@ -29,6 +29,7 @@ export const Profile = ({ memberId }: ProfileProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const onImageLoaded = () => setImageLoaded(true);
+  const [isDownloadImageLoading, setIsDownloadImageLoading] = useState(false);
 
   //TODO 서스펜스쿼리쓰면 무한 로딩걸림.. 해결 필요
   const [
@@ -56,10 +57,25 @@ export const Profile = ({ memberId }: ProfileProps) => {
         return;
       }
 
-      const dataUrl = await toPng(divRef.current);
+      if (!imageLoaded) {
+        return;
+      }
+
+      setIsDownloadImageLoading(true);
+      const dataUrl = await toPng(divRef.current, {
+        includeQueryParams: true,
+      });
+
+      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        window.open(dataUrl, '_blank');
+        return;
+      }
+
       saveAs(dataUrl, 'GHOST_PROFILE_CARD.png');
     } catch (error) {
       console.error('Error converting div to image:', error);
+    } finally {
+      setIsDownloadImageLoading(false);
     }
   };
 
@@ -80,7 +96,12 @@ export const Profile = ({ memberId }: ProfileProps) => {
           code={code}
           completedBookCount={completedBookCount}
         />
-        <BottomButton saveImageButtonProps={{ onClick: handleDownload, disabled: !imageLoaded }} />
+        <BottomButton
+          saveImageButtonProps={{
+            onClick: handleDownload,
+            disabled: !imageLoaded || isDownloadImageLoading,
+          }}
+        />
       </JustifyBetween>
     </PageLayout>
   );
