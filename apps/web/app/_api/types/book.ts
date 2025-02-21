@@ -1,4 +1,7 @@
+import { READING_STATUS } from 'app/_constants/status';
+
 import { Error, ResultType } from './common';
+import { ResponseFormat } from './response';
 
 export type Book = {
   title: string;
@@ -26,4 +29,35 @@ export type SearchBookResponse = {
     };
   };
   error: Error;
+};
+
+export type MemberBook = Book & {
+  id: string;
+  readStatus: READING_STATUS;
+  publishedAt?: string;
+  createdAt?: Date; // 문자열로 할지 date로 해야할 지 모르겠음
+  completedAt?: string;
+};
+
+export type GetBookListAPIRequest = {
+  memberId: string;
+  readStatus?: READING_STATUS;
+};
+
+export type GetBookListAPIResponse = ResponseFormat<{
+  bookList: MemberBook[];
+}>;
+
+export type GetBookDetailAPIRequest = {
+  bookId: string;
+};
+
+export type GetBookDetailAPIResponse = ResponseFormat<MemberBook>;
+
+export type UpdateBookAPIRequest = {
+  bookId: string;
+  title: string;
+  author: string;
+  publishedAt: string;
+  readStatus: READING_STATUS;
 };

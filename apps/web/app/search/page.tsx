@@ -8,7 +8,7 @@ const SearchPage = () => {
   return (
     <PageLayout
       header={
-        <Header left={<BackButton />} className="border-b border-gray-100 bg-white">
+        <Header left={<BackButton />} className="bg-white" borderBottom>
           검색
         </Header>
       }

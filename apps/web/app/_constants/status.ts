@@ -21,17 +21,17 @@ export const STATUS_DATA = {
 } as const;
 
 export const MY_READING_STATUS_TEXT = {
-  prev: {
+  WANT_TO_READ: {
     image: BLACKY_PREV,
     text: '읽기 전이에요',
     readStatus: 'WANT_TO_READ',
   },
-  ing: {
+  READING: {
     image: BLACKY_ING,
     text: '읽는 중이에요',
     readStatus: 'READING',
   },
-  done: {
+  COMPLETED: {
     image: BLACKY_DONE,
     text: '완독했어요!',
     readStatus: 'COMPLETED',
