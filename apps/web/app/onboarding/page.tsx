@@ -17,7 +17,7 @@ const OnBoardingPage = () => {
   const handleStepChange = (steps: string[], index: number) => {
     const nextStep = steps[index + 1];
     if (nextStep) return setStep(nextStep);
-    router.push('/home');
+    router.push('/home?openOnboarding=true');
   };
 
   return (

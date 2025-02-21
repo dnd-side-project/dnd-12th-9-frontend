@@ -1,5 +1,9 @@
 'use client';
 
+import { useRouter, useSearchParams } from 'next/navigation';
+
+import { useEffect } from 'react';
+
 import { Header } from '@repo/ui/components/Header';
 import { Icon } from '@repo/ui/components/Icon';
 import { HStack, JustifyBetween, PageLayout } from '@repo/ui/components/Layout';
@@ -10,6 +14,7 @@ import { TOP_BAR } from '../_constants/topbar';
 import { HomeDrawer } from './HomeDrawer';
 import { MemberInfo } from './MemberInfo';
 import { MemberPointInfo } from './MemberPointInfo';
+import { OnBoardingCompleteModal } from './OnBoardingCompleteModal';
 import { TopBarButton } from './TopBarButton';
 
 type HomeProps = {
@@ -17,6 +22,17 @@ type HomeProps = {
 };
 export const Home = ({ memberId }: HomeProps) => {
   const { isOpen, openModal, closeModal } = useModal();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const openOnboarding = searchParams.get('openOnboarding');
+
+  useEffect(() => {
+    if (openOnboarding) {
+      router.replace('/home');
+    }
+  }, [openOnboarding, router]);
+
   return (
     <>
       <PageLayout
@@ -44,6 +60,7 @@ export const Home = ({ memberId }: HomeProps) => {
         </JustifyBetween>
       </PageLayout>
       <HomeDrawer isOpen={isOpen} onClose={closeModal} />
+      <OnBoardingCompleteModal isOnBoardingModalOpen={Boolean(openOnboarding) ?? false} />
     </>
   );
 };
