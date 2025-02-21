@@ -10,10 +10,9 @@ type ItemModalProps = {
   itemData: Item;
   isOpen: boolean;
   onClose: () => void;
-  onFetch: () => void;
   onNavigate?: () => void;
 };
-export const ItemModal = ({ itemData, isOpen, onFetch, onClose, onNavigate }: ItemModalProps) => {
+export const ItemModal = ({ itemData, isOpen, onClose, onNavigate }: ItemModalProps) => {
   const ghostImage = `/Ghost/${itemData.code.toUpperCase()}.png`;
   return (
     <Modal
@@ -48,8 +47,8 @@ export const ItemModal = ({ itemData, isOpen, onFetch, onClose, onNavigate }: It
         </CenterStack>
 
         <JustifyBetween className="mt-3 gap-2">
-          <Button size="md" variant="gray100" onClick={onFetch} className="cursor-pointer">
-            한번 더 뽑기
+          <Button size="md" variant="gray100" onClick={onClose} className="cursor-pointer">
+            닫기
           </Button>
           <Button size="md" variant="primary500" onClick={onNavigate} className="cursor-pointer">
             꾸미러 가기
