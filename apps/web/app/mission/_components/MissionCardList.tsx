@@ -14,7 +14,6 @@ import { MissionCard } from './MissionCard';
 export const MissionCardList = () => {
   const router = useRouter();
 
-  const goSearchPage = () => router.push('/search');
   const goBooksPage = () => router.push('/books');
 
   return (
@@ -24,7 +23,7 @@ export const MissionCardList = () => {
         orbCount={10}
         missionIcon={<Icon type="missionCard" />}
         action={
-          <Button variant="primary50" size="sm" className="font-medium" onClick={goSearchPage}>
+          <Button variant="primary50" size="sm" className="font-medium" onClick={goBooksPage}>
             하러 가기
           </Button>
         }
