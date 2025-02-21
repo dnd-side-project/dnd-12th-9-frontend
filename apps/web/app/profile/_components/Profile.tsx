@@ -70,16 +70,6 @@ export const Profile = ({ memberId }: ProfileProps) => {
         includeQueryParams: true,
       });
 
-      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        const link = document.createElement('a');
-        link.href = dataUrl;
-        link.download = 'GHOST_PROFILE_CARD.png';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        return;
-      }
-
       saveAs(dataUrl, 'GHOST_PROFILE_CARD.png');
       toast.success('이미지 저장에 성공했어요');
     } catch (error) {
