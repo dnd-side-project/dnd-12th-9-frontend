@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { toast } from 'sonner';
 
 import { Button } from '@repo/ui/components/Button';
 import { Chip } from '@repo/ui/components/Chip';
@@ -71,10 +72,16 @@ export const ReviewContent = ({ id }: { id: string }) => {
   const { isOpen, openModal } = useModal();
 
   const onClickSaveButton = () => {
-    mutate({
-      bookId: id,
-      keywordIds: selectedKeywordIdList,
-    });
+    mutate(
+      {
+        bookId: id,
+        keywordIds: selectedKeywordIdList,
+      },
+      {
+        onSuccess: () => toast.success(`평가 ${isInitialReview ? '등록' : '수정'}에 성공했어요`),
+        onError: () => toast.error(`평가 ${isInitialReview ? '등록' : '수정'}에 실패했어요`),
+      }
+    );
     if (isInitialReview) {
       openModal();
     } else {

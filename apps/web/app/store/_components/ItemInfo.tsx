@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
+import { toast } from 'sonner';
 
 import { Button, ButtonElement } from '@repo/ui/components/Button';
 import { Flex } from '@repo/ui/components/Layout';
@@ -30,11 +31,12 @@ export const ItemInfo = () => {
   const handleItemDraw = () => {
     mutation.mutate(undefined, {
       onSuccess: (response: ItemDrawResponse) => {
+        toast.success(`유령 획득에 성공했어요`);
         setItemData(response.data);
         openModal();
       },
       // TODO: 에러 처리
-      onError: () => {},
+      onError: () => toast.error(`유령 획득에 실패했어요`),
     });
   };
   return (

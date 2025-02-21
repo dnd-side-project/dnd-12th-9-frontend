@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation';
 
 import { ChangeEventHandler, useCallback, useState } from 'react';
 
+import { toast } from 'sonner';
+
 import { Button } from '@repo/ui/components/Button';
 import { Header } from '@repo/ui/components/Header';
 import { Box, JustifyBetween, PageLayout, Stack } from '@repo/ui/components/Layout';
@@ -19,7 +21,13 @@ const NicknamePage = () => {
   const { mutate, isPending } = useNickname();
 
   const onClickSaveButton = () => {
-    mutate({ nickname });
+    mutate(
+      { nickname },
+      {
+        onSuccess: () => toast.success(`닉네임 설정에 성공했어요`),
+        onError: () => toast.error(`닉네임 설정에 실패했어요`),
+      }
+    );
     router.push('/onboarding');
   };
 
