@@ -33,6 +33,7 @@ export async function GET(request: NextRequest) {
     cookieList.set('memberId', memberId);
 
     if (nickname) {
+      cookieList.set('nickname', nickname);
       return NextResponse.redirect(new URL('/home', request.url));
     }
 

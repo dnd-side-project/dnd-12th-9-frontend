@@ -1,34 +1,20 @@
-//TODO 예시 버튼때문에 빌드 에러나서 임시로 use client 추가 추후에 삭제 예정
-'use client';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-import { useState } from 'react';
+import { COOKIE_ID } from './_constants/cookie';
 
-import { Button } from '@repo/ui/components/Button';
-import { Chip } from '@repo/ui/components/Chip';
+export default async function Home() {
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get(COOKIE_ID.ACCESS_TOKEN)?.value;
+  const nickname = cookieStore.get(COOKIE_ID.MEMBER_ID)?.value;
 
-export default function Home() {
-  const [value, setValue] = useState<string>('');
+  if (!accessToken) {
+    redirect('/login');
+  }
 
-  const handleChipClick = (value: string) => {
-    if (value === '칩') {
-      return setValue('');
-    }
-    return setValue('칩');
-  };
+  if (!nickname) {
+    redirect('/nickname');
+  }
 
-  return (
-    <div>
-      <Button>dd</Button>
-      <footer className="text-blue-500">
-        <Chip
-          value={value}
-          active={value === '칩'}
-          onClick={() => handleChipClick(value)}
-          variant="keyword"
-        >
-          칩
-        </Chip>
-      </footer>
-    </div>
-  );
+  return redirect('/home');
 }

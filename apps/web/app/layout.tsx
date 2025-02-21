@@ -14,7 +14,7 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  keywords: ['스부키', '마법 도서관 스부키', '독서', '유령'],
+  keywords: ['스부키', '마법 도서관 스부키', '독서', '유령', 'Sbooky'],
   twitter: {
     card: 'summary_large_image',
     title: '독서로 만나는 유령, 마법 도서관 스부키',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     type: 'website',
     title: '독서로 만나는 유령, 마법 도서관 스부키',
     description: '책을 읽고 기록하며 포인트를 모으고, 개성 있는 유령 캐릭터를 획득하세요.',
-    siteName: '스부키',
+    siteName: 'Sbooky',
     url: 'https://www.sbooky.net/',
     images: ['https://www.sbooky.net/MAIN.png'],
   },
