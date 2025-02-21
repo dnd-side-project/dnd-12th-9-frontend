@@ -3,6 +3,8 @@ import { redirect } from 'next/navigation';
 
 import { HydrationBoundary, dehydrate, QueryClient } from '@tanstack/react-query';
 
+import { bookQueryOptions } from 'app/_api/queries/book';
+import { itemQueryOptions } from 'app/_api/queries/item';
 import { COOKIE_ID } from 'app/_constants/cookie';
 
 import { Profile } from './_components/Profile';
@@ -16,6 +18,11 @@ const ProfilePage = async () => {
   if (!memberId) {
     redirect('/login');
   }
+
+  await Promise.all([
+    queryClient.fetchQuery(itemQueryOptions.list(memberId)),
+    queryClient.fetchQuery(bookQueryOptions.count(memberId)),
+  ]);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
