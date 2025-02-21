@@ -38,7 +38,10 @@ const NicknamePage = () => {
   }, []);
 
   return (
-    <PageLayout header={<Header>닉네임 설정</Header>} className="flex flex-col">
+    <PageLayout
+      header={<Header className="bg-white">닉네임 설정</Header>}
+      className="flex flex-col bg-white"
+    >
       <Stack className="grow">
         <NicknameHeader />
         <JustifyBetween className="grow flex-col items-center px-4 pb-4">
