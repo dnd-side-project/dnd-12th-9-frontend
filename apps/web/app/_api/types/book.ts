@@ -7,7 +7,7 @@ export type Book = {
   title: string;
   author: string;
   publishedAt: string;
-  thumbnail: string;
+  thumbnailUrl: string;
 };
 
 export type NewBook = {
