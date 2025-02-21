@@ -1,4 +1,4 @@
-import { queryOptions } from '@tanstack/react-query';
+import { infiniteQueryOptions, queryOptions } from '@tanstack/react-query';
 
 import { READING_STATUS } from 'app/_constants/status';
 
@@ -8,7 +8,9 @@ import {
   GetBookDetailAPIResponse,
   GetBookListAPIRequest,
   GetBookListAPIResponse,
+  SearchBookResponse,
 } from '../types/book';
+import { GetMemberCompletedBookCountAPIResponse } from '../types/member';
 
 export const bookQueryKeys = {
   all: () => ['books'],
