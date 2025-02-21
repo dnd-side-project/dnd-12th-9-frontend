@@ -25,12 +25,12 @@ export const CardList = ({ bookList }: CardListProps) => {
         <Link href="/search">
           <AddBookCard />
         </Link>
-        {bookList.map(({ id, thumbnailUrl, author, title }) => (
+        {bookList.map(({ id, thumbnail, author, title }) => (
           <Link key={id} href={`/books/${id}`}>
             <Card
               title={title}
               description={author}
-              imageURL={thumbnailUrl ?? '/Ghost/BASIC_GHOST.png'}
+              imageURL={thumbnail ?? '/Ghost/BASIC_GHOST.png'}
             />
           </Link>
         ))}

@@ -17,12 +17,10 @@ export const Tutorial = ({ onStepChange, config }: StepProps) => {
   return (
     <Flex className="relative h-dvh w-full flex-col items-center justify-between overflow-hidden">
       <Image
-        fill
-        priority
+        width={440}
+        height={1000}
         src={backgroundUrl}
         alt="튜토리얼 배경"
-        placeholder="blur"
-        blurDataURL={backgroundUrl}
         className="absolute inset-0 z-0 h-full object-cover md:hidden"
         style={{
           filter: 'blur(1px) ',
