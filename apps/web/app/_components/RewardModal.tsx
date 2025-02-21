@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { Button } from '@repo/ui/components/Button';
 import { Icon } from '@repo/ui/components/Icon';
 import { CenterStack, JustifyBetween } from '@repo/ui/components/Layout';
@@ -29,7 +31,10 @@ export const RewardModal = ({
         <Text type="Heading1" weight="semibold" className="text-green-600">
           구슬 얻기 성공!
         </Text>
-        <Icon type="orb" size={150} />
+        <CenterStack className="relative">
+          <Image src="/EFFECT_GREEN.png" alt="효과" width={300} height={300} className="z-0" />
+          <Icon type="orb" size={150} className="absolute z-10" />
+        </CenterStack>
         <CenterStack className="gap-1">
           <Text type="Heading3" weight="semibold" className="text-white">
             {message}
@@ -40,10 +45,10 @@ export const RewardModal = ({
         </CenterStack>
         {type === 'double' ? (
           <JustifyBetween className="mt-3 gap-2">
-            <Button size="sm" variant="gray100" onClick={onClose}>
+            <Button size="md" variant="gray100" onClick={onClose}>
               확인
             </Button>
-            <Button size="sm" variant="primary500" onClick={onNavigate}>
+            <Button size="md" variant="primary500" onClick={onNavigate}>
               책장 가기
             </Button>
           </JustifyBetween>
