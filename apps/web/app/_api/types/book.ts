@@ -34,6 +34,7 @@ export type SearchBookResponse = {
 
 export type MemberBook = Book & {
   id: string;
+  thumbnailUrl: string;
   readStatus: READING_STATUS;
   publishedAt?: string;
   createdAt?: Date;
