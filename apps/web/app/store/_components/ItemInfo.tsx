@@ -56,7 +56,6 @@ export const ItemInfo = () => {
         itemData={itemData}
         isOpen={isOpen}
         onClose={closeModal}
-        onFetch={handleItemDraw}
         onNavigate={() => router.push('/closet')}
       />
     </>
