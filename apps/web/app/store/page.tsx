@@ -8,7 +8,7 @@ import { ItemInfo } from './_components/ItemInfo';
 const StorePage = () => {
   return (
     <PageLayout
-      className="flex h-dvh w-full flex-col bg-[url('/STORE.png')] bg-cover bg-center"
+      className="flex h-dvh w-full flex-col bg-[url('/STORE.webp')] bg-cover bg-center"
       header={
         <Header left={<BackButton />} className="bg-[#E8E2D1]">
           스토어
