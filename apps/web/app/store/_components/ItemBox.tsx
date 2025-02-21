@@ -26,7 +26,7 @@ export const ItemBox = () => {
           {[...ALL_GHOSTS, ...ALL_GHOSTS].map((ghost, index) => (
             <Image
               key={index}
-              src={`/Ghost/${ghost}.png`}
+              src={`/Ghost/${ghost}.webp`}
               alt="BASIC_GHOST"
               width={60}
               height={60}
