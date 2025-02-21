@@ -1,4 +1,8 @@
+'use client';
+
 import { useState } from 'react';
+
+import { toast } from 'sonner';
 
 import { Box, CenterStack } from '@repo/ui/components/Layout';
 import { useModal } from '@repo/ui/hooks/useModal';
@@ -23,13 +27,19 @@ export const BookList = ({ data, isLoading }: BookListProps) => {
   const { mutate } = useAddBook();
 
   const onConfirm = (readStatus: READING_STATUS) =>
-    mutate({
-      title: selectedBook.title,
-      author: selectedBook.author,
-      publishedAt: selectedBook.publishedAt,
-      thumbnailUrl: selectedBook.thumbnail ?? '',
-      readStatus,
-    });
+    mutate(
+      {
+        title: selectedBook.title,
+        author: selectedBook.author,
+        publishedAt: selectedBook.publishedAt,
+        thumbnailUrl: selectedBook.thumbnail ?? '',
+        readStatus,
+      },
+      {
+        onSuccess: () => toast.success(`책 등록에 성공했어요`),
+        onError: () => toast.error(`책 등록에 실패했어요`),
+      }
+    );
 
   const handleOpenModal = (book: Book) => {
     setSelectedBook(book);

@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Metadata } from 'next';
+import { Toaster } from 'sonner';
 
 import { ClientQueryProvider } from './_api/ClientQueryProvider';
 
@@ -49,6 +50,7 @@ export default function RootLayout({
           </div>
         </ClientQueryProvider>
         <SpeedInsights />
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );

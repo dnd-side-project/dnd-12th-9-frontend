@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import { useSuspenseQueries } from '@tanstack/react-query';
+import { toast } from 'sonner';
 
 import { Button } from '@repo/ui/components/Button';
 import { Header, HeaderLeftElement } from '@repo/ui/components/Header';
@@ -51,10 +52,16 @@ export const ClosetSection = ({ memberId }: ClosetSectionProps) => {
   const disabled = isInitialGhost || isPending;
 
   const onClickSavebutton = () => {
-    mutate({
-      equippedItemCode: initialGhost.code,
-      toEquipItemCode: currentGhost.code,
-    });
+    mutate(
+      {
+        equippedItemCode: initialGhost.code,
+        toEquipItemCode: currentGhost.code,
+      },
+      {
+        onSuccess: () => toast.success(`유령 변경에 성공했어요`),
+        onError: () => toast.error(`유령 변경에 실패했어요`),
+      }
+    );
   };
 
   const goBack = () => {
