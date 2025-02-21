@@ -10,14 +10,14 @@ export const BookInfo = ({ title, thumbnail: thumbnailUrl, author, publishedAt }
   return (
     <Box className="relative overflow-hidden rounded-lg">
       <Image
-        src={thumbnailUrl ?? '/Ghost/BASIC_GHOST.png'}
+        src={thumbnailUrl ?? '/Ghost/BASIC_GHOST.webp'}
         fill
         alt="배경"
         className="rounded-lg object-center"
       />
       <CenterStack className="aspect-square gap-4 bg-black/50 backdrop-blur-xl">
         <Image
-          src={thumbnailUrl ?? '/Ghost/BASIC_GHOST.png'}
+          src={thumbnailUrl ?? '/Ghost/BASIC_GHOST.webp'}
           alt="도서"
           width={140}
           height={206}

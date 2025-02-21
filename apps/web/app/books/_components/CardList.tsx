@@ -30,7 +30,7 @@ export const CardList = ({ bookList }: CardListProps) => {
             <Card
               title={title}
               description={author}
-              imageURL={thumbnail ?? '/Ghost/BASIC_GHOST.png'}
+              imageURL={thumbnail ?? '/Ghost/BASIC_GHOST.webp'}
             />
           </Link>
         ))}

@@ -13,7 +13,7 @@ type ItemModalProps = {
   onNavigate?: () => void;
 };
 export const ItemModal = ({ itemData, isOpen, onClose, onNavigate }: ItemModalProps) => {
-  const ghostImage = `/Ghost/${itemData.code.toUpperCase()}.png`;
+  const ghostImage = `/Ghost/${itemData.code.toUpperCase()}.webp`;
   return (
     <Modal
       isOpen={isOpen}
