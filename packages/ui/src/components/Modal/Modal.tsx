@@ -62,7 +62,7 @@ export function Modal({
         animate="animate"
         exit="exit"
         className={cn(
-          'fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50',
+          'fixed inset-0 z-50 flex items-center justify-center bg-gray-800/50',
           className
         )}
       >

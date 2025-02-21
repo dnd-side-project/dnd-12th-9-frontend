@@ -48,11 +48,11 @@ export const ItemModal = ({ itemData, isOpen, onFetch, onClose, onNavigate }: It
         </CenterStack>
 
         <JustifyBetween className="mt-3 gap-2">
-          <Button size="sm" variant="gray100" onClick={onFetch} className="cursor-pointer">
+          <Button size="md" variant="gray100" onClick={onFetch} className="cursor-pointer">
             한번 더 뽑기
           </Button>
-          <Button size="sm" variant="primary500" onClick={onNavigate} className="cursor-pointer">
-            책장 가기
+          <Button size="md" variant="primary500" onClick={onNavigate} className="cursor-pointer">
+            꾸미러 가기
           </Button>
         </JustifyBetween>
       </CenterStack>
