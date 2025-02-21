@@ -6,13 +6,16 @@ import { Text } from '@repo/ui/components/Text';
 import { KakaoLogo } from './assets/KakaoLogo';
 import { LoginCharacter } from './assets/LoginCharacter';
 import { LoginLogo } from './assets/LoginLogo';
+import { LoginMotion } from './assets/LoginMotion';
 
 export default function LoginPage() {
   return (
-    <PageLayout>
+    <PageLayout className="bg-white">
       <Stack className="h-full px-4 py-[50px]">
         <CenterStack className="grow">
-          <LoginCharacter />
+          <LoginMotion>
+            <LoginCharacter />
+          </LoginMotion>
           <CenterStack className="gap-2">
             <LoginLogo />
             <Text type="Title1" weight="medium" className="text-gray-500">
