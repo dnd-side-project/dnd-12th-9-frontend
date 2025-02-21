@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { Chip } from '@repo/ui/components/Chip';
 import { Header } from '@repo/ui/components/Header';
@@ -22,17 +22,11 @@ type Props = {
 };
 
 export const BookSection = ({ memberId, filter }: Props) => {
-  const { data, isPending, isError } = useQuery(
-    bookQueryOptions.list(memberId, getFilterBySearchParams(filter))
-  );
-
-  if (isPending || isError) {
-    return <></>;
-  }
-
   const {
-    data: { bookList, totalBookCount },
-  } = data;
+    data: {
+      data: { bookList, totalBookCount },
+    },
+  } = useSuspenseQuery(bookQueryOptions.list(memberId, getFilterBySearchParams(filter)));
 
   return (
     <PageLayout

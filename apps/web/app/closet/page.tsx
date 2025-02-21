@@ -19,8 +19,8 @@ const ClosetPage = async () => {
   }
 
   await Promise.all([
-    queryClient.fetchQuery(itemQueryOptions.list(memberId)),
-    queryClient.fetchQuery(itemQueryOptions.equipped(memberId)),
+    queryClient.prefetchQuery(itemQueryOptions.list(memberId)),
+    queryClient.prefetchQuery(itemQueryOptions.equipped(memberId)),
   ]);
 
   return (
