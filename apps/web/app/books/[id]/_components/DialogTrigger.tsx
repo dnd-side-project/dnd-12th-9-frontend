@@ -37,6 +37,7 @@ export const DialogTrigger = ({ data }: DialogTriggerProps) => {
           closeModal={closeModal}
           data={data}
           onConfirm={onConfirm}
+          initialReadState={data.readStatus}
         />
       )}
     </>
