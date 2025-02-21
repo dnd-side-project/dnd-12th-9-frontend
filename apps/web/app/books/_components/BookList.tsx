@@ -1,15 +1,16 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { Chip } from '@repo/ui/components/Chip';
-import { Header } from '@repo/ui/components/Header';
+import { Header, HeaderLeftElement } from '@repo/ui/components/Header';
+import { Icon } from '@repo/ui/components/Icon';
 import { Stack, HStack, PageLayout } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 import { bookQueryOptions } from 'app/_api/queries/book';
-import { BackButton } from 'app/_components/BackButton';
 import { READ_STATUS_LIST, ReadStatusTag } from 'app/_constants/status';
 
 import { getFilterBySearchParams } from '../_utils/getFilterBySearchParams';
@@ -22,16 +23,29 @@ type Props = {
 };
 
 export const BookSection = ({ memberId, filter }: Props) => {
+  const router = useRouter();
   const {
     data: {
       data: { bookList, totalBookCount },
     },
   } = useSuspenseQuery(bookQueryOptions.list(memberId, getFilterBySearchParams(filter)));
 
+  const goBack = () => {
+    router.push('/home');
+  };
+
   return (
     <PageLayout
       header={
-        <Header left={<BackButton />} className="bg-white" borderBottom>
+        <Header
+          left={
+            <HeaderLeftElement onClick={goBack}>
+              <Icon type="back" color="gray800" />
+            </HeaderLeftElement>
+          }
+          className="bg-white"
+          borderBottom
+        >
           책장
         </Header>
       }

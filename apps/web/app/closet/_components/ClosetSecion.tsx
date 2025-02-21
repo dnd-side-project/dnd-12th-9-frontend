@@ -1,17 +1,17 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import { useSuspenseQueries } from '@tanstack/react-query';
 
 import { Button } from '@repo/ui/components/Button';
-import { Header } from '@repo/ui/components/Header';
+import { Header, HeaderLeftElement } from '@repo/ui/components/Header';
 import { Icon } from '@repo/ui/components/Icon';
 import { IconButton } from '@repo/ui/components/IconButton';
 import { Box, PageLayout, Stack } from '@repo/ui/components/Layout';
 import { useUpdateEquippedItem } from 'app/_api/mutations/useUpdateEquippedItem';
 import { itemQueryOptions } from 'app/_api/queries/item';
-import { BackButton } from 'app/_components/BackButton';
 
 import { GHOST_MAP, BASIC_GHOST } from '../_constants/item';
 import { useGhost } from '../_hooks/useGhost';
@@ -24,6 +24,7 @@ type ClosetSectionProps = {
 };
 
 export const ClosetSection = ({ memberId }: ClosetSectionProps) => {
+  const router = useRouter();
   const [
     {
       data: {
@@ -56,10 +57,21 @@ export const ClosetSection = ({ memberId }: ClosetSectionProps) => {
     });
   };
 
+  const goBack = () => {
+    router.push('/home');
+  };
+
   return (
     <PageLayout
       header={
-        <Header left={<BackButton />} className="z-10 bg-transparent">
+        <Header
+          left={
+            <HeaderLeftElement onClick={goBack}>
+              <Icon type="back" color="gray800" />
+            </HeaderLeftElement>
+          }
+          className="z-10 bg-transparent"
+        >
           꾸미기
         </Header>
       }
