@@ -1,0 +1,26 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { fetcher } from '../fetcher';
+import { evaluaionQueryKeys } from '../queries/evaluation';
+import { UpdateBookEvaluationRequest } from '../types/evaluation';
+
+const updateEvaluationAPI = ({ bookId, keywordIds }: UpdateBookEvaluationRequest) =>
+  fetcher.put(`books/${bookId}/evaluation`, {
+    json: {
+      keywordIds,
+    },
+  });
+
+export const useUpdateEvaluation = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: updateEvaluationAPI,
+    // TODO : 에러 시 토스트
+    onError: () => {},
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [...evaluaionQueryKeys.all()],
+      });
+    },
+  });
+};

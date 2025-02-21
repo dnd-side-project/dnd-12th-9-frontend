@@ -34,7 +34,7 @@ export const ReadingCard = (props: Props) => {
         </HStack>
         <DialogTrigger data={props} />
       </JustifyBetween>
-      <KeywordSection />
+      {readStatus === 'COMPLETED' && <KeywordSection {...props} />}
     </Stack>
   );
 };

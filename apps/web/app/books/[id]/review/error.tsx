@@ -1,0 +1,31 @@
+'use client';
+
+// TODO 추후 UI 변경 필요
+
+import { useEffect } from 'react';
+
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
+  return (
+    <div>
+      <h2>Something went wrong!</h2>
+      <button
+        onClick={
+          // 재시도
+          () => reset()
+        }
+      >
+        Try again
+      </button>
+    </div>
+  );
+}
