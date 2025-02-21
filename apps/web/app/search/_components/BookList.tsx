@@ -27,6 +27,7 @@ export const BookList = ({ data, isLoading }: BookListProps) => {
       title: selectedBook.title,
       author: selectedBook.author,
       publishedAt: selectedBook.publishedAt,
+      thumbnailUrl: selectedBook.thumbnailUrl,
       readStatus,
     });
 
@@ -55,7 +56,7 @@ export const BookList = ({ data, isLoading }: BookListProps) => {
               title={book.title}
               author={book.author}
               publishedAt={book.publishedAt}
-              thumbnail={book.thumbnail}
+              thumbnailUrl={book.thumbnailUrl}
               openModal={() => handleOpenModal(book)}
             />
           ))}

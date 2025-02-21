@@ -7,13 +7,14 @@ export type Book = {
   title: string;
   author: string;
   publishedAt: string;
-  thumbnail?: string;
+  thumbnailUrl: string;
 };
 
 export type NewBook = {
   title: string;
   author: string;
   publishedAt: string;
+  thumbnailUrl: string;
   readStatus: 'WANT_TO_READ' | 'READING' | 'COMPLETED';
 };
 
