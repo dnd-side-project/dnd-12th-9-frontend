@@ -7,7 +7,7 @@ export type Book = {
   title: string;
   author: string;
   publishedAt: string;
-  thumbnailUrl: string;
+  thumbnail: string;
 };
 
 export type NewBook = {
@@ -34,6 +34,7 @@ export type SearchBookResponse = {
 
 export type MemberBook = Book & {
   id: string;
+  thumbnailUrl: string;
   readStatus: READING_STATUS;
   publishedAt?: string;
   createdAt?: Date;

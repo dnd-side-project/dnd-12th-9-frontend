@@ -6,7 +6,7 @@ import { Book } from 'app/_api/types/book';
 
 type Props = Book;
 
-export const BookInfo = ({ title, thumbnailUrl, author, publishedAt }: Props) => {
+export const BookInfo = ({ title, thumbnail: thumbnailUrl, author, publishedAt }: Props) => {
   return (
     <Box className="relative overflow-hidden rounded-lg">
       <Image
