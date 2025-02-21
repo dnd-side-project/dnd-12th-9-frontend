@@ -1,15 +1,28 @@
+'use client';
+
 import Image from 'next/image';
+
+import { Ref } from 'react';
 
 import { Icon } from '@repo/ui/components/Icon';
 import { Box, CenterStack, JustifyBetween, Spacing } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 
-export const Card = () => {
+type Props = {
+  ref: Ref<HTMLDivElement>;
+  onImageLoaded: VoidFunction;
+};
+
+export const Card = ({ ref, onImageLoaded }: Props) => {
   const ghostImage = '/Ghost/BASIC_GHOST.png';
+
   return (
-    <CenterStack className="border-1 gap-6 rounded-3xl border-white bg-gradient-to-t from-[#E6D4B6] to-[#F7F0DA] px-6 py-[26px]">
+    <CenterStack
+      className="border-1 gap-6 rounded-3xl border-white bg-gradient-to-t from-[#E6D4B6] to-[#F7F0DA] px-6 py-[26px]"
+      ref={ref}
+    >
       <Box className="rounded-3xl bg-white/70 px-3 py-[6px] text-gray-600">독서카드</Box>
-      <Image src={ghostImage} alt="ghost" width={200} height={200} />
+      <Image src={ghostImage} alt="ghost" width={200} height={200} onLoad={onImageLoaded} />
       <CenterStack className="w-full flex-col gap-2">
         <Text type="Heading3" weight="semibold" className="text-gray-800">
           김태희

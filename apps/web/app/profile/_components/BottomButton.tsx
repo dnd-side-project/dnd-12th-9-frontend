@@ -1,3 +1,5 @@
+import { ComponentProps } from 'react';
+
 import { Icon } from '@repo/ui/components/Icon';
 import { IconButton } from '@repo/ui/components/IconButton';
 import { CenterStack, JustifyBetween } from '@repo/ui/components/Layout';
@@ -18,7 +20,11 @@ const PROFILE_BOTTOM_BUTTON = [
   },
 ] as const;
 
-export const BottomButton = () => {
+type BottomButtonProps = {
+  saveImageButtonProps?: ComponentProps<'button'>;
+};
+
+export const BottomButton = ({ saveImageButtonProps }: BottomButtonProps) => {
   return (
     <JustifyBetween className="flex-row gap-4 px-4">
       {PROFILE_BOTTOM_BUTTON.map((button) => (
@@ -26,6 +32,7 @@ export const BottomButton = () => {
           <IconButton
             key={button.name}
             className="h-11 w-11 rounded-full border border-gray-100 bg-white"
+            {...saveImageButtonProps}
           >
             <Icon type={button.icon} />
           </IconButton>
