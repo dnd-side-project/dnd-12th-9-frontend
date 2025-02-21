@@ -9,7 +9,6 @@ import { Chip } from '@repo/ui/components/Chip';
 import { CenterStack, Flex, JustifyBetween, VStack } from '@repo/ui/components/Layout';
 import { Modal } from '@repo/ui/components/Modal';
 import { Text } from '@repo/ui/components/Text';
-import { useAddBook } from 'app/_api/mutations/useAddBook';
 import { Book } from 'app/_api/types/book';
 import { READING_STATUS, STATUS_DATA } from 'app/_constants/status';
 import { entries } from 'app/_util/entries';
@@ -22,24 +21,20 @@ type ModalProps = {
 type BookStatusModalProps = ModalProps & {
   data: Book;
   initialReadState?: READING_STATUS;
+  onConfirm: (readStatus: READING_STATUS) => void;
 };
 
 export const BookStatusModal = ({
   isOpen,
   closeModal,
   data,
+  onConfirm,
   initialReadState = 'WANT_TO_READ',
 }: BookStatusModalProps) => {
   const [activeStatus, setActiveStatus] = useState<READING_STATUS>(initialReadState);
-  const mutation = useAddBook();
 
   const handleSave = () => {
-    mutation.mutate({
-      title: data.title,
-      author: data.author,
-      publishedAt: data.publishedAt,
-      readStatus: activeStatus,
-    });
+    onConfirm(activeStatus);
     closeModal();
   };
 
