@@ -21,7 +21,7 @@ export const TopBarButton = ({ type }: TopBarButtonProps) => {
   };
 
   return (
-    <CenterStack className="mt-2 cursor-pointer gap-1" onClick={handleClick}>
+    <CenterStack className="mt-2 cursor-pointer gap-2" onClick={handleClick}>
       <Image src={icon} alt={title} width={48} height={48} />
       <Text type="Title2" weight="semibold" className="text-gray-900">
         {title}

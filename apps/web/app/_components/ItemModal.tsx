@@ -14,7 +14,7 @@ type ItemModalProps = {
   onNavigate?: () => void;
 };
 export const ItemModal = ({ itemData, isOpen, onFetch, onClose, onNavigate }: ItemModalProps) => {
-  const ghostImage = `/Ghost/${itemData.code}.png`;
+  const ghostImage = `/Ghost/${itemData.code.toUpperCase()}.png`;
   return (
     <Modal
       isOpen={isOpen}

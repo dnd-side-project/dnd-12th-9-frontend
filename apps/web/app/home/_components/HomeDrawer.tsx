@@ -4,16 +4,17 @@ import { Drawer } from '@repo/ui/components/Drawer';
 import { Icon } from '@repo/ui/components/Icon';
 import { Flex, HStack, JustifyBetween, Spacing } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
+import { GetEquippedItemResponse } from 'app/_api/types/item';
 
 import { DRAWER_MENU } from '../_constants/topbar';
 
 type HomeDrawerProps = {
-  token?: string;
-  nickName?: string;
+  memberId?: string;
+  data?: GetEquippedItemResponse;
   isOpen: boolean;
   onClose: () => void;
 };
-export const HomeDrawer = ({ token, nickName, isOpen, onClose }: HomeDrawerProps) => {
+export const HomeDrawer = ({ memberId, data, isOpen, onClose }: HomeDrawerProps) => {
   const router = useRouter();
   return (
     <Drawer isOpen={isOpen} onClose={onClose}>
@@ -24,10 +25,10 @@ export const HomeDrawer = ({ token, nickName, isOpen, onClose }: HomeDrawerProps
         </Flex>
         <Flex className="mb-3 flex-col gap-1 px-5">
           <Text type="Title1" weight="semibold" className="text-gray-900">
-            {token ? nickName : '로그인/회원가입'}
+            {memberId ? data?.data.nickName : '로그인/회원가입'}
           </Text>
           <Text type="Title2" className="text-gray-500">
-            {token ? '오늘도 즐거운 독서하세요!' : '지금 가입하면 구슬 100개!'}
+            {memberId ? '오늘도 즐거운 독서하세요!' : '지금 가입하면 구슬 100개!'}
           </Text>
         </Flex>
         <Spacing className="h-2 bg-gray-50" />

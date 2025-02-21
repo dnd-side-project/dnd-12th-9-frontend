@@ -17,7 +17,7 @@ export const TOP_BAR = {
   share: {
     icon: '/TopBar/SHARE.webp',
     title: '자랑하기',
-    router: '/share',
+    router: '/profile',
   },
 } as const;
 

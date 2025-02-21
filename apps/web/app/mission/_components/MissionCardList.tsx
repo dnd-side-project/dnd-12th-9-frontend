@@ -14,7 +14,9 @@ import { MissionCard } from './MissionCard';
 export const MissionCardList = () => {
   const router = useRouter();
 
-  const goBooksPage = () => router.push('/books');
+  const goHandlePage = (page: string) => {
+    router.push(`/${page}`);
+  };
 
   return (
     <Stack className="gap-3 px-4">
@@ -23,7 +25,12 @@ export const MissionCardList = () => {
         orbCount={10}
         missionIcon={<Icon type="missionCard" />}
         action={
-          <Button variant="primary50" size="sm" className="font-medium" onClick={goBooksPage}>
+          <Button
+            variant="primary50"
+            size="sm"
+            className="font-medium"
+            onClick={() => goHandlePage('search')}
+          >
             하러 가기
           </Button>
         }
@@ -33,17 +40,27 @@ export const MissionCardList = () => {
         orbCount={50}
         missionIcon={<Image src={BLACKY_DONE} width={40} height={40} alt="책 평가" />}
         action={
-          <Button variant="primary50" size="sm" className="font-medium" onClick={goBooksPage}>
+          <Button
+            variant="primary50"
+            size="sm"
+            className="font-medium"
+            onClick={() => goHandlePage('books')}
+          >
             하러 가기
           </Button>
         }
       />
       <MissionCard
-        title="독서 카드 공유하기"
+        title="독서 카드 저장하기"
         orbCount={50}
         missionIcon={<Icon type="missionShare" width={50} height={50} />}
         action={
-          <Button variant="primary50" size="sm" className="font-medium" disabled>
+          <Button
+            variant="primary50"
+            size="sm"
+            className="font-medium"
+            onClick={() => goHandlePage('profile')}
+          >
             하러 가기
           </Button>
         }

@@ -4,10 +4,13 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import { useEffect } from 'react';
 
+import { useQuery } from '@tanstack/react-query';
+
 import { Header } from '@repo/ui/components/Header';
 import { Icon } from '@repo/ui/components/Icon';
 import { HStack, JustifyBetween, PageLayout } from '@repo/ui/components/Layout';
 import { useModal } from '@repo/ui/hooks/useModal';
+import { itemQueryOptions } from 'app/_api/queries/item';
 
 import { TOP_BAR } from '../_constants/topbar';
 
@@ -26,6 +29,7 @@ export const Home = ({ memberId }: HomeProps) => {
   const router = useRouter();
 
   const openOnboarding = searchParams.get('openOnboarding');
+  const { data } = useQuery(itemQueryOptions.equipped());
 
   useEffect(() => {
     if (openOnboarding) {
@@ -55,11 +59,11 @@ export const Home = ({ memberId }: HomeProps) => {
               <TopBarButton key={type} type={type as keyof typeof TOP_BAR} />
             ))}
           </HStack>
-          <MemberInfo />
+          <MemberInfo data={data} />
           <MemberPointInfo memberId={memberId} />
         </JustifyBetween>
       </PageLayout>
-      <HomeDrawer isOpen={isOpen} onClose={closeModal} />
+      <HomeDrawer memberId={memberId} data={data} isOpen={isOpen} onClose={closeModal} />
       <OnBoardingCompleteModal isOnBoardingModalOpen={Boolean(openOnboarding) ?? false} />
     </>
   );

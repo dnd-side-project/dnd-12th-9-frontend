@@ -1,14 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
-
 import { CenterStack } from '@repo/ui/components/Layout';
-import { itemQueryOptions } from 'app/_api/queries/item';
+import { GetEquippedItemResponse } from 'app/_api/types/item';
 
 import { Bubble } from './Bubble';
 import { Ghost } from './Ghost';
 
-export const MemberInfo = () => {
-  const { data } = useQuery(itemQueryOptions.equipped());
-
+type MemberInfoProps = {
+  data?: GetEquippedItemResponse;
+};
+export const MemberInfo = ({ data }: MemberInfoProps) => {
   return (
     <>
       <CenterStack>
