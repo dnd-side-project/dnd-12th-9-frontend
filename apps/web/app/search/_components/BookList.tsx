@@ -27,7 +27,7 @@ export const BookList = ({ data, isLoading }: BookListProps) => {
       title: selectedBook.title,
       author: selectedBook.author,
       publishedAt: selectedBook.publishedAt,
-      thumbnailUrl: selectedBook.thumbnailUrl,
+      thumbnailUrl: selectedBook.thumbnailUrl ?? '',
       readStatus,
     });
 
