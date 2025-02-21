@@ -67,7 +67,7 @@ export const MemberPointInfo = ({ memberId }: MemberPointInfoProps) => {
       <Button
         size="lg"
         variant="primary500"
-        className="w-full"
+        className="w-full text-white"
         onClick={() => router.push('/search')}
       >
         책 추가하기
