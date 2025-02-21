@@ -7,6 +7,7 @@ import { useRef, useState } from 'react';
 import { useQueries } from '@tanstack/react-query';
 import { saveAs } from 'file-saver';
 import { toPng } from 'html-to-image';
+import { toast } from 'sonner';
 
 import { Header, HeaderLeftElement } from '@repo/ui/components/Header';
 import { Icon } from '@repo/ui/components/Icon';
@@ -80,8 +81,10 @@ export const Profile = ({ memberId }: ProfileProps) => {
       }
 
       saveAs(dataUrl, 'GHOST_PROFILE_CARD.png');
+      toast.success('이미지 저장에 성공했어요');
     } catch (error) {
       console.error('Error converting div to image:', error);
+      toast.error('이미지 저장에 실패했어요');
     } finally {
       setIsDownloadImageLoading(false);
     }

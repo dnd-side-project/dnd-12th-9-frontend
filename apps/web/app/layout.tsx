@@ -50,7 +50,7 @@ export default function RootLayout({
           </div>
         </ClientQueryProvider>
         <SpeedInsights />
-        <Toaster position="top-center" richColors />
+        <Toaster position="top-center" richColors duration={1500} />
       </body>
     </html>
   );
