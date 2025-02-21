@@ -2,7 +2,7 @@ import { ComponentProps } from 'react';
 
 import { Icon } from '@repo/ui/components/Icon';
 import { IconButton } from '@repo/ui/components/IconButton';
-import { CenterStack, JustifyBetween } from '@repo/ui/components/Layout';
+import { Center, CenterStack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 
 const PROFILE_BOTTOM_BUTTON = [
@@ -10,14 +10,14 @@ const PROFILE_BOTTOM_BUTTON = [
     name: '저장하기',
     icon: 'download',
   },
-  {
-    name: '카카오톡',
-    icon: 'kakao',
-  },
-  {
-    name: '링크복사',
-    icon: 'link',
-  },
+  // {
+  //   name: '카카오톡',
+  //   icon: 'kakao',
+  // },
+  // {
+  //   name: '링크복사',
+  //   icon: 'link',
+  // },
 ] as const;
 
 type BottomButtonProps = {
@@ -26,7 +26,7 @@ type BottomButtonProps = {
 
 export const BottomButton = ({ saveImageButtonProps }: BottomButtonProps) => {
   return (
-    <JustifyBetween className="flex-row gap-4 px-4">
+    <Center className="px-4 pb-4">
       {PROFILE_BOTTOM_BUTTON.map((button) => (
         <CenterStack key={button.name} className="gap-3">
           <IconButton
@@ -41,6 +41,6 @@ export const BottomButton = ({ saveImageButtonProps }: BottomButtonProps) => {
           </Text>
         </CenterStack>
       ))}
-    </JustifyBetween>
+    </Center>
   );
 };
