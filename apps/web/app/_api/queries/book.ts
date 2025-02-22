@@ -52,7 +52,7 @@ export const bookQueryOptions = {
     }),
   point: () =>
     queryOptions({
-      queryKey: [...bookQueryKeys.point()],
+      queryKey: [...bookQueryKeys.all()],
       queryFn: getMemberPointAPI,
     }),
 };
