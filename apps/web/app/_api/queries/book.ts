@@ -10,7 +10,7 @@ import {
   GetBookListAPIResponse,
   SearchBookResponse,
 } from '../types/book';
-import { GetMemberCompletedBookCountAPIResponse } from '../types/member';
+import { GetMemberCompletedBookCountAPIResponse, MemberPoint } from '../types/member';
 
 export const bookQueryKeys = {
   all: () => ['books'],
@@ -19,6 +19,7 @@ export const bookQueryKeys = {
   add: () => [...bookQueryKeys.all(), 'add'],
   search: () => [...bookQueryKeys.all(), 'search'],
   count: () => [...bookQueryKeys.all(), 'count'],
+  point: () => [...bookQueryKeys.all(), 'point'],
 };
 
 export const bookQueryOptions = {
@@ -49,6 +50,11 @@ export const bookQueryOptions = {
       queryKey: [...bookQueryKeys.count()],
       queryFn: () => getMemberCompletedBookAPI(memberId),
     }),
+  point: () =>
+    queryOptions({
+      queryKey: [...bookQueryKeys.point()],
+      queryFn: getMemberPointAPI,
+    }),
 };
 
 const getBookListAPI = ({ memberId, readStatus }: GetBookListAPIRequest) => {
@@ -67,3 +73,5 @@ const getBookSearchAPI = (bookName: string, pageParam: number) =>
 
 const getMemberCompletedBookAPI = (memberId: string) =>
   fetcher.get<GetMemberCompletedBookCountAPIResponse>(`books/members/${memberId}/completed/count`);
+
+const getMemberPointAPI = () => fetcher.get<MemberPoint>('members/point');

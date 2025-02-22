@@ -11,7 +11,7 @@ import { Button, ButtonElement } from '@repo/ui/components/Button';
 import { Flex } from '@repo/ui/components/Layout';
 import { useModal } from '@repo/ui/hooks/useModal';
 import { useItemDraw } from 'app/_api/mutations/useItemDraw';
-import { memberQueryOptions } from 'app/_api/queries/member';
+import { bookQueryOptions } from 'app/_api/queries/book';
 import { Item, ItemDrawResponse } from 'app/_api/types/draw';
 import { ItemModal } from 'app/_components/ItemModal';
 
@@ -19,7 +19,7 @@ import { StoreCard } from './StoreCard';
 
 export const ItemInfo = () => {
   const router = useRouter();
-  const { data } = useQuery(memberQueryOptions.point());
+  const { data } = useQuery(bookQueryOptions.point());
   const [itemData, setItemData] = useState<Item>({
     name: '',
     code: '',

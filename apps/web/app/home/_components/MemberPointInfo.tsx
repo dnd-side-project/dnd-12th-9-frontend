@@ -9,7 +9,6 @@ import { Icon } from '@repo/ui/components/Icon';
 import { Box, Flex, HStack, JustifyBetween, Spacing } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 import { bookQueryOptions } from 'app/_api/queries/book';
-import { memberQueryOptions } from 'app/_api/queries/member';
 
 type MemberPointInfoProps = {
   memberId: string;
@@ -19,7 +18,7 @@ export const MemberPointInfo = ({ memberId }: MemberPointInfoProps) => {
   const router = useRouter();
 
   // TODO : useSuspenseQueries 변경
-  const { data } = useQuery(memberQueryOptions.point());
+  const { data } = useQuery(bookQueryOptions.point());
   const { data: bookData } = useQuery(bookQueryOptions.count(memberId));
 
   return (

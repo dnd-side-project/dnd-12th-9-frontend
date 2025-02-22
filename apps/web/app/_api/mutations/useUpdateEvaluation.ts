@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { fetcher } from '../fetcher';
-import { evaluaionQueryKeys } from '../queries/evaluation';
+import { bookQueryKeys } from '../queries/book';
 import { UpdateBookEvaluationRequest } from '../types/evaluation';
 
 const updateEvaluationAPI = ({ bookId, keywordIds }: UpdateBookEvaluationRequest) =>
@@ -19,7 +19,7 @@ export const useUpdateEvaluation = () => {
     onError: () => {},
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [...evaluaionQueryKeys.all()],
+        queryKey: [...bookQueryKeys.all()],
       });
     },
   });
