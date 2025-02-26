@@ -9,12 +9,14 @@ export const ROUTES = {
   ONBOARDING: '/onboarding',
   PROFILE: '/profile',
   SEARCH: '/search',
+  STORE: 'store',
+  SETTING: 'setting',
 } as const;
 
 export const DYNAMIC_ROUTES = {
   // 책 상세 페이지
   BOOK_DETAIL: (id: string) => `${ROUTES.BOOKS}/${id}`,
 
-  // 검색 결과 페이지
+  // 책 리뷰 페이지
   BOOK_REVIEW: (id: string) => `${ROUTES.BOOKS}/${id}/review`,
 } as const;
