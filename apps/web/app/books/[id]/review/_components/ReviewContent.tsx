@@ -86,7 +86,7 @@ export const ReviewContent = ({ id }: { id: string }) => {
     if (isInitialReview) {
       openModal();
     } else {
-      router.push(DYNAMIC_ROUTES.BOOK_DETAIL(id));
+      router.back();
     }
   };
 
