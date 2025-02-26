@@ -33,6 +33,9 @@ export const metadata: Metadata = {
   title: 'Sbooky',
   description: '독서로 만나는 유령, 마법 도서관 스부키',
   icons: ['https://www.sbooky.net/favicon.ico'],
+  other: {
+    'naver-site-verification': '5a2f73ad35bb3d364ce14a4fb40205e2a961dba6',
+  },
 };
 
 export default function RootLayout({
