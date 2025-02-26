@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { authRepository } from 'app/_api/auth';
 import { COOKIE_ID } from 'app/_constants/cookie';
+import { ROUTES } from 'app/_constants/route';
 
 export async function GET(request: NextRequest) {
   try {
@@ -34,10 +35,10 @@ export async function GET(request: NextRequest) {
 
     if (nickname) {
       cookieList.set('nickname', nickname);
-      return NextResponse.redirect(new URL('/home', request.url));
+      return NextResponse.redirect(new URL(ROUTES.HOME, request.url));
     }
 
-    return NextResponse.redirect(new URL('/nickname', request.url));
+    return NextResponse.redirect(new URL(ROUTES.NICKNAME, request.url));
   } catch (error) {
     console.warn(error);
     return NextResponse.redirect(new URL('/login?error=auth_failed', request.url));

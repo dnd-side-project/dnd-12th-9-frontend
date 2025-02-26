@@ -11,6 +11,7 @@ import { Icon } from '@repo/ui/components/Icon';
 import { HStack, JustifyBetween, PageLayout } from '@repo/ui/components/Layout';
 import { useModal } from '@repo/ui/hooks/useModal';
 import { itemQueryOptions } from 'app/_api/queries/item';
+import { ROUTES } from 'app/_constants/route';
 
 import { TOP_BAR } from '../_constants/topbar';
 
@@ -33,7 +34,7 @@ export const Home = ({ memberId }: HomeProps) => {
 
   useEffect(() => {
     if (openOnboarding) {
-      router.replace('/home');
+      router.replace(ROUTES.HOME);
     }
   }, [openOnboarding, router]);
 

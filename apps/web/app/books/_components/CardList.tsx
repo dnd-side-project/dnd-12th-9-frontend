@@ -5,6 +5,7 @@ import { Icon } from '@repo/ui/components/Icon';
 import { Center, CenterStack, Spacing, VStack } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 import { MemberBook } from 'app/_api/types/book';
+import { DYNAMIC_ROUTES, ROUTES } from 'app/_constants/route';
 
 import { AddBookCard } from './AddBookCard';
 import { Card } from './Card';
@@ -22,11 +23,11 @@ export const CardList = ({ bookList }: CardListProps) => {
     <VStack>
       <Spacing className="h-4" />
       <div className="grid w-full grid-cols-3 place-content-between gap-x-3 gap-y-5">
-        <Link href="/search">
+        <Link href={ROUTES.SEARCH}>
           <AddBookCard />
         </Link>
         {bookList.map(({ id, thumbnailUrl, author, title }) => (
-          <Link key={id} href={`/books/${id}`}>
+          <Link key={id} href={DYNAMIC_ROUTES.BOOK_DETAIL(id)}>
             <Card
               title={title}
               description={author}
@@ -55,7 +56,7 @@ const Fallback = () => {
         </Text>
         <Spacing className="h-5" />
         <Center className="py-1">
-          <Link href="/search">
+          <Link href={ROUTES.SEARCH}>
             <Button variant="primary50" size="sm">
               등록하기
             </Button>

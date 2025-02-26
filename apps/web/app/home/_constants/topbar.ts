@@ -1,23 +1,25 @@
+import { ROUTES } from 'app/_constants/route';
+
 export const TOP_BAR = {
   MISSION: {
     icon: '/TopBar/MISSION.webp',
     title: '미션하기',
-    router: '/mission',
+    router: ROUTES.MISSION,
   },
   CLOSET: {
     icon: '/TopBar/CLOSET.webp',
     title: '꾸미기',
-    router: '/closet',
+    router: ROUTES.CLOSET,
   },
   STORE: {
     icon: '/TopBar/STORE.webp',
     title: '스토어',
-    router: '/store',
+    router: ROUTES.STORE,
   },
   share: {
     icon: '/TopBar/SHARE.webp',
     title: '자랑하기',
-    router: '/profile',
+    router: ROUTES.PROFILE,
   },
 } as const;
 
@@ -25,26 +27,26 @@ export const DRAWER_MENU = {
   HOME: {
     icon: 'home',
     title: '홈',
-    router: '/',
+    router: ROUTES.HOME,
   },
   SEARCH: {
     icon: 'search',
     title: '도서 검색',
-    router: '/search',
+    router: ROUTES.SEARCH,
   },
   STORE: {
     icon: 'shop',
     title: '스토어',
-    router: '/store',
+    router: ROUTES.STORE,
   },
   CLOSET: {
     icon: 'bag',
     title: '꾸미기',
-    router: '/closet',
+    router: ROUTES.CLOSET,
   },
   SHARE: {
     icon: 'setting',
     title: '설정',
-    router: '/setting',
+    router: ROUTES.SETTING,
   },
 } as const;
