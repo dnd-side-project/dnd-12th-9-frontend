@@ -12,6 +12,7 @@ import { Box, JustifyBetween, PageLayout, Stack } from '@repo/ui/components/Layo
 import { Text } from '@repo/ui/components/Text';
 import { TextField } from '@repo/ui/components/TextField';
 import { useNickname } from 'app/_api/mutations/useNickname';
+import { ROUTES } from 'app/_constants/route';
 
 const INITIAL_NICKNAME = '';
 
@@ -28,7 +29,7 @@ const NicknamePage = () => {
         onError: () => toast.error(`닉네임 설정에 실패했어요`),
       }
     );
-    router.push('/onboarding');
+    router.push(ROUTES.ONBOARDING);
   };
 
   const [nickname, setNickname] = useState(INITIAL_NICKNAME);

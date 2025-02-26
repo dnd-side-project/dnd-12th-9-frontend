@@ -14,6 +14,7 @@ import { Icon } from '@repo/ui/components/Icon';
 import { JustifyBetween, PageLayout } from '@repo/ui/components/Layout';
 import { bookQueryOptions } from 'app/_api/queries/book';
 import { itemQueryOptions } from 'app/_api/queries/item';
+import { ROUTES } from 'app/_constants/route';
 import { BASIC_GHOST, GHOST_MAP } from 'app/closet/_constants/item';
 
 import { BottomButton } from './BottomButton';
@@ -81,7 +82,7 @@ export const Profile = ({ memberId }: ProfileProps) => {
   };
 
   const goBack = () => {
-    router.push('/home');
+    router.push(ROUTES.HOME);
   };
   return (
     <PageLayout

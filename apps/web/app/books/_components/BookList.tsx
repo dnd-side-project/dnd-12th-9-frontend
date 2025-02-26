@@ -11,6 +11,7 @@ import { Icon } from '@repo/ui/components/Icon';
 import { Stack, HStack, PageLayout } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 import { bookQueryOptions } from 'app/_api/queries/book';
+import { ROUTES } from 'app/_constants/route';
 import { READ_STATUS_LIST, ReadStatusTag } from 'app/_constants/status';
 
 import { getFilterBySearchParams } from '../_utils/getFilterBySearchParams';
@@ -31,7 +32,7 @@ export const BookSection = ({ memberId, filter }: Props) => {
   } = useSuspenseQuery(bookQueryOptions.list(memberId, getFilterBySearchParams(filter)));
 
   const goBack = () => {
-    router.push('/home');
+    router.push(ROUTES.HOME);
   };
 
   return (

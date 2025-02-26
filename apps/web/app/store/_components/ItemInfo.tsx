@@ -14,6 +14,7 @@ import { useItemDraw } from 'app/_api/mutations/useItemDraw';
 import { bookQueryOptions } from 'app/_api/queries/book';
 import { Item, ItemDrawResponse } from 'app/_api/types/draw';
 import { ItemModal } from 'app/_components/ItemModal';
+import { ROUTES } from 'app/_constants/route';
 
 import { StoreCard } from './StoreCard';
 
@@ -58,7 +59,7 @@ export const ItemInfo = () => {
         itemData={itemData}
         isOpen={isOpen}
         onClose={closeModal}
-        onNavigate={() => router.push('/closet')}
+        onNavigate={() => router.push(ROUTES.CLOSET)}
       />
     </>
   );

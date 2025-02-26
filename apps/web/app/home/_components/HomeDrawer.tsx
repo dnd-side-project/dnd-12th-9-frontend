@@ -5,6 +5,7 @@ import { Icon } from '@repo/ui/components/Icon';
 import { Flex, HStack, JustifyBetween, Spacing } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 import { GetEquippedItemResponse } from 'app/_api/types/item';
+import { ROUTES } from 'app/_constants/route';
 
 import { DRAWER_MENU } from '../_constants/topbar';
 
@@ -48,7 +49,7 @@ export const HomeDrawer = ({ memberId, data, isOpen, onClose }: HomeDrawerProps)
           </HStack>
         ))}
       </Flex>
-      <Flex className="w-full cursor-pointer px-5 py-2" onClick={() => router.push('/profile')}>
+      <Flex className="w-full cursor-pointer px-5 py-2" onClick={() => router.push(ROUTES.PROFILE)}>
         <JustifyBetween className="w-full items-center rounded-lg bg-gray-50 px-3 py-[10px]">
           <HStack className="justify-c w-full gap-2">
             <HStack className="h-7 w-7 justify-center rounded-full bg-[#FFCC00]">
