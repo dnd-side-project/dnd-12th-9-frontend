@@ -6,6 +6,7 @@ import { Button } from '@repo/ui/components/Button';
 import { CenterStack, JustifyBetween } from '@repo/ui/components/Layout';
 import { Modal } from '@repo/ui/components/Modal';
 import { Text } from '@repo/ui/components/Text';
+import { ROUTES } from 'app/_constants/route';
 
 type OnboardingCompleteModalProps = {
   isOnBoardingModalOpen: boolean;
@@ -39,7 +40,7 @@ export const OnBoardingCompleteModal = ({
             variant="black"
             onClick={() => {
               handleModalClose();
-              router.push('/search');
+              router.push(ROUTES.SEARCH);
             }}
           >
             책 등록하기

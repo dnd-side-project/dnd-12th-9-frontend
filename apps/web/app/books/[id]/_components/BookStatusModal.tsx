@@ -14,6 +14,7 @@ import { useModal } from '@repo/ui/hooks/useModal';
 import { Book } from 'app/_api/types/book';
 import { RewardModal } from 'app/_components/RewardModal';
 import { REWARD_MESSAGE } from 'app/_constants/reward';
+import { ROUTES } from 'app/_constants/route';
 import { READING_STATUS, STATUS_DATA } from 'app/_constants/status';
 import { entries } from 'app/_util/entries';
 
@@ -91,7 +92,7 @@ export const BookStatusModal = ({
         message={hasSearch ? REWARD_MESSAGE.ADD : REWARD_MESSAGE.RATE}
         isOpen={isOrbModalOpen}
         onClose={closeOrbModal}
-        onNavigate={() => router.push('/books')}
+        onNavigate={() => router.push(ROUTES.BOOKS)}
       />
     </>
   );

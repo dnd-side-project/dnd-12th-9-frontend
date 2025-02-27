@@ -3,9 +3,9 @@ import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 import { Header } from '@repo/ui/components/Header';
 import { PageLayout } from '@repo/ui/components/Layout';
 import { bookQueryOptions } from 'app/_api/queries/book';
-import { BackButton } from 'app/_components/BackButton';
 import { getQueryClient } from 'app/_util/queryClient';
 
+import { BackButton } from './_components/BackButton';
 import { DetailSection } from './_components/DetailSection';
 import { TrashButton } from './_components/TrashButton';
 

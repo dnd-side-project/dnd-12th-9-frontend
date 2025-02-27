@@ -10,6 +10,7 @@ import { Box, CenterStack, HStack, Spacing, Stack } from '@repo/ui/components/La
 import { Text } from '@repo/ui/components/Text';
 import { evaluaionQueryOptions } from 'app/_api/queries/evaluation';
 import { MemberBook } from 'app/_api/types/book';
+import { DYNAMIC_ROUTES } from 'app/_constants/route';
 import { getChipIconUrl } from 'app/books/_utils/getChipIconUrl';
 
 type Props = MemberBook;
@@ -17,7 +18,7 @@ type Props = MemberBook;
 export const KeywordSection = ({ id }: Props) => {
   const router = useRouter();
 
-  const goReviewPage = () => router.push(`/books/${id}/review`);
+  const goReviewPage = () => router.push(DYNAMIC_ROUTES.BOOK_REVIEW(id));
 
   const { isPending, data } = useQuery(evaluaionQueryOptions.list(id));
   const keywordList = data?.data.filter(({ isSelected }) => isSelected);

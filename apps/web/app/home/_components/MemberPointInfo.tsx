@@ -9,6 +9,7 @@ import { Icon } from '@repo/ui/components/Icon';
 import { Box, Flex, HStack, JustifyBetween, Spacing } from '@repo/ui/components/Layout';
 import { Text } from '@repo/ui/components/Text';
 import { bookQueryOptions } from 'app/_api/queries/book';
+import { ROUTES } from 'app/_constants/route';
 
 type MemberPointInfoProps = {
   memberId: string;
@@ -57,7 +58,7 @@ export const MemberPointInfo = ({ memberId }: MemberPointInfoProps) => {
             size="sm"
             variant="primary50"
             right={<Icon type="next" size={16} color="primary" />}
-            onClick={() => router.push('/books')}
+            onClick={() => router.push(ROUTES.BOOKS)}
           >
             책장가기
           </Button>
@@ -67,7 +68,7 @@ export const MemberPointInfo = ({ memberId }: MemberPointInfoProps) => {
         size="lg"
         variant="primary500"
         className="w-full text-white"
-        onClick={() => router.push('/search')}
+        onClick={() => router.push(ROUTES.SEARCH)}
       >
         책 추가하기
       </Button>

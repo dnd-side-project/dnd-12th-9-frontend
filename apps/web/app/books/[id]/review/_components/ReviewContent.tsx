@@ -17,6 +17,7 @@ import { useUpdateEvaluation } from 'app/_api/mutations/useUpdateEvaluation';
 import { evaluaionQueryOptions } from 'app/_api/queries/evaluation';
 import { Evaluation } from 'app/_api/types/evaluation';
 import { RewardModal } from 'app/_components/RewardModal';
+import { DYNAMIC_ROUTES } from 'app/_constants/route';
 import { entries } from 'app/_util/entries';
 
 import { getImageURLByKeyword, getTitleByKeywordType } from '../_util/keyword';
@@ -85,7 +86,7 @@ export const ReviewContent = ({ id }: { id: string }) => {
     if (isInitialReview) {
       openModal();
     } else {
-      router.push(`/books/${id}`);
+      router.back();
     }
   };
 
@@ -138,7 +139,11 @@ export const ReviewContent = ({ id }: { id: string }) => {
           완료하기
         </Button>
       </HStack>
-      <RewardModal type="single" isOpen={isOpen} onClose={() => router.push(`/books/${id}`)} />
+      <RewardModal
+        type="single"
+        isOpen={isOpen}
+        onClose={() => router.push(DYNAMIC_ROUTES.BOOK_DETAIL(id))}
+      />
     </Stack>
   );
 };
