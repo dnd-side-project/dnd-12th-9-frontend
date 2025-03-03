@@ -120,6 +120,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@microsoft/clarity':
+        specifier: ^1.0.0
+        version: 1.0.0
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -1339,6 +1342,9 @@ packages:
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
+
+  '@microsoft/clarity@1.0.0':
+    resolution: {integrity: sha512-2QY6SmXnqRj6dWhNY8NYCN3e53j4zCFebH4wGnNhdGV1mqAsQwql2fT0w8TISxCvwwfVp8idsWLIdrRHOms1PQ==}
 
   '@next/env@13.5.8':
     resolution: {integrity: sha512-YmiG58BqyZ2FjrF2+5uZExL2BrLr8RTQzLXNDJ8pJr0O+rPlOeDPXp1p1/4OrR3avDidzZo3D8QO2cuDv1KCkw==}
@@ -6983,6 +6989,8 @@ snapshots:
       '@types/mdx': 2.0.13
       '@types/react': 19.0.8
       react: 18.3.1
+
+  '@microsoft/clarity@1.0.0': {}
 
   '@next/env@13.5.8': {}
 

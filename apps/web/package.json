@@ -11,6 +11,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@microsoft/clarity": "^1.0.0",
     "@repo/ui": "workspace:*",
     "@vercel/speed-insights": "^1.2.0",
     "class-variance-authority": "^0.7.1",

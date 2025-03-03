@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import { Toaster } from 'sonner';
 
 import { ClientQueryProvider } from './_api/ClientQueryProvider';
+import { ClarityEffector } from './_components/ClarityEffector';
 
 const pretendard = localFont({
   src: '../public/font/PretendardVariable.woff2',
@@ -53,6 +54,7 @@ export default function RootLayout({
           </div>
         </ClientQueryProvider>
         <SpeedInsights />
+        <ClarityEffector />
         <Toaster position="top-center" richColors duration={1500} />
       </body>
     </html>
