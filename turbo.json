@@ -6,7 +6,13 @@
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**"],
-      "env": ["NEXT_PUBLIC_API_ENDPOINT", "NODE_ENV", "NEXT_PUBLIC_CLARITY_PROJECT_ID"]
+      "env": [
+        "NEXT_PUBLIC_API_ENDPOINT",
+        "NODE_ENV",
+        "NEXT_PUBLIC_CLARITY_PROJECT_ID",
+        "NEXT_PUBLIC_GA_ID",
+        "NEXT_PUBLIC_GT_ID"
+      ]
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -17,7 +23,13 @@
     "dev": {
       "cache": false,
       "persistent": true,
-      "env": ["NEXT_PUBLIC_API_ENDPOINT", "NODE_ENV", "NEXT_PUBLIC_CLARITY_PROJECT_ID"]
+      "env": [
+        "NEXT_PUBLIC_API_ENDPOINT",
+        "NODE_ENV",
+        "NEXT_PUBLIC_CLARITY_PROJECT_ID",
+        "NEXT_PUBLIC_GA_ID",
+        "NEXT_PUBLIC_GT_ID"
+      ]
     }
   },
   "globalDependencies": [".env"]

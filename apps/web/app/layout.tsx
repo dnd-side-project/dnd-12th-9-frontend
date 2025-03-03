@@ -1,6 +1,7 @@
 import './globals.css';
 import localFont from 'next/font/local';
 
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Metadata } from 'next';
 import { Toaster } from 'sonner';
@@ -55,6 +56,12 @@ export default function RootLayout({
         </ClientQueryProvider>
         <SpeedInsights />
         <ClarityEffector />
+        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
+        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
         <Toaster position="top-center" richColors duration={1500} />
       </body>
     </html>
