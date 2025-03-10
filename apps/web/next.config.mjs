@@ -15,7 +15,7 @@ const nextConfig = {
   },
   webpack(config) {
     const __dirname = path.resolve();
-    config.resolve.alias['@repo/ui/components'] = path.resolve(
+    config.resolve.alias['@sbooky/ui/components'] = path.resolve(
       __dirname,
       '../../packages/ui/src/components'
     );

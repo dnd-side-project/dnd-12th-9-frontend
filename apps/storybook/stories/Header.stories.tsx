@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Header, HeaderLeftElement, HeaderRightElement } from '@repo/ui/Header';
+import { Header, HeaderLeftElement, HeaderRightElement } from '@sbooky/ui/Header';
 
 const meta = {
   title: 'ui/Header',

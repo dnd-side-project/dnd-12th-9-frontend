@@ -4,8 +4,8 @@ import { useState } from 'react';
 
 import { toast } from 'sonner';
 
-import { Box, CenterStack } from '@repo/ui/components/Layout';
-import { useModal } from '@repo/ui/hooks/useModal';
+import { Box, CenterStack } from '@sbooky/ui/components/Layout';
+import { useModal } from '@sbooky/ui/hooks/useModal';
 import { useAddBook } from 'app/_api/mutations/useAddBook';
 import { Book } from 'app/_api/types/book';
 import Loading from 'app/_components/Loading';

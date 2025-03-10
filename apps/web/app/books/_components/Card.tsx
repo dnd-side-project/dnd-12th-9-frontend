@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
-import { Box, Stack } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Box, Stack } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 
 type CardProps = {
   imageURL: string;

@@ -1,9 +1,9 @@
 import { useRouter } from 'next/navigation';
 
-import { Drawer } from '@repo/ui/components/Drawer';
-import { Icon } from '@repo/ui/components/Icon';
-import { Flex, HStack, JustifyBetween, Spacing } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Drawer } from '@sbooky/ui/components/Drawer';
+import { Icon } from '@sbooky/ui/components/Icon';
+import { Flex, HStack, JustifyBetween, Spacing } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 import { GetEquippedItemResponse } from 'app/_api/types/item';
 import { ROUTES } from 'app/_constants/route';
 

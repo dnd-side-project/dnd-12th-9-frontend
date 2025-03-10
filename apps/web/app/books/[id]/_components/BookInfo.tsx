@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
-import { Box, CenterStack } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Box, CenterStack } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 import { MemberBook } from 'app/_api/types/book';
 
 type Props = MemberBook;

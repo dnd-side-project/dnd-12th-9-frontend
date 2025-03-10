@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { CenterStack } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { CenterStack } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 
 import { TOP_BAR } from '../_constants/topbar';
 

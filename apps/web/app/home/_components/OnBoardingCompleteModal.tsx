@@ -2,10 +2,10 @@ import { useRouter } from 'next/navigation';
 
 import { useState } from 'react';
 
-import { Button } from '@repo/ui/components/Button';
-import { CenterStack, JustifyBetween } from '@repo/ui/components/Layout';
-import { Modal } from '@repo/ui/components/Modal';
-import { Text } from '@repo/ui/components/Text';
+import { Button } from '@sbooky/ui/components/Button';
+import { CenterStack, JustifyBetween } from '@sbooky/ui/components/Layout';
+import { Modal } from '@sbooky/ui/components/Modal';
+import { Text } from '@sbooky/ui/components/Text';
 import { ROUTES } from 'app/_constants/route';
 
 type OnboardingCompleteModalProps = {

@@ -1,5 +1,5 @@
-import { Icon } from '@repo/ui/components/Icon';
-import { Box, Center } from '@repo/ui/components/Layout';
+import { Icon } from '@sbooky/ui/components/Icon';
+import { Box, Center } from '@sbooky/ui/components/Layout';
 
 export const AddBookCard = () => {
   return (

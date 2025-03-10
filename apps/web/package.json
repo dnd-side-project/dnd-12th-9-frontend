@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@sbooky/web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,7 +13,7 @@
   "dependencies": {
     "@microsoft/clarity": "^1.0.0",
     "@next/third-parties": "^15.2.0",
-    "@repo/ui": "workspace:*",
+    "@sbooky/ui": "workspace:*",
     "@vercel/speed-insights": "^1.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -32,9 +32,9 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/tailwind-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@sbooky/eslint-config": "workspace:*",
+    "@sbooky/tailwind-config": "workspace:*",
+    "@sbooky/typescript-config": "workspace:*",
     "@tanstack/react-query": "^5.66.5",
     "@tanstack/react-query-devtools": "^5.64.1",
     "@types/file-saver": "^2.0.7",

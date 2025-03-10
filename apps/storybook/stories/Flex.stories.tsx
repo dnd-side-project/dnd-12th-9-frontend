@@ -4,7 +4,7 @@ import {
   Flex,
   JustifyBetween as JustifyBetweenComponent,
   JustifyEnd as JustifyEndComponent,
-} from '@repo/ui/Layout';
+} from '@sbooky/ui/Layout';
 
 const meta = {
   title: 'components/Flex',

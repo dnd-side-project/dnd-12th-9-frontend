@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Icon } from '@repo/ui/Icon';
-import { IconColor, IconList, IconType } from '@repo/ui/Icon/assets';
+import { Icon } from '@sbooky/ui/Icon';
+import { IconColor, IconList, IconType } from '@sbooky/ui/Icon/assets';
 
 const meta = {
   title: 'components/icon',

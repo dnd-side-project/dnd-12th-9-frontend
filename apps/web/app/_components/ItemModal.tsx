@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
-import { Button } from '@repo/ui/components/Button';
-import { CenterStack, JustifyBetween } from '@repo/ui/components/Layout';
-import { Modal } from '@repo/ui/components/Modal';
-import { Text } from '@repo/ui/components/Text';
+import { Button } from '@sbooky/ui/components/Button';
+import { CenterStack, JustifyBetween } from '@sbooky/ui/components/Layout';
+import { Modal } from '@sbooky/ui/components/Modal';
+import { Text } from '@sbooky/ui/components/Text';
 import { Item } from 'app/_api/types/draw';
 
 type ItemModalProps = {

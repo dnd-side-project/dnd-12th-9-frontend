@@ -1,5 +1,5 @@
-import { Header } from '@repo/ui/components/Header';
-import { JustifyBetween, PageLayout } from '@repo/ui/components/Layout';
+import { Header } from '@sbooky/ui/components/Header';
+import { JustifyBetween, PageLayout } from '@sbooky/ui/components/Layout';
 import { BackButton } from 'app/_components/BackButton';
 
 import { ItemBox } from './_components/ItemBox';
