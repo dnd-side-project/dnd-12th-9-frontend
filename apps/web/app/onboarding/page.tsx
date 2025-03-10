@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { PageLayout } from '@repo/ui/components/Layout';
+import { PageLayout } from '@sbooky/ui/components/Layout';
 import { useFunnel } from 'app/_hooks/useFunnel';
 
 import { Motion } from './_components/Motion';

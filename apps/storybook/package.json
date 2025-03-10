@@ -1,5 +1,5 @@
 {
-  "name": "@repo/storybook",
+  "name": "@sbooky/storybook",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -9,16 +9,16 @@
     "clean": "rm -rf .turbo node_modules"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
+    "@sbooky/ui": "workspace:*",
     "@storybook/addon-a11y": "^8.4.7",
     "@storybook/react": "^8.4.7",
     "storybook": "^8.4.7"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.3",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/tailwind-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@sbooky/eslint-config": "workspace:*",
+    "@sbooky/tailwind-config": "workspace:*",
+    "@sbooky/typescript-config": "workspace:*",
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/addon-interactions": "^8.4.7",
     "@storybook/addon-onboarding": "^8.4.7",

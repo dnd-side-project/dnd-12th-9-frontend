@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
-import { Button } from '@repo/ui/components/Button';
-import { Flex } from '@repo/ui/components/Layout';
+import { Button } from '@sbooky/ui/components/Button';
+import { Flex } from '@sbooky/ui/components/Layout';
 
 import { StepProps } from '../_types/step';
 

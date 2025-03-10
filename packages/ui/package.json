@@ -1,5 +1,5 @@
 {
-  "name": "@repo/ui",
+  "name": "@sbooky/ui",
   "version": "0.0.0",
   "private": true,
   "exports": {
@@ -13,9 +13,9 @@
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/tailwind-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@sbooky/eslint-config": "workspace:*",
+    "@sbooky/tailwind-config": "workspace:*",
+    "@sbooky/typescript-config": "workspace:*",
     "@turbo/gen": "^1.12.4",
     "@types/node": "^20.11.24",
     "@types/react": "catalog:",

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TextField } from '@repo/ui/TextField';
+import { TextField } from '@sbooky/ui/TextField';
 import { useState } from 'react';
 
 const meta = {

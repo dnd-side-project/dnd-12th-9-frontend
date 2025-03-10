@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Chip } from '@repo/ui/Chip';
+import { Chip } from '@sbooky/ui/Chip';
 import { useState } from 'react';
-import { Text } from '@repo/ui/Text';
-import { Flex, VStack } from '@repo/ui/Layout';
+import { Text } from '@sbooky/ui/Text';
+import { Flex, VStack } from '@sbooky/ui/Layout';
 
 const meta = {
   title: 'components/Chip',

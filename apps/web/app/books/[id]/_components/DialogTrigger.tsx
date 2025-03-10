@@ -2,8 +2,8 @@
 
 import { toast } from 'sonner';
 
-import { Button } from '@repo/ui/components/Button';
-import { useModal } from '@repo/ui/hooks/useModal';
+import { Button } from '@sbooky/ui/components/Button';
+import { useModal } from '@sbooky/ui/hooks/useModal';
 import { useUpdateBook } from 'app/_api/mutations/useUpdateBook';
 import { MemberBook } from 'app/_api/types/book';
 import { READING_STATUS } from 'app/_constants/status';

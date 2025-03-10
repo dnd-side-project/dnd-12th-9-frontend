@@ -1,7 +1,7 @@
 'use client';
 
-import { HeaderRightElement } from '@repo/ui/components/Header';
-import { Icon } from '@repo/ui/components/Icon';
+import { HeaderRightElement } from '@sbooky/ui/components/Header';
+import { Icon } from '@sbooky/ui/components/Icon';
 
 export const TrashButton = () => {
   return (

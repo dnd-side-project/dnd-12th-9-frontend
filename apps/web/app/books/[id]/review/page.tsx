@@ -1,8 +1,8 @@
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
-import { Header } from '@repo/ui/components/Header';
-import { PageLayout, Stack } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Header } from '@sbooky/ui/components/Header';
+import { PageLayout, Stack } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 import { evaluaionQueryOptions } from 'app/_api/queries/evaluation';
 import { BackButton } from 'app/_components/BackButton';
 

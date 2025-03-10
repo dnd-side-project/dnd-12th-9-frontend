@@ -6,11 +6,11 @@ import { ChangeEventHandler, useCallback, useState } from 'react';
 
 import { toast } from 'sonner';
 
-import { Button } from '@repo/ui/components/Button';
-import { Header } from '@repo/ui/components/Header';
-import { Box, JustifyBetween, PageLayout, Stack } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
-import { TextField } from '@repo/ui/components/TextField';
+import { Button } from '@sbooky/ui/components/Button';
+import { Header } from '@sbooky/ui/components/Header';
+import { Box, JustifyBetween, PageLayout, Stack } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
+import { TextField } from '@sbooky/ui/components/TextField';
 import { useNickname } from 'app/_api/mutations/useNickname';
 import { ROUTES } from 'app/_constants/route';
 

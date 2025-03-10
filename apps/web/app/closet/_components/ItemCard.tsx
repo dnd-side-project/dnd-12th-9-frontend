@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 import { ComponentProps } from 'react';
 
-import { Box, Stack } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Box, Stack } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 
 import { getImageUrl } from '../_util/image';
 

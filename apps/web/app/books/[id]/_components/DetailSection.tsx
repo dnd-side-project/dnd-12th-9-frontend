@@ -2,8 +2,8 @@
 
 import { useSuspenseQuery } from '@tanstack/react-query';
 
-import { Spacing, Stack } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Spacing, Stack } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 import { bookQueryOptions } from 'app/_api/queries/book';
 
 import { BookInfo } from './BookInfo';

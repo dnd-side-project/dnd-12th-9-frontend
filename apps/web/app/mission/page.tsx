@@ -1,6 +1,6 @@
-import { Header } from '@repo/ui/components/Header';
-import { PageLayout, Stack } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Header } from '@sbooky/ui/components/Header';
+import { PageLayout, Stack } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 
 import { BackButton } from '../_components/BackButton';
 

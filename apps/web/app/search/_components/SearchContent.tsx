@@ -4,8 +4,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useInfiniteQuery } from '@tanstack/react-query';
 
-import { Box, Flex } from '@repo/ui/components/Layout';
-import { SearchBar } from '@repo/ui/components/SearchBar';
+import { Box, Flex } from '@sbooky/ui/components/Layout';
+import { SearchBar } from '@sbooky/ui/components/SearchBar';
 import { bookQueryOptions } from 'app/_api/queries/book';
 
 import { BookList } from './BookList';

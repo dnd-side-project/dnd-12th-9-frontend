@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, ButtonElement } from '@repo/ui/Button';
-import { Icon } from '@repo/ui/Icon';
+import { Button, ButtonElement } from '@sbooky/ui/Button';
 
 const meta = {
   title: 'components/Button',

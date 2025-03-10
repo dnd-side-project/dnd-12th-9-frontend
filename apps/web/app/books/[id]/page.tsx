@@ -1,7 +1,7 @@
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 
-import { Header } from '@repo/ui/components/Header';
-import { PageLayout } from '@repo/ui/components/Layout';
+import { Header } from '@sbooky/ui/components/Header';
+import { PageLayout } from '@sbooky/ui/components/Layout';
 import { bookQueryOptions } from 'app/_api/queries/book';
 import { getQueryClient } from 'app/_util/queryClient';
 

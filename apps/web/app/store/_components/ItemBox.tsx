@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 import { motion } from 'framer-motion';
 
-import { Box, JustifyBetween } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Box, JustifyBetween } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 
 import { ALL_GHOSTS } from '../constants/ghost';
 import { SLIDER_ANIMATION } from '../constants/motions';

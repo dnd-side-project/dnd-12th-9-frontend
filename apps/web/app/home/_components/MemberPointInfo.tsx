@@ -3,11 +3,11 @@ import { useRouter } from 'next/navigation';
 
 import { useQuery } from '@tanstack/react-query';
 
-import { Button } from '@repo/ui/components/Button';
-import { OrgIcon } from '@repo/ui/components/Button/assets/OrbIcon';
-import { Icon } from '@repo/ui/components/Icon';
-import { Box, Flex, HStack, JustifyBetween, Spacing } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Button } from '@sbooky/ui/components/Button';
+import { OrgIcon } from '@sbooky/ui/components/Button/assets/OrbIcon';
+import { Icon } from '@sbooky/ui/components/Icon';
+import { Box, Flex, HStack, JustifyBetween, Spacing } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 import { bookQueryOptions } from 'app/_api/queries/book';
 import { ROUTES } from 'app/_constants/route';
 

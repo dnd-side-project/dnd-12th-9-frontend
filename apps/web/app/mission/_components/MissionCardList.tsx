@@ -5,9 +5,9 @@ import Link from 'next/link';
 
 import BLACKY_DONE from '@public/BLACKY_DONE.webp';
 
-import { Button } from '@repo/ui/components/Button';
-import { Icon } from '@repo/ui/components/Icon';
-import { Stack } from '@repo/ui/components/Layout';
+import { Button } from '@sbooky/ui/components/Button';
+import { Icon } from '@sbooky/ui/components/Icon';
+import { Stack } from '@sbooky/ui/components/Layout';
 import { ROUTES } from 'app/_constants/route';
 
 import { MissionCard } from './MissionCard';

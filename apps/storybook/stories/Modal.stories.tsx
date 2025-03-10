@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Modal } from '@repo/ui/Modal';
+import { Modal } from '@sbooky/ui/Modal';
 
-import { useModal } from '@repo/ui/hooks/useModal';
+import { useModal } from '@sbooky/ui/hooks/useModal';
 
 const meta = {
   title: 'components/Modal',

@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 
-import { HeaderLeftElement } from '@repo/ui/components/Header';
-import { Icon } from '@repo/ui/components/Icon';
+import { HeaderLeftElement } from '@sbooky/ui/components/Header';
+import { Icon } from '@sbooky/ui/components/Icon';
 
 export const BackButton = () => {
   const router = useRouter();

@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Box, Stack, VStack as VStackComponent, HStack as HStackComponent } from '@repo/ui/Layout';
+import {
+  Box,
+  Stack,
+  VStack as VStackComponent,
+  HStack as HStackComponent,
+} from '@sbooky/ui/Layout';
 
 const meta = {
   title: 'components/Stack',

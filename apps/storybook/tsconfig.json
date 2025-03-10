@@ -1,10 +1,10 @@
 {
-  "extends": "@repo/typescript-config/react-library.json",
+  "extends": "@sbooky/typescript-config/react-library.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@repo/ui/*": ["../../packages/ui/src/components/*"],
-      "@repo/ui/hooks/*": ["../../packages/ui/src/hooks/*"],
+      "@sbooky/ui/*": ["../../packages/ui/src/components/*"],
+      "@sbooky/ui/hooks/*": ["../../packages/ui/src/hooks/*"],
       "@/lib/*": ["../../packages/ui/src/lib/*"]
     }
   },

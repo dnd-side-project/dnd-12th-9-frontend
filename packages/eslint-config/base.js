@@ -34,7 +34,7 @@ module.exports = {
             position: 'before',
           },
           {
-            pattern: '@repo/**',
+            pattern: '@sbooky/**',
             group: 'internal',
           },
           {

@@ -6,11 +6,11 @@ import { useRouter } from 'next/navigation';
 import { useSuspenseQueries } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
-import { Button } from '@repo/ui/components/Button';
-import { Header, HeaderLeftElement } from '@repo/ui/components/Header';
-import { Icon } from '@repo/ui/components/Icon';
-import { IconButton } from '@repo/ui/components/IconButton';
-import { Box, PageLayout, Stack } from '@repo/ui/components/Layout';
+import { Button } from '@sbooky/ui/components/Button';
+import { Header, HeaderLeftElement } from '@sbooky/ui/components/Header';
+import { Icon } from '@sbooky/ui/components/Icon';
+import { IconButton } from '@sbooky/ui/components/IconButton';
+import { Box, PageLayout, Stack } from '@sbooky/ui/components/Layout';
 import { useUpdateEquippedItem } from 'app/_api/mutations/useUpdateEquippedItem';
 import { itemQueryOptions } from 'app/_api/queries/item';
 import { ROUTES } from 'app/_constants/route';

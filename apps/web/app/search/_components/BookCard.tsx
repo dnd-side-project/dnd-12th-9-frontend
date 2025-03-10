@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-import { Button } from '@repo/ui/components/Button';
-import { Flex, Spacing } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Button } from '@sbooky/ui/components/Button';
+import { Flex, Spacing } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 import { Book } from 'app/_api/types/book';
 
 export type BookWithModal = Book & { openModal: () => void };

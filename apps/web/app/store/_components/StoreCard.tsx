@@ -1,6 +1,6 @@
-import { OrgIcon } from '@repo/ui/components/Button/assets/OrbIcon';
-import { Flex, JustifyBetween } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { OrgIcon } from '@sbooky/ui/components/Button/assets/OrbIcon';
+import { Flex, JustifyBetween } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 
 type StoreCardProps = {
   drawCount: number;

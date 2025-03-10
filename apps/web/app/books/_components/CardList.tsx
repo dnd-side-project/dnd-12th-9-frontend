@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import { Button } from '@repo/ui/components/Button';
-import { Icon } from '@repo/ui/components/Icon';
-import { Center, CenterStack, Spacing, VStack } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Button } from '@sbooky/ui/components/Button';
+import { Icon } from '@sbooky/ui/components/Icon';
+import { Center, CenterStack, Spacing, VStack } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 import { MemberBook } from 'app/_api/types/book';
 import { DYNAMIC_ROUTES, ROUTES } from 'app/_constants/route';
 

@@ -5,10 +5,10 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "dev:storybook": "turbo dev --filter @repo/storybook",
-    "dev:web": "turbo dev --filter web",
-    "build:storybook": "turbo build --filter @repo/storybook",
-    "build:web": "turbo build --filter web",
+    "dev:storybook": "turbo dev --filter @sbooky/storybook",
+    "dev:web": "turbo dev --filter @sbooky/web",
+    "build:storybook": "turbo build --filter @sbooky/storybook",
+    "build:web": "turbo build --filter @sbooky/web",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo check-types"
@@ -16,7 +16,6 @@
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@repo/eslint-config": "workspace:*",
     "lefthook": "^1.10.10",
     "prettier": "^3.2.5",
     "turbo": "^2.3.3",

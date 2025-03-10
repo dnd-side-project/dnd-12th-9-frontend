@@ -1,9 +1,9 @@
 import { ComponentProps } from 'react';
 
-import { Icon } from '@repo/ui/components/Icon';
-import { IconButton } from '@repo/ui/components/IconButton';
-import { Center, CenterStack } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Icon } from '@sbooky/ui/components/Icon';
+import { IconButton } from '@sbooky/ui/components/IconButton';
+import { Center, CenterStack } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 
 const PROFILE_BOTTOM_BUTTON = [
   {

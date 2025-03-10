@@ -1,4 +1,4 @@
-import { CenterStack } from '@repo/ui/components/Layout';
+import { CenterStack } from '@sbooky/ui/components/Layout';
 import { GetEquippedItemResponse } from 'app/_api/types/item';
 
 import { Bubble } from './Bubble';

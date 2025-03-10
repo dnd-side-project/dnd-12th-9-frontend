@@ -6,10 +6,10 @@ import { useEffect } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
 
-import { Header } from '@repo/ui/components/Header';
-import { Icon } from '@repo/ui/components/Icon';
-import { HStack, JustifyBetween, PageLayout } from '@repo/ui/components/Layout';
-import { useModal } from '@repo/ui/hooks/useModal';
+import { Header } from '@sbooky/ui/components/Header';
+import { Icon } from '@sbooky/ui/components/Icon';
+import { HStack, JustifyBetween, PageLayout } from '@sbooky/ui/components/Layout';
+import { useModal } from '@sbooky/ui/hooks/useModal';
 import { itemQueryOptions } from 'app/_api/queries/item';
 import { ROUTES } from 'app/_constants/route';
 
