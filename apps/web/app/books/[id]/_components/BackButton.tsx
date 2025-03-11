@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { HeaderLeftElement } from '@repo/ui/components/Header';
-import { Icon } from '@repo/ui/components/Icon';
+import { HeaderLeftElement } from '@sbooky/ui/components/Header';
+import { Icon } from '@sbooky/ui/components/Icon';
 import { ROUTES } from 'app/_constants/route';
 
 export const BackButton = () => {

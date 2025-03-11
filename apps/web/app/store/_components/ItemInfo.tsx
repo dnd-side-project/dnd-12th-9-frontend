@@ -7,9 +7,9 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
-import { Button, ButtonElement } from '@repo/ui/components/Button';
-import { Flex } from '@repo/ui/components/Layout';
-import { useModal } from '@repo/ui/hooks/useModal';
+import { Button, ButtonElement } from '@sbooky/ui/components/Button';
+import { Flex } from '@sbooky/ui/components/Layout';
+import { useModal } from '@sbooky/ui/hooks/useModal';
 import { useItemDraw } from 'app/_api/mutations/useItemDraw';
 import { bookQueryOptions } from 'app/_api/queries/book';
 import { Item, ItemDrawResponse } from 'app/_api/types/draw';

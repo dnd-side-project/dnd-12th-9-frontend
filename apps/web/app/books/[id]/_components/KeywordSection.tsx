@@ -3,11 +3,11 @@ import { useRouter } from 'next/navigation';
 
 import { useQuery } from '@tanstack/react-query';
 
-import { Button } from '@repo/ui/components/Button';
-import { Chip } from '@repo/ui/components/Chip';
-import { Icon } from '@repo/ui/components/Icon';
-import { Box, CenterStack, HStack, Spacing, Stack } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Button } from '@sbooky/ui/components/Button';
+import { Chip } from '@sbooky/ui/components/Chip';
+import { Icon } from '@sbooky/ui/components/Icon';
+import { Box, CenterStack, HStack, Spacing, Stack } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 import { evaluaionQueryOptions } from 'app/_api/queries/evaluation';
 import { MemberBook } from 'app/_api/types/book';
 import { DYNAMIC_ROUTES } from 'app/_constants/route';

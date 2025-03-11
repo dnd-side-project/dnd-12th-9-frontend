@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { CenterStack, PageLayout, Stack } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { CenterStack, PageLayout, Stack } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 
 import { KakaoLogo } from './assets/KakaoLogo';
 import { LoginCharacter } from './assets/LoginCharacter';

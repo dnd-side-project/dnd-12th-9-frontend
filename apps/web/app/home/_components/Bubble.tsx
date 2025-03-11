@@ -1,6 +1,6 @@
-import { Icon } from '@repo/ui/components/Icon';
-import { Box, Center, Spacing } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Icon } from '@sbooky/ui/components/Icon';
+import { Box, Center, Spacing } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 
 type BubbleProps = {
   nickName: string;

@@ -1,4 +1,4 @@
-import colors from '@repo/tailwind-config';
+import colors from '@sbooky/tailwind-config';
 
 import { Back } from './back';
 import { Bag } from './bag';

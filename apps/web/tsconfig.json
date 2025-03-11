@@ -1,11 +1,11 @@
 {
-  "extends": "@repo/typescript-config/nextjs.json",
+  "extends": "@sbooky/typescript-config/nextjs.json",
   "compilerOptions": {
     "preserveSymlinks": false,
     "baseUrl": ".",
     "paths": {
-      "@repo/ui/components/*": ["../../packages/ui/src/components/*"],
-      "@repo/ui/hooks/*": ["../../packages/ui/src/hooks/*"],
+      "@sbooky/ui/components/*": ["../../packages/ui/src/components/*"],
+      "@sbooky/ui/hooks/*": ["../../packages/ui/src/hooks/*"],
       "@public/*": ["../../public/assets/*"]
     },
     "plugins": [

@@ -1,5 +1,5 @@
 {
-  "extends": "@repo/typescript-config/react-library.json",
+  "extends": "@sbooky/typescript-config/react-library.json",
   "compilerOptions": {
     "jsx": "react-jsx",
     "baseUrl": ".",

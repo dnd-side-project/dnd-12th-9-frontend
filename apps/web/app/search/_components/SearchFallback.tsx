@@ -1,6 +1,6 @@
-import { Icon } from '@repo/ui/components/Icon';
-import { CenterStack, Spacing } from '@repo/ui/components/Layout';
-import { Text } from '@repo/ui/components/Text';
+import { Icon } from '@sbooky/ui/components/Icon';
+import { CenterStack, Spacing } from '@sbooky/ui/components/Layout';
+import { Text } from '@sbooky/ui/components/Text';
 
 export const SearchFallback = () => {
   return (

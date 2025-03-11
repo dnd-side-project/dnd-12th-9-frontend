@@ -9,9 +9,9 @@ import { saveAs } from 'file-saver';
 import { toPng } from 'html-to-image';
 import { toast } from 'sonner';
 
-import { Header, HeaderLeftElement } from '@repo/ui/components/Header';
-import { Icon } from '@repo/ui/components/Icon';
-import { JustifyBetween, PageLayout } from '@repo/ui/components/Layout';
+import { Header, HeaderLeftElement } from '@sbooky/ui/components/Header';
+import { Icon } from '@sbooky/ui/components/Icon';
+import { JustifyBetween, PageLayout } from '@sbooky/ui/components/Layout';
 import { bookQueryOptions } from 'app/_api/queries/book';
 import { itemQueryOptions } from 'app/_api/queries/item';
 import { ROUTES } from 'app/_constants/route';
