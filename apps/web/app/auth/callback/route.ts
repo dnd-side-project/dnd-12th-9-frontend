@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     const refreshToken = searchParams.get('refreshToken');
 
     if (!refreshToken) {
-      return NextResponse.redirect(new URL('/login?error=auth_failed', request.url));
+      return NextResponse.redirect(new URL(`${ROUTES.LOGIN}?error=auth_failed`, request.url));
     }
 
     cookieList.set(COOKIE_ID.REFRESH_TOKEN, refreshToken);
@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
     const accessToken = response.headers.get('Authorization')?.replace('Bearer ', '');
 
     if (!accessToken || !memberId) {
-      return NextResponse.redirect(new URL('/login?error=auth_failed', request.url));
+      return NextResponse.redirect(new URL(`${ROUTES.LOGIN}?error=auth_failed`, request.url));
     }
 
     cookieList.set('accessToken', accessToken);
@@ -41,6 +41,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(new URL(ROUTES.NICKNAME, request.url));
   } catch (error) {
     console.warn(error);
-    return NextResponse.redirect(new URL('/login?error=auth_failed', request.url));
+    return NextResponse.redirect(new URL(`${ROUTES.LOGIN}?error=auth_failed`, request.url));
   }
 }

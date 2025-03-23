@@ -5,6 +5,7 @@ import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
 
 import { bookQueryOptions } from 'app/_api/queries/book';
 import { COOKIE_ID } from 'app/_constants/cookie';
+import { ROUTES } from 'app/_constants/route';
 import { ReadStatusTag } from 'app/_constants/status';
 import { getQueryClient } from 'app/_util/queryClient';
 
@@ -22,7 +23,7 @@ const BookListPage = async ({ searchParams }: Props) => {
   const filter = (await searchParams).filter;
 
   if (!memberId) {
-    redirect('/login');
+    redirect(ROUTES.LOGIN);
   }
 
   const queryClient = getQueryClient();

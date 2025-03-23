@@ -6,6 +6,7 @@ import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query
 import { bookQueryOptions } from 'app/_api/queries/book';
 import { itemQueryOptions } from 'app/_api/queries/item';
 import { COOKIE_ID } from 'app/_constants/cookie';
+import { ROUTES } from 'app/_constants/route';
 
 import { Home } from './_components/Home';
 
@@ -16,7 +17,7 @@ const HomePage = async () => {
   const memberId = cookieStore.get(COOKIE_ID.MEMBER_ID)?.value;
 
   if (!memberId) {
-    redirect('/login');
+    redirect(ROUTES.LOGIN);
   }
 
   await Promise.all([
