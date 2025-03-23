@@ -2,8 +2,7 @@ import ky, { type Options, type ResponsePromise } from 'ky';
 
 import { ROUTES } from 'app/_constants/route';
 
-import { removeUserInfoFromCookies } from './_accessToken';
-import { getAccessToken } from './acessToken';
+import { getAccessToken, removeUserInfoFromCookies } from './acessToken';
 
 const defaultOption: Options = {
   retry: 0,
