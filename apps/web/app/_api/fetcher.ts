@@ -1,7 +1,8 @@
 import ky, { type Options, type ResponsePromise } from 'ky';
 
-import { removeUserInfoFromCookies } from './_accessToken';
-import { getAccessToken } from './acessToken';
+import { ROUTES } from 'app/_constants/route';
+
+import { getAccessToken, removeUserInfoFromCookies } from './acessToken';
 
 const defaultOption: Options = {
   retry: 0,
@@ -31,7 +32,7 @@ export const instance = ky.create({
         if (!response.ok && response.status === 401) {
           await removeUserInfoFromCookies();
           // next/navigation에서 제공하는 redirect는 서버 전용이라 window.location.href를 이용해서 구현
-          window.location.href = '/login';
+          window.location.href = ROUTES.LOGIN;
         }
         return response;
       },

@@ -3,7 +3,7 @@ export const ROUTES = {
   BOOKS: '/books',
   CLOSET: '/closet',
   HOME: '/home',
-  LOGIN: '/login',
+  LOGIN: '/',
   MISSION: '/mission',
   NICKNAME: '/nickname',
   ONBOARDING: '/onboarding',

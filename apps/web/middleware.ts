@@ -1,28 +1,27 @@
-// FIXME 액세스 토큰이 없을때 로그인 페이지로 리다이렉트 시키는 코드, 개발 편의성을 위해 주석처리
-
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
+import { COOKIE_ID } from 'app/_constants/cookie';
+import { ROUTES } from 'app/_constants/route';
+
 export async function middleware(request: NextRequest) {
   const cookieStore = await cookies();
-  const accessToken = cookieStore.get('accessToken');
+  const accessToken = cookieStore.get(COOKIE_ID.ACCESS_TOKEN)?.value;
+  const nickname = cookieStore.get(COOKIE_ID.MEMBER_ID)?.value;
 
-  const response = NextResponse.next();
+  const isRootPage = request.nextUrl.pathname === '/';
+  const isAuthCallbackPage = request.nextUrl.pathname.startsWith('/auth/callback');
+  const isAuthPage = isRootPage || isAuthCallbackPage;
 
-  const isAuthPage = ['/login', '/auth'].some((path) => request.nextUrl.pathname.startsWith(path));
-
-  // accessToken이 없고 auth 관련 페이지가 아닐때
-  // if (!accessToken && !isAuthPage) {
-  //   return NextResponse.redirect(new URL('/login', request.url));
-  // }
-
-  if (accessToken && isAuthPage) {
-    const referer = request.headers.get('referer');
-    if (referer && !referer.includes('/login')) {
-      return NextResponse.redirect(referer);
+  if (isAuthPage) {
+    if (!nickname) {
+      return NextResponse.redirect(new URL(ROUTES.NICKNAME, request.url));
     }
-    return NextResponse.redirect(new URL('/', request.url));
+
+    if (accessToken) {
+      return NextResponse.redirect(new URL(ROUTES.HOME, request.url));
+    }
   }
 
-  return response;
+  return NextResponse.next();
 }
