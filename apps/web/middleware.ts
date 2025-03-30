@@ -13,14 +13,17 @@ export async function middleware(request: NextRequest) {
   const isAuthCallbackPage = request.nextUrl.pathname.startsWith('/auth/callback');
   const isAuthPage = isRootPage || isAuthCallbackPage;
 
+  const isLoggedIn = Boolean(accessToken);
+  const hasNickname = Boolean(nickname);
+
   if (isAuthPage) {
-    if (!nickname) {
-      return NextResponse.redirect(new URL(ROUTES.NICKNAME, request.url));
+    if (isLoggedIn) {
+      return hasNickname
+        ? NextResponse.redirect(new URL(ROUTES.HOME, request.url))
+        : NextResponse.redirect(new URL(ROUTES.NICKNAME, request.url));
     }
 
-    if (accessToken) {
-      return NextResponse.redirect(new URL(ROUTES.HOME, request.url));
-    }
+    return NextResponse.next();
   }
 
   return NextResponse.next();
