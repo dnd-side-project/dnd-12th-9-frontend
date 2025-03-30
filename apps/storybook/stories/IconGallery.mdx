@@ -1,0 +1,19 @@
+import { Meta, Title, IconGallery, IconItem } from '@storybook/blocks';
+import { Icon } from '@sbooky/ui/Icon';
+import { IconColor, IconList, IconType } from '@sbooky/ui/Icon/assets';
+
+<Meta title="Foundations/Icons" />
+
+# Icon Gallery
+
+A comprehensive collection of icons used throughout the application.
+
+## All Icons
+
+<IconGallery>
+  {IconList.map((iconType) => (
+    <IconItem name={iconType} key={iconType}>
+      <Icon type={iconType} />
+    </IconItem>
+  ))}
+</IconGallery>
