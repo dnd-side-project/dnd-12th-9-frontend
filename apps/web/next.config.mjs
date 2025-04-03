@@ -26,6 +26,14 @@ const nextConfig = {
     });
     return config;
   },
+  async rewrites() {
+    return [
+      {
+        source: '/login',
+        destination: '/',
+      },
+    ];
+  },
 };
 
 export default nextConfig;
