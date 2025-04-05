@@ -15,9 +15,14 @@ const HomePage = async () => {
 
   const cookieStore = await cookies();
   const memberId = cookieStore.get(COOKIE_ID.MEMBER_ID)?.value;
+  const nickname = cookieStore.get(COOKIE_ID.NICKNAME)?.value;
 
   if (!memberId) {
     redirect(ROUTES.LOGIN);
+  }
+
+  if (!nickname) {
+    redirect(ROUTES.NICKNAME);
   }
 
   await Promise.all([
