@@ -20,7 +20,7 @@ export async function middleware(request: NextRequest) {
     if (isLoggedIn) {
       return hasNickname
         ? NextResponse.redirect(new URL(ROUTES.HOME, request.url))
-        : NextResponse.redirect(new URL(ROUTES.ONBOARDING, request.url));
+        : NextResponse.redirect(new URL(ROUTES.NICKNAME, request.url));
     }
 
     return NextResponse.next();

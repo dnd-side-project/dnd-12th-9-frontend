@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(new URL(ROUTES.HOME, request.url));
     }
 
-    return NextResponse.redirect(new URL(ROUTES.ONBOARDING, request.url));
+    return NextResponse.redirect(new URL(ROUTES.NICKNAME, request.url));
   } catch (error) {
     console.warn(error);
     return NextResponse.redirect(new URL(`${ROUTES.LOGIN}?error=auth_failed`, request.url));
