@@ -11,6 +11,7 @@ import { Header } from '@sbooky/ui/components/Header';
 import { Box, JustifyBetween, PageLayout, Stack } from '@sbooky/ui/components/Layout';
 import { Text } from '@sbooky/ui/components/Text';
 import { TextField } from '@sbooky/ui/components/TextField';
+import { setNicknameToCookie } from 'app/_api/acessToken';
 import { useNickname } from 'app/_api/mutations/useNickname';
 import { ROUTES } from 'app/_constants/route';
 
@@ -25,11 +26,14 @@ const NicknamePage = () => {
     mutate(
       { nickname },
       {
-        onSuccess: () => toast.success(`닉네임 설정에 성공했어요`),
+        onSuccess: async () => {
+          await setNicknameToCookie(nickname);
+          toast.success(`닉네임 설정에 성공했어요`);
+          router.push(ROUTES.ONBOARDING);
+        },
         onError: () => toast.error(`닉네임 설정에 실패했어요`),
       }
     );
-    router.push(ROUTES.ONBOARDING);
   };
 
   const [nickname, setNickname] = useState(INITIAL_NICKNAME);

@@ -15,3 +15,8 @@ export const removeUserInfoFromCookies = async () => {
   cookieStore.delete(COOKIE_ID.MEMBER_ID);
   cookieStore.delete(COOKIE_ID.REFRESH_TOKEN);
 };
+
+export const setNicknameToCookie = async (nickname: string) => {
+  const cookieStore = await cookies();
+  cookieStore.set(COOKIE_ID.NICKNAME, nickname);
+};
