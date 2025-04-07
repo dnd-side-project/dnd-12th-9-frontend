@@ -17,7 +17,7 @@ export const PageLayout = ({
   return (
     <Stack className={cn('h-full', containerClassName)}>
       {header}
-      <div className={cn('grow overflow-scroll', className)}>{children}</div>
+      <div className={cn('grow overflow-auto', className)}>{children}</div>
     </Stack>
   );
 };
