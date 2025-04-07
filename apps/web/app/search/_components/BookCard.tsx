@@ -7,7 +7,7 @@ import { Book } from 'app/_api/types/book';
 
 export type BookWithModal = Book & { openModal: () => void };
 export const BookCard = ({ title, author, publishedAt, thumbnail, openModal }: BookWithModal) => {
-  const IMAGE = '/BASIC_GHOST.webp';
+  const IMAGE = '/Ghost/BASIC_GHOST.webp';
   return (
     <Flex className="my-2 w-full flex-row items-center justify-between">
       <Flex className="flex-row items-center gap-4">
