@@ -44,9 +44,10 @@ export const DRAWER_MENU = {
     title: '꾸미기',
     router: ROUTES.CLOSET,
   },
-  SHARE: {
-    icon: 'setting',
-    title: '설정',
-    router: ROUTES.SETTING,
-  },
+  // TODO : 추후 개시 예정
+  // SHARE: {
+  //   icon: 'setting',
+  //   title: '설정',
+  //   router: ROUTES.SETTING,
+  // },
 } as const;
