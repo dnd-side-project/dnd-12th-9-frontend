@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { toast } from 'sonner';
+import { toast } from 'react-hot-toast';
 
 import { Button } from '@sbooky/ui/components/Button';
 import { Chip } from '@sbooky/ui/components/Chip';

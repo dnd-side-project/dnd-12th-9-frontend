@@ -7,7 +7,7 @@ import { useRef, useState } from 'react';
 import { useQueries } from '@tanstack/react-query';
 import { saveAs } from 'file-saver';
 import { toPng } from 'html-to-image';
-import { toast } from 'sonner';
+import { toast } from 'react-hot-toast';
 
 import { Header, HeaderLeftElement } from '@sbooky/ui/components/Header';
 import { Icon } from '@sbooky/ui/components/Icon';
