@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { toast } from 'sonner';
+import { toast } from 'react-hot-toast';
 
 import { Box, CenterStack } from '@sbooky/ui/components/Layout';
 import { useModal } from '@sbooky/ui/hooks/useModal';

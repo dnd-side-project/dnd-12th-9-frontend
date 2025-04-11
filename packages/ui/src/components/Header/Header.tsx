@@ -20,7 +20,7 @@ export const Header = ({
   return (
     <div
       className={cn(
-        'relative flex h-12 items-center justify-center text-gray-800',
+        'relative flex min-h-12 items-center justify-center text-gray-800',
         borderBottom && 'border-b border-gray-100',
         className
       )}

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import { useSuspenseQueries } from '@tanstack/react-query';
-import { toast } from 'sonner';
+import { toast } from 'react-hot-toast';
 
 import { Button } from '@sbooky/ui/components/Button';
 import { Header, HeaderLeftElement } from '@sbooky/ui/components/Header';

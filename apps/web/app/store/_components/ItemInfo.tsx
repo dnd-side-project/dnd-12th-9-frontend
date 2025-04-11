@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
-import { toast } from 'sonner';
+import { toast } from 'react-hot-toast';
 
 import { Button, ButtonElement } from '@sbooky/ui/components/Button';
 import { Flex } from '@sbooky/ui/components/Layout';
