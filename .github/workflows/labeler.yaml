@@ -29,6 +29,7 @@ jobs:
           config-file-name: labeler-config.yaml
 
   add_assignees:
+    if: github.actor != 'coderabbitai[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions-ecosystem/action-add-assignees@v1
