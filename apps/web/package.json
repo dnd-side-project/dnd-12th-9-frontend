@@ -26,9 +26,9 @@
     "next-sitemap": "^4.2.3",
     "react": "catalog:",
     "react-dom": "catalog:",
+    "react-hot-toast": "^2.5.2",
     "react-lottie-player": "^2.1.0",
     "rss": "^1.2.2",
-    "sonner": "^2.0.1",
     "tailwind-merge": "^3.0.1",
     "zod": "^3.24.1"
   },
