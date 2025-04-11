@@ -4,7 +4,7 @@ import localFont from 'next/font/local';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Metadata } from 'next';
-import { Toaster } from 'sonner';
+import { Toaster } from 'react-hot-toast';
 
 import { ClientQueryProvider } from './_api/ClientQueryProvider';
 import { ClarityEffector } from './_components/ClarityEffector';
@@ -40,6 +40,23 @@ export const metadata: Metadata = {
   },
 };
 
+const toastOption = {
+  style: {
+    background: 'black',
+    color: 'white',
+    borderRadius: '999px',
+    padding: '8px 8px 8px 14px',
+    font: '16px',
+  },
+  duration: 1500,
+  success: {
+    iconTheme: {
+      primary: 'white',
+      secondary: 'black',
+    },
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -62,7 +79,7 @@ export default function RootLayout({
         {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}
-        <Toaster position="top-center" richColors duration={1500} />
+        <Toaster position="top-center" gutter={100} toastOptions={toastOption} />
       </body>
     </html>
   );
