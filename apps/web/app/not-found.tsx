@@ -1,11 +1,12 @@
 'use client';
 
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import { Button } from '@sbooky/ui/components/Button';
 import { PageLayout, VStack } from '@sbooky/ui/components/Layout';
 import { Text } from '@sbooky/ui/components/Text';
+
+import { SadLuna } from './_components/SadLuna';
 
 export default function NotFoundPage() {
   const router = useRouter();
@@ -14,7 +15,7 @@ export default function NotFoundPage() {
   return (
     <PageLayout className="bg-white">
       <VStack className="h-dvh justify-center gap-2">
-        <Image src="/Ghost/SAD_LUNA.webp" alt="not-fount" width={150} height={150} />
+        <SadLuna />
         <Text type="Title1" weight="semibold" className="text-gray-900">
           페이지를 찾을 수 없습니다.
         </Text>
