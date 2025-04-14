@@ -1,7 +1,7 @@
 'use client';
 import { PropsWithChildren } from 'react';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 
 import { TUTORIAL_ANIMATION } from '../constants/motions';
 

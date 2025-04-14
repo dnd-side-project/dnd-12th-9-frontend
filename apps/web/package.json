@@ -19,7 +19,7 @@
     "clsx": "catalog:",
     "dayjs": "^1.11.13",
     "file-saver": "^2.0.5",
-    "framer-motion": "^11.18.0",
+    "motion": "catalog:",
     "html-to-image": "^1.11.13",
     "ky": "^1.7.4",
     "next": "^15.1.0",

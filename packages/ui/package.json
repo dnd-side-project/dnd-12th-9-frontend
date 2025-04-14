@@ -21,7 +21,7 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "autoprefixer": "catalog:",
-    "framer-motion": "^11.18.0",
+    "motion": "catalog:",
     "postcss": "catalog:",
     "prettier-plugin-tailwindcss": "^0.6.9",
     "react-hook-form": "catalog:",

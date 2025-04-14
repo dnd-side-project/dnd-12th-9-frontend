@@ -33,3 +33,6 @@ catalog:
   # react-query
   '@tanstack/react-query': '^5.66.5'
   '@tanstack/react-query-devtools': '^5.64.1'
+
+  # motion
+  'motion': '^12.7.0'
