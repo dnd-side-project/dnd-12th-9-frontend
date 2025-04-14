@@ -25,7 +25,7 @@
     "@storybook/blocks": "^8.4.7",
     "@storybook/nextjs": "^8.4.7",
     "@storybook/test": "^8.4.7",
-    "@types/node": "^20.11.24",
+    "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "autoprefixer": "catalog:",
@@ -33,6 +33,6 @@
     "serve": "^14.2.4",
     "tailwindcss": "catalog:",
     "chromatic": "^11.25.1",
-    "typescript": "5.5.4"
+    "typescript": "catalog:"
   }
 }
