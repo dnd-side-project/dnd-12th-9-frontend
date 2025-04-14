@@ -84,7 +84,9 @@ export function Button({
       disabled={disabled}
       {...restProps}
     >
-      <Text {...buttonTextVariantMap[size]}>{children}</Text>
+      <Text {...buttonTextVariantMap[size]} className="text-nowrap">
+        {children}
+      </Text>
       {iconType && <Icon type={iconType} color={disabled ? 'gray600' : 'gray500'} size={16} />}
       {right}
     </button>

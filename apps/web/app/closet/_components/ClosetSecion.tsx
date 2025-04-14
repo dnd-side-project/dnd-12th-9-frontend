@@ -10,7 +10,7 @@ import { Button } from '@sbooky/ui/components/Button';
 import { Header, HeaderLeftElement } from '@sbooky/ui/components/Header';
 import { Icon } from '@sbooky/ui/components/Icon';
 import { IconButton } from '@sbooky/ui/components/IconButton';
-import { Box, PageLayout, Stack } from '@sbooky/ui/components/Layout';
+import { Box, Center, PageLayout, Spacing, Stack } from '@sbooky/ui/components/Layout';
 import { useUpdateEquippedItem } from 'app/_api/mutations/useUpdateEquippedItem';
 import { itemQueryOptions } from 'app/_api/queries/item';
 import { ROUTES } from 'app/_constants/route';
@@ -119,16 +119,19 @@ export const ClosetSection = ({ memberId }: ClosetSectionProps) => {
               active={item.name === currentGhost.name}
             />
           ))}
+          <Spacing className="h-[80px]" />
         </Box>
+      </Stack>
+      <Center className="fixed bottom-0 w-full max-w-[440px] bg-white p-4 outline-none">
         <Button
           size="lg"
-          className="w-full px-[140px] py-3.5"
+          className="w-full text-nowrap px-[140px] py-3.5"
           disabled={disabled}
           onClick={onClickSavebutton}
         >
           저장하기
         </Button>
-      </Stack>
+      </Center>
     </PageLayout>
   );
 };
