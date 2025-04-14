@@ -7,18 +7,9 @@ import { Button } from '@sbooky/ui/components/Button';
 import { PageLayout, VStack } from '@sbooky/ui/components/Layout';
 import { Text } from '@sbooky/ui/components/Text';
 
-import { getAccessToken } from './_api/acessToken';
-
 export default function NotFoundPage() {
   const router = useRouter();
-
-  const handleNavigate = async () => {
-    const accessToken = await getAccessToken();
-    if (accessToken) {
-      return router.push('/home');
-    }
-    router.push('/');
-  };
+  const handleNavigate = () => router.push('/');
 
   return (
     <PageLayout className="bg-white">
