@@ -1,6 +1,6 @@
 'use client';
 
-import { toast } from 'sonner';
+import { toast } from 'react-hot-toast';
 
 import { Button } from '@sbooky/ui/components/Button';
 import { useModal } from '@sbooky/ui/hooks/useModal';

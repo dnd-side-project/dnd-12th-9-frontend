@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import { ChangeEventHandler, useCallback, useState } from 'react';
 
-import { toast } from 'sonner';
+import { toast } from 'react-hot-toast';
 
 import { Button } from '@sbooky/ui/components/Button';
 import { Header } from '@sbooky/ui/components/Header';
