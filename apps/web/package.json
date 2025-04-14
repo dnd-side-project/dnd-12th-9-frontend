@@ -15,8 +15,8 @@
     "@next/third-parties": "^15.2.0",
     "@sbooky/ui": "workspace:*",
     "@vercel/speed-insights": "^1.2.0",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
+    "class-variance-authority": "catalog:",
+    "clsx": "catalog:",
     "dayjs": "^1.11.13",
     "file-saver": "^2.0.5",
     "framer-motion": "^11.18.0",
@@ -29,7 +29,7 @@
     "react-hot-toast": "^2.5.2",
     "react-lottie-player": "^2.1.0",
     "rss": "^1.2.2",
-    "tailwind-merge": "^3.0.1",
+    "tailwind-merge": "catalog:",
     "zod": "^3.24.1"
   },
   "devDependencies": {
@@ -43,9 +43,9 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@types/rss": "^0.0.32",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.5.1",
-    "tailwindcss": "^3.4.17",
+    "autoprefixer": "catalog:",
+    "postcss": "catalog:",
+    "tailwindcss": "catalog:",
     "typescript": "5.5.4"
   }
 }

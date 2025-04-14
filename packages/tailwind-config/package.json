@@ -7,6 +7,6 @@
   },
   "devDependencies": {
     "@sbooky/typescript-config": "workspace:*",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "catalog:"
   }
 }

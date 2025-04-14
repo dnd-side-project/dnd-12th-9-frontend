@@ -12,12 +12,30 @@ catalogs:
     '@types/react-dom':
       specifier: ^19.0.3
       version: 19.0.3
+    autoprefixer:
+      specifier: ^10.4.20
+      version: 10.4.20
+    class-variance-authority:
+      specifier: ^0.7.1
+      version: 0.7.1
+    clsx:
+      specifier: ^2.1.1
+      version: 2.1.1
+    postcss:
+      specifier: ^8.5.1
+      version: 8.5.1
     react:
       specifier: ^19.0.0
       version: 19.0.0
     react-dom:
       specifier: ^19.0.0
       version: 19.0.0
+    tailwind-merge:
+      specifier: ^3.0.1
+      version: 3.0.1
+    tailwindcss:
+      specifier: ^3.4.17
+      version: 3.4.17
 
 importers:
 
@@ -97,19 +115,19 @@ importers:
         specifier: 'catalog:'
         version: 19.0.3(@types/react@19.0.8)
       autoprefixer:
-        specifier: ^10.4.20
+        specifier: 'catalog:'
         version: 10.4.20(postcss@8.5.1)
       chromatic:
         specifier: ^11.25.1
         version: 11.25.1
       postcss:
-        specifier: ^8.5.1
+        specifier: 'catalog:'
         version: 8.5.1
       serve:
         specifier: ^14.2.4
         version: 14.2.4
       tailwindcss:
-        specifier: ^3.4.17
+        specifier: 'catalog:'
         version: 3.4.17(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.5.4))
       typescript:
         specifier: 5.5.4
@@ -130,10 +148,10 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0(next@15.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       class-variance-authority:
-        specifier: ^0.7.1
+        specifier: 'catalog:'
         version: 0.7.1
       clsx:
-        specifier: ^2.1.1
+        specifier: 'catalog:'
         version: 2.1.1
       dayjs:
         specifier: ^1.11.13
@@ -172,7 +190,7 @@ importers:
         specifier: ^1.2.2
         version: 1.2.2
       tailwind-merge:
-        specifier: ^3.0.1
+        specifier: 'catalog:'
         version: 3.0.1
       zod:
         specifier: ^3.24.1
@@ -209,13 +227,13 @@ importers:
         specifier: ^0.0.32
         version: 0.0.32
       autoprefixer:
-        specifier: ^10.4.20
+        specifier: 'catalog:'
         version: 10.4.20(postcss@8.5.1)
       postcss:
-        specifier: ^8.5.1
+        specifier: 'catalog:'
         version: 8.5.1
       tailwindcss:
-        specifier: ^3.4.17
+        specifier: 'catalog:'
         version: 3.4.17(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.5.4))
       typescript:
         specifier: 5.5.4
@@ -290,7 +308,7 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       tailwindcss:
-        specifier: ^3.4.17
+        specifier: 'catalog:'
         version: 3.4.17(ts-node@10.9.2(@types/node@22.10.6)(typescript@5.5.4))
 
   packages/typescript-config: {}
@@ -304,10 +322,10 @@ importers:
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.5.4)
       class-variance-authority:
-        specifier: ^0.7.1
+        specifier: 'catalog:'
         version: 0.7.1
       clsx:
-        specifier: ^2.1.1
+        specifier: 'catalog:'
         version: 2.1.1
       dayjs:
         specifier: ^1.11.13
@@ -319,7 +337,7 @@ importers:
         specifier: 'catalog:'
         version: 19.0.0(react@19.0.0)
       tailwind-merge:
-        specifier: ^3.0.1
+        specifier: 'catalog:'
         version: 3.0.1
     devDependencies:
       '@sbooky/eslint-config':
@@ -344,13 +362,13 @@ importers:
         specifier: 'catalog:'
         version: 19.0.3(@types/react@19.0.8)
       autoprefixer:
-        specifier: ^10.4.20
+        specifier: 'catalog:'
         version: 10.4.20(postcss@8.5.1)
       framer-motion:
         specifier: ^11.18.0
         version: 11.18.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       postcss:
-        specifier: ^8.5.1
+        specifier: 'catalog:'
         version: 8.5.1
       prettier-plugin-tailwindcss:
         specifier: ^0.6.9
@@ -359,7 +377,7 @@ importers:
         specifier: ^7.54.2
         version: 7.54.2(react@19.0.0)
       tailwindcss:
-        specifier: ^3.4.17
+        specifier: 'catalog:'
         version: 3.4.17(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.5.4))
       typescript:
         specifier: 5.5.4
