@@ -24,7 +24,6 @@
     "motion": "catalog:",
     "postcss": "catalog:",
     "prettier-plugin-tailwindcss": "^0.6.9",
-    "react-hook-form": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
   },

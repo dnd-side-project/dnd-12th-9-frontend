@@ -28,8 +28,7 @@
     "react-hot-toast": "^2.5.2",
     "react-lottie-player": "^2.1.0",
     "rss": "^1.2.2",
-    "tailwind-merge": "catalog:",
-    "zod": "catalog:"
+    "tailwind-merge": "catalog:"
   },
   "devDependencies": {
     "@sbooky/eslint-config": "workspace:*",
