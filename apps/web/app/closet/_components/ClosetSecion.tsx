@@ -125,7 +125,7 @@ export const ClosetSection = ({ memberId }: ClosetSectionProps) => {
       <Center className="fixed bottom-0 w-full max-w-[440px] bg-white p-4 outline-none">
         <Button
           size="lg"
-          className="w-full text-nowrap px-[140px] py-3.5"
+          className="w-full px-[140px] py-3.5"
           disabled={disabled}
           onClick={onClickSavebutton}
         >
