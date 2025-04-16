@@ -17,25 +17,23 @@
     "@sbooky/tailwind-config": "workspace:*",
     "@sbooky/typescript-config": "workspace:*",
     "@turbo/gen": "^1.12.4",
-    "@types/node": "^20.11.24",
+    "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "autoprefixer": "^10.4.20",
-    "framer-motion": "^11.18.0",
-    "postcss": "^8.5.1",
+    "autoprefixer": "catalog:",
+    "motion": "catalog:",
+    "postcss": "catalog:",
     "prettier-plugin-tailwindcss": "^0.6.9",
-    "react-hook-form": "^7.54.2",
-    "tailwindcss": "^3.4.17",
-    "typescript": "5.5.4"
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:"
   },
   "dependencies": {
     "@radix-ui/react-switch": "^1.1.4",
     "@svgr/webpack": "^8.1.0",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "dayjs": "^1.11.13",
+    "class-variance-authority": "catalog:",
+    "clsx": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "tailwind-merge": "^3.0.1"
+    "tailwind-merge": "catalog:"
   }
 }

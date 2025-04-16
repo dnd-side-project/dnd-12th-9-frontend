@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
-    "@next/eslint-plugin-next": "^15.1.0",
+    "@next/eslint-plugin-next": "catalog:",
     "@tanstack/eslint-plugin-query": "^5.62.16",
     "@typescript-eslint/eslint-plugin": "^8.15.0",
     "@typescript-eslint/parser": "^8.15.0",
@@ -26,7 +26,7 @@
     "eslint-plugin-storybook": "^0.11.2",
     "eslint-plugin-turbo": "^2.3.0",
     "globals": "^15.12.0",
-    "typescript": "^5.3.3",
+    "typescript": "catalog:",
     "typescript-eslint": "^8.15.0"
   }
 }

@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 import { cn } from '../../lib/core';
 import { FADE_IN_ANIMATION } from '../../lib/motions';

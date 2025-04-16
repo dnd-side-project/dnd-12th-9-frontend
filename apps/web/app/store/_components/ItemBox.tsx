@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 import { Box, JustifyBetween } from '@sbooky/ui/components/Layout';
 import { Text } from '@sbooky/ui/components/Text';

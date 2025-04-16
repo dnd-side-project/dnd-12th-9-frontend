@@ -1,6 +1,6 @@
 import { PropsWithChildren, useEffect, useState } from 'react';
 
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
 
 export function PortalWrapper({ children }: PropsWithChildren) {

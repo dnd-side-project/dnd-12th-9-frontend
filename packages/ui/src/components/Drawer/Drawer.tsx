@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 import { FADE_IN_ANIMATION, SLIDE_IN_ANIMATION } from '../../lib/motions';
 import { Portal } from '../Portal';
