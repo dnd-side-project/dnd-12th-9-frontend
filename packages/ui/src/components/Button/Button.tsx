@@ -62,6 +62,19 @@ const buttonTextVariantMap = {
   };
 };
 
+/**
+ * Renders a customizable button with optional icon, right-side content, and adjustable size and style variant.
+ *
+ * @param children - The button label or content.
+ * @param iconType - Optional icon identifier to display before the button text.
+ * @param right - Optional content to display on the right side of the button.
+ * @param size - Button size; defaults to 'md'.
+ * @param variant - Button style variant; defaults to 'primary500'.
+ * @param className - Additional class names for the button.
+ * @param disabled - Whether the button is disabled.
+ *
+ * @returns A styled button element with optional icon and right-side content.
+ */
 export function Button({
   children,
   iconType,
@@ -84,7 +97,9 @@ export function Button({
       disabled={disabled}
       {...restProps}
     >
-      <Text {...buttonTextVariantMap[size]}>{children}</Text>
+      <Text {...buttonTextVariantMap[size]} className="text-nowrap">
+        {children}
+      </Text>
       {iconType && <Icon type={iconType} color={disabled ? 'gray600' : 'gray500'} size={16} />}
       {right}
     </button>
