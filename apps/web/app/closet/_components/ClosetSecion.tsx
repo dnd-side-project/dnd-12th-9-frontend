@@ -119,8 +119,8 @@ export const ClosetSection = ({ memberId }: ClosetSectionProps) => {
               active={item.name === currentGhost.name}
             />
           ))}
-          <Spacing className="h-[80px]" />
         </Box>
+        <Spacing className="h-[80px]" />
       </Stack>
       <Center className="fixed bottom-0 w-full max-w-[440px] bg-white p-4 outline-none">
         <Button

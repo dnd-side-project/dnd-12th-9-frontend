@@ -41,7 +41,10 @@ export const Profile = ({ memberId }: ProfileProps) => {
     { data: equippedData, isPending: isEquippedDataPending, isError: isEquippedDataError },
     { data: completedData, isPending: isCompletedDataPending, isError: isCompletedDataError },
   ] = useQueries({
-    queries: [itemQueryOptions.equipped(memberId), bookQueryOptions.count(memberId)],
+    queries: [
+      itemQueryOptions.equipped(memberId),
+      bookQueryOptions.count({ ownerId: memberId, readStatus: 'COMPLETED' }),
+    ],
   });
 
   if (isEquippedDataPending || isCompletedDataPending) {
@@ -52,7 +55,7 @@ export const Profile = ({ memberId }: ProfileProps) => {
     return <></>;
   }
 
-  const { completedBookCount } = completedData.data;
+  const { bookCount } = completedData.data;
   const { findEquippedItemsResponse, nickName } = equippedData.data;
   const { code } = GHOST_MAP[findEquippedItemsResponse.items.CHARACTER[0] ?? BASIC_GHOST.code];
 
@@ -106,7 +109,7 @@ export const Profile = ({ memberId }: ProfileProps) => {
           onImageLoaded={onImageLoaded}
           nickName={nickName}
           code={code}
-          completedBookCount={completedBookCount}
+          completedBookCount={bookCount}
         />
         <BottomButton
           saveImageButtonProps={{

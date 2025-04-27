@@ -20,7 +20,9 @@ export const MemberPointInfo = ({ memberId }: MemberPointInfoProps) => {
 
   // TODO : useSuspenseQueries 변경
   const { data } = useQuery(bookQueryOptions.point());
-  const { data: bookData } = useQuery(bookQueryOptions.count(memberId));
+  const { data: bookData } = useQuery(
+    bookQueryOptions.count({ ownerId: memberId, readStatus: 'COMPLETED' })
+  );
 
   return (
     <Flex className="flex-col gap-3">
@@ -51,7 +53,7 @@ export const MemberPointInfo = ({ memberId }: MemberPointInfoProps) => {
               지금까지 완독한 책
             </Text>
             <Text type="Heading1" weight="semibold" className="text-gray-900">
-              {bookData?.data.completedBookCount}권
+              {bookData?.data.bookCount}권
             </Text>
           </HStack>
           <Button
