@@ -26,8 +26,6 @@ type ProfileProps = {
 
 export const Profile = ({ memberId }: ProfileProps) => {
   const router = useRouter();
-  // TODO: 추후 주석 삭제
-  console.log('memberId', memberId);
 
   const divRef = useRef<HTMLDivElement>(null);
 
@@ -55,7 +53,7 @@ export const Profile = ({ memberId }: ProfileProps) => {
     return <></>;
   }
 
-  const { bookCount } = completedData.data;
+  const { bookCount: completedBookCount } = completedData.data;
   const { findEquippedItemsResponse, nickName } = equippedData.data;
   const { code } = GHOST_MAP[findEquippedItemsResponse.items.CHARACTER[0] ?? BASIC_GHOST.code];
 
@@ -109,7 +107,7 @@ export const Profile = ({ memberId }: ProfileProps) => {
           onImageLoaded={onImageLoaded}
           nickName={nickName}
           code={code}
-          completedBookCount={bookCount}
+          completedBookCount={completedBookCount}
         />
         <BottomButton
           saveImageButtonProps={{
