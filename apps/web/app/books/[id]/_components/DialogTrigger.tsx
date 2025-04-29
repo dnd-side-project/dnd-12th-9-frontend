@@ -12,8 +12,9 @@ import { BookStatusModal } from './BookStatusModal';
 
 type DialogTriggerProps = {
   data: MemberBook;
+  memberId?: string;
 };
-export const DialogTrigger = ({ data }: DialogTriggerProps) => {
+export const DialogTrigger = ({ data, memberId }: DialogTriggerProps) => {
   const { isOpen, openModal, closeModal } = useModal();
 
   const { mutate } = useUpdateBook();
@@ -46,6 +47,7 @@ export const DialogTrigger = ({ data }: DialogTriggerProps) => {
           data={data}
           onConfirm={onConfirm}
           initialReadState={data.readStatus}
+          memberId={memberId}
         />
       )}
     </>

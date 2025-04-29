@@ -18,8 +18,10 @@ import { SearchFallback } from './SearchFallback';
 type BookListProps = {
   data: Book[];
   isLoading: boolean;
+  memberId: string;
 };
-export const BookList = ({ data, isLoading }: BookListProps) => {
+
+export const BookList = ({ data, isLoading, memberId }: BookListProps) => {
   const [selectedBook, setSelectedBook] = useState<Book>({} as Book);
   const { isOpen, openModal, closeModal } = useModal();
   const isEmptyBooks = data.length === 0;
@@ -77,6 +79,7 @@ export const BookList = ({ data, isLoading }: BookListProps) => {
         closeModal={closeModal}
         data={selectedBook}
         onConfirm={onConfirm}
+        memberId={memberId}
       />
     </Box>
   );

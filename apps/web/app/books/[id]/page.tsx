@@ -1,9 +1,12 @@
+import { cookies } from 'next/headers';
+
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 
 import { Header } from '@sbooky/ui/components/Header';
 import { PageLayout } from '@sbooky/ui/components/Layout';
 import { bookQueryOptions } from 'app/_api/queries/book';
 import { BackButton } from 'app/_components/BackButton';
+import { COOKIE_ID } from 'app/_constants/cookie';
 import { getQueryClient } from 'app/_util/queryClient';
 
 import { DetailSection } from './_components/DetailSection';
@@ -15,6 +18,8 @@ type BookDetailPageProps = {
 
 const BookDetailPage = async ({ params }: BookDetailPageProps) => {
   const param = await params;
+  const cookieStore = await cookies();
+  const memberId = cookieStore.get(COOKIE_ID.MEMBER_ID)?.value;
 
   const queryClient = getQueryClient();
 
@@ -31,7 +36,7 @@ const BookDetailPage = async ({ params }: BookDetailPageProps) => {
       className="bg-gray-70"
     >
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <DetailSection id={param.id} />
+        <DetailSection id={param.id} memberId={memberId} />
       </HydrationBoundary>
     </PageLayout>
   );

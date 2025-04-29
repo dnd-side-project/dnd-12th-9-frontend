@@ -14,7 +14,7 @@ import { useModal } from '@sbooky/ui/hooks/useModal';
 import { Book } from 'app/_api/types/book';
 import { RewardModal } from 'app/_components/RewardModal';
 import { REWARD_MESSAGE } from 'app/_constants/reward';
-import { ROUTES } from 'app/_constants/route';
+import { DYNAMIC_ROUTES } from 'app/_constants/route';
 import { READING_STATUS, STATUS_DATA } from 'app/_constants/status';
 import { entries } from 'app/_util/entries';
 
@@ -27,6 +27,7 @@ type BookStatusModalProps = ModalProps & {
   data: Book;
   initialReadState?: READING_STATUS;
   onConfirm: (readStatus: READING_STATUS) => void;
+  memberId?: string;
 };
 
 export const BookStatusModal = ({
@@ -35,6 +36,7 @@ export const BookStatusModal = ({
   data,
   onConfirm,
   initialReadState = 'WANT_TO_READ',
+  memberId,
 }: BookStatusModalProps) => {
   const router = useRouter();
   const path = usePathname().toString().split('/')[1];
@@ -92,7 +94,7 @@ export const BookStatusModal = ({
         message={hasSearch ? REWARD_MESSAGE.ADD : REWARD_MESSAGE.RATE}
         isOpen={isOrbModalOpen}
         onClose={closeOrbModal}
-        onNavigate={() => router.push(ROUTES.BOOKS)}
+        onNavigate={memberId ? () => router.push(DYNAMIC_ROUTES.BOOK_SHELF(memberId)) : undefined}
       />
     </>
   );
