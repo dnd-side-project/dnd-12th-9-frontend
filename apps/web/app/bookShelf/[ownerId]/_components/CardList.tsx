@@ -12,9 +12,10 @@ import { Card } from './Card';
 
 type CardListProps = {
   bookList: MemberBook[];
+  isOwner: boolean;
 };
 
-export const CardList = ({ bookList }: CardListProps) => {
+export const CardList = ({ bookList, isOwner }: CardListProps) => {
   const isEmptyCardList = bookList.length === 0;
 
   return isEmptyCardList ? (
@@ -23,9 +24,12 @@ export const CardList = ({ bookList }: CardListProps) => {
     <VStack>
       <Spacing className="h-4" />
       <div className="grid w-full grid-cols-3 place-content-between gap-x-3 gap-y-5 pb-10">
-        <Link href={ROUTES.SEARCH}>
-          <AddBookCard />
-        </Link>
+        {isOwner && (
+          <Link href={ROUTES.SEARCH}>
+            <AddBookCard />
+          </Link>
+        )}
+
         {bookList.map(({ id, thumbnailUrl, author, title }) => (
           <Link key={id} href={`/${DYNAMIC_ROUTES.BOOK_DETAIL(id)}`}>
             <Card title={title} description={author} imageURL={thumbnailUrl} />

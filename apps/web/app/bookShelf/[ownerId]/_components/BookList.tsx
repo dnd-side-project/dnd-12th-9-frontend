@@ -28,7 +28,7 @@ export const BookSection = ({ memberId, filter }: Props) => {
   const [
     {
       data: {
-        data: { bookList },
+        data: { bookList, isOwner },
       },
     },
     {
@@ -76,7 +76,7 @@ export const BookSection = ({ memberId, filter }: Props) => {
             </Link>
           ))}
         </HStack>
-        <CardList bookList={bookList} />
+        <CardList bookList={bookList} isOwner={isOwner} />
       </Stack>
     </PageLayout>
   );
