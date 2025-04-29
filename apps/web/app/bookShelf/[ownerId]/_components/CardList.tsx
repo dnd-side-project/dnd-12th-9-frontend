@@ -31,7 +31,7 @@ export const CardList = ({ bookList, isOwner }: CardListProps) => {
         )}
 
         {bookList.map(({ id, thumbnailUrl, author, title }) => (
-          <Link key={id} href={`/${DYNAMIC_ROUTES.BOOK_DETAIL(id)}`}>
+          <Link key={id} href={DYNAMIC_ROUTES.BOOK_DETAIL(id)}>
             <Card title={title} description={author} imageURL={thumbnailUrl} />
           </Link>
         ))}
