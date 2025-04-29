@@ -3,9 +3,9 @@ import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 import { Header } from '@sbooky/ui/components/Header';
 import { PageLayout } from '@sbooky/ui/components/Layout';
 import { bookQueryOptions } from 'app/_api/queries/book';
+import { BackButton } from 'app/_components/BackButton';
 import { getQueryClient } from 'app/_util/queryClient';
 
-import { BackButton } from './_components/BackButton';
 import { DetailSection } from './_components/DetailSection';
 import { TrashButton } from './_components/TrashButton';
 
@@ -16,9 +16,6 @@ type BookDetailPageProps = {
 const BookDetailPage = async ({ params }: BookDetailPageProps) => {
   const param = await params;
 
-  //TODO params를 이용해서 데이터 조회 eslint 룰 때문에 임시로 작성
-  console.log(param.id);
-
   const queryClient = getQueryClient();
 
   await queryClient.prefetchQuery(bookQueryOptions.detail(param.id));
@@ -26,6 +23,7 @@ const BookDetailPage = async ({ params }: BookDetailPageProps) => {
   return (
     <PageLayout
       header={
+        // TODO 책장 조회 페이지 라우팅 변경으로 books 페이지로 이동하도록 하드 코딩할 수 없어서 일단은 뒤로가기 동작으로 변경
         <Header left={<BackButton />} right={<TrashButton />} borderBottom className="bg-gray-70">
           책 정보
         </Header>

@@ -9,7 +9,7 @@ import { Icon } from '@sbooky/ui/components/Icon';
 import { Box, Flex, HStack, JustifyBetween, Spacing } from '@sbooky/ui/components/Layout';
 import { Text } from '@sbooky/ui/components/Text';
 import { bookQueryOptions } from 'app/_api/queries/book';
-import { ROUTES } from 'app/_constants/route';
+import { DYNAMIC_ROUTES, ROUTES } from 'app/_constants/route';
 
 type MemberPointInfoProps = {
   memberId: string;
@@ -60,7 +60,7 @@ export const MemberPointInfo = ({ memberId }: MemberPointInfoProps) => {
             size="sm"
             variant="primary50"
             right={<Icon type="next" size={16} color="primary" />}
-            onClick={() => router.push(ROUTES.BOOKS)}
+            onClick={() => router.push(DYNAMIC_ROUTES.BOOK_SHELF(memberId))}
           >
             책장가기
           </Button>
