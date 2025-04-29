@@ -39,6 +39,7 @@ export type MemberBook = Book & {
   publishedAt?: string;
   createdAt?: Date;
   completedAt?: string;
+  isOwner: boolean;
 };
 
 export type GetBookListAPIRequest = {

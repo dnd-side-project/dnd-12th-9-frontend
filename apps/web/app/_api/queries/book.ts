@@ -70,7 +70,7 @@ const getBookListAPI = ({ ownerId, readStatus }: GetBookListAPIRequest) => {
 };
 
 const getBookDetailAPI = ({ bookId }: GetBookDetailAPIRequest) =>
-  fetcher.get<GetBookDetailAPIResponse>(`books/${bookId}`);
+  fetcher.get<GetBookDetailAPIResponse>(`v2/books/${bookId}`);
 
 const getBookSearchAPI = (bookName: string, pageParam: number) =>
   fetcher.get<SearchBookResponse>(`books?query=${bookName}&page=${pageParam}`);
