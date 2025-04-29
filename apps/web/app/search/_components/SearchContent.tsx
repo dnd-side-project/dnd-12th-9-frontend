@@ -16,7 +16,11 @@ const OBSERVER_OPTIONS = {
   threshold: 0.1,
 };
 
-export const SearchContent = () => {
+type SearchContentProps = {
+  memberId: string;
+};
+
+export const SearchContent = ({ memberId }: SearchContentProps) => {
   const observerTarget = useRef<HTMLDivElement>(null);
   const [search, setSearch] = useState<string>('');
   const [query, setQuery] = useState<string>('');
@@ -63,7 +67,7 @@ export const SearchContent = () => {
         />
       </Box>
       <Box className="mt-6 flex-1 overflow-y-auto">
-        {query && <BookList data={books} isLoading={isLoading} />}
+        {query && <BookList data={books} isLoading={isLoading} memberId={memberId} />}
         <Box ref={observerTarget} className="h-14" />
       </Box>
     </Flex>
