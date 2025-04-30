@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "ci:test": "vitest run --coverage --typecheck"
   },
   "dependencies": {
     "@microsoft/clarity": "^1.0.0",
@@ -18,9 +19,9 @@
     "class-variance-authority": "catalog:",
     "clsx": "catalog:",
     "file-saver": "^2.0.5",
-    "motion": "catalog:",
     "html-to-image": "^1.11.13",
     "ky": "^1.7.4",
+    "motion": "catalog:",
     "next": "catalog:",
     "next-sitemap": "^4.2.3",
     "react": "catalog:",
@@ -36,14 +37,24 @@
     "@sbooky/typescript-config": "workspace:*",
     "@tanstack/react-query": "catalog:",
     "@tanstack/react-query-devtools": "catalog:",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/file-saver": "^2.0.7",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@types/rss": "^0.0.32",
+    "@vitejs/plugin-react-swc": "^3.9.0",
+    "@vitest/coverage-istanbul": "3.1.2",
+    "@vitest/ui": "^3.1.2",
     "autoprefixer": "catalog:",
+    "happy-dom": "^17.4.6",
     "postcss": "catalog:",
     "tailwindcss": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.1.2"
   }
 }
