@@ -30,7 +30,8 @@
         "NEXT_PUBLIC_GA_ID",
         "NEXT_PUBLIC_GT_ID"
       ]
-    }
+    },
+    "ci:test": {}
   },
   "globalDependencies": [".env"]
 }

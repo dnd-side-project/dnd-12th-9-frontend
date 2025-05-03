@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        command: ['build']
+        command: ['build', 'ci:test']
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,6 +20,11 @@ jobs:
         run: pnpm install
 
       - run: pnpm run ${{ matrix.command }}
+
+      - if: matrix.command == 'ci:test'
+        uses: codecov/codecov-action@v5
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   vercel-preview:
     runs-on: ubuntu-latest

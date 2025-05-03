@@ -11,7 +11,8 @@
     "build:web": "turbo build --filter @sbooky/web",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo check-types"
+    "check-types": "turbo check-types",
+    "ci:test": "turbo ci:test"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",

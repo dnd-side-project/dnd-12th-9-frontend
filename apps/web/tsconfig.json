@@ -12,8 +12,16 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "types": ["vitest/globals"]
   },
-  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.mjs", ".next/types/**/*.ts"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "next-env.d.ts",
+    "next.config.mjs",
+    ".next/types/**/*.ts",
+    "vitest.config.mts"
+  ],
   "exclude": ["node_modules"]
 }
