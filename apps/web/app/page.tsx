@@ -29,7 +29,7 @@ export default function LoginPage() {
             className="flex w-full items-center justify-center gap-1 rounded-lg bg-[#ffcc00] py-3"
           >
             <KakaoLogo />
-            <Text type="Heading1" weight="semibold" className="text-color-900">
+            <Text type="Heading3" weight="semibold" className="text-gray-900">
               카카오로 로그인
             </Text>
           </Link>
