@@ -87,7 +87,7 @@ export const Profile = ({ memberId }: ProfileProps) => {
   };
   return (
     <PageLayout
-      className="flex h-dvh w-full flex-col bg-white"
+      className="bg-gray-70 flex h-dvh w-full flex-col"
       header={
         <Header
           left={
@@ -95,7 +95,7 @@ export const Profile = ({ memberId }: ProfileProps) => {
               <Icon type="back" color="gray800" />
             </HeaderLeftElement>
           }
-          className="bg-white"
+          className="bg-gray-70"
         >
           자랑하기
         </Header>
