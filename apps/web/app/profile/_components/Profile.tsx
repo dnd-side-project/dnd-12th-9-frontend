@@ -26,8 +26,6 @@ type ProfileProps = {
 
 export const Profile = ({ memberId }: ProfileProps) => {
   const router = useRouter();
-  // TODO: 추후 주석 삭제
-  console.log('memberId', memberId);
 
   const divRef = useRef<HTMLDivElement>(null);
 
@@ -41,7 +39,10 @@ export const Profile = ({ memberId }: ProfileProps) => {
     { data: equippedData, isPending: isEquippedDataPending, isError: isEquippedDataError },
     { data: completedData, isPending: isCompletedDataPending, isError: isCompletedDataError },
   ] = useQueries({
-    queries: [itemQueryOptions.equipped(memberId), bookQueryOptions.count(memberId)],
+    queries: [
+      itemQueryOptions.equipped(memberId),
+      bookQueryOptions.count({ ownerId: memberId, readStatus: 'COMPLETED' }),
+    ],
   });
 
   if (isEquippedDataPending || isCompletedDataPending) {
@@ -52,7 +53,7 @@ export const Profile = ({ memberId }: ProfileProps) => {
     return <></>;
   }
 
-  const { completedBookCount } = completedData.data;
+  const { bookCount: completedBookCount } = completedData.data;
   const { findEquippedItemsResponse, nickName } = equippedData.data;
   const { code } = GHOST_MAP[findEquippedItemsResponse.items.CHARACTER[0] ?? BASIC_GHOST.code];
 

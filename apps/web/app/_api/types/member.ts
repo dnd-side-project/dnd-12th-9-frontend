@@ -1,3 +1,5 @@
+import { READING_STATUS } from 'app/_constants/status';
+
 import { Error, ResultType } from './common';
 import { ResponseFormat } from './response';
 
@@ -13,6 +15,11 @@ export type MemberPoint = {
   error: Error;
 };
 
-export type GetMemberCompletedBookCountAPIResponse = ResponseFormat<{
-  completedBookCount: number;
+export type GetBookCountByStatusAPIRequest = {
+  ownerId: string;
+  readStatus?: READING_STATUS;
+};
+
+export type GetBookCountByStatusAPIResponse = ResponseFormat<{
+  bookCount: number;
 }>;

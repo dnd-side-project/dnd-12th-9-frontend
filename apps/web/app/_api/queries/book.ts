@@ -10,7 +10,11 @@ import {
   GetBookListAPIResponse,
   SearchBookResponse,
 } from '../types/book';
-import { GetMemberCompletedBookCountAPIResponse, MemberPoint } from '../types/member';
+import {
+  GetBookCountByStatusAPIRequest,
+  GetBookCountByStatusAPIResponse,
+  MemberPoint,
+} from '../types/member';
 
 export const bookQueryKeys = {
   all: () => ['books'],
@@ -23,10 +27,10 @@ export const bookQueryKeys = {
 };
 
 export const bookQueryOptions = {
-  list: (memberId: string, readStatus?: READING_STATUS) =>
+  list: (ownerId: string, readStatus?: READING_STATUS) =>
     queryOptions({
-      queryKey: [...bookQueryKeys.lists(), memberId, readStatus],
-      queryFn: () => getBookListAPI({ memberId, readStatus }),
+      queryKey: [...bookQueryKeys.lists(), ownerId, readStatus],
+      queryFn: () => getBookListAPI({ ownerId, readStatus }),
     }),
   detail: (bookId: string) =>
     queryOptions({
@@ -45,10 +49,10 @@ export const bookQueryOptions = {
       initialPageParam: 1,
       enabled: !!bookName,
     }),
-  count: (memberId: string) =>
+  count: (request: GetBookCountByStatusAPIRequest) =>
     queryOptions({
       queryKey: [...bookQueryKeys.count()],
-      queryFn: () => getMemberCompletedBookAPI(memberId),
+      queryFn: () => getBookCountByStatusAPI({ ...request }),
     }),
   point: () =>
     queryOptions({
@@ -57,21 +61,26 @@ export const bookQueryOptions = {
     }),
 };
 
-const getBookListAPI = ({ memberId, readStatus }: GetBookListAPIRequest) => {
+const getBookListAPI = ({ ownerId, readStatus }: GetBookListAPIRequest) => {
   const searchParams = readStatus ? { readStatus } : undefined;
 
-  return fetcher.get<GetBookListAPIResponse>(`books/members/${memberId}`, {
+  return fetcher.get<GetBookListAPIResponse>(`v2/members/${ownerId}/books`, {
     searchParams,
   });
 };
 
 const getBookDetailAPI = ({ bookId }: GetBookDetailAPIRequest) =>
-  fetcher.get<GetBookDetailAPIResponse>(`books/${bookId}`);
+  fetcher.get<GetBookDetailAPIResponse>(`v2/books/${bookId}`);
 
 const getBookSearchAPI = (bookName: string, pageParam: number) =>
   fetcher.get<SearchBookResponse>(`books?query=${bookName}&page=${pageParam}`);
 
-const getMemberCompletedBookAPI = (memberId: string) =>
-  fetcher.get<GetMemberCompletedBookCountAPIResponse>(`books/members/${memberId}/completed/count`);
-
 const getMemberPointAPI = () => fetcher.get<MemberPoint>('members/point');
+
+const getBookCountByStatusAPI = ({ ownerId, readStatus }: GetBookCountByStatusAPIRequest) => {
+  const searchParams = readStatus ? { readStatus } : undefined;
+
+  return fetcher.get<GetBookCountByStatusAPIResponse>(`v2/members/${ownerId}/books/count`, {
+    searchParams,
+  });
+};

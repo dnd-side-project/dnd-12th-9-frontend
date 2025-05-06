@@ -11,7 +11,7 @@ export const MemberInfo = ({ data }: MemberInfoProps) => {
   return (
     <>
       <CenterStack>
-        <Bubble nickName={data?.data.nickName ?? '스부키'} like={10} />
+        <Bubble nickName={data?.data.nickName ?? '스부키'} like={0} />
         <Ghost
           ghost={
             data?.data.findEquippedItemsResponse.items.CHARACTER[0] ?? '/Ghost/DEVIL_GHOST.webp'

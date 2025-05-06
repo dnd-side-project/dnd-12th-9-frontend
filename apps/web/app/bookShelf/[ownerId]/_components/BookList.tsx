@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useSuspenseQueries } from '@tanstack/react-query';
 
 import { Chip } from '@sbooky/ui/components/Chip';
 import { Header, HeaderLeftElement } from '@sbooky/ui/components/Header';
@@ -25,11 +25,23 @@ type Props = {
 
 export const BookSection = ({ memberId, filter }: Props) => {
   const router = useRouter();
-  const {
-    data: {
-      data: { bookList, totalBookCount },
+  const [
+    {
+      data: {
+        data: { bookList, isOwner },
+      },
     },
-  } = useSuspenseQuery(bookQueryOptions.list(memberId, getFilterBySearchParams(filter)));
+    {
+      data: {
+        data: { bookCount: totalBookCount },
+      },
+    },
+  ] = useSuspenseQueries({
+    queries: [
+      bookQueryOptions.list(memberId, getFilterBySearchParams(filter)),
+      bookQueryOptions.count({ ownerId: memberId }),
+    ],
+  });
 
   const goBack = () => {
     router.push(ROUTES.HOME);
@@ -64,7 +76,7 @@ export const BookSection = ({ memberId, filter }: Props) => {
             </Link>
           ))}
         </HStack>
-        <CardList bookList={bookList} />
+        <CardList bookList={bookList} isOwner={isOwner} />
       </Stack>
     </PageLayout>
   );

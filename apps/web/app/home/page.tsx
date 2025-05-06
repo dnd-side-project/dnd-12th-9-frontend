@@ -26,7 +26,9 @@ const HomePage = async () => {
   }
 
   await Promise.all([
-    queryClient.prefetchQuery(bookQueryOptions.count(memberId)),
+    queryClient.prefetchQuery(
+      bookQueryOptions.count({ ownerId: memberId, readStatus: 'COMPLETED' })
+    ),
     queryClient.prefetchQuery(bookQueryOptions.point()),
     queryClient.prefetchQuery(itemQueryOptions.equipped()),
   ]);

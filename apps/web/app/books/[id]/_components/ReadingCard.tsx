@@ -8,10 +8,12 @@ import { MY_READING_STATUS_TEXT } from 'app/_constants/status';
 import { DialogTrigger } from './DialogTrigger';
 import { KeywordSection } from './KeywordSection';
 
-type Props = MemberBook;
+type Props = MemberBook & {
+  memberId?: string;
+};
 
 export const ReadingCard = (props: Props) => {
-  const { readStatus, completedAt } = props;
+  const { readStatus, completedAt, isOwner, memberId } = props;
 
   return (
     <Stack className="gap-5 rounded-lg bg-white px-5 py-4">
@@ -32,9 +34,9 @@ export const ReadingCard = (props: Props) => {
             </Text>
           </Stack>
         </HStack>
-        <DialogTrigger data={props} />
+        {isOwner && <DialogTrigger data={props} memberId={memberId} />}
       </JustifyBetween>
-      {readStatus === 'COMPLETED' && <KeywordSection {...props} />}
+      {isOwner && readStatus === 'COMPLETED' && <KeywordSection {...props} />}
     </Stack>
   );
 };

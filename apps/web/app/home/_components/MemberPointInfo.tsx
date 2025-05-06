@@ -9,7 +9,7 @@ import { Icon } from '@sbooky/ui/components/Icon';
 import { Box, Flex, HStack, JustifyBetween, Spacing } from '@sbooky/ui/components/Layout';
 import { Text } from '@sbooky/ui/components/Text';
 import { bookQueryOptions } from 'app/_api/queries/book';
-import { ROUTES } from 'app/_constants/route';
+import { DYNAMIC_ROUTES, ROUTES } from 'app/_constants/route';
 
 type MemberPointInfoProps = {
   memberId: string;
@@ -20,7 +20,9 @@ export const MemberPointInfo = ({ memberId }: MemberPointInfoProps) => {
 
   // TODO : useSuspenseQueries 변경
   const { data } = useQuery(bookQueryOptions.point());
-  const { data: bookData } = useQuery(bookQueryOptions.count(memberId));
+  const { data: bookData } = useQuery(
+    bookQueryOptions.count({ ownerId: memberId, readStatus: 'COMPLETED' })
+  );
 
   return (
     <Flex className="flex-col gap-3">
@@ -51,14 +53,14 @@ export const MemberPointInfo = ({ memberId }: MemberPointInfoProps) => {
               지금까지 완독한 책
             </Text>
             <Text type="Heading1" weight="semibold" className="text-gray-900">
-              {bookData?.data.completedBookCount}권
+              {bookData?.data.bookCount}권
             </Text>
           </HStack>
           <Button
             size="sm"
             variant="primary50"
             right={<Icon type="next" size={16} color="primary" />}
-            onClick={() => router.push(ROUTES.BOOKS)}
+            onClick={() => router.push(DYNAMIC_ROUTES.BOOK_SHELF(memberId))}
           >
             책장가기
           </Button>

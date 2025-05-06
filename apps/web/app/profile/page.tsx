@@ -22,7 +22,7 @@ const ProfilePage = async () => {
 
   await Promise.all([
     queryClient.fetchQuery(itemQueryOptions.list(memberId)),
-    queryClient.fetchQuery(bookQueryOptions.count(memberId)),
+    queryClient.fetchQuery(bookQueryOptions.count({ ownerId: memberId, readStatus: 'COMPLETED' })),
   ]);
 
   return (

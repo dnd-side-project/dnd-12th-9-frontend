@@ -1,12 +1,29 @@
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+
 import { Header } from '@sbooky/ui/components/Header';
 import { PageLayout, Stack } from '@sbooky/ui/components/Layout';
 import { Text } from '@sbooky/ui/components/Text';
+import { COOKIE_ID } from 'app/_constants/cookie';
+import { ROUTES } from 'app/_constants/route';
 
 import { BackButton } from '../_components/BackButton';
 
 import { MissionCardList } from './_components/MissionCardList';
 
-const MissionPage = () => {
+const MissionPage = async () => {
+  const cookieStore = await cookies();
+  const memberId = cookieStore.get(COOKIE_ID.MEMBER_ID)?.value;
+  const nickname = cookieStore.get(COOKIE_ID.NICKNAME)?.value;
+
+  if (!memberId) {
+    redirect(ROUTES.LOGIN);
+  }
+
+  if (!nickname) {
+    redirect(ROUTES.NICKNAME);
+  }
+
   return (
     <PageLayout
       header={
@@ -17,7 +34,7 @@ const MissionPage = () => {
       className="bg-gray-50"
     >
       <MissionHeader />
-      <MissionCardList />
+      <MissionCardList memberId={memberId} />
     </PageLayout>
   );
 };

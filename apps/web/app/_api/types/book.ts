@@ -39,15 +39,16 @@ export type MemberBook = Book & {
   publishedAt?: string;
   createdAt?: Date;
   completedAt?: string;
+  isOwner: boolean;
 };
 
 export type GetBookListAPIRequest = {
-  memberId: string;
+  ownerId: string;
   readStatus?: READING_STATUS;
 };
 
 export type GetBookListAPIResponse = ResponseFormat<{
-  totalBookCount: number;
+  isOwner: boolean;
   bookList: MemberBook[];
 }>;
 

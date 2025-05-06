@@ -8,11 +8,15 @@ import BLACKY_DONE from '@public/BLACKY_DONE.webp';
 import { Button } from '@sbooky/ui/components/Button';
 import { Icon } from '@sbooky/ui/components/Icon';
 import { Stack } from '@sbooky/ui/components/Layout';
-import { ROUTES } from 'app/_constants/route';
+import { DYNAMIC_ROUTES, ROUTES } from 'app/_constants/route';
 
 import { MissionCard } from './MissionCard';
 
-export const MissionCardList = () => {
+type MissionCardListProps = {
+  memberId: string;
+};
+
+export const MissionCardList = ({ memberId }: MissionCardListProps) => {
   return (
     <Stack className="gap-3 px-4">
       <MissionCard
@@ -32,7 +36,7 @@ export const MissionCardList = () => {
         orbCount={50}
         missionIcon={<Image src={BLACKY_DONE} width={40} height={40} alt="책 평가" />}
         action={
-          <Link href={ROUTES.BOOKS}>
+          <Link href={DYNAMIC_ROUTES.BOOK_SHELF(memberId)}>
             <Button variant="primary50" size="sm" className="font-medium">
               하러 가기
             </Button>
