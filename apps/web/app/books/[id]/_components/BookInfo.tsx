@@ -23,7 +23,7 @@ export const BookInfo = ({ title, thumbnailUrl, author, publishedAt }: Props) =>
           height={206}
           className="rounded-[4px]"
         />
-        <CenterStack className="max-w-[180px] gap-1">
+        <CenterStack className="max-w-[200px] gap-1">
           <Text type="Heading3" weight="semibold" className="line-clamp-1 text-white">
             {title}
           </Text>
