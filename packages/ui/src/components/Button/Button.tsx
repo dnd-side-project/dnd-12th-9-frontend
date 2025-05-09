@@ -40,6 +40,13 @@ const buttonVariantMap = cva('relative flex justify-center items-center rounded-
         'bg-gray-200 text-gray-600 hover:bg-gray-700 disabled:bg-gray-400 disabled:text-gray-500',
     },
   },
+  compoundVariants: [
+    {
+      variant: ['primary50', 'primary500'],
+      size: 'lg',
+      className: 'text-white',
+    },
+  ],
 });
 
 const buttonTextVariantMap = {

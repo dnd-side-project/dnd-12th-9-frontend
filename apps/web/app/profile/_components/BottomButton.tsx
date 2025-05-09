@@ -34,7 +34,7 @@ export const BottomButton = ({ saveImageButtonProps }: BottomButtonProps) => {
             className="h-11 w-11 rounded-full border border-gray-100 bg-white"
             {...saveImageButtonProps}
           >
-            <Icon type={button.icon} />
+            <Icon type={button.icon} color="gray800" />
           </IconButton>
           <Text type="Title2" className="text-gray-800">
             {button.name}

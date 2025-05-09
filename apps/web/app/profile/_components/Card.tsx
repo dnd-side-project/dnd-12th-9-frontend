@@ -4,9 +4,9 @@ import Image from 'next/image';
 
 import { Ref } from 'react';
 
-import { Icon } from '@sbooky/ui/components/Icon';
 import { Box, CenterStack, JustifyBetween, Spacing } from '@sbooky/ui/components/Layout';
 import { Text } from '@sbooky/ui/components/Text';
+import { ProfileCardLogo } from 'app/assets/ProfileCardLogo';
 import { getImageUrl } from 'app/closet/_util/image';
 
 type Props = {
@@ -20,10 +20,14 @@ type Props = {
 export const Card = ({ ref, onImageLoaded, nickName, code, completedBookCount }: Props) => {
   return (
     <CenterStack
-      className="border-1 gap-6 rounded-3xl border-white bg-gradient-to-t from-[#E6D4B6] to-[#F7F0DA] px-6 py-[26px]"
+      className="border-1 gap-4 rounded-3xl border-white bg-gradient-to-t from-[#E6D4B6] to-[#F7F0DA] px-6 py-[26px]"
       ref={ref}
     >
-      <Box className="rounded-3xl bg-white/70 px-3 py-[6px] text-gray-600">독서카드</Box>
+      <Box className="rounded-3xl bg-white/70 px-3 py-[6px] text-gray-600">
+        <Text type="Title2" weight="medium">
+          독서카드
+        </Text>
+      </Box>
       <Image src={getImageUrl(code)} alt="ghost" width={200} height={200} onLoad={onImageLoaded} />
       <CenterStack className="w-full flex-col gap-2">
         <Text type="Heading3" weight="semibold" className="text-gray-800">
@@ -49,8 +53,8 @@ export const Card = ({ ref, onImageLoaded, nickName, code, completedBookCount }:
           </Text>
         </JustifyBetween>
       </CenterStack>
-
-      <Icon type="logo" size={65} className="" />
+      <Spacing />
+      <ProfileCardLogo />
     </CenterStack>
   );
 };
