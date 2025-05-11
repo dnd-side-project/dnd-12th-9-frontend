@@ -65,3 +65,7 @@ export type UpdateBookAPIRequest = {
   publishedAt: string;
   readStatus: READING_STATUS;
 };
+
+export type DeleteBookAPIRequest = {
+  memberBookId: string;
+};
