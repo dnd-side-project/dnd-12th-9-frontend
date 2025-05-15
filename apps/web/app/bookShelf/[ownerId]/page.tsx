@@ -28,10 +28,8 @@ const BookListPage = async ({ searchParams }: Props) => {
 
   const queryClient = getQueryClient();
 
-  await Promise.all([
-    queryClient.prefetchQuery(bookQueryOptions.list(memberId, getFilterBySearchParams(filter))),
-    queryClient.prefetchQuery(bookQueryOptions.count({ ownerId: memberId })),
-  ]);
+  queryClient.prefetchQuery(bookQueryOptions.list(memberId, getFilterBySearchParams(filter)));
+  queryClient.prefetchQuery(bookQueryOptions.count({ ownerId: memberId }));
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
