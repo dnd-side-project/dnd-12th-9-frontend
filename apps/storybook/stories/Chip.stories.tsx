@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { Chip } from '@sbooky/ui/Chip';
 import { useState } from 'react';
 import { Text } from '@sbooky/ui/Text';

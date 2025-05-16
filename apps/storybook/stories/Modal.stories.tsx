@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { Modal } from '@sbooky/ui/Modal';
 
 import { useModal } from '@sbooky/ui/hooks/useModal';
