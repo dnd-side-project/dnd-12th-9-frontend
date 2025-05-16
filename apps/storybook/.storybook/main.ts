@@ -15,7 +15,8 @@ const config: StorybookConfig = {
   addons: [
     getAbsolutePath('@storybook/addon-onboarding'),
     getAbsolutePath('@chromatic-com/storybook'),
-    getAbsolutePath("@storybook/addon-docs")
+    getAbsolutePath('@storybook/addon-docs'),
+    getAbsolutePath('@storybook/addon-a11y'),
   ],
 
   framework: {
@@ -51,6 +52,6 @@ const config: StorybookConfig = {
     });
 
     return config;
-  }
+  },
 };
 export default config;
