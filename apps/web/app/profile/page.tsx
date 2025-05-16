@@ -1,16 +1,15 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-import { HydrationBoundary, dehydrate, QueryClient } from '@tanstack/react-query';
+import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
 
 import { bookQueryOptions } from 'app/_api/queries/book';
 import { itemQueryOptions } from 'app/_api/queries/item';
 import { COOKIE_ID } from 'app/_constants/cookie';
 import { ROUTES } from 'app/_constants/route';
+import { getQueryClient } from 'app/_util/queryClient';
 
 import { Profile } from './_components/Profile';
-
-const queryClient = new QueryClient();
 
 const ProfilePage = async () => {
   const cookieStore = await cookies();
@@ -20,10 +19,10 @@ const ProfilePage = async () => {
     redirect(ROUTES.LOGIN);
   }
 
-  await Promise.all([
-    queryClient.fetchQuery(itemQueryOptions.list(memberId)),
-    queryClient.fetchQuery(bookQueryOptions.count({ ownerId: memberId, readStatus: 'COMPLETED' })),
-  ]);
+  const queryClient = getQueryClient();
+
+  queryClient.prefetchQuery(itemQueryOptions.list(memberId));
+  queryClient.prefetchQuery(bookQueryOptions.count({ ownerId: memberId, readStatus: 'COMPLETED' }));
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

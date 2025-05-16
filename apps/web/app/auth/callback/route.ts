@@ -30,11 +30,11 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(new URL(`${ROUTES.LOGIN}?error=auth_failed`, request.url));
     }
 
-    cookieList.set('accessToken', accessToken);
-    cookieList.set('memberId', memberId);
+    cookieList.set(COOKIE_ID.ACCESS_TOKEN, accessToken);
+    cookieList.set(COOKIE_ID.MEMBER_ID, memberId);
 
     if (nickname) {
-      cookieList.set('nickname', nickname);
+      cookieList.set(COOKIE_ID.NICKNAME, nickname);
       return NextResponse.redirect(new URL(ROUTES.HOME, request.url));
     }
 

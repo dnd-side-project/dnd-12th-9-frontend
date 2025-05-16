@@ -19,7 +19,7 @@ const BookDetailPage = async ({ params }: BookDetailPageProps) => {
 
   const queryClient = getQueryClient();
 
-  await queryClient.prefetchQuery(bookQueryOptions.detail(param.id));
+  queryClient.prefetchQuery(bookQueryOptions.detail(param.id));
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

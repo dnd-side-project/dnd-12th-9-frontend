@@ -1,6 +1,13 @@
 'use client';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import {
+  defaultShouldDehydrateQuery,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
+
+// https://tkdodo.eu/blog/react-query-as-a-state-manager#customize-staletime
+const STALE_TIME_MS = 20 * 1000; // 20 seconds
 
 function makeQueryClient() {
   return new QueryClient({
@@ -8,6 +15,20 @@ function makeQueryClient() {
       queries: {
         retry: 3,
         refetchOnWindowFocus: false,
+        staleTime: STALE_TIME_MS,
+      },
+      dehydrate: {
+        // include pending queries in dehydration
+        shouldDehydrateQuery: (query) =>
+          defaultShouldDehydrateQuery(query) || query.state.status === 'pending',
+        shouldRedactErrors: () => {
+          // We should not catch Next.js server errors
+          // as that's how Next.js detects dynamic pages
+          // so we cannot redact them.
+          // Next.js also automatically redacts errors for us
+          // with better digests.
+          return false;
+        },
       },
     },
   });
