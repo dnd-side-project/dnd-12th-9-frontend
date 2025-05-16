@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { Header, HeaderLeftElement, HeaderRightElement } from '@sbooky/ui/Header';
 
 const meta = {
