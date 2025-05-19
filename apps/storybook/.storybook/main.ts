@@ -11,20 +11,21 @@ function getAbsolutePath(value: string): any {
 }
 const config: StorybookConfig = {
   stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+
   addons: [
     getAbsolutePath('@storybook/addon-onboarding'),
-    getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@chromatic-com/storybook'),
-    getAbsolutePath('@storybook/addon-interactions'),
+    getAbsolutePath('@storybook/addon-docs'),
+    getAbsolutePath('@storybook/addon-a11y'),
   ],
+
   framework: {
     name: getAbsolutePath('@storybook/nextjs'),
     options: {},
   },
+
   staticDirs: ['../../../public'],
-  docs: {
-    autodocs: 'tag',
-  },
+
   webpackFinal: async (config) => {
     if (!config.resolve) return config;
 
