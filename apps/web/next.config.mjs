@@ -1,7 +1,10 @@
 import path from 'path';
 
+// eslint-disable-next-line turbo/no-undeclared-env-vars
+const shouldAnalyzeBundles = process.env.ANALYZE === 'true';
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+let nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -35,5 +38,13 @@ const nextConfig = {
     ];
   },
 };
+
+if (shouldAnalyzeBundles) {
+  const { default: withBundleAnalyzer } = await import('@next/bundle-analyzer');
+  nextConfig = withBundleAnalyzer({
+    enabled: true,
+    openAnalyzer: true,
+  })(nextConfig);
+}
 
 export default nextConfig;
