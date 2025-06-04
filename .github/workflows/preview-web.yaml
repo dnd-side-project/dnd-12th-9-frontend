@@ -26,6 +26,14 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
+  Analyze bundle sizes:
+    uses: transferwise/actions-next-bundle-analyzer@master
+    with:
+      base-branch: main
+      working-directory: /apps/web
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   vercel-preview:
     runs-on: ubuntu-latest
     env:
