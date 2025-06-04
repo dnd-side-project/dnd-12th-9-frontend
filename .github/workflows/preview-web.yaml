@@ -25,9 +25,9 @@ jobs:
         name: Nextjs bundle analysis
         uses: transferwise/actions-next-bundle-analyzer@master
         with:
-          workflow-id: preview-web.yml
+          workflow-id: ${{ github.workflow }}
           base-branch: main
-          working-directory: /apps/web
+          working-directory: apps/web
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
