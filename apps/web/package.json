@@ -9,7 +9,8 @@
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit",
     "postbuild": "next-sitemap",
-    "ci:test": "vitest run --coverage --typecheck"
+    "ci:test": "vitest run --coverage --typecheck",
+    "analyze": "cross-env ANALYZE=true pnpm build"
   },
   "dependencies": {
     "@microsoft/clarity": "^1.0.0",
@@ -51,6 +52,7 @@
     "@vitest/coverage-istanbul": "3.1.2",
     "@vitest/ui": "^3.1.2",
     "autoprefixer": "catalog:",
+    "cross-env": "^7.0.3",
     "happy-dom": "^17.4.6",
     "postcss": "catalog:",
     "tailwindcss": "catalog:",
