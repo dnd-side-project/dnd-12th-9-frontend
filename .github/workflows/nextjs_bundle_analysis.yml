@@ -30,6 +30,9 @@ jobs:
       - name: pnpm-setup-node
         uses: ./.github/actions/pnpm-setup-node
 
+      - name: 의존성 추가
+        run: pnpm install
+
       - name: Build next.js app
         # change this if your site requires a custom build command
         run: pnpm build
