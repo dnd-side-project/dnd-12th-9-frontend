@@ -21,17 +21,6 @@ jobs:
 
       - run: pnpm run ${{ matrix.command }}
 
-      - if: matrix.command == 'build'
-        name: Nextjs bundle analysis
-        uses: transferwise/actions-next-bundle-analyzer@master
-        with:
-          workflow-id: preview-web.yaml
-
-          base-branch: main
-          working-directory: apps/web
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - if: matrix.command == 'ci:test'
         uses: codecov/codecov-action@v5
         env:
