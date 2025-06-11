@@ -17,7 +17,7 @@ type DialogTriggerProps = {
 export const DialogTrigger = ({ data, memberId }: DialogTriggerProps) => {
   const { isOpen, openModal, closeModal } = useModal();
 
-  const { mutate } = useUpdateBook();
+  const { mutate, isPending } = useUpdateBook();
 
   const onConfirm = (readStatus: READING_STATUS) => {
     mutate(
@@ -48,6 +48,7 @@ export const DialogTrigger = ({ data, memberId }: DialogTriggerProps) => {
           onConfirm={onConfirm}
           initialReadState={data.readStatus}
           memberId={memberId}
+          isPending={isPending}
         />
       )}
     </>

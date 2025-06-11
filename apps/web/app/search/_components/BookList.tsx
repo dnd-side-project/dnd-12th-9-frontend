@@ -26,7 +26,7 @@ export const BookList = ({ data, isLoading, memberId }: BookListProps) => {
   const { isOpen, openModal, closeModal } = useModal();
   const isEmptyBooks = data.length === 0;
 
-  const { mutate } = useAddBook();
+  const { mutate, isPending } = useAddBook();
 
   const onConfirm = (readStatus: READING_STATUS) =>
     mutate(
@@ -80,6 +80,7 @@ export const BookList = ({ data, isLoading, memberId }: BookListProps) => {
         data={selectedBook}
         onConfirm={onConfirm}
         memberId={memberId}
+        isPending={isPending}
       />
     </Box>
   );

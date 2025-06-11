@@ -24,7 +24,7 @@ export const DetailSection = ({ id, memberId }: { id: string; memberId?: string 
     data: { data },
   } = useSuspenseQuery(bookQueryOptions.detail(id));
 
-  const { mutate } = useDeleteBook();
+  const { mutate, isPending } = useDeleteBook();
 
   const onClickTrashButton = (bookId: string) => () => {
     if (!memberId) {
@@ -52,7 +52,7 @@ export const DetailSection = ({ id, memberId }: { id: string; memberId?: string 
           left={<BackButton />}
           right={
             data.isOwner && (
-              <HeaderRightElement onClick={onClickTrashButton(id)}>
+              <HeaderRightElement onClick={onClickTrashButton(id)} disabled={isPending}>
                 <Icon type="delete" color="gray800" />
               </HeaderRightElement>
             )
