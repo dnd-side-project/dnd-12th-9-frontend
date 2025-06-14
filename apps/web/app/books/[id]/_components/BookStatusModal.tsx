@@ -27,6 +27,7 @@ type BookStatusModalProps = ModalProps & {
   data: Book;
   initialReadState?: READING_STATUS;
   onConfirm: (readStatus: READING_STATUS) => void;
+  isPending: boolean;
   memberId?: string;
 };
 
@@ -37,6 +38,7 @@ export const BookStatusModal = ({
   onConfirm,
   initialReadState = 'WANT_TO_READ',
   memberId,
+  isPending,
 }: BookStatusModalProps) => {
   const router = useRouter();
   const path = usePathname().toString().split('/')[1];
@@ -83,7 +85,7 @@ export const BookStatusModal = ({
             <Button size="md" variant="gray100" onClick={closeModal}>
               닫기
             </Button>
-            <Button size="md" variant="black" onClick={handleSave}>
+            <Button size="md" variant="black" onClick={handleSave} disabled={isPending}>
               저장하기
             </Button>
           </JustifyBetween>

@@ -65,7 +65,7 @@ export const ReviewContent = ({ id }: { id: string }) => {
 
   const resetSelectedKeywordIdList = () => setSelectedKeywordIdList(initialKeywordList);
 
-  const { mutate } = useUpdateEvaluation();
+  const { mutate, isPending } = useUpdateEvaluation();
 
   const isInitialReview = initialKeywordList.length === 0;
 
@@ -95,7 +95,9 @@ export const ReviewContent = ({ id }: { id: string }) => {
   );
 
   const disabled =
-    selectedKeywordIdList.length === 0 || areInitialKeywordListAndSelectedKeywordIdListArrayEqual;
+    selectedKeywordIdList.length === 0 ||
+    areInitialKeywordListAndSelectedKeywordIdListArrayEqual ||
+    isPending;
 
   return (
     <Stack className="gap-5 px-4 pb-4">

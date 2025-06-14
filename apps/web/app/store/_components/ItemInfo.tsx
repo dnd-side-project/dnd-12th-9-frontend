@@ -50,7 +50,7 @@ export const ItemInfo = () => {
           className="w-full"
           right={<ButtonElement count={data?.data.drawPoint ?? 0} />}
           onClick={handleItemDraw}
-          disabled={data?.data.drawCount === 0}
+          disabled={data?.data.drawCount === 0 || mutation.isPending}
         >
           아이템 뽑기
         </Button>
