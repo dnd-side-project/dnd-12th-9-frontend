@@ -9,7 +9,8 @@
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit",
     "postbuild": "next-sitemap",
-    "ci:test": "vitest run --coverage --typecheck"
+    "ci:test": "vitest run --coverage --typecheck",
+    "analyze": "cross-env ANALYZE=true pnpm build"
   },
   "dependencies": {
     "@microsoft/clarity": "^1.0.0",
@@ -32,6 +33,7 @@
     "tailwind-merge": "catalog:"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^15.3.3",
     "@sbooky/eslint-config": "workspace:*",
     "@sbooky/tailwind-config": "workspace:*",
     "@sbooky/typescript-config": "workspace:*",
@@ -50,11 +52,18 @@
     "@vitest/coverage-istanbul": "3.1.2",
     "@vitest/ui": "^3.1.2",
     "autoprefixer": "catalog:",
+    "cross-env": "^7.0.3",
     "happy-dom": "^17.4.6",
     "postcss": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.1.2"
+  },
+  "nextBundleAnalysis": {
+    "budget": 358400,
+    "budgetPercentIncreaseRed": 20,
+    "minimumChangeThreshold": 0,
+    "showDetails": true
   }
 }

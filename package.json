@@ -12,7 +12,8 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo check-types",
-    "ci:test": "turbo ci:test"
+    "ci:test": "turbo ci:test",
+    "analyze": "turbo analyze"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
