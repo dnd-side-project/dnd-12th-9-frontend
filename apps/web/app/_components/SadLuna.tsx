@@ -1,8 +1,10 @@
 import Image from 'next/image';
 
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 
 import { Box } from '@sbooky/ui/components/Layout';
+
+import { LazyMotion } from './LazyMotion';
 
 const TEARS_ANIMATION = {
   initial: { y: 0 },
@@ -26,13 +28,15 @@ export const SadLuna = () => {
         height="150"
         className="relative"
       />
-      <motion.div
-        initial={TEARS_ANIMATION.initial}
-        animate={TEARS_ANIMATION.animate}
-        className="absolute left-0 top-0 z-10"
-      >
-        <Image src="/Ghost/TEARS.webp" alt="tears" width="150" height="150" />
-      </motion.div>
+      <LazyMotion>
+        <m.div
+          initial={TEARS_ANIMATION.initial}
+          animate={TEARS_ANIMATION.animate}
+          className="absolute left-0 top-0 z-10"
+        >
+          <Image src="/Ghost/TEARS.webp" alt="tears" width="150" height="150" />
+        </m.div>
+      </LazyMotion>
     </Box>
   );
 };
