@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
 
@@ -11,7 +11,9 @@ import { Icon } from '@sbooky/ui/components/Icon';
 import { HStack, JustifyBetween, PageLayout } from '@sbooky/ui/components/Layout';
 import { useModal } from '@sbooky/ui/hooks/useModal';
 import { itemQueryOptions } from 'app/_api/queries/item';
-import { ROUTES } from 'app/_constants/route';
+import { DYNAMIC_ROUTES } from 'app/_constants/route';
+import { keys } from 'app/_util/keys';
+import { UserType } from 'app/_util/userType';
 
 import { TOP_BAR } from '../_constants/topbar';
 
@@ -23,8 +25,9 @@ import { TopBarButton } from './TopBarButton';
 
 type HomeProps = {
   memberId: string;
+  userType: UserType;
 };
-export const Home = ({ memberId }: HomeProps) => {
+export const Home = ({ memberId, userType }: HomeProps) => {
   const { isOpen, openModal, closeModal } = useModal();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -34,9 +37,9 @@ export const Home = ({ memberId }: HomeProps) => {
 
   useEffect(() => {
     if (openOnboarding) {
-      router.replace(ROUTES.HOME);
+      router.replace(DYNAMIC_ROUTES.USER(memberId));
     }
-  }, [openOnboarding, router]);
+  }, [openOnboarding, router, memberId]);
 
   return (
     <>
@@ -48,23 +51,29 @@ export const Home = ({ memberId }: HomeProps) => {
               <Icon type="menu" color="gray800" onClick={openModal} className="cursor-pointer" />
             }
             className="inline-flex w-full justify-between bg-[#E8E2D1] px-4"
-          >
-            {' '}
-          </Header>
+          />
         }
         className="flex h-dvh w-full flex-col bg-[url('/HOME.webp')] bg-cover bg-center"
       >
         <JustifyBetween className="mb-4 h-full flex-col px-4">
           <HStack className="w-full justify-start gap-2 px-4">
-            {Object.keys(TOP_BAR).map((type) => (
-              <TopBarButton key={type} type={type as keyof typeof TOP_BAR} />
+            {keys(TOP_BAR).map((type) => (
+              <TopBarButton key={type} type={type} />
             ))}
           </HStack>
           <MemberInfo data={data} />
-          <MemberPointInfo memberId={memberId} />
+          <Suspense>
+            <MemberPointInfo memberId={memberId} userType={userType} />
+          </Suspense>
         </JustifyBetween>
       </PageLayout>
-      <HomeDrawer memberId={memberId} data={data} isOpen={isOpen} onClose={closeModal} />
+      <HomeDrawer
+        memberId={memberId}
+        data={data}
+        isOpen={isOpen}
+        userType={userType}
+        onClose={closeModal}
+      />
       <OnBoardingCompleteModal isOnBoardingModalOpen={Boolean(openOnboarding) ?? false} />
     </>
   );

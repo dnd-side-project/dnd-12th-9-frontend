@@ -14,7 +14,7 @@ import { Icon } from '@sbooky/ui/components/Icon';
 import { JustifyBetween, PageLayout } from '@sbooky/ui/components/Layout';
 import { bookQueryOptions } from 'app/_api/queries/book';
 import { itemQueryOptions } from 'app/_api/queries/item';
-import { ROUTES } from 'app/_constants/route';
+import { DYNAMIC_ROUTES } from 'app/_constants/route';
 import { BASIC_GHOST, GHOST_MAP } from 'app/closet/_constants/item';
 
 import { BottomButton } from './BottomButton';
@@ -83,8 +83,9 @@ export const Profile = ({ memberId }: ProfileProps) => {
   };
 
   const goBack = () => {
-    router.push(ROUTES.HOME);
+    router.push(DYNAMIC_ROUTES.USER(memberId));
   };
+
   return (
     <PageLayout
       className="bg-gray-70 flex h-dvh w-full flex-col"
