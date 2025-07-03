@@ -2,6 +2,8 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
+import { Suspense } from 'react';
+
 import { PageLayout } from '@sbooky/ui/components/Layout';
 import { DYNAMIC_ROUTES } from 'app/_constants/route';
 import { useFunnel } from 'app/_hooks/useFunnel';
@@ -10,6 +12,16 @@ import { Motion } from './_components/Motion';
 import { Tutorial } from './_components/Tutorial';
 import { FUNNEL_STEPS } from './_types/step';
 import { TUTORIAL_CONFIG } from './constants/tutorial';
+
+// https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
+// useSearchParams를 위해서는 Suspense가 필요
+const onBoardingWrapper = () => {
+  return (
+    <Suspense>
+      <OnBoardingPage />
+    </Suspense>
+  );
+};
 
 const OnBoardingPage = () => {
   const router = useRouter();
@@ -42,4 +54,4 @@ const OnBoardingPage = () => {
   );
 };
 
-export default OnBoardingPage;
+export default onBoardingWrapper;
