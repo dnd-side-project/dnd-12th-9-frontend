@@ -1,8 +1,9 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { PageLayout } from '@sbooky/ui/components/Layout';
+import { DYNAMIC_ROUTES } from 'app/_constants/route';
 import { useFunnel } from 'app/_hooks/useFunnel';
 
 import { Motion } from './_components/Motion';
@@ -14,10 +15,13 @@ const OnBoardingPage = () => {
   const router = useRouter();
   const { Funnel, setStep } = useFunnel(FUNNEL_STEPS);
 
+  const searchParams = useSearchParams();
+  const memberId = searchParams.get('memberId') ?? '';
+
   const handleStepChange = (steps: string[], index: number) => {
     const nextStep = steps[index + 1];
     if (nextStep) return setStep(nextStep);
-    router.push('/home?openOnboarding=true');
+    router.push(`${DYNAMIC_ROUTES.USER(memberId)}?openOnboarding=true`);
   };
 
   return (
