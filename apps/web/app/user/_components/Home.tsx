@@ -11,13 +11,13 @@ import { Icon } from '@sbooky/ui/components/Icon';
 import { HStack, JustifyBetween, PageLayout } from '@sbooky/ui/components/Layout';
 import { useModal } from '@sbooky/ui/hooks/useModal';
 import { itemQueryOptions } from 'app/_api/queries/item';
-import { DYNAMIC_ROUTES } from 'app/_constants/route';
+import { DYNAMIC_ROUTES, ROUTES } from 'app/_constants/route';
 import { keys } from 'app/_util/keys';
 import { UserType } from 'app/_util/userType';
 
 import { TOP_BAR } from '../_constants/topbar';
 
-import { HomeDrawer } from './HomeDrawer';
+import { LoginAlertModal } from './LoginAlertModal';
 import { MemberInfo } from './MemberInfo';
 import { MemberPointInfo } from './MemberPointInfo';
 import { OnBoardingCompleteModal } from './OnBoardingCompleteModal';
@@ -27,8 +27,14 @@ type HomeProps = {
   memberId: string;
   userType: UserType;
 };
+
 export const Home = ({ memberId, userType }: HomeProps) => {
-  const { isOpen, openModal, closeModal } = useModal();
+  const {
+    isOpen: isLoginAlertOpen,
+    openModal: openLoginAlertModal,
+    closeModal: closeLoginAlertModal,
+  } = useModal();
+
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -41,6 +47,17 @@ export const Home = ({ memberId, userType }: HomeProps) => {
     }
   }, [openOnboarding, router, memberId]);
 
+  const isGuset = userType === 'GUEST';
+  const goSettingPage = () => router.push(ROUTES.SETTING);
+
+  const onClickSetting = () => {
+    if (isGuset) {
+      openLoginAlertModal();
+    } else {
+      goSettingPage();
+    }
+  };
+
   return (
     <>
       <PageLayout
@@ -48,7 +65,12 @@ export const Home = ({ memberId, userType }: HomeProps) => {
           <Header
             left={<Icon type="logo" size={80} />}
             right={
-              <Icon type="menu" color="gray800" onClick={openModal} className="cursor-pointer" />
+              <Icon
+                type="setting"
+                color="gray800"
+                onClick={onClickSetting}
+                className="cursor-pointer"
+              />
             }
             className="inline-flex w-full justify-between bg-[#E8E2D1] px-4"
           />
@@ -67,14 +89,8 @@ export const Home = ({ memberId, userType }: HomeProps) => {
           </Suspense>
         </JustifyBetween>
       </PageLayout>
-      <HomeDrawer
-        memberId={memberId}
-        data={data}
-        isOpen={isOpen}
-        userType={userType}
-        onClose={closeModal}
-      />
       <OnBoardingCompleteModal isOnBoardingModalOpen={Boolean(openOnboarding) ?? false} />
+      <LoginAlertModal isOpen={isLoginAlertOpen} closeModal={closeLoginAlertModal} />
     </>
   );
 };
