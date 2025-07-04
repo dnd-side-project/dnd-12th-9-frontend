@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import { useRef, useState } from 'react';
 
-import { useQueries } from '@tanstack/react-query';
+import { useSuspenseQueries } from '@tanstack/react-query';
 import { saveAs } from 'file-saver';
 import { toPng } from 'html-to-image';
 import { toast } from 'react-hot-toast';
@@ -34,11 +34,10 @@ export const Profile = ({ memberId }: ProfileProps) => {
   const onImageLoaded = () => setImageLoaded(true);
   const [isDownloadImageLoading, setIsDownloadImageLoading] = useState(false);
 
-  //TODO 서스펜스쿼리쓰면 무한 로딩걸림.. 해결 필요
   const [
     { data: equippedData, isPending: isEquippedDataPending, isError: isEquippedDataError },
     { data: completedData, isPending: isCompletedDataPending, isError: isCompletedDataError },
-  ] = useQueries({
+  ] = useSuspenseQueries({
     queries: [
       itemQueryOptions.equipped(memberId),
       bookQueryOptions.count({ ownerId: memberId, readStatus: 'COMPLETED' }),
