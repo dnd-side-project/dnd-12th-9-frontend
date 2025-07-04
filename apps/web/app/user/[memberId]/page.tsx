@@ -34,7 +34,7 @@ const UserPage = async ({ params }: UserPageProps) => {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <Home memberId={memberId} userType={userType} />
+      <Home memberId={memberId} userType={userType} myMemberId={myMemberId} />
     </HydrationBoundary>
   );
 };

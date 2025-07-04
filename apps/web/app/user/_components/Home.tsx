@@ -4,13 +4,10 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import { Suspense, useEffect } from 'react';
 
-import { useQuery } from '@tanstack/react-query';
-
 import { Header } from '@sbooky/ui/components/Header';
 import { Icon } from '@sbooky/ui/components/Icon';
 import { HStack, JustifyBetween, PageLayout } from '@sbooky/ui/components/Layout';
 import { useModal } from '@sbooky/ui/hooks/useModal';
-import { itemQueryOptions } from 'app/_api/queries/item';
 import { DYNAMIC_ROUTES, ROUTES } from 'app/_constants/route';
 import { keys } from 'app/_util/keys';
 import { UserType } from 'app/_util/userType';
@@ -24,11 +21,12 @@ import { OnBoardingCompleteModal } from './OnBoardingCompleteModal';
 import { TopBarButton } from './TopBarButton';
 
 type HomeProps = {
+  myMemberId?: string;
   memberId: string;
   userType: UserType;
 };
 
-export const Home = ({ memberId, userType }: HomeProps) => {
+export const Home = ({ memberId, userType, myMemberId }: HomeProps) => {
   const {
     isOpen: isLoginAlertOpen,
     openModal: openLoginAlertModal,
@@ -39,7 +37,6 @@ export const Home = ({ memberId, userType }: HomeProps) => {
   const router = useRouter();
 
   const openOnboarding = searchParams.get('openOnboarding');
-  const { data } = useQuery(itemQueryOptions.equipped());
 
   useEffect(() => {
     if (openOnboarding) {
@@ -47,11 +44,11 @@ export const Home = ({ memberId, userType }: HomeProps) => {
     }
   }, [openOnboarding, router, memberId]);
 
-  const isGuset = userType === 'GUEST';
+  const isGuest = userType === 'GUEST';
   const goSettingPage = () => router.push(ROUTES.SETTING);
 
   const onClickSetting = () => {
-    if (isGuset) {
+    if (isGuest) {
       openLoginAlertModal();
     } else {
       goSettingPage();
@@ -83,7 +80,9 @@ export const Home = ({ memberId, userType }: HomeProps) => {
               <TopBarButton key={type} type={type} />
             ))}
           </HStack>
-          <MemberInfo data={data} />
+          <Suspense>
+            <MemberInfo userType={userType} memberId={myMemberId} />
+          </Suspense>
           <Suspense>
             <MemberPointInfo memberId={memberId} userType={userType} />
           </Suspense>
