@@ -1,7 +1,10 @@
+import { useRouter } from 'next/navigation';
+
 import { Button } from '@sbooky/ui/components/Button';
 import { CenterStack, JustifyBetween, Stack } from '@sbooky/ui/components/Layout';
 import { Modal } from '@sbooky/ui/components/Modal';
 import { Text } from '@sbooky/ui/components/Text';
+import { ROUTES } from 'app/_constants/route';
 
 type LoginAlertModalProps = {
   isOpen: boolean;
@@ -9,6 +12,11 @@ type LoginAlertModalProps = {
 };
 
 export const LoginAlertModal = ({ isOpen, closeModal }: LoginAlertModalProps) => {
+  const router = useRouter();
+  const goLoginPage = () => {
+    router.push(ROUTES.LOGIN);
+  };
+
   return (
     <Modal isOpen={isOpen} onClickOutside={closeModal}>
       <Stack className="gap-6">
@@ -21,10 +29,10 @@ export const LoginAlertModal = ({ isOpen, closeModal }: LoginAlertModalProps) =>
           </Text>
         </CenterStack>
         <JustifyBetween className="w-full">
-          <Button variant="gray100" size="md">
+          <Button variant="gray100" size="md" onClick={closeModal}>
             닫기
           </Button>
-          <Button variant="black" size="md">
+          <Button variant="black" size="md" onClick={goLoginPage}>
             로그인하기
           </Button>
         </JustifyBetween>
