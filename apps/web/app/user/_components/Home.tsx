@@ -81,7 +81,7 @@ export const Home = ({ memberId, userType, myMemberId }: HomeProps) => {
             ))}
           </HStack>
           <Suspense>
-            <MemberInfo userType={userType} memberId={myMemberId} />
+            <MemberInfo userType={userType} memberId={memberId} myMemberId={myMemberId} />
           </Suspense>
           <Suspense>
             <MemberPointInfo memberId={memberId} userType={userType} />

@@ -14,22 +14,23 @@ import { Ghost } from './Ghost';
 
 type MemberInfoProps = {
   userType: UserType;
-  memberId?: string;
+  memberId: string;
+  myMemberId?: string;
 };
 
-export const MemberInfo = ({ userType, memberId }: MemberInfoProps) => {
+export const MemberInfo = ({ userType, memberId, myMemberId }: MemberInfoProps) => {
   const isOtherUser = userType === 'OTHER';
-  const { data } = useSuspenseQuery(itemQueryOptions.equipped());
+  const { data } = useSuspenseQuery(itemQueryOptions.equipped(memberId));
 
   const router = useRouter();
 
   const goMyLibrary = () => {
-    if (!memberId) {
+    if (!myMemberId) {
       console.error('Member ID is required to navigate to the library.');
       return;
     }
 
-    router.push(DYNAMIC_ROUTES.BOOK_SHELF(memberId));
+    router.push(DYNAMIC_ROUTES.BOOK_SHELF(myMemberId));
   };
 
   return (

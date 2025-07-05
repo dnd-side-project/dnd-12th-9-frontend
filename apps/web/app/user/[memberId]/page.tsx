@@ -24,12 +24,12 @@ const UserPage = async ({ params }: UserPageProps) => {
   const queryClient = getQueryClient();
 
   queryClient.prefetchQuery(bookQueryOptions.count({ ownerId: memberId, readStatus: 'COMPLETED' }));
-  queryClient.prefetchQuery(bookQueryOptions.point());
 
   const isOwner = userType === 'OWNER';
 
   if (isOwner) {
-    queryClient.prefetchQuery(itemQueryOptions.equipped());
+    queryClient.prefetchQuery(bookQueryOptions.point());
+    queryClient.prefetchQuery(itemQueryOptions.equipped(memberId));
   }
 
   return (
