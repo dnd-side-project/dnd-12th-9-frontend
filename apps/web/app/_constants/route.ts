@@ -1,7 +1,6 @@
 export const ROUTES = {
   ROOT: '/',
   CLOSET: '/closet',
-  HOME: '/home',
   LOGIN: '/',
   MISSION: '/mission',
   NICKNAME: '/nickname',
@@ -21,4 +20,7 @@ export const DYNAMIC_ROUTES = {
 
   // 책장 페이지
   BOOK_SHELF: (ownerId: string) => `/bookShelf/${ownerId}`,
+
+  // 유저 페이지
+  USER: (memberId: string) => `/user/${memberId}`,
 } as const;

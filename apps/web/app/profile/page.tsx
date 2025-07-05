@@ -21,7 +21,7 @@ const ProfilePage = async () => {
 
   const queryClient = getQueryClient();
 
-  queryClient.prefetchQuery(itemQueryOptions.list(memberId));
+  queryClient.prefetchQuery(itemQueryOptions.equipped(memberId));
   queryClient.prefetchQuery(bookQueryOptions.count({ ownerId: memberId, readStatus: 'COMPLETED' }));
 
   return (

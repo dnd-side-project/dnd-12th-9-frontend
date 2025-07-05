@@ -13,7 +13,7 @@ import { IconButton } from '@sbooky/ui/components/IconButton';
 import { Box, Center, PageLayout, Spacing, Stack } from '@sbooky/ui/components/Layout';
 import { useUpdateEquippedItem } from 'app/_api/mutations/useUpdateEquippedItem';
 import { itemQueryOptions } from 'app/_api/queries/item';
-import { ROUTES } from 'app/_constants/route';
+import { DYNAMIC_ROUTES } from 'app/_constants/route';
 
 import { GHOST_MAP, BASIC_GHOST } from '../_constants/item';
 import { useGhost } from '../_hooks/useGhost';
@@ -66,7 +66,7 @@ export const ClosetSection = ({ memberId }: ClosetSectionProps) => {
   };
 
   const goBack = () => {
-    router.push(ROUTES.HOME);
+    router.push(DYNAMIC_ROUTES.USER(memberId));
   };
 
   return (

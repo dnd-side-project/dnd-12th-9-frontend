@@ -15,13 +15,14 @@ export const itemQueryOptions = {
       queryKey: [...itemQueryKeys.lists(), memberId],
       queryFn: getItemListAPI,
     }),
-  equipped: (memberId?: string) =>
+  equipped: (memberId: string) =>
     queryOptions({
       queryKey: [...itemQueryKeys.equippeds(), memberId],
-      queryFn: getEquippedItemAPI,
+      queryFn: () => getEquippedItemAPI(memberId),
     }),
 };
 
 const getItemListAPI = () => fetcher.get<GetItemListAPIResponse>('items');
 
-const getEquippedItemAPI = () => fetcher.get<GetEquippedItemResponse>('items/equipped');
+const getEquippedItemAPI = (memberId: string) =>
+  fetcher.get<GetEquippedItemResponse>(`v2/members/${memberId}/items/equipped`);

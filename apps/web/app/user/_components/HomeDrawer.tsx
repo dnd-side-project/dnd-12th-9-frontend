@@ -4,19 +4,29 @@ import { Drawer } from '@sbooky/ui/components/Drawer';
 import { Icon } from '@sbooky/ui/components/Icon';
 import { Flex, HStack, JustifyBetween, Spacing } from '@sbooky/ui/components/Layout';
 import { Text } from '@sbooky/ui/components/Text';
+import { useModal } from '@sbooky/ui/hooks/useModal';
 import { GetEquippedItemResponse } from 'app/_api/types/item';
 import { ROUTES } from 'app/_constants/route';
+import { UserType } from 'app/_util/userType';
 
 import { DRAWER_MENU } from '../_constants/topbar';
+
+import { LoginAlertModal } from './LoginAlertModal';
 
 type HomeDrawerProps = {
   memberId?: string;
   data?: GetEquippedItemResponse;
   isOpen: boolean;
   onClose: () => void;
+  userType: UserType;
 };
-export const HomeDrawer = ({ memberId, data, isOpen, onClose }: HomeDrawerProps) => {
+
+export const HomeDrawer = ({ userType, data, isOpen, onClose }: HomeDrawerProps) => {
   const router = useRouter();
+  const { openModal, isOpen: isLoginAlertOpen, closeModal } = useModal();
+
+  const isGuest = userType === 'GUEST';
+
   return (
     <Drawer isOpen={isOpen} onClose={onClose}>
       <Flex className="flex-col">
@@ -26,10 +36,10 @@ export const HomeDrawer = ({ memberId, data, isOpen, onClose }: HomeDrawerProps)
         </Flex>
         <Flex className="mb-3 flex-col gap-1 px-5">
           <Text type="Title1" weight="semibold" className="text-gray-900">
-            {memberId ? data?.data.nickName : '로그인/회원가입'}
+            {isGuest ? '로그인/회원가입' : data?.data.nickName}
           </Text>
           <Text type="Title2" className="text-gray-500">
-            {memberId ? '오늘도 즐거운 독서하세요!' : '지금 가입하면 구슬 100개!'}
+            {isGuest ? '지금 가입하면 구슬 100개!' : '오늘도 즐거운 독서하세요!'}
           </Text>
         </Flex>
         <Spacing className="h-2 bg-gray-50" />
@@ -40,7 +50,7 @@ export const HomeDrawer = ({ memberId, data, isOpen, onClose }: HomeDrawerProps)
           <HStack
             key={title}
             className="w-full cursor-pointer gap-3 py-3"
-            onClick={() => router.push(path)}
+            onClick={isGuest ? () => openModal() : () => router.push(path)}
           >
             <Icon type={icon} size={24} color="gray700" />
             <Text type="Title1" className="text-gray-900">
@@ -67,6 +77,7 @@ export const HomeDrawer = ({ memberId, data, isOpen, onClose }: HomeDrawerProps)
           <Icon type="next" />
         </JustifyBetween>
       </Flex>
+      <LoginAlertModal isOpen={isLoginAlertOpen} closeModal={closeModal} />
     </Drawer>
   );
 };
