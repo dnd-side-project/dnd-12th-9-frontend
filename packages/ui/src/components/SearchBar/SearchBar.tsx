@@ -31,6 +31,8 @@ export function SearchBar({ value, onClick, onClickReset, ...props }: Props) {
         value={value}
         onKeyDown={handleKeyDown}
         className="w-full bg-gray-100 pr-14 outline-none"
+        type="search"
+        inputMode="search"
         {...props}
       />
       {value.length > 0 && (
