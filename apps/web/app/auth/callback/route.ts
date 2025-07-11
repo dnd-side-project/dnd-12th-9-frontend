@@ -5,6 +5,14 @@ import { authRepository } from 'app/_api/auth';
 import { COOKIE_ID } from 'app/_constants/cookie';
 import { DYNAMIC_ROUTES, ROUTES } from 'app/_constants/route';
 
+/**
+ * Handles authentication token reissuance and user redirection for GET requests.
+ *
+ * Extracts a refresh token from the request, attempts to reissue authentication tokens, sets relevant cookies, and redirects the user based on authentication and profile status. Redirects to the login page with an error on failure.
+ *
+ * @param request - The incoming HTTP GET request
+ * @returns A redirect response to the appropriate route based on authentication outcome
+ */
 export async function GET(request: NextRequest) {
   try {
     const cookieList = await cookies();

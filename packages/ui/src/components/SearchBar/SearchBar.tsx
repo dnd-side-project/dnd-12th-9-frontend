@@ -19,6 +19,15 @@ type Props = {
   onClickReset: () => void;
 } & ComponentProps<'input'>;
 
+/**
+ * Renders a search bar with input, search, and reset functionality.
+ *
+ * Displays a styled input field for search queries, a search button that triggers the provided callback with the current input value, and a reset button to clear the input when text is present.
+ *
+ * @param value - The current text displayed in the search input
+ * @param onClick - Callback invoked with the input value when the search button is clicked or Enter is pressed
+ * @param onClickReset - Callback invoked when the reset button is clicked
+ */
 export function SearchBar({ value, onClick, onClickReset, ...props }: Props) {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
