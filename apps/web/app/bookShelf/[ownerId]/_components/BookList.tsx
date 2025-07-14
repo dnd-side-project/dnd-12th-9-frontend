@@ -11,7 +11,7 @@ import { Icon } from '@sbooky/ui/components/Icon';
 import { Stack, HStack, PageLayout } from '@sbooky/ui/components/Layout';
 import { Text } from '@sbooky/ui/components/Text';
 import { bookQueryOptions } from 'app/_api/queries/book';
-import { ROUTES } from 'app/_constants/route';
+import { DYNAMIC_ROUTES } from 'app/_constants/route';
 import { READ_STATUS_LIST, ReadStatusTag } from 'app/_constants/status';
 
 import { getFilterBySearchParams } from '../_utils/getFilterBySearchParams';
@@ -44,7 +44,7 @@ export const BookSection = ({ memberId, filter }: Props) => {
   });
 
   const goBack = () => {
-    router.push(ROUTES.HOME);
+    router.push(DYNAMIC_ROUTES.USER(memberId));
   };
 
   return (

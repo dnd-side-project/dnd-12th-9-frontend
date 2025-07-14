@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import { useRef, useState } from 'react';
 
-import { useQueries } from '@tanstack/react-query';
+import { useSuspenseQueries } from '@tanstack/react-query';
 import { saveAs } from 'file-saver';
 import { toPng } from 'html-to-image';
 import { toast } from 'react-hot-toast';
@@ -14,7 +14,7 @@ import { Icon } from '@sbooky/ui/components/Icon';
 import { JustifyBetween, PageLayout } from '@sbooky/ui/components/Layout';
 import { bookQueryOptions } from 'app/_api/queries/book';
 import { itemQueryOptions } from 'app/_api/queries/item';
-import { ROUTES } from 'app/_constants/route';
+import { DYNAMIC_ROUTES } from 'app/_constants/route';
 import { BASIC_GHOST, GHOST_MAP } from 'app/closet/_constants/item';
 
 import { BottomButton } from './BottomButton';
@@ -34,11 +34,10 @@ export const Profile = ({ memberId }: ProfileProps) => {
   const onImageLoaded = () => setImageLoaded(true);
   const [isDownloadImageLoading, setIsDownloadImageLoading] = useState(false);
 
-  //TODO 서스펜스쿼리쓰면 무한 로딩걸림.. 해결 필요
   const [
     { data: equippedData, isPending: isEquippedDataPending, isError: isEquippedDataError },
     { data: completedData, isPending: isCompletedDataPending, isError: isCompletedDataError },
-  ] = useQueries({
+  ] = useSuspenseQueries({
     queries: [
       itemQueryOptions.equipped(memberId),
       bookQueryOptions.count({ ownerId: memberId, readStatus: 'COMPLETED' }),
@@ -83,8 +82,9 @@ export const Profile = ({ memberId }: ProfileProps) => {
   };
 
   const goBack = () => {
-    router.push(ROUTES.HOME);
+    router.push(DYNAMIC_ROUTES.USER(memberId));
   };
+
   return (
     <PageLayout
       className="bg-gray-70 flex h-dvh w-full flex-col"

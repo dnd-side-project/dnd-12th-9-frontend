@@ -24,11 +24,6 @@ export const TOP_BAR = {
 } as const;
 
 export const DRAWER_MENU = {
-  HOME: {
-    icon: 'home',
-    title: '홈',
-    router: ROUTES.HOME,
-  },
   SEARCH: {
     icon: 'search',
     title: '도서 검색',

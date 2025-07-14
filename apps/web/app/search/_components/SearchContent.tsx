@@ -55,6 +55,11 @@ export const SearchContent = ({ memberId }: SearchContentProps) => {
     setQuery(value ?? search);
   };
 
+  // https://tkdodo.eu/blog/avoiding-use-effect-with-callback-refs#usecallback-to-the-rescue
+  const ref = useCallback((node: HTMLInputElement | null) => {
+    node?.focus();
+  }, []);
+
   return (
     <Flex className="h-dvh flex-col">
       <Box className="mx-4 mt-[15px]">
@@ -64,6 +69,7 @@ export const SearchContent = ({ memberId }: SearchContentProps) => {
           onClick={() => handleSearch()}
           onClickReset={() => setSearch('')}
           onChange={(e) => setSearch(e.target.value)}
+          ref={ref}
         />
       </Box>
       <Box className="mt-6 flex-1 overflow-y-auto">
