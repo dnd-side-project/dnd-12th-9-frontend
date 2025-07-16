@@ -72,9 +72,8 @@ export const Profile = ({ memberId }: ProfileProps) => {
         scale: 2,
         backgroundColor: '#ffffff',
         embedFonts: true,
+        fast: false, // ios 환경에서 테스트 필요 https://github.com/zumerlab/snapdom/issues/107#issuecomment-3077452800
       });
-
-      console.log(result);
 
       await result.download({
         format: 'webp',
