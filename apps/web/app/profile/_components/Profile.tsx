@@ -5,8 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 
 import { useSuspenseQueries } from '@tanstack/react-query';
-import { saveAs } from 'file-saver';
-import { toPng } from 'html-to-image';
+import { snapdom } from '@zumer/snapdom';
 import { toast } from 'react-hot-toast';
 
 import { Header, HeaderLeftElement } from '@sbooky/ui/components/Header';
@@ -59,19 +58,29 @@ export const Profile = ({ memberId }: ProfileProps) => {
   const handleDownload = async () => {
     try {
       if (!divRef.current) {
+        toast.error('캡처할 요소를 찾을 수 없어요');
         return;
       }
 
       if (!imageLoaded) {
+        toast.error('이미지가 아직 로드되지 않았어요');
         return;
       }
 
       setIsDownloadImageLoading(true);
-      const dataUrl = await toPng(divRef.current, {
-        includeQueryParams: true,
+      const result = await snapdom(divRef.current, {
+        scale: 2,
+        backgroundColor: '#ffffff',
+        embedFonts: true,
       });
 
-      saveAs(dataUrl, 'GHOST_PROFILE_CARD.png');
+      console.log(result);
+
+      await result.download({
+        format: 'webp',
+        filename: 'PROFILE_CARD',
+      });
+
       toast.success('이미지 저장에 성공했어요');
     } catch (error) {
       console.error('Error converting div to image:', error);
