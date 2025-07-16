@@ -11,7 +11,8 @@
         "NODE_ENV",
         "NEXT_PUBLIC_CLARITY_PROJECT_ID",
         "NEXT_PUBLIC_GA_ID",
-        "NEXT_PUBLIC_GT_ID"
+        "NEXT_PUBLIC_GT_ID",
+        "NEXT_PUBLIC_KAKAO_API_KEY"
       ]
     },
     "lint": {
