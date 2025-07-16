@@ -2,20 +2,21 @@
 
 import { useRouter } from 'next/navigation';
 
-import { useRef, useState } from 'react';
+import { ComponentProps } from 'react';
 
 import { useSuspenseQueries } from '@tanstack/react-query';
-import { saveAs } from 'file-saver';
-import { toPng } from 'html-to-image';
-import { toast } from 'react-hot-toast';
 
 import { Header, HeaderLeftElement } from '@sbooky/ui/components/Header';
 import { Icon } from '@sbooky/ui/components/Icon';
-import { JustifyBetween, PageLayout } from '@sbooky/ui/components/Layout';
+import { IconType } from '@sbooky/ui/components/Icon/assets';
+import { Center, JustifyBetween, PageLayout } from '@sbooky/ui/components/Layout';
 import { bookQueryOptions } from 'app/_api/queries/book';
 import { itemQueryOptions } from 'app/_api/queries/item';
 import { DYNAMIC_ROUTES } from 'app/_constants/route';
 import { BASIC_GHOST, GHOST_MAP } from 'app/closet/_constants/item';
+
+import { useCopyToClipboard } from '../_hooks/useClipBoard';
+import { useImageDownload } from '../_hooks/useImageDownload';
 
 import { BottomButton } from './BottomButton';
 import { Card } from './Card';
@@ -27,12 +28,59 @@ type ProfileProps = {
 export const Profile = ({ memberId }: ProfileProps) => {
   const router = useRouter();
 
-  const divRef = useRef<HTMLDivElement>(null);
+  const { divRef, handleDownload, imageLoaded, onImageLoaded, isDownloadImageLoading } =
+    useImageDownload();
 
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [, copyToClipboard] = useCopyToClipboard();
 
-  const onImageLoaded = () => setImageLoaded(true);
-  const [isDownloadImageLoading, setIsDownloadImageLoading] = useState(false);
+  const shareURL = `https://www.sbooky.net/user/${memberId}`;
+
+  const shareKakao = () => {
+    window.Kakao.Share.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '스부키와 함께하는 독서의 순간',
+        imageUrl: 'https://www.sbooky.net/MAIN.png',
+        link: {
+          mobileWebUrl: shareURL,
+          webUrl: shareURL,
+        },
+      },
+      buttons: [
+        {
+          title: '스부키 방문하기',
+          link: {
+            mobileWebUrl: shareURL,
+            webUrl: shareURL,
+          },
+        },
+      ],
+    });
+  };
+
+  const PROFILE_BOTTOM_BUTTON = [
+    {
+      name: '저장하기',
+      icon: 'download',
+      onClick: handleDownload,
+      disabled: !imageLoaded || isDownloadImageLoading,
+    },
+    {
+      name: '카카오톡',
+      icon: 'kakao',
+      onClick: shareKakao,
+    },
+    {
+      name: '링크복사',
+      icon: 'link',
+      onClick: () => copyToClipboard(shareURL),
+    },
+  ] satisfies Array<
+    {
+      name: string;
+      icon: IconType;
+    } & ComponentProps<'button'>
+  >;
 
   const [
     { data: equippedData, isPending: isEquippedDataPending, isError: isEquippedDataError },
@@ -55,31 +103,6 @@ export const Profile = ({ memberId }: ProfileProps) => {
   const { bookCount: completedBookCount } = completedData.data;
   const { findEquippedItemsResponse, nickName } = equippedData.data;
   const { code } = GHOST_MAP[findEquippedItemsResponse.items.CHARACTER[0] ?? BASIC_GHOST.code];
-
-  const handleDownload = async () => {
-    try {
-      if (!divRef.current) {
-        return;
-      }
-
-      if (!imageLoaded) {
-        return;
-      }
-
-      setIsDownloadImageLoading(true);
-      const dataUrl = await toPng(divRef.current, {
-        includeQueryParams: true,
-      });
-
-      saveAs(dataUrl, 'GHOST_PROFILE_CARD.png');
-      toast.success('이미지 저장에 성공했어요');
-    } catch (error) {
-      console.error('Error converting div to image:', error);
-      toast.error('이미지 저장에 실패했어요');
-    } finally {
-      setIsDownloadImageLoading(false);
-    }
-  };
 
   const goBack = () => {
     router.push(DYNAMIC_ROUTES.USER(memberId));
@@ -109,12 +132,11 @@ export const Profile = ({ memberId }: ProfileProps) => {
           code={code}
           completedBookCount={completedBookCount}
         />
-        <BottomButton
-          saveImageButtonProps={{
-            onClick: handleDownload,
-            disabled: !imageLoaded || isDownloadImageLoading,
-          }}
-        />
+        <Center className="gap-12 px-4 pb-4">
+          {PROFILE_BOTTOM_BUTTON.map((button) => (
+            <BottomButton key={button.name} {...button} />
+          ))}
+        </Center>
       </JustifyBetween>
     </PageLayout>
   );
