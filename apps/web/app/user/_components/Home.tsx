@@ -6,7 +6,7 @@ import { Suspense, useEffect } from 'react';
 
 import { Header } from '@sbooky/ui/components/Header';
 import { Icon } from '@sbooky/ui/components/Icon';
-import { HStack, JustifyBetween, PageLayout } from '@sbooky/ui/components/Layout';
+import { HStack, JustifyBetween, PageLayout, Spacing } from '@sbooky/ui/components/Layout';
 import { useModal } from '@sbooky/ui/hooks/useModal';
 import { DYNAMIC_ROUTES, ROUTES } from 'app/_constants/route';
 import { keys } from 'app/_util/keys';
@@ -45,6 +45,8 @@ export const Home = ({ memberId, userType, myMemberId }: HomeProps) => {
   }, [openOnboarding, router, memberId]);
 
   const isGuest = userType === 'GUEST';
+  const isOwner = userType === 'OWNER';
+
   const goSettingPage = () => router.push(ROUTES.SETTING);
 
   const onClickSetting = () => {
@@ -75,11 +77,7 @@ export const Home = ({ memberId, userType, myMemberId }: HomeProps) => {
         className="flex h-dvh w-full flex-col bg-[url('/HOME.webp')] bg-cover bg-center"
       >
         <JustifyBetween className="mb-4 h-full flex-col px-4">
-          <HStack className="w-full justify-start gap-2 px-4">
-            {keys(TOP_BAR).map((type) => (
-              <TopBarButton key={type} type={type} />
-            ))}
-          </HStack>
+          {isOwner ? <MenuButtonList /> : <Spacing />}
           <Suspense>
             <MemberInfo userType={userType} memberId={memberId} myMemberId={myMemberId} />
           </Suspense>
@@ -91,5 +89,15 @@ export const Home = ({ memberId, userType, myMemberId }: HomeProps) => {
       <OnBoardingCompleteModal isOnBoardingModalOpen={Boolean(openOnboarding) ?? false} />
       <LoginAlertModal isOpen={isLoginAlertOpen} closeModal={closeLoginAlertModal} />
     </>
+  );
+};
+
+const MenuButtonList = () => {
+  return (
+    <HStack className="w-full justify-start gap-2 px-4">
+      {keys(TOP_BAR).map((type) => (
+        <TopBarButton key={type} type={type} />
+      ))}
+    </HStack>
   );
 };

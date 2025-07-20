@@ -8,6 +8,7 @@ import { Toaster } from 'react-hot-toast';
 
 import { ClientQueryProvider } from './_api/ClientQueryProvider';
 import { ClarityEffector } from './_components/ClarityEffector';
+import { KakaoScript } from './_components/KakaoScript';
 
 const pretendard = localFont({
   src: '../public/font/PretendardVariable.woff2',
@@ -79,6 +80,7 @@ export default function RootLayout({
         {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}
+        <KakaoScript />
         <Toaster position="top-center" gutter={100} toastOptions={toastOption} />
       </body>
     </html>
