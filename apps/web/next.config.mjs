@@ -15,6 +15,7 @@ let nextConfig = {
   },
   experimental: {
     externalDir: true,
+    optimizePackageImports: ['motion'],
   },
   webpack(config) {
     const __dirname = path.resolve();
