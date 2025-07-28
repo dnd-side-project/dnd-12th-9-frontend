@@ -15,7 +15,7 @@
 책을 읽고 기록하는 과정이 부담이 아닌 재미있는 경험이 될 수 있도록, 시각적인 독서 기록, 서재 공유, 보상 시스템 등 다양한 기능을 제공합니다.
 
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/sbook_y/)
-
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/dnd-side-project/dnd-12th-9-frontend)
 
 ![서브비주얼](https://github.com/user-attachments/assets/1de6fea1-1b57-4939-8e06-42f4d95768be)
 
