@@ -3,7 +3,7 @@ import { ComponentProps } from 'react';
 import { motion } from 'motion/react';
 
 import { cn } from '../../lib/core';
-import { FADE_IN_ANIMATION } from '../../lib/motions';
+import { FADE_IN_ANIMATION, SCALE_IN_ANIMATION } from '../../lib/motions';
 import { Portal } from '../Portal';
 
 import { Content } from './ModalContent';
@@ -66,9 +66,11 @@ export function Modal({
           className
         )}
       >
-        <Content graphic={graphic} contentClassName={contentClassName}>
-          {children}
-        </Content>
+        <motion.div variants={SCALE_IN_ANIMATION}>
+          <Content graphic={graphic} contentClassName={contentClassName}>
+            {children}
+          </Content>
+        </motion.div>
       </motion.div>
     </Portal>
   );
