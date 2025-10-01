@@ -21,33 +21,36 @@ export type ButtonProps = {
   variant?: ButtonVariant;
 } & ComponentProps<'button'>;
 
-const buttonVariantMap = cva('relative flex justify-center items-center rounded-lg gap-1', {
-  variants: {
-    size: {
-      sm: 'w-[101px] h-[38px]',
-      md: 'w-[132px] h-11',
-      lg: 'w-[343px] h-[52px]',
+const buttonVariantMap = cva(
+  'relative flex justify-center items-center rounded-lg gap-1 active:scale-[0.97] transition-transform',
+  {
+    variants: {
+      size: {
+        sm: 'w-[101px] h-[38px]',
+        md: 'w-[132px] h-11',
+        lg: 'w-[343px] h-[52px]',
+      },
+      variant: {
+        primary50:
+          'bg-primary-50 text-primary-600 hover:bg-primary-100 disabled:bg-gray-400 disabled:text-gray-500',
+        black: 'bg-gray-800 text-white hover:bg-black disabled:bg-gray-600 disabled:text-gray-400',
+        gray100:
+          'bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:bg-gray-400 disabled:text-gray-500',
+        primary500:
+          'bg-primary-500 text-primary-50 hover:bg-primary-700 disabled:bg-gray-600 disabled:text-gray-400',
+        gray200:
+          'bg-gray-200 text-gray-600 hover:bg-gray-700 disabled:bg-gray-400 disabled:text-gray-500',
+      },
     },
-    variant: {
-      primary50:
-        'bg-primary-50 text-primary-600 hover:bg-primary-100 disabled:bg-gray-400 disabled:text-gray-500',
-      black: 'bg-gray-800 text-white hover:bg-black disabled:bg-gray-600 disabled:text-gray-400',
-      gray100:
-        'bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:bg-gray-400 disabled:text-gray-500',
-      primary500:
-        'bg-primary-500 text-primary-50 hover:bg-primary-700 disabled:bg-gray-600 disabled:text-gray-400',
-      gray200:
-        'bg-gray-200 text-gray-600 hover:bg-gray-700 disabled:bg-gray-400 disabled:text-gray-500',
-    },
-  },
-  compoundVariants: [
-    {
-      variant: ['primary50', 'primary500'],
-      size: 'lg',
-      className: 'text-white',
-    },
-  ],
-});
+    compoundVariants: [
+      {
+        variant: ['primary50', 'primary500'],
+        size: 'lg',
+        className: 'text-white',
+      },
+    ],
+  }
+);
 
 const buttonTextVariantMap = {
   sm: {

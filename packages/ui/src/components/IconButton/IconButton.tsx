@@ -10,7 +10,13 @@ export const IconButton = ({
   ...restProps
 }: PropsWithChildren<IconButtonProps>) => {
   return (
-    <button className={cn('flex items-center justify-center', className)} {...restProps}>
+    <button
+      className={cn(
+        'flex items-center justify-center transition-transform active:scale-[0.97]',
+        className
+      )}
+      {...restProps}
+    >
       {children}
     </button>
   );
