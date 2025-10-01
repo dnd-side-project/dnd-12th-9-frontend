@@ -22,7 +22,7 @@ export type ButtonProps = {
 } & ComponentProps<'button'>;
 
 const buttonVariantMap = cva(
-  'relative flex justify-center items-center rounded-lg gap-1 active:scale-[0.97]',
+  'relative flex justify-center items-center rounded-lg gap-1 active:scale-[0.97] transition-transform',
   {
     variants: {
       size: {
